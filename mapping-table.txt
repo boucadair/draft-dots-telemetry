@@ -1,0 +1,67 @@
+   +----------------------+-------------+------+---------------+--------+
+   | Parameter Name       | YANG        | CBOR | CBOR Major    | JSON   |
+   |                      | Type        | Key  |    Type &     | Type   |
+   |                      |             |      | Information   |        |
+   +----------------------+-------------+------+---------------+--------+
+   | ietf-dots-signal-cha |             |      |               |        |
+   | nnel:telemetry       | container   |0x8008| 5 map         | Object |
+   | tcid                 | uint32      |0x8009| 0 unsigned    | Number |
+   | telemetry-config     | container   |0x800A| 5 map         | Object |
+   | low-percentile       | decimal64   |0x800B| 6 tag 4       |        |
+   |                      |             |      |  [-2, integer]| String |
+   | mid-percentile       | decimal64   |0x800C| 6 tag 4       |        |
+   |                      |             |      |  [-2, integer]| String |
+   | high-percentile      | decimal64   |0x800D| 6 tag 4       |        |
+   |                      |             |      |  [-2, integer]| String |
+   | unit-config          | list        |0x800E| 4 array       | Array  |
+   | unit                 | enumeration |0x800F| 0 unsigned    | String |
+   | status               | boolean     |0x8010| 7 bits 20     | False  |
+   |                      |             |      | 7 bits 21     | True   |
+   | total-pipe-capability| list        |0x8011| 4 array       | Array  |
+   | pipe                 | uint64      |0x8012| 0 unsigned    | String |
+   | pre-mitigation       | list        |0x8013| 4 array       | Array  |
+   | telemetry-id         | uint32      |0x8014| 0 unsigned    | Number |
+   | total-traffic-       |             |      |               |        |
+   |    normal-baseline   | list        |0x8015| 4 array       | Array  |
+   | low-percentile-g     | yang:gauge64|0x8016| 0 unsigned    | String |
+   | mid-percentile-g     | yang:gauge64|0x8017| 0 unsigned    | String |
+   | high-percentile-g    | yang:gauge64|0x8018| 0 unsigned    | String |
+   | peak-g               | yang:gauge64|0x8019| 0 unsigned    | String |
+   | total-attack-traffic | list        |0x801A| 4 array       | Array  |
+   | total-traffic        | list        |0x801B| 4 array       | Array  |
+   | total-connection-    |             |      |               |        |
+   |        capacity      | list        |0x801C| 4 array       | Array  |
+   | connection           | uint64      |0x801D| 0 unsigned    | String |
+   | connection-client    | uint64      |0x801E| 0 unsigned    | String |
+   | embryonic            | uint64      |0x801F| 0 unsigned    | String |
+   | embryonic-client     | uint64      |0x8020| 0 unsigned    | String |
+   | connection-ps        | uint64      |0x8021| 0 unsigned    | String |
+   | connection-client-ps | uint64      |0x8022| 0 unsigned    | String |
+   | request-ps           | uint64      |0x8023| 0 unsigned    | String |
+   | request-client-ps    | uint64      |0x8024| 0 unsigned    | String |
+   | partial-request-ps   | uint64      |0x8025| 0 unsigned    | String |
+   | mitigation-start     | uint64      |0x8026| 0 unsigned    | String |
+   | partial-request-     |             |      |               |        |
+   |        client-ps     | uint64      |0x8027| 0 unsigned    | String |
+   | total-attack-        |             |      |               |        |
+   |        connection    | container   |0x8028| 5 map         | Object |
+   | low-percentile-l     | list        |0x8029| 4 array       | Array  |
+   | mid-percentile-l     | list        |0x802A| 4 array       | Array  |
+   | high-percentile-l    | list        |0x802B| 4 array       | Array  |
+   | peak                 | list        |0x802C| 4 array       | Array  |
+   | attack-detail        | container   |0x802D| 5 map         | Object |
+   | vendor-id            | uint32      |0x802E| 0 unsigned    | Number |
+   | attack-id            | string      |0x802F| 3 text string | String |
+   | attack-name          | string      |0x8030| 3 text string | String |
+   | attack-severity      | enumeration |0x8031| 0 unsigned    | String |
+   | start-time           | uint64      |0x8032| 0 unsigned    | String |
+   | end-time             | uint64      |0x8033| 0 unsigned    | String |
+   | source-count         | container   |0x8034| 5 map         | Object |
+   | top-talker           | container   |0x8035| 5 map         | Object |
+   | spoofed-status       | boolean     |0x8036| 7 bits 20     | False  |
+   |                      |             |      | 7 bits 21     | True   |
+   | low-percentile-c     | container   |0x8037| 5 map         | Object |
+   | mid-percentile-c     | container   |0x8038| 5 map         | Object |
+   | high-percentile-c    | container   |0x8039| 5 map         | Object |
+   | peak-c               | container   |0x803A| 5 map         | Object |
+   +----------------------+-------------+------+---------------+--------+
