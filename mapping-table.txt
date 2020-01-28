@@ -4,63 +4,63 @@
    |                      |             |      | Information   |        |
    +----------------------+-------------+------+---------------+--------+
    | ietf-dots-signal-cha |             |      |               |        |
-   | nnel:telemetry       | container   |0x8008| 5 map         | Object |
-   | tcid                 | uint32      |0x8009| 0 unsigned    | Number |
-   | telemetry-config     | container   |0x800A| 5 map         | Object |
-   | low-percentile       | decimal64   |0x800B| 6 tag 4       |        |
+   | nnel:telemetry       | container   |32776 | 5 map         | Object |
+   | tcid                 | uint32      |32777 | 0 unsigned    | Number |
+   | telemetry-config     | container   |32778 | 5 map         | Object |
+   | low-percentile       | decimal64   |32779 | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | mid-percentile       | decimal64   |0x800C| 6 tag 4       |        |
+   | mid-percentile       | decimal64   |32780 | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | high-percentile      | decimal64   |0x800D| 6 tag 4       |        |
+   | high-percentile      | decimal64   |32781 | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | unit-config          | list        |0x800E| 4 array       | Array  |
-   | unit                 | enumeration |0x800F| 0 unsigned    | String |
-   | unit-status          | boolean     |0x8010| 7 bits 20     | False  |
+   | unit-config          | list        |32782 | 4 array       | Array  |
+   | unit                 | enumeration |32783 | 0 unsigned    | String |
+   | unit-status          | boolean     |32784 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
-   | total-pipe-capability| list        |0x8011| 4 array       | Array  |
-   | pipe                 | uint64      |0x8012| 0 unsigned    | String |
-   | pre-mitigation       | list        |0x8013| 4 array       | Array  |
-   | telemetry-id         | uint32      |0x8014| 0 unsigned    | Number |
+   | total-pipe-capability| list        |32785 | 4 array       | Array  |
+   | pipe                 | uint64      |32786 | 0 unsigned    | String |
+   | pre-mitigation       | list        |32787 | 4 array       | Array  |
+   | telemetry-id         | uint32      |32788 | 0 unsigned    | Number |
    | total-traffic-       |             |      |               |        |
-   |    normal-baseline   | list        |0x8015| 4 array       | Array  |
-   | low-percentile-g     | yang:gauge64|0x8016| 0 unsigned    | String |
-   | mid-percentile-g     | yang:gauge64|0x8017| 0 unsigned    | String |
-   | high-percentile-g    | yang:gauge64|0x8018| 0 unsigned    | String |
-   | peak-g               | yang:gauge64|0x8019| 0 unsigned    | String |
-   | total-attack-traffic | list        |0x801A| 4 array       | Array  |
-   | total-traffic        | list        |0x801B| 4 array       | Array  |
+   |    normal-baseline   | list        |32789 | 4 array       | Array  |
+   | low-percentile-g     | yang:gauge64|32790 | 0 unsigned    | String |
+   | mid-percentile-g     | yang:gauge64|32791 | 0 unsigned    | String |
+   | high-percentile-g    | yang:gauge64|32792 | 0 unsigned    | String |
+   | peak-g               | yang:gauge64|32793 | 0 unsigned    | String |
+   | total-attack-traffic | list        |32794 | 4 array       | Array  |
+   | total-traffic        | list        |32795 | 4 array       | Array  |
    | total-connection-    |             |      |               |        |
-   |        capacity      | list        |0x801C| 4 array       | Array  |
-   | connection           | uint64      |0x801D| 0 unsigned    | String |
-   | connection-client    | uint64      |0x801E| 0 unsigned    | String |
-   | embryonic            | uint64      |0x801F| 0 unsigned    | String |
-   | embryonic-client     | uint64      |0x8020| 0 unsigned    | String |
-   | connection-ps        | uint64      |0x8021| 0 unsigned    | String |
-   | connection-client-ps | uint64      |0x8022| 0 unsigned    | String |
-   | request-ps           | uint64      |0x8023| 0 unsigned    | String |
-   | request-client-ps    | uint64      |0x8024| 0 unsigned    | String |
-   | partial-request-ps   | uint64      |0x8025| 0 unsigned    | String |
+   |        capacity      | list        |32796 | 4 array       | Array  |
+   | connection           | uint64      |32797 | 0 unsigned    | String |
+   | connection-client    | uint64      |32798 | 0 unsigned    | String |
+   | embryonic            | uint64      |32799 | 0 unsigned    | String |
+   | embryonic-client     | uint64      |32800 | 0 unsigned    | String |
+   | connection-ps        | uint64      |32801 | 0 unsigned    | String |
+   | connection-client-ps | uint64      |32802 | 0 unsigned    | String |
+   | request-ps           | uint64      |32803 | 0 unsigned    | String |
+   | request-client-ps    | uint64      |32804 | 0 unsigned    | String |
+   | partial-request-ps   | uint64      |32805 | 0 unsigned    | String |
    | partial-request-     |             |      |               |        |
-   |        client-ps     | uint64      |0x8026| 0 unsigned    | String |
+   |        client-ps     | uint64      |32806 | 0 unsigned    | String |
    | total-attack-        |             |      |               |        |
-   |        connection    | container   |0x8027| 5 map         | Object |
-   | low-percentile-l     | list        |0x8028| 4 array       | Array  |
-   | mid-percentile-l     | list        |0x8029| 4 array       | Array  |
-   | high-percentile-l    | list        |0x802A| 4 array       | Array  |
-   | peak-l               | list        |0x802B| 4 array       | Array  |
-   | attack-detail        | container   |0x802C| 5 map         | Object |
-   | vendor-id            | uint32      |0x802D| 0 unsigned    | Number |
-   | attack-id            | string      |0x802E| 3 text string | String |
-   | attack-name          | string      |0x802F| 3 text string | String |
-   | attack-severity      | enumeration |0x8030| 0 unsigned    | String |
-   | start-time           | uint64      |0x8031| 0 unsigned    | String |
-   | end-time             | uint64      |0x8032| 0 unsigned    | String |
-   | source-count         | container   |0x8033| 5 map         | Object |
-   | top-talker           | container   |0x8034| 5 map         | Object |
-   | spoofed-status       | boolean     |0x8035| 7 bits 20     | False  |
+   |        connection    | container   |32807 | 5 map         | Object |
+   | low-percentile-l     | list        |32808 | 4 array       | Array  |
+   | mid-percentile-l     | list        |32809 | 4 array       | Array  |
+   | high-percentile-l    | list        |32810 | 4 array       | Array  |
+   | peak-l               | list        |32811 | 4 array       | Array  |
+   | attack-detail        | container   |32812 | 5 map         | Object |
+   | vendor-id            | uint32      |32813 | 0 unsigned    | Number |
+   | attack-id            | string      |32814 | 3 text string | String |
+   | attack-name          | string      |32815 | 3 text string | String |
+   | attack-severity      | enumeration |32816 | 0 unsigned    | String |
+   | start-time           | uint64      |32817 | 0 unsigned    | String |
+   | end-time             | uint64      |32819 | 0 unsigned    | String |
+   | source-count         | container   |32820 | 5 map         | Object |
+   | top-talker           | container   |32821 | 5 map         | Object |
+   | spoofed-status       | boolean     |32822 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
-   | low-percentile-c     | container   |0x8036| 5 map         | Object |
-   | mid-percentile-c     | container   |0x8037| 5 map         | Object |
-   | high-percentile-c    | container   |0x8038| 5 map         | Object |
-   | peak-c               | container   |0x8039| 5 map         | Object |
+   | low-percentile-c     | container   |32823 | 5 map         | Object |
+   | mid-percentile-c     | container   |32824 | 5 map         | Object |
+   | high-percentile-c    | container   |32825 | 5 map         | Object |
+   | peak-c               | container   |32826 | 5 map         | Object |
    +----------------------+-------------+------+---------------+--------+
