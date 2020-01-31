@@ -546,6 +546,8 @@
             <t>Measurement units</t>
 
             <t>Acceptable percentile values</t>
+
+            <t>Server-initiated pre-mitigation telemetry</t>
           </list></t>
 
         <t>Section 11.3 of <xref target="RFC2330"></xref> includes more
@@ -586,20 +588,22 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
     |     +--rw (setup-type)?
     |        +--:(telemetry-config)
     |        |  +--rw current-config
-    |        |  |  +--rw measurement-interval?   interval
-    |        |  |  +--rw measurement-sample?     sample
-    |        |  |  +--rw low-percentile?         percentile
-    |        |  |  +--rw mid-percentile?         percentile
-    |        |  |  +--rw high-percentile?        percentile
+    |        |  |  +--rw measurement-interval?         interval
+    |        |  |  +--rw measurement-sample?           sample
+    |        |  |  +--rw low-percentile?               percentile
+    |        |  |  +--rw mid-percentile?               percentile
+    |        |  |  +--rw high-percentile?              percentile
     |        |  |  +--rw unit-config* [unit]
-    |        |  |     +--rw unit           unit
-    |        |  |     +--rw unit-status?   boolean
+    |        |  |  |  +--rw unit           unit
+    |        |  |  |  +--rw unit-status?   boolean
+    |        |  |  +--rw server-initiated-telemetry?   boolean
     |        |  +--ro max-config-values
-    |        |  |  +--ro measurement-interval?   interval
-    |        |  |  +--ro measurement-sample?     sample
-    |        |  |  +--ro low-percentile?         percentile
-    |        |  |  +--ro mid-percentile?         percentile
-    |        |  |  +--ro high-percentile?        percentile
+    |        |  |  +--ro measurement-interval?         interval
+    |        |  |  +--ro measurement-sample?           sample
+    |        |  |  +--ro low-percentile?               percentile
+    |        |  |  +--ro mid-percentile?               percentile
+    |        |  |  +--ro high-percentile?              percentile
+    |        |  |  +--ro server-initiated-telemetry?   boolean
     |        |  +--ro min-config-values
     |        |  |  +--ro measurement-interval?   interval
     |        |  |  +--ro measurement-sample?     sample
@@ -607,10 +611,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
     |        |  |  +--ro mid-percentile?         percentile
     |        |  |  +--ro high-percentile?        percentile
     |        |  +--ro supported-units
-    |        |  |  +--ro unit-config* [unit]
-    |        |  |     +--ro unit           unit
-    |        |  |     +--ro unit-status?   boolean
-    |        |  +--rw server-initiated-telemetry?   boolean
+    |        |     +--ro unit-config* [unit]
+    |        |        +--ro unit           unit
+    |        |        +--ro unit-status?   boolean
     |        +--:(pipe)
     |        ...
     |        +--:(baseline)
@@ -2585,12 +2588,28 @@ module ietf-dots-telemetry {
                 "Current configuration values.";
               uses percentile-config;
               uses unit-config;
+              leaf server-initiated-telemetry {
+                type boolean;
+                description
+                  "Used by a DOTS client to enable/disable whether it
+                   accepts pre-mitigation telemetry from the DOTS 
+                   server.";
+              }
             }
             container max-config-values {
               description
                 "Maximum acceptable configuration values.";
               config false;
               uses percentile-config;
+              // Check if this is right place for indciating this capability
+              leaf server-initiated-telemetry {
+                type boolean;
+                description
+                  "Indicates whether the DOTS server can be instructed
+                   to send pre-mitigation telemetry. If set to FALSE
+                   or the attribute is not present, this is an indication
+                   that the server does not support this capability.";
+              }
             }
             container min-config-values {
               description
@@ -2603,13 +2622,6 @@ module ietf-dots-telemetry {
                 "Supported units and default activation status.";
               config false;
               uses unit-config;
-            }
-            leaf server-initiated-telemetry {
-              type boolean;
-              description
-                "Used by a DOTS client to enable/disable whether it
-                 accepts pre-mitigation telemetry from the DOTS 
-                 server.";
             }
           }
           case pipe {
@@ -2704,7 +2716,6 @@ module ietf-dots-telemetry {
     }
   }
 }
-
 <CODE ENDS>
 ]]></artwork>
         </figure></t>

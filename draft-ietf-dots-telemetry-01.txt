@@ -133,17 +133,17 @@ Internet-Draft               DOTS Telemetry                 January 2020
      8.2.  DOTS Detector to Clients Detection Telemetry  . . . . . .  38
    9.  YANG Module . . . . . . . . . . . . . . . . . . . . . . . . .  38
    10. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  58
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  59
-     11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  59
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  60
+     11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  60
      11.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . .  61
-     11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . .  61
+     11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . .  62
    12. Security Considerations . . . . . . . . . . . . . . . . . . .  62
    13. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  62
    14. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  62
-   15. References  . . . . . . . . . . . . . . . . . . . . . . . . .  62
-     15.1.  Normative References . . . . . . . . . . . . . . . . . .  62
+   15. References  . . . . . . . . . . . . . . . . . . . . . . . . .  63
+     15.1.  Normative References . . . . . . . . . . . . . . . . . .  63
      15.2.  Informative References . . . . . . . . . . . . . . . . .  64
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  64
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  65
 
 1.  Introduction
 
@@ -636,6 +636,8 @@ Internet-Draft               DOTS Telemetry                 January 2020
 
    o  Acceptable percentile values
 
+   o  Server-initiated pre-mitigation telemetry
+
    Section 11.3 of [RFC2330] includes more details about computing
    percentiles.
 
@@ -667,8 +669,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
 
 
 
-
-
 Boucadair, et al.        Expires August 2, 2020                [Page 12]
 
 Internet-Draft               DOTS Telemetry                 January 2020
@@ -681,20 +681,22 @@ Internet-Draft               DOTS Telemetry                 January 2020
        |     +--rw (setup-type)?
        |        +--:(telemetry-config)
        |        |  +--rw current-config
-       |        |  |  +--rw measurement-interval?   interval
-       |        |  |  +--rw measurement-sample?     sample
-       |        |  |  +--rw low-percentile?         percentile
-       |        |  |  +--rw mid-percentile?         percentile
-       |        |  |  +--rw high-percentile?        percentile
+       |        |  |  +--rw measurement-interval?         interval
+       |        |  |  +--rw measurement-sample?           sample
+       |        |  |  +--rw low-percentile?               percentile
+       |        |  |  +--rw mid-percentile?               percentile
+       |        |  |  +--rw high-percentile?              percentile
        |        |  |  +--rw unit-config* [unit]
-       |        |  |     +--rw unit           unit
-       |        |  |     +--rw unit-status?   boolean
+       |        |  |  |  +--rw unit           unit
+       |        |  |  |  +--rw unit-status?   boolean
+       |        |  |  +--rw server-initiated-telemetry?   boolean
        |        |  +--ro max-config-values
-       |        |  |  +--ro measurement-interval?   interval
-       |        |  |  +--ro measurement-sample?     sample
-       |        |  |  +--ro low-percentile?         percentile
-       |        |  |  +--ro mid-percentile?         percentile
-       |        |  |  +--ro high-percentile?        percentile
+       |        |  |  +--ro measurement-interval?         interval
+       |        |  |  +--ro measurement-sample?           sample
+       |        |  |  +--ro low-percentile?               percentile
+       |        |  |  +--ro mid-percentile?               percentile
+       |        |  |  +--ro high-percentile?              percentile
+       |        |  |  +--ro server-initiated-telemetry?   boolean
        |        |  +--ro min-config-values
        |        |  |  +--ro measurement-interval?   interval
        |        |  |  +--ro measurement-sample?     sample
@@ -702,10 +704,9 @@ Internet-Draft               DOTS Telemetry                 January 2020
        |        |  |  +--ro mid-percentile?         percentile
        |        |  |  +--ro high-percentile?        percentile
        |        |  +--ro supported-units
-       |        |  |  +--ro unit-config* [unit]
-       |        |  |     +--ro unit           unit
-       |        |  |     +--ro unit-status?   boolean
-       |        |  +--rw server-initiated-telemetry?   boolean
+       |        |     +--ro unit-config* [unit]
+       |        |        +--ro unit           unit
+       |        |        +--ro unit-status?   boolean
        |        +--:(pipe)
        |        ...
        |        +--:(baseline)
@@ -721,7 +722,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
    PUT request is used to convey the configuration parameters for the
    telemetry data (e.g., low, mid, or high percentile values).  For
    example, a DOTS client may contact its DOTS server to change the
-   default percentile values used as baseline for telemetry data.
 
 
 
@@ -730,6 +730,7 @@ Boucadair, et al.        Expires August 2, 2020                [Page 13]
 Internet-Draft               DOTS Telemetry                 January 2020
 
 
+   default percentile values used as baseline for telemetry data.
    Figure 3 lists the attributes that can be set by a DOTS client in
    such PUT request.  An example of a DOTS client that modifies all
    percentile reference values is shown in Figure 4.
@@ -776,7 +777,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
 
    Attributes and Uri-Path parameters with empty values MUST NOT be
    present in a request and render the entire request invalid.
-
 
 
 
@@ -3055,12 +3055,36 @@ Internet-Draft               DOTS Telemetry                 January 2020
                 "Current configuration values.";
               uses percentile-config;
               uses unit-config;
+              leaf server-initiated-telemetry {
+                type boolean;
+                description
+                  "Used by a DOTS client to enable/disable whether it
+                   accepts pre-mitigation telemetry from the DOTS
+                   server.";
+              }
             }
             container max-config-values {
               description
                 "Maximum acceptable configuration values.";
               config false;
               uses percentile-config;
+              // Check if this is right place for indciating this capability
+              leaf server-initiated-telemetry {
+                type boolean;
+                description
+                  "Indicates whether the DOTS server can be instructed
+                   to send pre-mitigation telemetry. If set to FALSE
+
+
+
+Boucadair, et al.        Expires August 2, 2020                [Page 55]
+
+Internet-Draft               DOTS Telemetry                 January 2020
+
+
+                   or the attribute is not present, this is an indication
+                   that the server does not support this capability.";
+              }
             }
             container min-config-values {
               description
@@ -3073,21 +3097,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
                 "Supported units and default activation status.";
               config false;
               uses unit-config;
-            }
-
-
-
-Boucadair, et al.        Expires August 2, 2020                [Page 55]
-
-Internet-Draft               DOTS Telemetry                 January 2020
-
-
-            leaf server-initiated-telemetry {
-              type boolean;
-              description
-                "Used by a DOTS client to enable/disable whether it
-                 accepts pre-mitigation telemetry from the DOTS
-                 server.";
             }
           }
           case pipe {
@@ -3121,6 +3130,14 @@ Internet-Draft               DOTS Telemetry                 January 2020
           case baseline {
             description
               "Traffic baseline information";
+
+
+
+Boucadair, et al.        Expires August 2, 2020                [Page 56]
+
+Internet-Draft               DOTS Telemetry                 January 2020
+
+
             list baseline {
               key "id";
               description
@@ -3130,14 +3147,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
                 must '. >= 1';
                 description
                   "A baseline entry identifier.";
-
-
-
-Boucadair, et al.        Expires August 2, 2020                [Page 56]
-
-Internet-Draft               DOTS Telemetry                 January 2020
-
-
               }
               uses baseline;
             }
@@ -3177,6 +3186,14 @@ Internet-Draft               DOTS Telemetry                 January 2020
         leaf id {
           type uint32;
           description
+
+
+
+Boucadair, et al.        Expires August 2, 2020                [Page 57]
+
+Internet-Draft               DOTS Telemetry                 January 2020
+
+
             "An identifier to uniquely demux telemetry data send using
              the same message.";
         }
@@ -3186,19 +3203,10 @@ Internet-Draft               DOTS Telemetry                 January 2020
           uses ietf-data:target;
         }
         uses pre-mitigation;
-
-
-
-Boucadair, et al.        Expires August 2, 2020                [Page 57]
-
-Internet-Draft               DOTS Telemetry                 January 2020
-
-
       }
     }
   }
 }
-
 <CODE ENDS>
 
 10.  YANG/JSON Mapping Parameters to CBOR
@@ -3234,14 +3242,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
    |    normal-baseline   | list        |32789 | 4 array       | Array  |
    | low-percentile-g     | yang:gauge64|32790 | 0 unsigned    | String |
    | mid-percentile-g     | yang:gauge64|32791 | 0 unsigned    | String |
-   | high-percentile-g    | yang:gauge64|32792 | 0 unsigned    | String |
-   | peak-g               | yang:gauge64|32793 | 0 unsigned    | String |
-   | total-attack-traffic | list        |32794 | 4 array       | Array  |
-   | total-traffic        | list        |32795 | 4 array       | Array  |
-   | total-connection-    |             |      |               |        |
-   |        capacity      | list        |32796 | 4 array       | Array  |
-   | connection           | uint64      |32797 | 0 unsigned    | String |
-   | connection-client    | uint64      |32798 | 0 unsigned    | String |
 
 
 
@@ -3250,6 +3250,14 @@ Boucadair, et al.        Expires August 2, 2020                [Page 58]
 Internet-Draft               DOTS Telemetry                 January 2020
 
 
+   | high-percentile-g    | yang:gauge64|32792 | 0 unsigned    | String |
+   | peak-g               | yang:gauge64|32793 | 0 unsigned    | String |
+   | total-attack-traffic | list        |32794 | 4 array       | Array  |
+   | total-traffic        | list        |32795 | 4 array       | Array  |
+   | total-connection-    |             |      |               |        |
+   |        capacity      | list        |32796 | 4 array       | Array  |
+   | connection           | uint64      |32797 | 0 unsigned    | String |
+   | connection-client    | uint64      |32798 | 0 unsigned    | String |
    | embryonic            | uint64      |32799 | 0 unsigned    | String |
    | embryonic-client     | uint64      |32800 | 0 unsigned    | String |
    | connection-ps        | uint64      |32801 | 0 unsigned    | String |
@@ -3289,14 +3297,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
    |          telemetry   |             |      | 7 bits 21     | True   |
    +----------------------+-------------+------+---------------+--------+
 
-11.  IANA Considerations
-
-11.1.  DOTS Signal Channel CBOR Key Values
-
-   This specification registers the DOTS telemetry attributes in the
-   IANA "DOTS Signal Channel CBOR Key Values" registry available at
-   https://www.iana.org/assignments/dots/dots.xhtml#dots-signal-channel-
-   cbor-key-values.
 
 
 
@@ -3305,6 +3305,15 @@ Boucadair, et al.        Expires August 2, 2020                [Page 59]
 
 Internet-Draft               DOTS Telemetry                 January 2020
 
+
+11.  IANA Considerations
+
+11.1.  DOTS Signal Channel CBOR Key Values
+
+   This specification registers the DOTS telemetry attributes in the
+   IANA "DOTS Signal Channel CBOR Key Values" registry available at
+   https://www.iana.org/assignments/dots/dots.xhtml#dots-signal-channel-
+   cbor-key-values.
 
    The DOTS telemetry attributes defined in this specification are
    comprehension-optional parameters.
@@ -3345,6 +3354,14 @@ Internet-Draft               DOTS Telemetry                 January 2020
    |        capacity      |       |       |            |               |
    | connection           | 32797 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-client    | 32798 |   0   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.        Expires August 2, 2020                [Page 60]
+
+Internet-Draft               DOTS Telemetry                 January 2020
+
+
    | embryonic            | 32799 |   0   |    IESG    |   [RFCXXXX]   |
    | embryonic-client     | 32800 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-ps        | 32801 |   0   |    IESG    |   [RFCXXXX]   |
@@ -3354,14 +3371,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
    | partial-request-ps   | 32805 |   0   |    IESG    |   [RFCXXXX]   |
    | partial-request-     | 32806 |   0   |    IESG    |   [RFCXXXX]   |
    |        client-ps     |       |       |            |               |
-
-
-
-Boucadair, et al.        Expires August 2, 2020                [Page 60]
-
-Internet-Draft               DOTS Telemetry                 January 2020
-
-
    | total-attack-        | 32807 |   5   |    IESG    |   [RFCXXXX]   |
    |        connection    |       |       |            |               |
    | low-percentile-l     | 32808 |   4   |    IESG    |   [RFCXXXX]   |
@@ -3399,15 +3408,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
    https://www.iana.org/assignments/dots/dots.xhtml#dots-signal-channel-
    conflict-cause-codes.
 
-   Code Label               Description              Reference
-    TBA overlapping-pipes   Overlapping pipe scope   [RFCXXXX]
-
-
-11.3.  DOTS Signal Telemetry YANG Module
-
-   This document requests IANA to register the following URI in the "ns"
-   subregistry within the "IETF XML Registry" [RFC3688]:
-
 
 
 
@@ -3417,6 +3417,15 @@ Boucadair, et al.        Expires August 2, 2020                [Page 61]
 
 Internet-Draft               DOTS Telemetry                 January 2020
 
+
+   Code Label               Description              Reference
+    TBA overlapping-pipes   Overlapping pipe scope   [RFCXXXX]
+
+
+11.3.  DOTS Signal Telemetry YANG Module
+
+   This document requests IANA to register the following URI in the "ns"
+   subregistry within the "IETF XML Registry" [RFC3688]:
 
             URI: urn:ietf:params:xml:ns:yang:ietf-dots-telemetry
             Registrant Contact: The IESG.
@@ -3457,15 +3466,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
    Authors would like to thank Kaname Nishizuka, Jon Shallow, Wei Pan
    and Yuuhei Hayashi for comments and review.
 
-15.  References
-
-15.1.  Normative References
-
-   [Enterprise-Numbers]
-              "Private Enterprise Numbers", 2005, <http://www.iana.org/
-              assignments/enterprise-numbers.html>.
-
-
 
 
 
@@ -3473,6 +3473,14 @@ Boucadair, et al.        Expires August 2, 2020                [Page 62]
 
 Internet-Draft               DOTS Telemetry                 January 2020
 
+
+15.  References
+
+15.1.  Normative References
+
+   [Enterprise-Numbers]
+              "Private Enterprise Numbers", 2005, <http://www.iana.org/
+              assignments/enterprise-numbers.html>.
 
    [I-D.ietf-dots-data-channel]
               Boucadair, M. and T. Reddy.K, "Distributed Denial-of-
@@ -3515,20 +3523,16 @@ Internet-Draft               DOTS Telemetry                 January 2020
               DOI 10.17487/RFC7641, September 2015,
               <https://www.rfc-editor.org/info/rfc7641>.
 
-   [RFC7950]  Bjorklund, M., Ed., "The YANG 1.1 Data Modeling Language",
-              RFC 7950, DOI 10.17487/RFC7950, August 2016,
-              <https://www.rfc-editor.org/info/rfc7950>.
-
-
-
-
-
 
 
 Boucadair, et al.        Expires August 2, 2020                [Page 63]
 
 Internet-Draft               DOTS Telemetry                 January 2020
 
+
+   [RFC7950]  Bjorklund, M., Ed., "The YANG 1.1 Data Modeling Language",
+              RFC 7950, DOI 10.17487/RFC7950, August 2016,
+              <https://www.rfc-editor.org/info/rfc7950>.
 
    [RFC7959]  Bormann, C. and Z. Shelby, Ed., "Block-Wise Transfers in
               the Constrained Application Protocol (CoAP)", RFC 7959,
@@ -3573,10 +3577,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
               DOI 10.17487/RFC8612, May 2019,
               <https://www.rfc-editor.org/info/rfc8612>.
 
-Authors' Addresses
-
-
-
 
 
 
@@ -3585,6 +3585,8 @@ Boucadair, et al.        Expires August 2, 2020                [Page 64]
 
 Internet-Draft               DOTS Telemetry                 January 2020
 
+
+Authors' Addresses
 
    Mohamed Boucadair (editor)
    Orange
@@ -3619,8 +3621,6 @@ Internet-Draft               DOTS Telemetry                 January 2020
    China
 
    Email: chenmeiling@chinamobile.com
-
-
 
 
 
