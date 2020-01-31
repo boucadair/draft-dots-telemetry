@@ -607,9 +607,10 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
     |        |  |  +--ro mid-percentile?         percentile
     |        |  |  +--ro high-percentile?        percentile
     |        |  +--ro supported-units
-    |        |     +--ro unit-config* [unit]
-    |        |        +--ro unit           unit
-    |        |        +--ro unit-status?   boolean
+    |        |  |  +--ro unit-config* [unit]
+    |        |  |     +--ro unit           unit
+    |        |  |     +--ro unit-status?   boolean
+    |        |  +--rw server-initiated-telemetry?   boolean
     |        +--:(pipe)
     |        ...
     |        +--:(baseline)
@@ -746,6 +747,37 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
   }
 ]]></artwork>
             </figure></t>
+
+          <t>DOTS clients that are interested to receive pre-mitigation
+          telemetry information from a DOTS server (<xref
+          target="premStoC"></xref>) MUST set "server-initiated-telemetry". An
+          example is shown in <xref target="tput2"></xref>. </t>
+
+          <t><figure anchor="tput2"
+              title="PUT to Enable Pre-mitigation Telemetry from the DOTS server">
+              <artwork align="left"><![CDATA[  Header: PUT (Code=0.03)
+  Uri-Path: ".well-known"
+  Uri-Path: "dots"
+  Uri-Path: "tm-setup"
+  Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
+  Uri-Path: "tsid=569"
+  Content-Format: "application/dots+cbor"
+
+  {
+    "ietf-dots-signal-channel:telemetry-setup": {
+      "telemetry": [
+       {
+         "current-config": {
+           "server-initiated-telemetry": true
+         }
+       }
+      ]
+    }
+  }
+]]></artwork>
+            </figure></t>
+
+          <t></t>
 
           <t></t>
         </section>
@@ -1614,7 +1646,7 @@ Uri-Path: "tsid=123"]]></artwork>
       </section>
     </section>
 
-    <section title="DOTS Telemetry from Servers to Clients">
+    <section anchor="premStoC" title="DOTS Telemetry from Servers to Clients">
       <t></t>
 
       <section title="DOTS Server to Client Mitigation Status DOTS Telemetry Attributes ">
@@ -2572,6 +2604,13 @@ module ietf-dots-telemetry {
               config false;
               uses unit-config;
             }
+            leaf server-initiated-telemetry {
+              type boolean;
+              description
+                "Used by a DOTS client to enable/disable whether it
+                 accepts pre-mitigation telemetry from the DOTS 
+                 server.";
+            }
           }
           case pipe {
             description
@@ -2665,6 +2704,7 @@ module ietf-dots-telemetry {
     }
   }
 }
+
 <CODE ENDS>
 ]]></artwork>
         </figure></t>
@@ -2747,6 +2787,8 @@ module ietf-dots-telemetry {
    | max-config-values    | container   |32829 | 5 map         | Object |
    | min-config-values    | container   |32830 | 5 map         | Object |
    | supported-units      | container   |32831 | 5 map         | Object |
+   | server-initiated-    | boolean     |32832 | 7 bits 20     | False  |
+   |          telemetry   |             |      | 7 bits 21     | True   |
    +----------------------+-------------+------+---------------+--------+
 ]]></artwork>
         </figure></t>
@@ -2832,6 +2874,8 @@ module ietf-dots-telemetry {
    | max-config-value     | 32829 |   5   |    IESG    |   [RFCXXXX]   |
    | min-config-values    | 32830 |   5   |    IESG    |   [RFCXXXX]   |
    | supported-units      | 32831 |   5   |    IESG    |   [RFCXXXX]   |
+   | server-initiated-    | 32832 |   7   |    IESG    |   [RFCXXXX]   |
+   |          telemetry   |       |       |            |               |
    +----------------------+-------+-------+------------+---------------+
 
 ]]></artwork>
