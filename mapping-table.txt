@@ -3,9 +3,9 @@
    |                      | Type        | Key  |    Type &     | Type   |
    |                      |             |      | Information   |        |
    +----------------------+-------------+------+---------------+--------+
-   | ietf-dots-signal-cha |             |      |               |        |
-   | nnel:telemetry       | container   |32776 | 5 map         | Object |
-   | tcid                 | uint32      |32777 | 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |          telemetry   | container   |32776 | 5 map         | Object |
+   | tsid                 | uint32      |32777 | 0 unsigned    | Number |
    | telemetry-config     | container   |32778 | 5 map         | Object |
    | low-percentile       | decimal64   |32779 | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
@@ -20,7 +20,8 @@
    | total-pipe-capability| list        |32785 | 4 array       | Array  |
    | pipe                 | uint64      |32786 | 0 unsigned    | String |
    | pre-mitigation       | list        |32787 | 4 array       | Array  |
-   | telemetry-id         | uint32      |32788 | 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |      telemetry-setup | container   |32788 | 5 map         | Object |
    | total-traffic-       |             |      |               |        |
    |    normal-baseline   | list        |32789 | 4 array       | Array  |
    | low-percentile-g     | yang:gauge64|32790 | 0 unsigned    | String |
@@ -49,18 +50,28 @@
    | high-percentile-l    | list        |32810 | 4 array       | Array  |
    | peak-l               | list        |32811 | 4 array       | Array  |
    | attack-detail        | container   |32812 | 5 map         | Object |
-   | vendor-id            | uint32      |32813 | 0 unsigned    | Number |
+   | id                   | uint32      |32813 | 0 unsigned    | Number |
    | attack-id            | string      |32814 | 3 text string | String |
    | attack-name          | string      |32815 | 3 text string | String |
    | attack-severity      | enumeration |32816 | 0 unsigned    | String |
    | start-time           | uint64      |32817 | 0 unsigned    | String |
-   | end-time             | uint64      |32819 | 0 unsigned    | String |
-   | source-count         | container   |32820 | 5 map         | Object |
-   | top-talker           | container   |32821 | 5 map         | Object |
-   | spoofed-status       | boolean     |32822 | 7 bits 20     | False  |
+   | end-time             | uint64      |32818 | 0 unsigned    | String |
+   | source-count         | container   |32819 | 5 map         | Object |
+   | top-talker           | container   |32820 | 5 map         | Object |
+   | spoofed-status       | boolean     |32821 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
-   | low-percentile-c     | container   |32823 | 5 map         | Object |
-   | mid-percentile-c     | container   |32824 | 5 map         | Object |
-   | high-percentile-c    | container   |32825 | 5 map         | Object |
-   | peak-c               | container   |32826 | 5 map         | Object |
-   +----------------------+-------------+------+---------------+--------+
+   | low-percentile-c     | container   |32822 | 5 map         | Object |
+   | mid-percentile-c     | container   |32823 | 5 map         | Object |
+   | high-percentile-c    | container   |32824 | 5 map         | Object |
+   | peak-c               | container   |32825 | 5 map         | Object |
+   | baseline             | container   |32826 | 5 map         | Object |
+   | current-config       | container   |32827 | 5 map         | Object |
+   | max-config-values    | container   |32828 | 5 map         | Object |
+   | min-config-values    | container   |32829 | 5 map         | Object |
+   | supported-units      | container   |32830 | 5 map         | Object |
+   | server-originated-   | boolean     |32831 | 7 bits 20     | False  |
+   |          telemetry   |             |      | 7 bits 21     | True   |
+   | telemetry-notify-    | uint32      |32832 | 0 unsigned    | Number |
+   |           interval   |             |      |               |        |
+   | tmid                 | uint32      |32833 | 0 unsigned    | Number |
+   +----------------------+-------------+------+---------------+--------+ 
