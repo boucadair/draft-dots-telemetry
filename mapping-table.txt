@@ -74,4 +74,6 @@
    | telemetry-notify-    | uint32      |32832 | 0 unsigned    | Number |
    |           interval   |             |      |               |        |
    | tmid                 | uint32      |32833 | 0 unsigned    | Number |
+   | measurement-interval | identityref |32834 | 0 unsigned    | String |
+   | measurement-sample   | identityref |32835 | 0 unsigned    | String |
    +----------------------+-------------+------+---------------+--------+ 
