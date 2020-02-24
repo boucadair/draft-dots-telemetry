@@ -2292,7 +2292,7 @@ module ietf-dots-telemetry {
         description
           "Kilobyte per second.";
       }
-      enum megabite-ps {
+      enum megabit-ps {
         value 5;
         description
           "Megabit per second.";
