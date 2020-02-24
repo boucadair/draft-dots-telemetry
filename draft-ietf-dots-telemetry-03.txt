@@ -5,16 +5,16 @@
 DOTS                                                   M. Boucadair, Ed.
 Internet-Draft                                                    Orange
 Intended status: Standards Track                           T. Reddy, Ed.
-Expires: August 24, 2020                                          McAfee
+Expires: August 26, 2020                                          McAfee
                                                                 E. Doron
                                                             Radware Ltd.
                                                                  M. Chen
                                                                     CMCC
-                                                       February 21, 2020
+                                                       February 23, 2020
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
-                      draft-ietf-dots-telemetry-03
+                      draft-ietf-dots-telemetry-02
 
 Abstract
 
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 24, 2020.
+   This Internet-Draft will expire on August 26, 2020.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 1]
+Boucadair, et al.        Expires August 26, 2020                [Page 1]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -86,7 +86,7 @@ Table of Contents
      4.5.  Block-wise Transfer . . . . . . . . . . . . . . . . . . .  10
      4.6.  DOTS Multi-homing Considerations  . . . . . . . . . . . .  10
      4.7.  YANG Considerations . . . . . . . . . . . . . . . . . . .  10
-     4.8.  A Note About Examples . . . . . . . . . . . . . . . . . .  10
+     4.8.  A Note About Examples . . . . . . . . . . . . . . . . . .  11
    5.  Telemetry Operation Paths . . . . . . . . . . . . . . . . . .  11
    6.  DOTS Telemetry Setup Configuration  . . . . . . . . . . . . .  12
      6.1.  Telemetry Configuration . . . . . . . . . . . . . . . . .  12
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 2]
+Boucadair, et al.        Expires August 26, 2020                [Page 2]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -127,18 +127,18 @@ Internet-Draft               DOTS Telemetry                February 2020
      8.2.  DOTS Server to Client Mitigation Status DOTS Telemetry
            Attributes  . . . . . . . . . . . . . . . . . . . . . . .  43
    9.  YANG Module . . . . . . . . . . . . . . . . . . . . . . . . .  46
-   10. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  68
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  70
-     11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  70
-     11.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . .  72
-     11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . .  72
-   12. Security Considerations . . . . . . . . . . . . . . . . . . .  72
-   13. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  72
-   14. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  73
-   15. References  . . . . . . . . . . . . . . . . . . . . . . . . .  73
-     15.1.  Normative References . . . . . . . . . . . . . . . . . .  73
-     15.2.  Informative References . . . . . . . . . . . . . . . . .  74
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  75
+   10. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  67
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  69
+     11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  69
+     11.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . .  71
+     11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . .  71
+   12. Security Considerations . . . . . . . . . . . . . . . . . . .  71
+   13. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  71
+   14. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  72
+   15. References  . . . . . . . . . . . . . . . . . . . . . . . . .  72
+     15.1.  Normative References . . . . . . . . . . . . . . . . . .  72
+     15.2.  Informative References . . . . . . . . . . . . . . . . .  73
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  74
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 3]
+Boucadair, et al.        Expires August 26, 2020                [Page 3]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -221,7 +221,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 4]
+Boucadair, et al.        Expires August 26, 2020                [Page 4]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -277,7 +277,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 5]
+Boucadair, et al.        Expires August 26, 2020                [Page 5]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -333,7 +333,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 6]
+Boucadair, et al.        Expires August 26, 2020                [Page 6]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -389,7 +389,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 7]
+Boucadair, et al.        Expires August 26, 2020                [Page 7]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -445,7 +445,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 8]
+Boucadair, et al.        Expires August 26, 2020                [Page 8]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -501,7 +501,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020                [Page 9]
+Boucadair, et al.        Expires August 26, 2020                [Page 9]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -547,20 +547,25 @@ Internet-Draft               DOTS Telemetry                February 2020
    message types (Section 9).  All parameters in the payload of the DOTS
    signal channel are mapped to CBOR types as specified in Section 10.
 
+   The DOTS telemetry module (Section 9) uses "enumerations" rather than
+   "identities" to define units, samples, and intervals because
+   otherwise the namespace identifier "ietf-dots-telemetry" must be
+   included when a telemetry attribute is included (e.g., in a
+   mitigation efficacy update).  The use of "identities" is thus
+   suboptimal from a message compactness standpoint.
+
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 10]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
 4.8.  A Note About Examples
 
    Examples are provided for illustration purposes.  The document does
    not aim to provide a comprehensive list of message examples.
-
-
-
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 10]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
 
    The authoritative reference for validating telemetry messages is the
    YANG module (Section 9) and the mapping table established in
@@ -608,12 +613,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-
-
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 11]
+Boucadair, et al.        Expires August 26, 2020               [Page 11]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -669,7 +669,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 12]
+Boucadair, et al.        Expires August 26, 2020               [Page 12]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -725,7 +725,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 13]
+Boucadair, et al.        Expires August 26, 2020               [Page 13]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -737,34 +737,34 @@ Internet-Draft               DOTS Telemetry                February 2020
        |     +--rw (setup-type)?
        |        +--:(telemetry-config)
        |        |  +--rw current-config
-       |        |  |  +--rw measurement-interval?         identityref
-       |        |  |  +--rw measurement-sample?           identityref
+       |        |  |  +--rw measurement-interval?         interval
+       |        |  |  +--rw measurement-sample?           sample
        |        |  |  +--rw low-percentile?               percentile
        |        |  |  +--rw mid-percentile?               percentile
        |        |  |  +--rw high-percentile?              percentile
        |        |  |  +--rw unit-config* [unit]
-       |        |  |  |  +--rw unit           identityref
+       |        |  |  |  +--rw unit           unit
        |        |  |  |  +--rw unit-status?   boolean
        |        |  |  +--rw server-originated-telemetry?   boolean
        |        |  |  +--rw telemetry-notify-interval?    uint32
        |        |  +--ro max-config-values
-       |        |  |  +--ro measurement-interval?         identityref
-       |        |  |  +--ro measurement-sample?           identityref
+       |        |  |  +--ro measurement-interval?         interval
+       |        |  |  +--ro measurement-sample?           sample
        |        |  |  +--ro low-percentile?               percentile
        |        |  |  +--ro mid-percentile?               percentile
        |        |  |  +--ro high-percentile?              percentile
        |        |  |  +--ro server-originated-telemetry?   boolean
        |        |  |  +--ro telemetry-notify-interval?    uint32
        |        |  +--ro min-config-values
-       |        |  |  +--ro measurement-interval?        identityref
-       |        |  |  +--ro measurement-sample?          identityref
+       |        |  |  +--ro measurement-interval?        interval
+       |        |  |  +--ro measurement-sample?          sample
        |        |  |  +--ro low-percentile?              percentile
        |        |  |  +--ro mid-percentile?              percentile
        |        |  |  +--ro high-percentile?             percentile
        |        |  |  +--ro telemetry-notify-interval?   uint32
        |        |  +--ro supported-units
        |        |     +--ro unit-config* [unit]
-       |        |        +--ro unit           identityref
+       |        |        +--ro unit           unit
        |        |        +--ro unit-status?   boolean
        |        +--:(pipe)
        |        ...
@@ -781,7 +781,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 14]
+Boucadair, et al.        Expires August 26, 2020               [Page 14]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -837,7 +837,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 15]
+Boucadair, et al.        Expires August 26, 2020               [Page 15]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -893,7 +893,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 16]
+Boucadair, et al.        Expires August 26, 2020               [Page 16]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -949,7 +949,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 17]
+Boucadair, et al.        Expires August 26, 2020               [Page 17]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 18]
+Boucadair, et al.        Expires August 26, 2020               [Page 18]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1048,7 +1048,7 @@ Internet-Draft               DOTS Telemetry                February 2020
        |        |  +--rw total-pipe-capacity* [link-id unit]
        |        |     +--rw link-id     nt:link-id
        |        |     +--rw capacity    uint64
-       |        |     +--rw unit        identityref
+       |        |     +--rw unit        unit
        |        +--:(baseline)
        |        ...
        +--:(telemetry) {dots-telemetry}?
@@ -1061,7 +1061,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 19]
+Boucadair, et al.        Expires August 26, 2020               [Page 19]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 20]
+Boucadair, et al.        Expires August 26, 2020               [Page 20]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 21]
+Boucadair, et al.        Expires August 26, 2020               [Page 21]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 22]
+Boucadair, et al.        Expires August 26, 2020               [Page 22]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 23]
+Boucadair, et al.        Expires August 26, 2020               [Page 23]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 24]
+Boucadair, et al.        Expires August 26, 2020               [Page 24]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 25]
+Boucadair, et al.        Expires August 26, 2020               [Page 25]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 26]
+Boucadair, et al.        Expires August 26, 2020               [Page 26]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1482,7 +1482,7 @@ Internet-Draft               DOTS Telemetry                February 2020
     |              +--rw target-fqdn*                     inet:domain-name
     |              +--rw target-uri*                      inet:uri
     |              +--rw total-traffic-normal-baseline* [unit protocol]
-    |              |  +--rw unit                 identityref
+    |              |  +--rw unit                 unit
     |              |  +--rw protocol             uint8
     |              |  +--rw low-percentile-g?    yang:gauge64
     |              |  +--rw mid-percentile-g?    yang:gauge64
@@ -1509,7 +1509,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 27]
+Boucadair, et al.        Expires August 26, 2020               [Page 27]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 28]
+Boucadair, et al.        Expires August 26, 2020               [Page 28]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 29]
+Boucadair, et al.        Expires August 26, 2020               [Page 29]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 30]
+Boucadair, et al.        Expires August 26, 2020               [Page 30]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 31]
+Boucadair, et al.        Expires August 26, 2020               [Page 31]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 32]
+Boucadair, et al.        Expires August 26, 2020               [Page 32]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 33]
+Boucadair, et al.        Expires August 26, 2020               [Page 33]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1901,7 +1901,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 34]
+Boucadair, et al.        Expires August 26, 2020               [Page 34]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -1957,7 +1957,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 35]
+Boucadair, et al.        Expires August 26, 2020               [Page 35]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2013,7 +2013,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 36]
+Boucadair, et al.        Expires August 26, 2020               [Page 36]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2069,7 +2069,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 37]
+Boucadair, et al.        Expires August 26, 2020               [Page 37]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2125,7 +2125,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 38]
+Boucadair, et al.        Expires August 26, 2020               [Page 38]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2181,7 +2181,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 39]
+Boucadair, et al.        Expires August 26, 2020               [Page 39]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2237,7 +2237,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 40]
+Boucadair, et al.        Expires August 26, 2020               [Page 40]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2293,7 +2293,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 41]
+Boucadair, et al.        Expires August 26, 2020               [Page 41]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2349,7 +2349,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 42]
+Boucadair, et al.        Expires August 26, 2020               [Page 42]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2405,7 +2405,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 43]
+Boucadair, et al.        Expires August 26, 2020               [Page 43]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2424,14 +2424,14 @@ Internet-Draft               DOTS Telemetry                February 2020
      augment /ietf-signal:dots-signal/ietf-signal:message-type
              /ietf-signal:mitigation-scope/ietf-signal:scope:
        +--ro total-traffic* [unit protocol] {dots-telemetry}?
-       |  +--ro unit                 identityref
+       |  +--ro unit                 unit
        |  +--ro protocol             uint8
        |  +--ro low-percentile-g?    yang:gauge64
        |  +--ro mid-percentile-g?    yang:gauge64
        |  +--ro high-percentile-g?   yang:gauge64
        |  +--ro peak-g?              yang:gauge64
        +--rw total-attack-traffic* [unit] {dots-telemetry}?
-       |  +--rw unit                 identityref
+       |  +--rw unit                 unit
        |  +--rw low-percentile-g?    yang:gauge64
        |  +--rw mid-percentile-g?    yang:gauge64
        |  +--rw high-percentile-g?   yang:gauge64
@@ -2461,7 +2461,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 44]
+Boucadair, et al.        Expires August 26, 2020               [Page 44]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2474,7 +2474,7 @@ Internet-Draft               DOTS Telemetry                February 2020
                 +--rw spoofed-status?            boolean
                 +--rw source-prefix              inet:ip-prefix
                 +--rw total-attack-traffic* [unit]
-                |  +--rw unit                 identityref
+                |  +--rw unit                 unit
                 |  +--rw low-percentile-g?    yang:gauge64
                 |  +--rw mid-percentile-g?    yang:gauge64
                 |  +--rw high-percentile-g?   yang:gauge64
@@ -2517,7 +2517,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 45]
+Boucadair, et al.        Expires August 26, 2020               [Page 45]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2573,7 +2573,7 @@ module ietf-dots-telemetry {
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 46]
+Boucadair, et al.        Expires August 26, 2020               [Page 46]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2629,7 +2629,7 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 47]
+Boucadair, et al.        Expires August 26, 2020               [Page 47]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -2655,211 +2655,181 @@ Internet-Draft               DOTS Telemetry                February 2020
        servers.";
   }
 
-  /*
-   * Identities
-   */
-
-  identity attack-severity {
+  typedef attack-severity {
+    type enumeration {
+      enum emergency {
+        value 1;
+        description
+          "The attack is severe: emergency.";
+      }
+      enum critical {
+        value 2;
+        description
+          "The attack is critical.";
+      }
+      enum alert {
+        value 3;
+        description
+          "This is an alert.";
+      }
+    }
     description
-      "Base identity for attack severity.";
+      "Enumeration for attack severity.";
   }
 
-  identity emergency {
-    base dots-telemetry:attack-severity;
-    description
-      "Identity for an attack with a severity of emergency.";
-  }
-
-  identity critical {
-    base dots-telemetry:attack-severity;
-    description
-      "Identity for a critical attack.";
-  }
-
-  identity alert {
-    base dots-telemetry:attack-severity;
-    description
-      "Identity for an alert.";
-  }
+  typedef unit {
+    type enumeration {
+      enum pps {
+        value 1;
+        description
 
 
 
-
-Boucadair, et al.        Expires August 24, 2020               [Page 48]
+Boucadair, et al.        Expires August 26, 2020               [Page 48]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
 
-  identity unit {
-    description
-      "Base identity for unit.";
-  }
-
-  identity pps {
-    base dots-telemetry:unit;
-    description
-      "Identity for Packets per second (PPS) unit.";
-  }
-
-  identity kilo-pps {
-    base dots-telemetry:unit;
-    description
-      "Identity for kilo packets per second (Kpps) unit.";
-  }
-
-  identity bps {
-    base dots-telemetry:unit;
-    description
-      "Identity for Bit per Second (BPS) unit.";
-  }
-
-  identity kilobyte-ps {
-    base dots-telemetry:unit;
-    description
-      "Identity for Kilobyte per second unit.";
-  }
-
-  identity megabite-ps {
-    base dots-telemetry:unit;
-    description
-      "Identity for megabit per second unit.";
-  }
-
-  identity megabyte-ps {
-    base dots-telemetry:unit;
-    description
-      "Identity for megabyte per second unit.";
-  }
-
-  identity gigabit-ps {
-    base dots-telemetry:unit;
-    description
-      "Identity for gigabit per second unit.";
-  }
-
-  identity gigabyte-ps {
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 49]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
-    base dots-telemetry:unit;
-    description
-      "Identity for gigabyte per second unit.";
-  }
-
-  identity terabit-ps {
-    base dots-telemetry:unit;
-    description
-      "Identity for terabit per second unit.";
-  }
-
-  identity terabyte-ps {
-    base dots-telemetry:unit;
-    description
-      "Identity for terabyte per second unit.";
-  }
-
-  identity interval  {
-    description
-      "Base identity for the interval to indicate
-      the overall measurement period.";
-  }
-
-  identity hour  {
-    base dots-telemetry:interval;
-    description
-      "Identity for an interval of one hour.";
-  }
-
-  identity day {
-    base dots-telemetry:interval;
-    description
-      "Identity for an interval of one day.";
-  }
-
-  identity week {
-    base dots-telemetry:interval;
-    description
-      "Identity for an interval of one week.";
-  }
-
-  identity month {
-    base dots-telemetry:interval;
-    description
-      "Identity for an interval of one month.";
-  }
-
-  identity sample {
+          "Packets per second (PPS).";
+      }
+      enum kilo-pps {
+        value 2;
+        description
+          "Kilo packets per second (Kpps).";
+      }
+      enum bps {
+        value 3;
+        description
+          "Bit per Second (BPS).";
+      }
+      enum kilobyte-ps {
+        value 4;
+        description
+          "Kilobyte per second.";
+      }
+      enum megabite-ps {
+        value 5;
+        description
+          "Megabit per second.";
+      }
+      enum megabyte-ps {
+        value 6;
+        description
+          "Megabyte per second.";
+      }
+      enum gigabit-ps {
+        value 7;
+        description
+          "Gigabit per second.";
+      }
+      enum gigabyte-ps {
+        value 8;
+        description
+          "Gigabyte per second.";
+      }
+      enum terabit-ps {
+        value 9;
+        description
+          "Terabit per second.";
+      }
+      enum terabyte-ps {
+        value 10;
+        description
+          "Terabyte per second.";
+      }
+    }
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 50]
+Boucadair, et al.        Expires August 26, 2020               [Page 49]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
 
     description
-      "Base identity for the measurement perdiod.";
+      "Enumeration to indicate which unit is used.";
   }
 
-  identity second {
-    base dots-telemetry:sample;
+  typedef interval {
+    type enumeration {
+      enum hour {
+        value 1;
+        description
+          "Hour.";
+      }
+      enum day {
+        value 2;
+        description
+          "Day.";
+      }
+      enum week {
+        value 3;
+        description
+          "Week.";
+      }
+      enum month {
+        value 4;
+        description
+          "Month.";
+      }
+    }
     description
-      "Identity for measurement perdiod of one second.";
+      "Enumeration to indicate the overall measurement period.";
   }
 
-  identity five-seconds {
-    base dots-telemetry:sample;
-    description
-      "Identity for measurement perdiod of 5 seconds.";
-  }
-
-  identity thirty-seconds {
-    base dots-telemetry:sample;
-    description
-      "Identity for measurement perdiod of 30 seconds.";
-  }
-
-  identity minute {
-    base dots-telemetry:sample;
-    description
-      "Identity for measurement perdiod of one minute.";
-  }
-
-  identity five-minute {
-    base dots-telemetry:sample;
-    description
-      "Identity for measurement perdiod of 5 minutes.";
-  }
-
-  identity ten-minute {
-    base dots-telemetry:sample;
-    description
-      "Identity for measurement perdiod of 10 minutes.";
-  }
-
-  identity thirty-minute {
-    base dots-telemetry:sample;
-    description
-      "Identity for measurement perdiod of 30 minutes.";
-  }
-
-  identity one-hour {
-    base dots-telemetry:sample;
+  typedef sample {
+    type enumeration {
+      enum second {
+        value 1;
+        description
+          "Second.";
+      }
+      enum 5-seconds {
+        value 2;
+        description
+          "5 seconds.";
+      }
+      enum 30-seconds {
+        value 3;
+        description
+          "30 seconds.";
+      }
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 51]
+Boucadair, et al.        Expires August 26, 2020               [Page 50]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
 
+      enum minute {
+        value 4;
+        description
+          "One minute.";
+      }
+      enum 5-minutes {
+        value 5;
+        description
+          "5 minutes.";
+      }
+      enum 10-minutes {
+        value 6;
+        description
+          "10 minutes.";
+      }
+      enum 30-minutes {
+        value 7;
+        description
+          "30 minutes.";
+      }
+      enum hour {
+        value 8;
+        description
+          "One hour.";
+      }
+    }
     description
-      "Identity for measurement perdiod of one Hour.";
+      "Enumeration to indicate the measurement perdiod.";
   }
 
   typedef percentile {
@@ -2875,16 +2845,20 @@ Internet-Draft               DOTS Telemetry                February 2020
     description
       "Configuration of low, mid, and high percentile values.";
     leaf measurement-interval {
-      type identityref {
-        base interval;
-      }
+      type interval;
       description
         "Defines the period on which percentiles are computed.";
     }
     leaf measurement-sample {
-      type identityref {
-        base sample;
-      }
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 51]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
+      type sample;
       description
         "Defines the time distribution for measuring
          values that are used to compute percentiles..";
@@ -2906,14 +2880,6 @@ Internet-Draft               DOTS Telemetry                February 2020
       default "50.00";
       description
         "Mid percentile. If set to the same value as low-percentiles,
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 52]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
          this means mid-percentiles are disabled.";
     }
     leaf high-percentile {
@@ -2940,6 +2906,14 @@ Internet-Draft               DOTS Telemetry                February 2020
     }
     leaf mid-percentile-g {
       type yang:gauge64;
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 52]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
       description
         "Mid percentile.";
     }
@@ -2962,19 +2936,9 @@ Internet-Draft               DOTS Telemetry                February 2020
       key "unit";
       description
         "Controls which units are allowed when sharing telemetry
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 53]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
          data.";
       leaf unit {
-        type identityref {
-          base unit;
-        }
+        type unit;
         description
           "The traffic can be measured in packets per
            second (PPS) or kilo packets per second (Kpps) and Bits per
@@ -2993,13 +2957,19 @@ Internet-Draft               DOTS Telemetry                February 2020
     description
       "Grouping of traffic as a function of measurement unit.";
     leaf unit {
-      type identityref {
-        base unit;
-      }
+      type unit;
       description
         "The traffic can be measured in packets per
          second (PPS) or kilo packets per second (Kpps) and Bits per
          Second (BPS), and kilobytes per second or megabytes per second
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 53]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
          or gigabytes per second.";
     }
     uses percentile;
@@ -3010,22 +2980,12 @@ Internet-Draft               DOTS Telemetry                February 2020
       "Grouping of traffic of a given transport protocol as
        a function of measurement unit.";
     leaf unit {
-      type identityref {
-        base unit;
-      }
+      type unit;
       description
         "The traffic can be measured in packets per
          second (PPS) or kilo packets per second (Kpps) and Bits per
          Second (BPS), and kilobytes per second or megabytes per second
          or gigabytes per second.";
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 54]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
     }
     leaf protocol {
       type uint8;
@@ -3058,6 +3018,14 @@ Internet-Draft               DOTS Telemetry                February 2020
       description
         "The maximum number of simultaneous connections that
          are allowed to the target server per client.";
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 54]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
     }
     leaf embryonic {
       type uint64;
@@ -3074,14 +3042,6 @@ Internet-Draft               DOTS Telemetry                February 2020
         "The maximum number of simultaneous embryonic connections
          that are allowed to the target server per client.";
     }
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 55]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
     leaf connection-ps {
       type uint64;
       description
@@ -3114,6 +3074,14 @@ Internet-Draft               DOTS Telemetry                February 2020
     }
     leaf partial-request-client-ps {
       type uint64;
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 55]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
       description
         "The maximum number of partial requests allowed per
          second to the target server per client.";
@@ -3130,14 +3098,6 @@ Internet-Draft               DOTS Telemetry                February 2020
         "The number of simultaneous attack connections to
          the target server.";
     }
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 56]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
     leaf embryonic {
       type yang:gauge64;
       description
@@ -3170,6 +3130,14 @@ Internet-Draft               DOTS Telemetry                February 2020
     container low-percentile-c {
       description
         "Low percentile of attack connections.";
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 56]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
       uses connection;
     }
     container mid-percentile-c {
@@ -3186,14 +3154,6 @@ Internet-Draft               DOTS Telemetry                February 2020
       description
         "Peak attack connections.";
       uses connection;
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 57]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
     }
   }
 
@@ -3226,6 +3186,14 @@ Internet-Draft               DOTS Telemetry                February 2020
       }
       uses connection;
     }
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 57]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
     list high-percentile-l {
       key "protocol";
       description
@@ -3242,14 +3210,6 @@ Internet-Draft               DOTS Telemetry                February 2020
     list peak-l {
       key "protocol";
       description
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 58]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
         "Peak attack connections.";
       leaf protocol {
         type uint8;
@@ -3282,14 +3242,20 @@ Internet-Draft               DOTS Telemetry                February 2020
     leaf attack-name {
       type string;
       description
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 58]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
         "Textual representation of attack description. Natural Language
          Processing techniques (e.g., word embedding) can possibly be used
          to map the attack description to an attack type.";
     }
     leaf attack-severity {
-      type identityref {
-         base attack-severity;
-      }
+      type attack-severity;
       description
         "Severity level of an attack";
     }
@@ -3298,14 +3264,6 @@ Internet-Draft               DOTS Telemetry                February 2020
       description
         "The time the attack started. Start time is represented in seconds
          relative to 1970-01-01T00:00:00Z in UTC time.";
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 59]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
     }
     leaf end-time {
       type uint64;
@@ -3340,6 +3298,14 @@ Internet-Draft               DOTS Telemetry                February 2020
       }
       list total-attack-traffic {
         key "unit";
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 59]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
         description
           "Total attack traffic issued from this source.";
         uses traffic-unit;
@@ -3354,14 +3320,6 @@ Internet-Draft               DOTS Telemetry                February 2020
 
   grouping top-talker {
     description
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 60]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
       "Top attack sources.";
     list source-prefix {
       key "source-prefix";
@@ -3396,6 +3354,14 @@ Internet-Draft               DOTS Telemetry                February 2020
       "Grouping for the telemetry baseline.";
     uses ietf-data:target;
     leaf-list alias-name {
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 60]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
       type string;
       description
         "An alias name that points to a resource.";
@@ -3410,14 +3376,6 @@ Internet-Draft               DOTS Telemetry                February 2020
       key "protocol";
       description
         "Total connection capacity.";
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 61]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
       leaf protocol {
         type uint8;
         description
@@ -3452,6 +3410,14 @@ Internet-Draft               DOTS Telemetry                February 2020
     container attack-detail {
       description
         "Attack details.";
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 61]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
       uses attack-detail;
       container top-talker {
         description
@@ -3466,14 +3432,6 @@ Internet-Draft               DOTS Telemetry                February 2020
     if-feature "dots-telemetry";
     description
       "Extends mitigation scope with telemetry update data.";
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 62]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
     list total-traffic {
       key "unit protocol";
       config false;
@@ -3508,6 +3466,14 @@ Internet-Draft               DOTS Telemetry                February 2020
   augment "/ietf-signal:dots-signal/ietf-signal:message-type" {
     if-feature "dots-telemetry";
     description
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 62]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
       "Add a new choice to enclose telemetry data in DOTS
        signal channel.";
     case telemetry-setup {
@@ -3522,14 +3488,6 @@ Internet-Draft               DOTS Telemetry                February 2020
           description
             "A unique identifier that is
              generated by a DOTS client to prevent
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 63]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
              request collisions.  It is expected that the
              cuid will remain consistent throughout the
              lifetime of the DOTS client.";
@@ -3564,6 +3522,14 @@ Internet-Draft               DOTS Telemetry                February 2020
               description
                 "Current configuration values.";
               uses percentile-config;
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 63]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
               uses unit-config;
               leaf server-originated-telemetry {
                 type boolean;
@@ -3578,14 +3544,6 @@ Internet-Draft               DOTS Telemetry                February 2020
                 }
                 units "seconds";
                 description
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 64]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
                   "Minimum number of seconds between successive
                    telemetry notifications.";
               }
@@ -3620,6 +3578,14 @@ Internet-Draft               DOTS Telemetry                February 2020
                 "Minimum acceptable configuration values.";
               uses percentile-config;
               leaf telemetry-notify-interval {
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 64]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
                 type uint32 {
                   range "1 .. 3600";
                 }
@@ -3634,14 +3600,6 @@ Internet-Draft               DOTS Telemetry                February 2020
               description
                 "Supported units and default activation status.";
               uses unit-config;
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 65]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
             }
           }
           case pipe {
@@ -3663,9 +3621,7 @@ Internet-Draft               DOTS Telemetry                February 2020
                   "Pipe capacity.";
               }
               leaf unit {
-                type identityref {
-                  base unit;
-                }
+                type unit;
                 description
                   "The traffic can be measured in packets per
                    second (PPS) or kilo packets per second (Kpps) and Bits per
@@ -3678,6 +3634,14 @@ Internet-Draft               DOTS Telemetry                February 2020
             description
               "Traffic baseline information";
             list baseline {
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 65]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
               key "id";
               description
                 "Traffic baseline information";
@@ -3690,14 +3654,6 @@ Internet-Draft               DOTS Telemetry                February 2020
               uses baseline;
             }
           }
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 66]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
         }
       }
     }
@@ -3734,6 +3690,14 @@ Internet-Draft               DOTS Telemetry                February 2020
           type uint32;
           description
             "An identifier to uniquely demux telemetry data send using
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 66]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
              the same message.";
         }
         container target {
@@ -3746,14 +3710,6 @@ Internet-Draft               DOTS Telemetry                February 2020
               "An alias name that points to a resource.";
           }
         }
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 67]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
         uses pre-mitigation;
       }
     }
@@ -3788,8 +3744,16 @@ Internet-Draft               DOTS Telemetry                February 2020
    | high-percentile      | decimal64   |TBA6  | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
    | unit-config          | list        |TBA7  | 4 array       | Array  |
-   | unit                 | identityref |TBA8  | 0 unsigned    | String |
+   | unit                 | enumeration |TBA8  | 0 unsigned    | String |
    | unit-status          | boolean     |TBA9  | 7 bits 20     | False  |
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 67]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
    |                      |             |      | 7 bits 21     | True   |
    | total-pipe-capability| list        |TBA10 | 4 array       | Array  |
    | pipe                 | uint64      |TBA11 | 0 unsigned    | String |
@@ -3802,14 +3766,6 @@ Internet-Draft               DOTS Telemetry                February 2020
    | mid-percentile-g     | yang:gauge64|TBA16 | 0 unsigned    | String |
    | high-percentile-g    | yang:gauge64|TBA17 | 0 unsigned    | String |
    | peak-g               | yang:gauge64|TBA18 | 0 unsigned    | String |
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 68]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
    | total-attack-traffic | list        |TBA19 | 4 array       | Array  |
    | total-traffic        | list        |TBA20 | 4 array       | Array  |
    | total-connection-    |             |      |               |        |
@@ -3835,7 +3791,7 @@ Internet-Draft               DOTS Telemetry                February 2020
    | id                   | uint32      |TBA38 | 0 unsigned    | Number |
    | attack-id            | string      |TBA39 | 3 text string | String |
    | attack-name          | string      |TBA40 | 3 text string | String |
-   | attack-severity      | identityref |TBA41 | 0 unsigned    | String |
+   | attack-severity      | enumeration |TBA41 | 0 unsigned    | String |
    | start-time           | uint64      |TBA42 | 0 unsigned    | String |
    | end-time             | uint64      |TBA43 | 0 unsigned    | String |
    | source-count         | container   |TBA44 | 5 map         | Object |
@@ -3846,6 +3802,14 @@ Internet-Draft               DOTS Telemetry                February 2020
    | mid-percentile-c     | container   |TBA48 | 5 map         | Object |
    | high-percentile-c    | container   |TBA49 | 5 map         | Object |
    | peak-c               | container   |TBA50 | 5 map         | Object |
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 68]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
    | baseline             | container   |TBA51 | 5 map         | Object |
    | current-config       | container   |TBA52 | 5 map         | Object |
    | max-config-values    | container   |TBA53 | 5 map         | Object |
@@ -3858,14 +3822,6 @@ Internet-Draft               DOTS Telemetry                February 2020
    | tmid                 | uint32      |TBA58 | 0 unsigned    | Number |
    | measurement-interval | identityref |TBA59 | 0 unsigned    | String |
    | measurement-sample   | identityref |TBA60 | 0 unsigned    | String |
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 69]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
    +----------------------+-------------+------+---------------+--------+
 
 11.  IANA Considerations
@@ -3902,6 +3858,14 @@ Internet-Draft               DOTS Telemetry                February 2020
    | total-pipe-capability| TBA10 |   4   |    IESG    |   [RFCXXXX]   |
    | pipe                 | TBA11 |   0   |    IESG    |   [RFCXXXX]   |
    | pre-mitigation       | TBA12 |   4   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 69]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
    | ietf-dots-telemetry: | TBA13 |   5   |    IESG    |   [RFCXXXX]   |
    |   telemetry-setup    |       |       |            |               |
    | total-traffic-       | TBA14 |   4   |    IESG    |   [RFCXXXX]   |
@@ -3914,14 +3878,6 @@ Internet-Draft               DOTS Telemetry                February 2020
    | total-traffic        | TBA20 |   4   |    IESG    |   [RFCXXXX]   |
    | total-connection-    | TBA21 |   4   |    IESG    |   [RFCXXXX]   |
    |        capacity      |       |       |            |               |
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 70]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
-
    | connection           | TBA22 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-client    | TBA23 |   0   |    IESG    |   [RFCXXXX]   |
    | embryonic            | TBA24 |   0   |    IESG    |   [RFCXXXX]   |
@@ -3958,6 +3914,14 @@ Internet-Draft               DOTS Telemetry                February 2020
    | max-config-value     | TBA53 |   5   |    IESG    |   [RFCXXXX]   |
    | min-config-values    | TBA54 |   5   |    IESG    |   [RFCXXXX]   |
    | supported-units      | TBA55 |   5   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 70]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
    | server-originated-   | TBA56 |   7   |    IESG    |   [RFCXXXX]   |
    |          telemetry   |       |       |            |               |
    | telemetry-notify-    | TBA57 |   0   |    IESG    |   [RFCXXXX]   |
@@ -3966,17 +3930,6 @@ Internet-Draft               DOTS Telemetry                February 2020
    | measurement-interval | TBA59 |   0   |    IESG    |   [RFCXXXX]   |
    | measurement-sample   | TBA60 |   0   |    IESG    |   [RFCXXXX]   |
    +----------------------+-------+-------+------------+---------------+
-
-
-
-
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 71]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
 
 11.2.  DOTS Signal Channel Conflict Cause Codes
 
@@ -4018,21 +3971,16 @@ Internet-Draft               DOTS Telemetry                February 2020
 
    o  Li Su, CMCC, Email: suli@chinamobile.com
 
-   o  Jin Peng, CMCC, Email: pengjin@chinamobile.com
-
-   o  Pan Wei, Huawei, Email: william.panwei@huawei.com
 
 
-
-
-
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 72]
+Boucadair, et al.        Expires August 26, 2020               [Page 71]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
+
+   o  Jin Peng, CMCC, Email: pengjin@chinamobile.com
+
+   o  Pan Wei, Huawei, Email: william.panwei@huawei.com
 
 14.  Acknowledgements
 
@@ -4078,17 +4026,18 @@ Internet-Draft               DOTS Telemetry                February 2020
               draft-ietf-dots-signal-filter-control-02 (work in
               progress), September 2019.
 
+
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 72]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 73]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
 
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
@@ -4134,17 +4083,17 @@ Internet-Draft               DOTS Telemetry                February 2020
               Signaling", draft-ietf-dots-use-cases-20 (work in
               progress), September 2019.
 
+
+
+Boucadair, et al.        Expires August 26, 2020               [Page 73]
+
+Internet-Draft               DOTS Telemetry                February 2020
+
+
    [RFC2330]  Paxson, V., Almes, G., Mahdavi, J., and M. Mathis,
               "Framework for IP Performance Metrics", RFC 2330,
               DOI 10.17487/RFC2330, May 1998,
               <https://www.rfc-editor.org/info/rfc2330>.
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 74]
-
-Internet-Draft               DOTS Telemetry                February 2020
-
 
    [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
               BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
@@ -4192,12 +4141,7 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-Boucadair, et al.        Expires August 24, 2020               [Page 75]
+Boucadair, et al.        Expires August 26, 2020               [Page 74]
 
 Internet-Draft               DOTS Telemetry                February 2020
 
@@ -4253,4 +4197,4 @@ Internet-Draft               DOTS Telemetry                February 2020
 
 
 
-Boucadair, et al.        Expires August 24, 2020               [Page 76]
+Boucadair, et al.        Expires August 26, 2020               [Page 75]
