@@ -1726,7 +1726,7 @@ Uri-Path: "tsid=123"]]></artwork>
              |  +--rw high-percentile-g?   yang:gauge64
              |  +--rw peak-g?              yang:gauge64
              +--rw top-talker
-                +--rw source-prefix* [source-prefix]
+                +--rw talker* [source-prefix]
                    +--rw spoofed-status?            boolean
                    +--rw source-prefix              inet:ip-prefix
                    +--rw total-attack-traffic* [unit]
@@ -2095,7 +2095,7 @@ Observe: 0]]></artwork>
        |  +--rw high-percentile-g?   yang:gauge64
        |  +--rw peak-g?              yang:gauge64
        +--rw top-talker
-          +--rw source-prefix* [source-prefix]
+          +--rw talker* [source-prefix]
              +--rw spoofed-status?            boolean
              +--rw source-prefix              inet:ip-prefix
              +--rw total-attack-traffic* [unit]
@@ -2787,7 +2787,7 @@ module ietf-dots-telemetry {
   grouping top-talker-aggregate {
     description
       "Top attack sources.";
-    list source-prefix {
+    list talker {
       key "source-prefix";
       description
         "IPv4 or IPv6 prefix identifying the attacker(s).";
@@ -2818,7 +2818,7 @@ module ietf-dots-telemetry {
   grouping top-talker {
     description
       "Top attack sources.";
-    list source-prefix {
+    list talker {
       key "source-prefix";
       description
         "IPv4 or IPv6 prefix identifying the attacker(s).";
@@ -3309,9 +3309,9 @@ module ietf-dots-telemetry {
    | ietf-dots-telemetry: |             |      |               |        |
    | spoofed-status       | boolean     |TBA87 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
-   | source-prefix        | list        |TBA88 | 4 array       | Array  |
+   | talker               | list        |TBA88 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
-   | source-prefix        | list        |TBA89 | 4 array       | Array  |
+   | talker               | list        |TBA89 | 4 array       | Array  |
    | source-prefix        | inet:       |TBA90 | 3 text string | String |
    |                      |   ip-prefix |      |               |        |
    | ietf-dots-telemetry: | inet:       |TBA91 | 3 text string | String |
@@ -3463,9 +3463,9 @@ module ietf-dots-telemetry {
    | top-talker           |       |       |            |               |
    | ietf-dots-telemetry: | TBA87 |   0   |    IESG    |   [RFCXXXX]   |
    | spoofed-status       |       |       |            |               |
-   | source-prefix        | TBA88 |   0   |    IESG    |   [RFCXXXX]   |
+   | talker               | TBA88 |   0   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-telemetry: | TBA89 |   0   |    IESG    |   [RFCXXXX]   |
-   | source-prefix        |       |       |            |               |
+   | talker               |       |       |            |               |
    | source-prefix        | TBA90 |   0   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-telemetry: | TBA91 |   0   |    IESG    |   [RFCXXXX]   |
    | source-prefix        |       |       |            |               |
