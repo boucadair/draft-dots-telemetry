@@ -3253,6 +3253,69 @@ module ietf-dots-telemetry {
    | tmid                 | uint32      |TBA58 | 0 unsigned    | Number |
    | measurement-interval | identityref |TBA59 | 0 unsigned    | String |
    | measurement-sample   | identityref |TBA60 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | total-traffic        | list        |TBA61 | 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | unit                 | enumeration |TBA62 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | low-percentile-g     | yang:gauge64|TBA63 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | mid-percentile-g     | yang:gauge64|TBA64 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | high-percentile-g    | yang:gauge64|TBA65 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | peak-g               | yang:gauge64|TBA66 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | total-attack-traffic | list        |TBA67 | 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | total-attack-        |             |      |               |        |
+   |        connection    | container   |TBA68 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | low-percentile-c     | container   |TBA69 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | mid-percentile-c     | container   |TBA70 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | high-percentile-c    | container   |TBA71 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | peak-c               | container   |TBA72 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | connection           | uint64      |TBA73 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | embryonic            | uint64      |TBA74 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | connection-ps        | uint64      |TBA75 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | request-ps           | uint64      |TBA76 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | partial-request-ps   | uint64      |TBA77 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | attack-detail        | container   |TBA78 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | id                   | uint32      |TBA79 | 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | attack-id            | string      |TBA80 | 3 text string | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | attack-name          | string      |TBA81 | 3 text string | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | attack-severity      | enumeration |TBA82 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | start-time           | uint64      |TBA83 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | end-time             | uint64      |TBA84 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | source-count         | container   |TBA85 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | top-talker           | container   |TBA86 | 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | spoofed-status       | boolean     |TBA87 | 7 bits 20     | False  |
+   |                      |             |      | 7 bits 21     | True   |
+   | source-prefix        | list        |TBA88 | 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | source-prefix        | list        |TBA89 | 4 array       | Array  |
+   | source-prefix        | inet:       |TBA90 | 3 text string | String |
+   |                      |   ip-prefix |      |               |        |
+   | ietf-dots-telemetry: | inet:       |TBA91 | 3 text string | String |
+   | source-prefix        |   ip-prefix |      |               |        |
    +----------------------+-------------+------+---------------+--------+  
 ]]></artwork>
         </figure></t>
@@ -3345,6 +3408,67 @@ module ietf-dots-telemetry {
    | tmid                 | TBA58 |   0   |    IESG    |   [RFCXXXX]   |
    | measurement-interval | TBA59 |   0   |    IESG    |   [RFCXXXX]   |
    | measurement-sample   | TBA60 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA61 |   0   |    IESG    |   [RFCXXXX]   |
+   | total-traffic        |       |       |            |               |
+   | ietf-dots-telemetry: | TBA62 |   0   |    IESG    |   [RFCXXXX]   |
+   | unit                 |       |       |            |               |
+   | ietf-dots-telemetry: | TBA63 |   0   |    IESG    |   [RFCXXXX]   |
+   | low-percentile-g     |       |       |            |               |
+   | ietf-dots-telemetry: | TBA64 |   0   |    IESG    |   [RFCXXXX]   |
+   | mid-percentile-g     |       |       |            |               |
+   | ietf-dots-telemetry: | TBA65 |   0   |    IESG    |   [RFCXXXX]   |
+   | high-percentile-g    |       |       |            |               |
+   | ietf-dots-telemetry: | TBA66 |   0   |    IESG    |   [RFCXXXX]   |
+   | peak-g               |       |       |            |               |
+   | ietf-dots-telemetry: | TBA67 |   0   |    IESG    |   [RFCXXXX]   |
+   | total-attack-traffic |       |       |            |               |
+   | ietf-dots-telemetry: | TBA68 |   0   |    IESG    |   [RFCXXXX]   |
+   | total-attack-        |       |       |            |               |
+   |        connection    |       |       |            |               |
+   | ietf-dots-telemetry: | TBA69 |   0   |    IESG    |   [RFCXXXX]   |
+   | low-percentile-c     |       |       |            |               |
+   | ietf-dots-telemetry: | TBA70 |   0   |    IESG    |   [RFCXXXX]   |
+   | mid-percentile-c     |       |       |            |               |
+   | ietf-dots-telemetry: | TBA71 |   0   |    IESG    |   [RFCXXXX]   |
+   | high-percentile-c    |       |       |            |               |
+   | ietf-dots-telemetry: | TBA72 |   0   |    IESG    |   [RFCXXXX]   |
+   | peak-c               |       |       |            |               |
+   | ietf-dots-telemetry: | TBA73 |   0   |    IESG    |   [RFCXXXX]   |
+   | connection           |       |       |            |               |
+   | ietf-dots-telemetry: | TBA74 |   0   |    IESG    |   [RFCXXXX]   |
+   | embryonic            |       |       |            |               |
+   | ietf-dots-telemetry: | TBA75 |   0   |    IESG    |   [RFCXXXX]   |
+   | connection-ps        |       |       |            |               |
+   | ietf-dots-telemetry: | TBA76 |   0   |    IESG    |   [RFCXXXX]   |
+   | request-ps           |       |       |            |               |
+   | ietf-dots-telemetry: | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
+   | partial-request-ps   |       |       |            |               |
+   | ietf-dots-telemetry: | TBA78 |   0   |    IESG    |   [RFCXXXX]   |
+   | attack-detail        |       |       |            |               |
+   | ietf-dots-telemetry: | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
+   | id                   |       |       |            |               |
+   | ietf-dots-telemetry: | TBA80 |   0   |    IESG    |   [RFCXXXX]   |
+   | attack-id            |       |       |            |               |
+   | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
+   | attack-name          |       |       |            |               |
+   | ietf-dots-telemetry: | TBA82 |   0   |    IESG    |   [RFCXXXX]   |
+   | attack-severity      |       |       |            |               |
+   | ietf-dots-telemetry: | TBA83 |   0   |    IESG    |   [RFCXXXX]   |
+   | start-time           |       |       |            |               |
+   | ietf-dots-telemetry: | TBA84 |   0   |    IESG    |   [RFCXXXX]   |
+   | end-time             |       |       |            |               |
+   | ietf-dots-telemetry: | TBA85 |   0   |    IESG    |   [RFCXXXX]   |
+   | source-count         |       |       |            |               |
+   | ietf-dots-telemetry: | TBA86 |   0   |    IESG    |   [RFCXXXX]   |
+   | top-talker           |       |       |            |               |
+   | ietf-dots-telemetry: | TBA87 |   0   |    IESG    |   [RFCXXXX]   |
+   | spoofed-status       |       |       |            |               |
+   | source-prefix        | TBA88 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA89 |   0   |    IESG    |   [RFCXXXX]   |
+   | source-prefix        |       |       |            |               |
+   | source-prefix        | TBA90 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA91 |   0   |    IESG    |   [RFCXXXX]   |
+   | source-prefix        |       |       |            |               |
    +----------------------+-------+-------+------------+---------------+
 ]]></artwork>
           </figure></t>
