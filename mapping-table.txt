@@ -132,9 +132,9 @@
    | ietf-dots-telemetry: |             |      |               |        |
    | spoofed-status       | boolean     |32862 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
-   | source-prefix        | list        |32863 | 4 array       | Array  |
+   | talker               | list        |32863 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
-   | source-prefix        | list        |32864 | 4 array       | Array  |
+   | talker               | list        |32864 | 4 array       | Array  |
    | source-prefix        | inet:       |32865 | 3 text string | String |
    |                      |   ip-prefix |      |               |        |
    | ietf-dots-telemetry: | inet:       |32866 | 3 text string | String |
