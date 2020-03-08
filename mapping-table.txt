@@ -3,140 +3,163 @@
    |                      | Type        | Key  |    Type &     | Type   |
    |                      |             |      | Information   |        |
    +----------------------+-------------+------+---------------+--------+
-   | ietf-dots-telemetry: |             |      |               |        |
-   |          telemetry   | container   |32776 | 5 map         | Object |
-   | tsid                 | uint32      |32777 | 0 unsigned    | Number |
-   | telemetry-config     | container   |32778 | 5 map         | Object |
-   | low-percentile       | decimal64   |32779 | 6 tag 4       |        |
+   | tsid                 | uint32      |32801 | 0 unsigned    | Number |
+   | telemetry-config     | container   |32802 | 5 map         | Object |
+   | low-percentile       | decimal64   |32803 | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | mid-percentile       | decimal64   |32780 | 6 tag 4       |        |
+   | mid-percentile       | decimal64   |32804 | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | high-percentile      | decimal64   |32781 | 6 tag 4       |        |
+   | high-percentile      | decimal64   |32805 | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | unit-config          | list        |32782 | 4 array       | Array  |
-   | unit                 | enumeration |32783 | 0 unsigned    | String |
-   | unit-status          | boolean     |32784 | 7 bits 20     | False  |
+   | unit-config          | list        |32806 | 4 array       | Array  |
+   | unit                 | enumeration |32807 | 0 unsigned    | String |
+   | unit-status          | boolean     |32808 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
-   | total-pipe-capability| list        |32785 | 4 array       | Array  |
-   | pipe                 | uint64      |32786 | 0 unsigned    | String |
-   | pre-mitigation       | list        |32787 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |      telemetry-setup | container   |32788 | 5 map         | Object |
+   | total-pipe-capability| list        |32809 | 4 array       | Array  |
+   | pipe                 | uint64      |328010| 0 unsigned    | String |
+   | pre-or-ongoing-      | list        |328011| 4 array       | Array  |
+   |      mitigation      |             |      |               |        |
    | total-traffic-       |             |      |               |        |
-   |    normal-baseline   | list        |32789 | 4 array       | Array  |
-   | low-percentile-g     | yang:gauge64|32790 | 0 unsigned    | String |
-   | mid-percentile-g     | yang:gauge64|32791 | 0 unsigned    | String |
-   | high-percentile-g    | yang:gauge64|32792 | 0 unsigned    | String |
-   | peak-g               | yang:gauge64|32793 | 0 unsigned    | String |
-   | total-attack-traffic | list        |32794 | 4 array       | Array  |
-   | total-traffic        | list        |32795 | 4 array       | Array  |
+   |    normal-baseline   | list        |328012| 4 array       | Array  |
+   | low-percentile-g     | yang:gauge64|328013| 0 unsigned    | String |
+   | mid-percentile-g     | yang:gauge64|328014| 0 unsigned    | String |
+   | high-percentile-g    | yang:gauge64|328015| 0 unsigned    | String |
+   | peak-g               | yang:gauge64|328016| 0 unsigned    | String |
+   | total-attack-traffic | list        |328017| 4 array       | Array  |
+   | total-traffic        | list        |328018| 4 array       | Array  |
    | total-connection-    |             |      |               |        |
-   |        capacity      | list        |32796 | 4 array       | Array  |
-   | connection           | uint64      |32797 | 0 unsigned    | String |
-   | connection-client    | uint64      |32798 | 0 unsigned    | String |
-   | embryonic            | uint64      |32799 | 0 unsigned    | String |
-   | embryonic-client     | uint64      |32800 | 0 unsigned    | String |
-   | connection-ps        | uint64      |32801 | 0 unsigned    | String |
-   | connection-client-ps | uint64      |32802 | 0 unsigned    | String |
-   | request-ps           | uint64      |32803 | 0 unsigned    | String |
-   | request-client-ps    | uint64      |32804 | 0 unsigned    | String |
-   | partial-request-ps   | uint64      |32805 | 0 unsigned    | String |
+   |        capacity      | list        |328019| 4 array       | Array  |
+   | connection           | uint64      |328020| 0 unsigned    | String |
+   | connection-client    | uint64      |328021| 0 unsigned    | String |
+   | embryonic            | uint64      |328022| 0 unsigned    | String |
+   | embryonic-client     | uint64      |328023| 0 unsigned    | String |
+   | connection-ps        | uint64      |328024| 0 unsigned    | String |
+   | connection-client-ps | uint64      |328025| 0 unsigned    | String |
+   | request-ps           | uint64      |328026| 0 unsigned    | String |
+   | request-client-ps    | uint64      |328027| 0 unsigned    | String |
+   | partial-request-ps   | uint64      |328028| 0 unsigned    | String |
    | partial-request-     |             |      |               |        |
-   |        client-ps     | uint64      |32806 | 0 unsigned    | String |
+   |        client-ps     | uint64      |328029| 0 unsigned    | String |
    | total-attack-        |             |      |               |        |
-   |        connection    | container   |32807 | 5 map         | Object |
-   | low-percentile-l     | list        |32808 | 4 array       | Array  |
-   | mid-percentile-l     | list        |32809 | 4 array       | Array  |
-   | high-percentile-l    | list        |32810 | 4 array       | Array  |
-   | peak-l               | list        |32811 | 4 array       | Array  |
-   | attack-detail        | container   |32812 | 5 map         | Object |
-   | id                   | uint32      |32813 | 0 unsigned    | Number |
-   | attack-id            | string      |32814 | 3 text string | String |
-   | attack-name          | string      |32815 | 3 text string | String |
-   | attack-severity      | enumeration |32816 | 0 unsigned    | String |
-   | start-time           | uint64      |32817 | 0 unsigned    | String |
-   | end-time             | uint64      |32818 | 0 unsigned    | String |
-   | source-count         | container   |32819 | 5 map         | Object |
-   | top-talker           | container   |32820 | 5 map         | Object |
-   | spoofed-status       | boolean     |32821 | 7 bits 20     | False  |
+   |        connection    | container   |328030| 5 map         | Object |
+   | low-percentile-l     | list        |328031| 4 array       | Array  |
+   | mid-percentile-l     | list        |328032| 4 array       | Array  |
+   | high-percentile-l    | list        |328033| 4 array       | Array  |
+   | peak-l               | list        |328034| 4 array       | Array  |
+   | attack-detail        | container   |328035| 5 map         | Object |
+   | id                   | uint32      |328036| 0 unsigned    | Number |
+   | attack-id            | string      |328037| 3 text string | String |
+   | attack-name          | string      |328038| 3 text string | String |
+   | attack-severity      | enumeration |328039| 0 unsigned    | String |
+   | start-time           | uint64      |328040| 0 unsigned    | String |
+   | end-time             | uint64      |328041|0 unsigned    | String |
+   | source-count         | container   |328042| 5 map         | Object |
+   | top-talker           | container   |328043| 5 map         | Object |
+   | spoofed-status       | boolean     |328044| 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
-   | low-percentile-c     | container   |32822 | 5 map         | Object |
-   | mid-percentile-c     | container   |32823 | 5 map         | Object |
-   | high-percentile-c    | container   |32824 | 5 map         | Object |
-   | peak-c               | container   |32825 | 5 map         | Object |
-   | baseline             | container   |32826 | 5 map         | Object |
-   | current-config       | container   |32827 | 5 map         | Object |
-   | max-config-values    | container   |32828 | 5 map         | Object |
-   | min-config-values    | container   |32829 | 5 map         | Object |
-   | supported-units      | container   |32830 | 5 map         | Object |
-   | server-originated-   | boolean     |32831 | 7 bits 20     | False  |
+   | low-percentile-c     | container   |328045| 5 map         | Object |
+   | mid-percentile-c     | container   |328046| 5 map         | Object |
+   | high-percentile-c    | container   |328047| 5 map         | Object |
+   | peak-c               | container   |328048| 5 map         | Object |
+   | baseline             | container   |328049| 5 map         | Object |
+   | current-config       | container   |328050| 5 map         | Object |
+   | max-config-values    | container   |328051| 5 map         | Object |
+   | min-config-values    | container   |328052| 5 map         | Object |
+   | supported-units      | container   |328053| 5 map         | Object |
+   | server-originated-   | boolean     |328054| 7 bits 20     | False  |
    |          telemetry   |             |      | 7 bits 21     | True   |
-   | telemetry-notify-    | uint32      |32832 | 0 unsigned    | Number |
+   | telemetry-notify-    | uint32      |328055| 0 unsigned    | Number |
    |           interval   |             |      |               |        |
-   | tmid                 | uint32      |32833 | 0 unsigned    | Number |
-   | measurement-interval | enumeration |32834 | 0 unsigned    | String |
-   | measurement-sample   | enumeration |32835 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | total-traffic        | list        |32836 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | unit                 | enumeration |32837 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | low-percentile-g     | yang:gauge64|32838 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | mid-percentile-g     | yang:gauge64|32839 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | high-percentile-g    | yang:gauge64|32840 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | peak-g               | yang:gauge64|32841 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | total-attack-traffic | list        |32842 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | total-attack-        |             |      |               |        |
-   |        connection    | container   |32843 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | low-percentile-c     | container   |32844 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | mid-percentile-c     | container   |32845 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | high-percentile-c    | container   |32846 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | peak-c               | container   |32847 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | connection           | uint64      |32848 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | embryonic            | uint64      |32849 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | connection-ps        | uint64      |32850 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | request-ps           | uint64      |32851 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | partial-request-ps   | uint64      |32852 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | attack-detail        | container   |32853 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | id                   | uint32      |32854 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | attack-id            | string      |32855 | 3 text string | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | attack-name          | string      |32856 | 3 text string | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | attack-severity      | enumeration |32857 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | start-time           | uint64      |32858 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | end-time             | uint64      |32859 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | source-count         | container   |32860 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | top-talker           | container   |32861 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | spoofed-status       | boolean     |32862 | 7 bits 20     | False  |
-   |                      |             |      | 7 bits 21     | True   |
-   | talker               | list        |32863 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | talker               | list        |32864 | 4 array       | Array  |
-   | source-prefix        | inet:       |32865 | 3 text string | String |
+   | tmid                 | uint32      |328056| 0 unsigned    | Number |
+   | measurement-interval | identityref |328057| 0 unsigned    | String |
+   | measurement-sample   | identityref |328058| 0 unsigned    | String |
+   | talker               | list        |328059| 4 array       | Array  |
+   | source-prefix        | inet:       |328060| 3 text string | String |
    |                      |   ip-prefix |      |               |        |
-   | ietf-dots-telemetry: | inet:       |32866 | 3 text string | String |
-   | source-prefix        |   ip-prefix |      |               |        |
-   +----------------------+-------------+------+---------------+--------+
+   | mid-list             | leaf-list   |328061| 4 array       | Array  |
+   |                      | uint32      |      | 0 unsigned    | Number |
+   | source-port-range    | list        |328062| 4 array       | Array  |
+   | source-icmp-type-    | list        |328063| 4 array       | Array  |
+   |    range             |             |      |               |        |
+   | lower-type           | uint8       |328064| 0 unsigned    | Number |
+   | upper-type           | uint8       |328065| 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |          telemetry   | container   |328066| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |      telemetry-setup | container   |328067| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   total-traffic      | list        |328068| 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |             unit     | enumeration |328069| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   low-percentile-g   | yang:gauge64|328070| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   mid-percentile-g   | yang:gauge64|328071| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   high-percentile-g  | yang:gauge64|328072| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |      peak-g          | yang:gauge64|328073| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   | total-attack-traffic | list        |328074| 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    total-attack-     |             |      |               |        |
+   |        connection    | container   |328075| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    low-percentile-c  | container   |328076| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    mid-percentile-c  | container   |328077| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   high-percentile-c  | container   |328078| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |          peak-c      | container   |328079| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |       connection     | uint64      |328080| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |      embryonic       | uint64      |328081| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     connection-ps    | uint64      |328082| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     request-ps       | uint64      |328083| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   partial-request-ps | uint64      |328084| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    attack-detail     | container   |328085| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |        id            | uint32      |328086| 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |      attack-id       | string      |328087| 3 text string | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     attack-name      | string      |328088| 3 text string | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    attack-severity   | enumeration |328089| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     start-time       | uint64      |328090| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |      end-time        | uint64      |328091| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     source-count     | container   |328092| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     top-talker       | container   |328093| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    spoofed-status    | boolean     |328094| 7 bits 20     | False  |
+   |                      |             |      | 7 bits 21     | True   |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     talker           | list        |328095| 4 array       | Array  |
+   | ietf-dots-telemetry: | inet:       |328096| 3 text string | String |
+   |    source-prefix     |   ip-prefix |      |               |        |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   source-port-range  | list        |328097| 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    lower-port        | inet:       |      |               |        |
+   |                      |  port-number|328098| 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    upper-port        | inet:       |      |               |        |
+   |                      |  port-number|328099| 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   source-icmp-type-  | list        |329000| 4 array       | Array  |
+   |    range             |             |      |               |        |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   lower-type         | uint8       |329001| 0 unsigned    | Number |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   upper-type         | uint8       |329002| 0 unsigned    | Number |
+   +----------------------+-------------+------+---------------+--------+ 
