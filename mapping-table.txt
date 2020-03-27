@@ -163,4 +163,8 @@
    |   lower-type         | uint8       |32902| 0 unsigned    | Number |
    | ietf-dots-telemetry: |             |     |               |        |
    |   upper-type         | uint8       |32903| 0 unsigned    | Number |
+   
+   | telemetry            | container   |32905| 5 map         | Object |
+   | link-id              | string      |32906| 3 text string | String |
+   | capacity             | uint64      |32907| 0 unsigned    | String |
    +----------------------+-------------+-----+---------------+--------+ 
