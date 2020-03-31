@@ -1,4 +1,9 @@
-    | tsid                 | uint32      |32801| 0 unsigned    | Number |
+   +----------------------+-------------+-----+---------------+--------+
+   | Parameter Name       | YANG        | CBOR| CBOR Major    | JSON   |
+   |                      | Type        | Key |    Type &     | Type   |
+   |                      |             |     | Information   |        |
+   +----------------------+-------------+-----+---------------+--------+
+   | tsid                 | uint32      |32801| 0 unsigned    | Number |
    | telemetry            | container   |32802| 5 map         | Object |
    | low-percentile       | decimal64   |32803| 6 tag 4       |        |
    |                      |             |     |  [-2, integer]| String |
