@@ -1,9 +1,4 @@
-   +----------------------+-------------+-----+---------------+--------+
-   | Parameter Name       | YANG        | CBOR| CBOR Major    | JSON   |
-   |                      | Type        | Key |    Type &     | Type   |
-   |                      |             |     | Information   |        |
-   +----------------------+-------------+-----+---------------+--------+
-   | tsid                 | uint32      |32801| 0 unsigned    | Number |
+    | tsid                 | uint32      |32801| 0 unsigned    | Number |
    | telemetry            | container   |32802| 5 map         | Object |
    | low-percentile       | decimal64   |32803| 6 tag 4       |        |
    |                      |             |     |  [-2, integer]| String |
@@ -52,7 +47,7 @@
    | attack-name          | string      |32838| 3 text string | String |
    | attack-severity      | enumeration |32839| 0 unsigned    | String |
    | start-time           | uint64      |32840| 0 unsigned    | String |
-   | end-time             | uint64      |32841|0 unsigned    | String |
+   | end-time             | uint64      |32841| 0 unsigned    | String |
    | source-count         | container   |32842| 5 map         | Object |
    | top-talker           | container   |32843| 5 map         | Object |
    | spoofed-status       | boolean     |32844| 7 bits 20     | False  |
@@ -71,8 +66,8 @@
    | telemetry-notify-    | uint32      |32855| 0 unsigned    | Number |
    |           interval   |             |     |               |        |
    | tmid                 | uint32      |32856| 0 unsigned    | Number |
-   | measurement-interval | identityref |32857| 0 unsigned    | String |
-   | measurement-sample   | identityref |32858| 0 unsigned    | String |
+   | measurement-interval | enumeration |32857| 0 unsigned    | String |
+   | measurement-sample   | enumeration |32858| 0 unsigned    | String |
    | talker               | list        |32859| 4 array       | Array  |
    | source-prefix        | inet:       |32860| 3 text string | String |
    |                      |   ip-prefix |     |               |        |
@@ -84,8 +79,7 @@
    | lower-type           | uint8       |32864| 0 unsigned    | Number |
    | upper-type           | uint8       |32865| 0 unsigned    | Number |
    | target               | container   |32866| 5 map         | Object |
-   | ietf-dots-telemetry: |             |     |               |        |
-   |          telemetry   | container   |32867| 5 map         | Object |
+   | capacity             | uint64      |32867| 0 unsigned    | String |
    | ietf-dots-telemetry: |             |     |               |        |
    |      telemetry-setup | container   |32868| 5 map         | Object |
    | ietf-dots-telemetry: |             |     |               |        |
@@ -163,8 +157,6 @@
    |   lower-type         | uint8       |32902| 0 unsigned    | Number |
    | ietf-dots-telemetry: |             |     |               |        |
    |   upper-type         | uint8       |32903| 0 unsigned    | Number |
-   
-   | telemetry            | container   |32802| 5 map         | Object |
-   | link-id              | string      |32810| 3 text string | String |
-   | capacity             | uint64      |32904| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |     |               |        |
+   |          telemetry   | container   |32904| 5 map         | Object |
    +----------------------+-------------+-----+---------------+--------+ 
