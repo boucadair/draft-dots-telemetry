@@ -38,9 +38,9 @@ module: ietf-dots-telemetry
     |     +--ro connection-ps?        yang:gauge64
     |     +--ro request-ps?           yang:gauge64
     |     +--ro partial-request-ps?   yang:gauge64
-    +--rw attack-detail {dots-telemetry}?
+    +--rw attack-detail* [attack-id] {dots-telemetry}?
        +--rw id?                uint32
-       +--rw attack-id?         string
+       +--rw attack-id          string
        +--rw attack-name?       string
        +--rw attack-severity?   attack-severity
        +--rw start-time?        uint64
@@ -93,6 +93,25 @@ module: ietf-dots-telemetry
                    +--rw partial-request-ps?   yang:gauge64
   augment /ietf-signal:dots-signal/ietf-signal:message-type:
     +--:(telemetry-setup) {dots-telemetry}?
+    |  +--ro max-config-values
+    |  |  +--ro measurement-interval?          interval
+    |  |  +--ro measurement-sample?            sample
+    |  |  +--ro low-percentile?                percentile
+    |  |  +--ro mid-percentile?                percentile
+    |  |  +--ro high-percentile?               percentile
+    |  |  +--ro server-originated-telemetry?   boolean
+    |  |  +--ro telemetry-notify-interval?     uint32
+    |  +--ro min-config-values
+    |  |  +--ro measurement-interval?        interval
+    |  |  +--ro measurement-sample?          sample
+    |  |  +--ro low-percentile?              percentile
+    |  |  +--ro mid-percentile?              percentile
+    |  |  +--ro high-percentile?             percentile
+    |  |  +--ro telemetry-notify-interval?   uint32
+    |  +--ro supported-units
+    |  |  +--ro unit-config* [unit]
+    |  |     +--ro unit           unit-type
+    |  |     +--ro unit-status?   boolean
     |  +--rw telemetry* [cuid tsid]
     |     +--rw cuid                         string
     |     +--rw cdid?                        string
@@ -100,35 +119,16 @@ module: ietf-dots-telemetry
     |     +--rw (setup-type)?
     |        +--:(telemetry-config)
     |        |  +--rw current-config
-    |        |  |  +--rw measurement-interval?          interval
-    |        |  |  +--rw measurement-sample?            sample
-    |        |  |  +--rw low-percentile?                percentile
-    |        |  |  +--rw mid-percentile?                percentile
-    |        |  |  +--rw high-percentile?               percentile
-    |        |  |  +--rw unit-config* [unit]
-    |        |  |  |  +--rw unit           unit-type
-    |        |  |  |  +--rw unit-status?   boolean
-    |        |  |  +--rw server-originated-telemetry?   boolean
-    |        |  |  +--rw telemetry-notify-interval?     uint32
-    |        |  +--ro max-config-values
-    |        |  |  +--ro measurement-interval?          interval
-    |        |  |  +--ro measurement-sample?            sample
-    |        |  |  +--ro low-percentile?                percentile
-    |        |  |  +--ro mid-percentile?                percentile
-    |        |  |  +--ro high-percentile?               percentile
-    |        |  |  +--ro server-originated-telemetry?   boolean
-    |        |  |  +--ro telemetry-notify-interval?     uint32
-    |        |  +--ro min-config-values
-    |        |  |  +--ro measurement-interval?        interval
-    |        |  |  +--ro measurement-sample?          sample
-    |        |  |  +--ro low-percentile?              percentile
-    |        |  |  +--ro mid-percentile?              percentile
-    |        |  |  +--ro high-percentile?             percentile
-    |        |  |  +--ro telemetry-notify-interval?   uint32
-    |        |  +--ro supported-units
-    |        |     +--ro unit-config* [unit]
-    |        |        +--ro unit           unit-type
-    |        |        +--ro unit-status?   boolean
+    |        |     +--rw measurement-interval?          interval
+    |        |     +--rw measurement-sample?            sample
+    |        |     +--rw low-percentile?                percentile
+    |        |     +--rw mid-percentile?                percentile
+    |        |     +--rw high-percentile?               percentile
+    |        |     +--rw unit-config* [unit]
+    |        |     |  +--rw unit           unit-type
+    |        |     |  +--rw unit-status?   boolean
+    |        |     +--rw server-originated-telemetry?   boolean
+    |        |     +--rw telemetry-notify-interval?     uint32
     |        +--:(pipe)
     |        |  +--rw total-pipe-capacity* [link-id unit]
     |        |     +--rw link-id     nt:link-id
@@ -152,8 +152,15 @@ module: ietf-dots-telemetry
     |              |  +--rw high-percentile-g?   yang:gauge64
     |              |  +--rw peak-g?              yang:gauge64
     |              +--rw total-traffic-normal-per-protocol* [unit protocol]
-    |              |  +--rw unit                 unit
     |              |  +--rw protocol             uint8
+    |              |  +--rw unit                 unit
+    |              |  +--rw low-percentile-g?    yang:gauge64
+    |              |  +--rw mid-percentile-g?    yang:gauge64
+    |              |  +--rw high-percentile-g?   yang:gauge64
+    |              |  +--rw peak-g?              yang:gauge64
+    |              +--rw total-traffic-normal-per-port* [unit port]
+    |              |  +--rw port                 inet:port-number
+    |              |  +--rw unit                 unit
     |              |  +--rw low-percentile-g?    yang:gauge64
     |              |  +--rw mid-percentile-g?    yang:gauge64
     |              |  +--rw high-percentile-g?   yang:gauge64
@@ -171,8 +178,8 @@ module: ietf-dots-telemetry
     |              |  +--rw partial-request-ps?          uint64
     |              |  +--rw partial-request-client-ps?   uint64
     |              +--rw total-connection-capacity-per-port* [protocol port]
-    |                 +--rw protocol                     uint8
     |                 +--rw port                         inet:port-number
+    |                 +--rw protocol                     uint8
     |                 +--rw connection?                  uint64
     |                 +--rw connection-client?           uint64
     |                 +--rw embryonic?                   uint64
@@ -205,22 +212,22 @@ module: ietf-dots-telemetry
           |  +--rw high-percentile-g?   yang:gauge64
           |  +--rw peak-g?              yang:gauge64
           +--rw total-traffic-protocol* [unit protocol]
-          |  +--rw unit                 unit
           |  +--rw protocol             uint8
+          |  +--rw unit                 unit
           |  +--rw low-percentile-g?    yang:gauge64
           |  +--rw mid-percentile-g?    yang:gauge64
           |  +--rw high-percentile-g?   yang:gauge64
           |  +--rw peak-g?              yang:gauge64
           +--rw total-attack-traffic* [unit]
-          |  +--rw unit                 unit
           |  +--rw protocol?            uint8
+          |  +--rw unit                 unit
           |  +--rw low-percentile-g?    yang:gauge64
           |  +--rw mid-percentile-g?    yang:gauge64
           |  +--rw high-percentile-g?   yang:gauge64
           |  +--rw peak-g?              yang:gauge64
           +--rw total-attack-traffic-protocol* [unit protocol]
-          |  +--rw unit                 unit
           |  +--rw protocol             uint8
+          |  +--rw unit                 unit
           |  +--rw low-percentile-g?    yang:gauge64
           |  +--rw mid-percentile-g?    yang:gauge64
           |  +--rw high-percentile-g?   yang:gauge64
@@ -256,40 +263,40 @@ module: ietf-dots-telemetry
           |     +--rw partial-request-ps?   yang:gauge64
           +--rw total-attack-connection-port
           |  +--rw low-percentile-l* [protocol port]
-          |  |  +--rw protocol              uint8
           |  |  +--rw port                  inet:port-number
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw mid-percentile-l* [protocol]
           |  |  +--rw protocol              uint8
-          |  |  +--rw port?                 inet:port-number
           |  |  +--rw connection?           yang:gauge64
           |  |  +--rw embryonic?            yang:gauge64
           |  |  +--rw connection-ps?        yang:gauge64
           |  |  +--rw request-ps?           yang:gauge64
           |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw high-percentile-l* [protocol]
+          |  +--rw mid-percentile-l* [protocol port]
+          |  |  +--rw port                  inet:port-number
           |  |  +--rw protocol              uint8
-          |  |  +--rw port?                 inet:port-number
           |  |  +--rw connection?           yang:gauge64
           |  |  +--rw embryonic?            yang:gauge64
           |  |  +--rw connection-ps?        yang:gauge64
           |  |  +--rw request-ps?           yang:gauge64
           |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw peak-l* [protocol]
+          |  +--rw high-percentile-l* [protocol port]
+          |  |  +--rw port                  inet:port-number
+          |  |  +--rw protocol              uint8
+          |  |  +--rw connection?           yang:gauge64
+          |  |  +--rw embryonic?            yang:gauge64
+          |  |  +--rw connection-ps?        yang:gauge64
+          |  |  +--rw request-ps?           yang:gauge64
+          |  |  +--rw partial-request-ps?   yang:gauge64
+          |  +--rw peak-l* [protocol port]
+          |     +--rw port                  inet:port-number
           |     +--rw protocol              uint8
-          |     +--rw port?                 inet:port-number
           |     +--rw connection?           yang:gauge64
           |     +--rw embryonic?            yang:gauge64
           |     +--rw connection-ps?        yang:gauge64
           |     +--rw request-ps?           yang:gauge64
           |     +--rw partial-request-ps?   yang:gauge64
-          +--rw attack-detail
+          +--rw attack-detail* [attack-id]
              +--rw id?                uint32
-             +--rw attack-id?         string
+             +--rw attack-id          string
              +--rw attack-name?       string
              +--rw attack-severity?   attack-severity
              +--rw start-time?        uint64
@@ -346,32 +353,32 @@ module: ietf-dots-telemetry
                    |     +--rw partial-request-ps?   yang:gauge64
                    +--rw total-attack-connection-port
                       +--rw low-percentile-l* [protocol port]
-                      |  +--rw protocol              uint8
                       |  +--rw port                  inet:port-number
-                      |  +--rw connection?           yang:gauge64
-                      |  +--rw embryonic?            yang:gauge64
-                      |  +--rw connection-ps?        yang:gauge64
-                      |  +--rw request-ps?           yang:gauge64
-                      |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw mid-percentile-l* [protocol]
                       |  +--rw protocol              uint8
-                      |  +--rw port?                 inet:port-number
                       |  +--rw connection?           yang:gauge64
                       |  +--rw embryonic?            yang:gauge64
                       |  +--rw connection-ps?        yang:gauge64
                       |  +--rw request-ps?           yang:gauge64
                       |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw high-percentile-l* [protocol]
+                      +--rw mid-percentile-l* [protocol port]
+                      |  +--rw port                  inet:port-number
                       |  +--rw protocol              uint8
-                      |  +--rw port?                 inet:port-number
                       |  +--rw connection?           yang:gauge64
                       |  +--rw embryonic?            yang:gauge64
                       |  +--rw connection-ps?        yang:gauge64
                       |  +--rw request-ps?           yang:gauge64
                       |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw peak-l* [protocol]
+                      +--rw high-percentile-l* [protocol port]
+                      |  +--rw port                  inet:port-number
+                      |  +--rw protocol              uint8
+                      |  +--rw connection?           yang:gauge64
+                      |  +--rw embryonic?            yang:gauge64
+                      |  +--rw connection-ps?        yang:gauge64
+                      |  +--rw request-ps?           yang:gauge64
+                      |  +--rw partial-request-ps?   yang:gauge64
+                      +--rw peak-l* [protocol port]
+                         +--rw port                  inet:port-number
                          +--rw protocol              uint8
-                         +--rw port?                 inet:port-number
                          +--rw connection?           yang:gauge64
                          +--rw embryonic?            yang:gauge64
                          +--rw connection-ps?        yang:gauge64
