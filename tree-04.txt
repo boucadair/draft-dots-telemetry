@@ -112,9 +112,9 @@ module: ietf-dots-telemetry
     |  |  +--ro unit-config* [unit]
     |  |     +--ro unit           unit-type
     |  |     +--ro unit-status?   boolean
-    |  +--rw telemetry* [cuid tsid]
-    |     +--rw cuid                         string
-    |     +--rw cdid?                        string
+    |  +--rw cuid                         string
+    |  +--rw cdid?                        string
+    |  +--rw telemetry* [tsid]
     |     +--rw tsid                         uint32
     |     +--rw (setup-type)?
     |        +--:(telemetry-config)
@@ -191,9 +191,9 @@ module: ietf-dots-telemetry
     |                 +--rw partial-request-ps?          uint64
     |                 +--rw partial-request-client-ps?   uint64
     +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid                             string
-          +--rw cdid?                            string
+       +--rw cuid                         string
+       +--rw cdid?                        string
+       +--rw pre-or-ongoing-mitigation* [tmid]
           +--rw tmid                             uint32
           +--rw target
           |  +--rw target-prefix*       inet:ip-prefix
