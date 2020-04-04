@@ -308,8 +308,8 @@ module: ietf-dots-telemetry
              |  +--rw peak-g?              yang:gauge64
              +--rw top-talker
                 +--rw talker* [source-prefix]
-                   +--rw spoofed-status?                 boolean
-                   +--rw source-prefix                   inet:ip-prefix
+                   +--rw spoofed-status?            boolean
+                   +--rw source-prefix              inet:ip-prefix
                    +--rw source-port-range* [lower-port]
                    |  +--rw lower-port    inet:port-number
                    |  +--rw upper-port?   inet:port-number
@@ -323,61 +323,28 @@ module: ietf-dots-telemetry
                    |  +--rw high-percentile-g?   yang:gauge64
                    |  +--rw peak-g?              yang:gauge64
                    +--rw total-attack-connection
-                   |  +--rw low-percentile-l* [protocol]
-                   |  |  +--rw protocol              uint8
-                   |  |  +--rw connection?           yang:gauge64
-                   |  |  +--rw embryonic?            yang:gauge64
-                   |  |  +--rw connection-ps?        yang:gauge64
-                   |  |  +--rw request-ps?           yang:gauge64
-                   |  |  +--rw partial-request-ps?   yang:gauge64
-                   |  +--rw mid-percentile-l* [protocol]
-                   |  |  +--rw protocol              uint8
-                   |  |  +--rw connection?           yang:gauge64
-                   |  |  +--rw embryonic?            yang:gauge64
-                   |  |  +--rw connection-ps?        yang:gauge64
-                   |  |  +--rw request-ps?           yang:gauge64
-                   |  |  +--rw partial-request-ps?   yang:gauge64
-                   |  +--rw high-percentile-l* [protocol]
-                   |  |  +--rw protocol              uint8
-                   |  |  +--rw connection?           yang:gauge64
-                   |  |  +--rw embryonic?            yang:gauge64
-                   |  |  +--rw connection-ps?        yang:gauge64
-                   |  |  +--rw request-ps?           yang:gauge64
-                   |  |  +--rw partial-request-ps?   yang:gauge64
-                   |  +--rw peak-l* [protocol]
-                   |     +--rw protocol              uint8
-                   |     +--rw connection?           yang:gauge64
-                   |     +--rw embryonic?            yang:gauge64
-                   |     +--rw connection-ps?        yang:gauge64
-                   |     +--rw request-ps?           yang:gauge64
-                   |     +--rw partial-request-ps?   yang:gauge64
-                   +--rw total-attack-connection-port
-                      +--rw low-percentile-l* [protocol port]
-                      |  +--rw port                  inet:port-number
+                      +--rw low-percentile-l* [protocol]
                       |  +--rw protocol              uint8
                       |  +--rw connection?           yang:gauge64
                       |  +--rw embryonic?            yang:gauge64
                       |  +--rw connection-ps?        yang:gauge64
                       |  +--rw request-ps?           yang:gauge64
                       |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw mid-percentile-l* [protocol port]
-                      |  +--rw port                  inet:port-number
+                      +--rw mid-percentile-l* [protocol]
                       |  +--rw protocol              uint8
                       |  +--rw connection?           yang:gauge64
                       |  +--rw embryonic?            yang:gauge64
                       |  +--rw connection-ps?        yang:gauge64
                       |  +--rw request-ps?           yang:gauge64
                       |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw high-percentile-l* [protocol port]
-                      |  +--rw port                  inet:port-number
+                      +--rw high-percentile-l* [protocol]
                       |  +--rw protocol              uint8
                       |  +--rw connection?           yang:gauge64
                       |  +--rw embryonic?            yang:gauge64
                       |  +--rw connection-ps?        yang:gauge64
                       |  +--rw request-ps?           yang:gauge64
                       |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw peak-l* [protocol port]
-                         +--rw port                  inet:port-number
+                      +--rw peak-l* [protocol]
                          +--rw protocol              uint8
                          +--rw connection?           yang:gauge64
                          +--rw embryonic?            yang:gauge64
