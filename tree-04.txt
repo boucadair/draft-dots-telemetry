@@ -218,6 +218,13 @@ module: ietf-dots-telemetry
           |  +--rw mid-percentile-g?    yang:gauge64
           |  +--rw high-percentile-g?   yang:gauge64
           |  +--rw peak-g?              yang:gauge64
+          +--rw total-traffic-port* [unit port]
+          |  +--rw port                 inet:port-number
+          |  +--rw unit                 unit
+          |  +--rw low-percentile-g?    yang:gauge64
+          |  +--rw mid-percentile-g?    yang:gauge64
+          |  +--rw high-percentile-g?   yang:gauge64
+          |  +--rw peak-g?              yang:gauge64
           +--rw total-attack-traffic* [unit]
           |  +--rw protocol?            uint8
           |  +--rw unit                 unit
@@ -227,6 +234,13 @@ module: ietf-dots-telemetry
           |  +--rw peak-g?              yang:gauge64
           +--rw total-attack-traffic-protocol* [unit protocol]
           |  +--rw protocol             uint8
+          |  +--rw unit                 unit
+          |  +--rw low-percentile-g?    yang:gauge64
+          |  +--rw mid-percentile-g?    yang:gauge64
+          |  +--rw high-percentile-g?   yang:gauge64
+          |  +--rw peak-g?              yang:gauge64
+          +--rw total-attack-traffic-port* [unit port]
+          |  +--rw port                 inet:port-number
           |  +--rw unit                 unit
           |  +--rw low-percentile-g?    yang:gauge64
           |  +--rw mid-percentile-g?    yang:gauge64
