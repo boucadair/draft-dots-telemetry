@@ -133,7 +133,7 @@ Internet-Draft               DOTS Telemetry                    June 2020
    11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  95
      11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  95
      11.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . .  99
-     11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . .  99
+     11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 100
    12. Security Considerations . . . . . . . . . . . . . . . . . . . 100
      12.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 100
      12.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 101
@@ -4930,7 +4930,7 @@ Boucadair, et al.       Expires December 27, 2020              [Page 88]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
-      "RFC 8783: Distributed Denial-of-Service Open Threat
+      "RFC DDDD: Distributed Denial-of-Service Open Threat
                  Signaling (DOTS) Data Channel Specification";
   }
 
@@ -4943,8 +4943,8 @@ Internet-Draft               DOTS Telemetry                    June 2020
      Author:  Mohamed Boucadair
               <mailto:mohamed.boucadair@orange.com>
 
-     Author:  Jon Shallow
-              <mailto:supjps-ietf@jpshallow.com>";
+     Author:  Konda, Tirumaleswar Reddy
+              <mailto:TirumaleswarReddy_Konda@McAfee.com>";
   description
     "This module contains YANG definitions for the sharing
      DDoS attack mapping details between a DOTS client and
@@ -4987,12 +4987,12 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
 
     description
-      "A set of information used for sharing vendor attack mapping
+      "A set of information used fro sharing vendor attack mapping
        information with a peer.";
     list vendor {
       key "vendor-id";
       description
-        "Vendor attack mapping information of the client/server";
+        "Vendor attack mapping information of the client.";
       leaf vendor-id {
         type uint32;
         description
@@ -5021,19 +5021,19 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
   augment "/ietf-data:dots-data/ietf-data:dots-client" {
     if-feature "dots-telemetry";
+    description
+      "Extends DOTS data channel with a list of vendor
+       attack mappings bound to a DOTS client.";
     container vendor-mapping {
       description
-        "Clients use this feature to share their vendor
-         attack mapping information with DOTS servers.";
+        "Clients use this feature to share their vandor
+         attack mapping information.";
       uses attack-mapping;
     }
   }
 
   augment "/ietf-data:dots-data/ietf-data:capabilities" {
     if-feature "dots-telemetry";
-    leaf vendor-mapping-enabled {
-      type boolean;
-      config false;
 
 
 
@@ -5042,19 +5042,27 @@ Boucadair, et al.       Expires December 27, 2020              [Page 90]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+    description
+      "Extends DOTS server's capabilities with an indication
+       about the support of attack vendor mapping sharing.";
+    leaf vendor-mapping-enabled {
+      type boolean;
+      config false;
       description
-        "Indicates that the server supports sharing
-         attack vendor mapping details with DOTS clients.";
+        "Support of sharing of attack vendor mapping.";
     }
   }
 
   augment "/ietf-data:dots-data" {
     if-feature "dots-telemetry";
+    description
+      "Augments the DOTS server capabilities with a vendor
+       attack mapping list.";
     container vendor-mapping {
       config false;
       description
-        "Includes the list of vendor attack mapping details
-         that will be shared upon request with DOTS clients.";
+        "A list of attack mapping list as supported by
+         the server.";
       uses attack-mapping;
     }
   }
@@ -5082,14 +5090,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    |                      |             |      |  [-2, integer]| String |
    | high-percentile      | decimal64   |TBA5  | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | unit-config          | list        |TBA6  | 4 array       | Array  |
-   | unit                 | enumeration |TBA7  | 0 unsigned    | String |
-   | unit-status          | boolean     |TBA8  | 7 bits 20     | False  |
-   |                      |             |      | 7 bits 21     | True   |
-   | total-pipe-capability| list        |TBA9  | 4 array       | Array  |
-   | link-id              | string      |TBA10 | 3 text string | String |
-   | pre-or-ongoing-      | list        |TBA11 | 4 array       | Array  |
-   |      mitigation      |             |      |               |        |
 
 
 
@@ -5098,6 +5098,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 91]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | unit-config          | list        |TBA6  | 4 array       | Array  |
+   | unit                 | enumeration |TBA7  | 0 unsigned    | String |
+   | unit-status          | boolean     |TBA8  | 7 bits 20     | False  |
+   |                      |             |      | 7 bits 21     | True   |
+   | total-pipe-capability| list        |TBA9  | 4 array       | Array  |
+   | link-id              | string      |TBA10 | 3 text string | String |
+   | pre-or-ongoing-      | list        |TBA11 | 4 array       | Array  |
+   |      mitigation      |             |      |               |        |
    | total-traffic-normal | list        |TBA12 | 4 array       | Array  |
    | low-percentile-g     | yang:gauge64|TBA13 | 0 unsigned    | String |
    | mid-percentile-g     | yang:gauge64|TBA14 | 0 unsigned    | String |
@@ -5138,14 +5146,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | low-percentile-c     | container   |TBA45 | 5 map         | Object |
    | mid-percentile-c     | container   |TBA46 | 5 map         | Object |
    | high-percentile-c    | container   |TBA47 | 5 map         | Object |
-   | peak-c               | container   |TBA48 | 5 map         | Object |
-   | baseline             | container   |TBA49 | 5 map         | Object |
-   | current-config       | container   |TBA50 | 5 map         | Object |
-   | max-config-values    | container   |TBA51 | 5 map         | Object |
-   | min-config-values    | container   |TBA52 | 5 map         | Object |
-   | supported-units      | container   |TBA53 | 5 map         | Object |
-   | server-originated-   | boolean     |TBA54 | 7 bits 20     | False  |
-   |          telemetry   |             |      | 7 bits 21     | True   |
 
 
 
@@ -5154,6 +5154,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 92]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | peak-c               | container   |TBA48 | 5 map         | Object |
+   | baseline             | container   |TBA49 | 5 map         | Object |
+   | current-config       | container   |TBA50 | 5 map         | Object |
+   | max-config-values    | container   |TBA51 | 5 map         | Object |
+   | min-config-values    | container   |TBA52 | 5 map         | Object |
+   | supported-units      | container   |TBA53 | 5 map         | Object |
+   | server-originated-   | boolean     |TBA54 | 7 bits 20     | False  |
+   |          telemetry   |             |      | 7 bits 21     | True   |
    | telemetry-notify-    | uint32      |TBA55 | 0 unsigned    | Number |
    |           interval   |             |      |               |        |
    | tmid                 | uint32      |TBA56 | 0 unsigned    | Number |
@@ -5194,14 +5202,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | vendor-id            | uint32      |TBA79 | 0 unsigned    | Number |
    | ietf-dots-telemetry: |             |      |               |        |
    |      telemetry-setup | container   |TBA80 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   total-traffic      | list        |TBA81 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |             unit     | enumeration |TBA82 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   low-percentile-g   | yang:gauge64|TBA83 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   mid-percentile-g   | yang:gauge64|TBA84 | 0 unsigned    | String |
 
 
 
@@ -5210,6 +5210,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 93]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   total-traffic      | list        |TBA81 | 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |             unit     | enumeration |TBA82 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   low-percentile-g   | yang:gauge64|TBA83 | 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |   mid-percentile-g   | yang:gauge64|TBA84 | 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
    |   high-percentile-g  | yang:gauge64|TBA85 | 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
@@ -5250,14 +5258,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | ietf-dots-telemetry: |             |      |               |        |
    |     start-time       | uint64      |TBA103| 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
-   |      end-time        | uint64      |TBA104| 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     source-count     | container   |TBA105| 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     top-talker       | container   |TBA106| 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |    spoofed-status    | boolean     |TBA107| 7 bits 20     | False  |
-   |                      |             |      | 7 bits 21     | True   |
 
 
 
@@ -5266,6 +5266,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 94]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   |      end-time        | uint64      |TBA104| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     source-count     | container   |TBA105| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |     top-talker       | container   |TBA106| 5 map         | Object |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |    spoofed-status    | boolean     |TBA107| 7 bits 20     | False  |
+   |                      |             |      | 7 bits 21     | True   |
    | ietf-dots-telemetry: |             |      |               |        |
    |     talker           | list        |TBA108| 4 array       | Array  |
    | ietf-dots-telemetry: | inet:       |TBA109| 3 text string | String |
@@ -5306,14 +5314,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
    +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
-   |                      | Key   | Major | Controller | Document(s)   |
-   |                      | Value | Type  |            |               |
-   +======================+=======+=======+============+===============+
-   | tsid                 | TBA1  |   0   |    IESG    |   [RFCXXXX]   |
-   | telemetry            | TBA2  |   5   |    IESG    |   [RFCXXXX]   |
-   | low-percentile       | TBA3  | 6tag4 |    IESG    |   [RFCXXXX]   |
-   | mid-percentile       | TBA4  | 6tag4 |    IESG    |   [RFCXXXX]   |
-   | high-percentile      | TBA5  | 6tag4 |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -5322,6 +5322,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 95]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   |                      | Key   | Major | Controller | Document(s)   |
+   |                      | Value | Type  |            |               |
+   +======================+=======+=======+============+===============+
+   | tsid                 | TBA1  |   0   |    IESG    |   [RFCXXXX]   |
+   | telemetry            | TBA2  |   5   |    IESG    |   [RFCXXXX]   |
+   | low-percentile       | TBA3  | 6tag4 |    IESG    |   [RFCXXXX]   |
+   | mid-percentile       | TBA4  | 6tag4 |    IESG    |   [RFCXXXX]   |
+   | high-percentile      | TBA5  | 6tag4 |    IESG    |   [RFCXXXX]   |
    | unit-config          | TBA6  |   4   |    IESG    |   [RFCXXXX]   |
    | unit                 | TBA7  |   0   |    IESG    |   [RFCXXXX]   |
    | unit-status          | TBA8  |   7   |    IESG    |   [RFCXXXX]   |
@@ -5362,14 +5370,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | attack-severity      | TBA39 |   0   |    IESG    |   [RFCXXXX]   |
    | start-time           | TBA40 |   0   |    IESG    |   [RFCXXXX]   |
    | end-time             | TBA41 |   0   |    IESG    |   [RFCXXXX]   |
-   | source-count         | TBA42 |   5   |    IESG    |   [RFCXXXX]   |
-   | top-talker           | TBA43 |   5   |    IESG    |   [RFCXXXX]   |
-   | spoofed-status       | TBA44 |   7   |    IESG    |   [RFCXXXX]   |
-   | low-percentile-c     | TBA45 |   5   |    IESG    |   [RFCXXXX]   |
-   | mid-percentile-c     | TBA46 |   5   |    IESG    |   [RFCXXXX]   |
-   | high-percentile-c    | TBA47 |   5   |    IESG    |   [RFCXXXX]   |
-   | peak-c               | TBA48 |   5   |    IESG    |   [RFCXXXX]   |
-   | ietf-dots-signal-cha | TBA49 |   5   |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -5378,6 +5378,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 96]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | source-count         | TBA42 |   5   |    IESG    |   [RFCXXXX]   |
+   | top-talker           | TBA43 |   5   |    IESG    |   [RFCXXXX]   |
+   | spoofed-status       | TBA44 |   7   |    IESG    |   [RFCXXXX]   |
+   | low-percentile-c     | TBA45 |   5   |    IESG    |   [RFCXXXX]   |
+   | mid-percentile-c     | TBA46 |   5   |    IESG    |   [RFCXXXX]   |
+   | high-percentile-c    | TBA47 |   5   |    IESG    |   [RFCXXXX]   |
+   | peak-c               | TBA48 |   5   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-signal-cha | TBA49 |   5   |    IESG    |   [RFCXXXX]   |
    | current-config       | TBA50 |   5   |    IESG    |   [RFCXXXX]   |
    | max-config-value     | TBA51 |   5   |    IESG    |   [RFCXXXX]   |
    | min-config-values    | TBA52 |   5   |    IESG    |   [RFCXXXX]   |
@@ -5418,14 +5426,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | port                 | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
    | query-type           | TBA78 |   4   |    IESG    |   [RFCXXXX]   |
    | vendor-id            | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
-   | ietf-dots-telemetry: | TBA80 |   5   |    IESG    |   [RFCXXXX]   |
-   |   telemetry-setup    |       |       |            |               |
-   | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
-   |   total-traffic      |       |       |            |               |
-   | ietf-dots-telemetry: | TBA82 |   0   |    IESG    |   [RFCXXXX]   |
-   |    unit              |       |       |            |               |
-   | ietf-dots-telemetry: | TBA83 |   0   |    IESG    |   [RFCXXXX]   |
-   |   low-percentile-g   |       |       |            |               |
 
 
 
@@ -5434,6 +5434,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 97]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | ietf-dots-telemetry: | TBA80 |   5   |    IESG    |   [RFCXXXX]   |
+   |   telemetry-setup    |       |       |            |               |
+   | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
+   |   total-traffic      |       |       |            |               |
+   | ietf-dots-telemetry: | TBA82 |   0   |    IESG    |   [RFCXXXX]   |
+   |    unit              |       |       |            |               |
+   | ietf-dots-telemetry: | TBA83 |   0   |    IESG    |   [RFCXXXX]   |
+   |   low-percentile-g   |       |       |            |               |
    | ietf-dots-telemetry: | TBA84 |   0   |    IESG    |   [RFCXXXX]   |
    |   mid-percentile-g   |       |       |            |               |
    | ietf-dots-telemetry: | TBA85 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5474,14 +5482,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | ietf-dots-telemetry: | TBA102|   0   |    IESG    |   [RFCXXXX]   |
    |    attack-severity   |       |       |            |               |
    | ietf-dots-telemetry: | TBA103|   0   |    IESG    |   [RFCXXXX]   |
-   |     start-time       |       |       |            |               |
-   | ietf-dots-telemetry: | TBA104|   0   |    IESG    |   [RFCXXXX]   |
-   |      end-time        |       |       |            |               |
-   | ietf-dots-telemetry: | TBA105|   0   |    IESG    |   [RFCXXXX]   |
-   |    source-count      |       |       |            |               |
-   | ietf-dots-telemetry: | TBA106|   0   |    IESG    |   [RFCXXXX]   |
-   |     top-talker       |       |       |            |               |
-   | ietf-dots-telemetry: | TBA107|   0   |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -5490,6 +5490,14 @@ Boucadair, et al.       Expires December 27, 2020              [Page 98]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   |     start-time       |       |       |            |               |
+   | ietf-dots-telemetry: | TBA104|   0   |    IESG    |   [RFCXXXX]   |
+   |      end-time        |       |       |            |               |
+   | ietf-dots-telemetry: | TBA105|   0   |    IESG    |   [RFCXXXX]   |
+   |    source-count      |       |       |            |               |
+   | ietf-dots-telemetry: | TBA106|   0   |    IESG    |   [RFCXXXX]   |
+   |     top-talker       |       |       |            |               |
+   | ietf-dots-telemetry: | TBA107|   0   |    IESG    |   [RFCXXXX]   |
    |     spoofed-status   |       |       |            |               |
    | ietf-dots-telemetry: | TBA108|   0   |    IESG    |   [RFCXXXX]   |
    |    talker            |       |       |            |               |
@@ -5526,6 +5534,18 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
    +------+-------------------+------------------------+-------------+
 
+
+
+
+
+
+
+
+Boucadair, et al.       Expires December 27, 2020              [Page 99]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
 11.3.  DOTS Signal Telemetry YANG Module
 
    This document requests IANA to register the following URIs in the
@@ -5538,13 +5558,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
             URI: urn:ietf:params:xml:ns:yang:ietf-dots-mapping
             Registrant Contact: The IESG.
             XML: N/A; the requested URI is an XML namespace.
-
-
-
-Boucadair, et al.       Expires December 27, 2020              [Page 99]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
    This document requests IANA to register the following YANG modules in
    the "YANG Module Names" subregistry [RFC7950] within the "YANG
@@ -5581,6 +5594,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    DOTS clients may be co-located on network security services (e.g.,
    firewall) and a compromised security service potentially can do a lot
    more damage to the network.  This assumption differs from the often
+
+
+
+Boucadair, et al.       Expires December 27, 2020             [Page 100]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    held view that devices are untrusted, often referred to as the "zero-
    trust model".  A compromised DOTS client can send fake DOTS telemetry
    data to a DOTS server to mislead the DOTS server.  This attack can be
@@ -5592,15 +5613,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    for any target resource in the network).  As a reminder, this is
    variation of dealing with compromised DOTS clients as discussed in
    Section 10 of [RFC8782].
-
-
-
-
-
-Boucadair, et al.       Expires December 27, 2020             [Page 100]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
    DOTS servers must be capable of defending themselves against DoS
    attacks from compromised DOTS clients.  The following non-
@@ -5638,6 +5650,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    a DOTS client is technically capable of undertaking various attacks,
    such as:
 
+
+
+
+Boucadair, et al.       Expires December 27, 2020             [Page 101]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    o  Communicating invalid attack mapping details to the server
       ('/ietf-data:dots-data/ietf-data:dots-client/dots-
       telemetry:vendor-mapping'), which will mislead the server when
@@ -5647,16 +5667,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    Section 9.2 may be considered sensitive.  It is thus important to
    control read access to these data nodes.  These are the data nodes
    and their sensitivity:
-
-
-
-
-
-
-Boucadair, et al.       Expires December 27, 2020             [Page 101]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
    o  '/ietf-data:dots-data/ietf-data:dots-client/dots-telemetry:vendor-
       mapping' can be misused to infer the DDoS protection technology
@@ -5695,16 +5705,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
               "Private Enterprise Numbers", May 2020,
               <http://www.iana.org/assignments/enterprise-numbers.html>.
 
-   [I-D.ietf-dots-signal-call-home]
-              Reddy.K, T., Boucadair, M., and J. Shallow, "Distributed
-              Denial-of-Service Open Threat Signaling (DOTS) Signal
-              Channel Call Home", draft-ietf-dots-signal-call-home-08
-              (work in progress), March 2020.
-
-
-
-
-
 
 
 
@@ -5713,6 +5713,12 @@ Boucadair, et al.       Expires December 27, 2020             [Page 102]
 
 Internet-Draft               DOTS Telemetry                    June 2020
 
+
+   [I-D.ietf-dots-signal-call-home]
+              Reddy.K, T., Boucadair, M., and J. Shallow, "Distributed
+              Denial-of-Service Open Threat Signaling (DOTS) Signal
+              Channel Call Home", draft-ietf-dots-signal-call-home-08
+              (work in progress), March 2020.
 
    [I-D.ietf-dots-signal-filter-control]
               Nishizuka, K., Boucadair, M., Reddy.K, T., and T. Nagata,
@@ -5756,12 +5762,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
               Format Version 2", RFC 7970, DOI 10.17487/RFC7970,
               November 2016, <https://www.rfc-editor.org/info/rfc7970>.
 
-   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
-              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
-              <https://www.rfc-editor.org/info/rfc8040>.
-
-
-
 
 
 
@@ -5769,6 +5769,10 @@ Boucadair, et al.       Expires December 27, 2020             [Page 103]
 
 Internet-Draft               DOTS Telemetry                    June 2020
 
+
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/info/rfc8040>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -5813,10 +5817,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
               Deployment Considerations for Distributed-Denial-of-
               Service Open Threat Signaling (DOTS)", draft-ietf-dots-
               multihoming-04 (work in progress), May 2020.
-
-
-
-
 
 
 
