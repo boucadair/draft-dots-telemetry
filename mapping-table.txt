@@ -110,80 +110,10 @@
    | ietf-dots-telemetry: |             |      |               |        |
    |   total-traffic      | list        |32881 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
-   |             unit     | enumeration |32882 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   low-percentile-g   | yang:gauge64|32883 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   mid-percentile-g   | yang:gauge64|32884 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   high-percentile-g  | yang:gauge64|32885 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |      peak-g          | yang:gauge64|32886 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   | total-attack-traffic | list        |32887 | 4 array       | Array  |
+   | total-attack-traffic | list        |32882 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
    |    total-attack-     |             |      |               |        |
-   |        connection    | container   |32888 | 5 map         | Object |
+   |        connection    | container   |32883 | 5 map         | Object |
    | ietf-dots-telemetry: |             |      |               |        |
-   |    low-percentile-c  | container   |32889 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |    mid-percentile-c  | container   |32890 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   high-percentile-c  | container   |32891 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |          peak-c      | container   |32892 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |       connection     | uint64      |32893 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |      embryonic       | uint64      |32894 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     connection-ps    | uint64      |32895 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     request-ps       | uint64      |32896 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   partial-request-ps | uint64      |32897 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |    attack-detail     | list        |32898 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |        id            | uint32      |32899 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |      attack-id       | uint32      |32900 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     attack-name      | string      |32901 | 3 text string | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |    attack-severity   | enumeration |32902 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     start-time       | uint64      |32903| 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |      end-time        | uint64      |32904 | 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     source-count     | container   |32905 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     top-talker       | container   |32906 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |    spoofed-status    | boolean     |32907 | 7 bits 20     | False  |
-   |                      |             |      | 7 bits 21     | True   |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |     talker           | list        |32908 | 4 array       | Array  |
-   | ietf-dots-telemetry: | inet:       |32909 | 3 text string | String |
-   |    source-prefix     |   ip-prefix |      |               |        |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   source-port-range  | list        |32910 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |    lower-port        | inet:       |      |               |        |
-   |                      |  port-number|32911 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |    upper-port        | inet:       |      |               |        |
-   |                      |  port-number|32912 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   source-icmp-type-  | list        |32913 | 4 array       | Array  |
-   |    range             |             |      |               |        |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   lower-type         | uint8       |32914 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |   upper-type         | uint8       |32915 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |          telemetry   | container   |32916 | 5 map         | Object |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |        vendor-id     | uint32      |32917 | 0 unsigned    | Number |
+   |    attack-detail     | list        |32884 | 4 array       | Array  |
    +----------------------+-------------+------+---------------+--------+ 
