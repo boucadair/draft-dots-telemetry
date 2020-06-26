@@ -2466,6 +2466,27 @@ Boucadair, et al.       Expires December 28, 2020              [Page 44]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   Multiple mappings for different vendor identifiers may be used; the
+   DOTS agent transmitting telemetry information can elect to use one or
+   more vendor mappings even in the same telemetry message.
+
+      Note: It is possible that a DOTS server is making use of multiple
+      DOTS mitigators; each from a different vendor.  How telemetry
+      information and vendor mappings are exchanged between DOTS servers
+      and DOTS mitigators is outside the scope of this document.
+
+   DOTS clients and servers may be provided with mappings from different
+   vendors and so have their own different sets of vendor attack
+   mappings.  A DOTS agent MUST accept receipt of telemetry data with a
+   vendor identifier that is different to the one it uses to transmit
+   telemetry data.  Furthermore, it is possible that the DOTS client and
+   DOTS server are provided by the same vendor, but the vendor mapping
+   tables are at different revisions.  The DOTS client SHOULD transmit
+   telemetry information using the vendor mapping(s) that it provided to
+   the DOTS server and the DOTS server SHOULD use the vendor mappings(s)
+   provided to the DOTS client when transmitting telemetry data to peer
+   DOTS agent.
+
    The "ietf-dots-mapping" YANG module defined in Section 9.2) augments
    the "ietf-dots-data-channel".  The tree structure of this module is
    shown in Figure 30.
@@ -2494,6 +2515,13 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
               Figure 30: Vendor Attack Mapping Tree Structure
 
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 45]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    A DOTS client sends a GET request to retrieve the capabilities
    supported by a DOTS server as per Section 7.1 of [RFC8783].  This
    request is meant to assess whether vendor attack mapping details
@@ -2514,14 +2542,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
    A DOTS client MAY retrieve only the list of vendors supported by the
    DOTS server.  It does so by setting the "depth" parameter
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 45]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    (Section 4.8.2 of [RFC8040]) to "3" in the GET request as shown in
    Figure 32.  An example of a response body received from the DOTS
    server as a response to such request is illustrated in Figure 33.
@@ -2550,26 +2570,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    The DOTS client reiterates the above procedure regularly (e.g., once
    a week) to update the DOTS server's vendor attack mapping details.
 
-   If the DOTS client concludes that the DOTS server does not have any
-   reference to the specific vendor attack mapping details, the DOTS
-   client uses a POST request to install its vendor attack mapping
-   details.  An example of such POST request is depicted in Figure 34.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2577,6 +2577,11 @@ Boucadair, et al.       Expires December 28, 2020              [Page 46]
 
 Internet-Draft               DOTS Telemetry                    June 2020
 
+
+   If the DOTS client concludes that the DOTS server does not have any
+   reference to the specific vendor attack mapping details, the DOTS
+   client uses a POST request to install its vendor attack mapping
+   details.  An example of such POST request is depicted in Figure 34.
 
    POST /restconf/data/ietf-dots-data-channel:dots-data\
         /dots-client=dz6pHjaADkaFTbjr0JGBpw HTTP/1.1
@@ -2620,12 +2625,7 @@ Internet-Draft               DOTS Telemetry                    June 2020
    DOTS server does not maintain a 'cdid' for this 'cuid' while a 'cdid'
    is expected to be supplied, the DOTS server MUST reply with "403
    Forbidden" status-line and the error-tag "access-denied".  Upon
-   receipt of this message, the DOTS client MUST register (Section 5.1
-   of [RFC8783]).
 
-   The DOTS client uses the PUT request to modify its vendor attack
-   mapping details maintained by the DOTS server (e.g., add a new
-   mapping).
 
 
 
@@ -2633,6 +2633,13 @@ Boucadair, et al.       Expires December 28, 2020              [Page 47]
 
 Internet-Draft               DOTS Telemetry                    June 2020
 
+
+   receipt of this message, the DOTS client MUST register (Section 5.1
+   of [RFC8783]).
+
+   The DOTS client uses the PUT request to modify its vendor attack
+   mapping details maintained by the DOTS server (e.g., add a new
+   mapping).
 
    A DOTS client uses a GET request to retrieve its vendor attack
    mapping details as maintained by the DOTS server (Figure 35).
@@ -2656,13 +2663,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    DOTS clients uses PUT request to signal pre-or-ongoing-mitigation
    telemetry to DOTS servers.  An example of such request is shown in
    Figure 36.
-
-
-
-
-
-
-
 
 
 

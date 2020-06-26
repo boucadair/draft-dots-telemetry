@@ -2029,10 +2029,35 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           details (that is, {vendor identifier, attack identifier} ==&gt;
           attack description). As such, DOTS agents do not have to convey
           systematically an attack description in their telemetry messages
-          over the DOTS signal channel. The "ietf-dots-mapping" YANG module
-          defined in <xref target="data"></xref>) augments the
-          "ietf-dots-data-channel". The tree structure of this module is shown
-          in <xref target="abstract-data"></xref>.</t>
+          over the DOTS signal channel. </t>
+
+          <t>Multiple mappings for different vendor identifiers may be used;
+          the DOTS agent transmitting telemetry information can elect to use
+          one or more vendor mappings even in the same telemetry message.<list
+              style="empty">
+              <t>Note: It is possible that a DOTS server is making use of
+              multiple DOTS mitigators; each from a different vendor. How
+              telemetry information and vendor mappings are exchanged between
+              DOTS servers and DOTS mitigators is outside the scope of this
+              document.</t>
+            </list></t>
+
+          <t>DOTS clients and servers may be provided with mappings from
+          different vendors and so have their own different sets of vendor
+          attack mappings. A DOTS agent MUST accept receipt of telemetry data
+          with a vendor identifier that is different to the one it uses to
+          transmit telemetry data. Furthermore, it is possible that the DOTS
+          client and DOTS server are provided by the same vendor, but the
+          vendor mapping tables are at different revisions. The DOTS client
+          SHOULD transmit telemetry information using the vendor mapping(s)
+          that it provided to the DOTS server and the DOTS server SHOULD use
+          the vendor mappings(s) provided to the DOTS client when transmitting
+          telemetry data to peer DOTS agent.</t>
+
+          <t>The "ietf-dots-mapping" YANG module defined in <xref
+          target="data"></xref>) augments the "ietf-dots-data-channel". The
+          tree structure of this module is shown in <xref
+          target="abstract-data"></xref>.</t>
 
           <t><figure anchor="abstract-data"
               title="Vendor Attack Mapping Tree Structure">
