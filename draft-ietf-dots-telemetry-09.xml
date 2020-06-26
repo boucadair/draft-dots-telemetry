@@ -2188,8 +2188,8 @@ Accept: application/yang-data+json]]></artwork>
           format="counter" target="preStoC"></xref>, and <xref
           format="counter" target="status"></xref>), DOTS agents MUST NOT
           include 'attack-description' attribute except if the corresponding
-          attack mapping details were not shared with the peer DOTS agent
-          (e.g., a DOTS server detects a new attack type).</t>
+          attack mapping details were not shared with the peer DOTS agent.
+          </t>
         </section>
       </section>
 
@@ -4109,7 +4109,7 @@ module ietf-dots-mapping {
   import ietf-dots-data-channel {
     prefix ietf-data;
     reference
-      "RFC DDDD: Distributed Denial-of-Service Open Threat
+      "RFC 8783: Distributed Denial-of-Service Open Threat
                  Signaling (DOTS) Data Channel Specification";
   }
 
@@ -4122,8 +4122,8 @@ module ietf-dots-mapping {
      Author:  Mohamed Boucadair
               <mailto:mohamed.boucadair@orange.com>
 
-     Author:  Konda, Tirumaleswar Reddy
-              <mailto:TirumaleswarReddy_Konda@McAfee.com>";
+     Author:  Jon Shallow
+              <mailto:supjps-ietf@jpshallow.com>";
   description
     "This module contains YANG definitions for the sharing
      DDoS attack mapping details between a DOTS client and
@@ -4158,12 +4158,12 @@ module ietf-dots-mapping {
 
   grouping attack-mapping {
     description
-      "A set of information used fro sharing vendor attack mapping
+      "A set of information used for sharing vendor attack mapping
        information with a peer.";
     list vendor {
       key "vendor-id";
       description
-        "Vendor attack mapping information of the client.";
+        "Vendor attack mapping information of the client/server";
       leaf vendor-id {
         type uint32;
         description
@@ -4193,12 +4193,12 @@ module ietf-dots-mapping {
   augment "/ietf-data:dots-data/ietf-data:dots-client" {
     if-feature "dots-telemetry";
     description
-      "Extends DOTS data channel with a list of vendor 
-       attack mappings bound to a DOTS client.";
+      "Augments the data channel with a vendor attack
+       mapping table of the DOTS client.";
     container vendor-mapping {
       description
-        "Clients use this feature to share their vandor
-         attack mapping information.";
+        "Used by DOTS clients to share their vendor
+         attack mapping information with DOTS servers.";
       uses attack-mapping;
     }
   }
@@ -4206,26 +4206,28 @@ module ietf-dots-mapping {
   augment "/ietf-data:dots-data/ietf-data:capabilities" {
     if-feature "dots-telemetry";
     description
-      "Extends DOTS server's capabilities with an indication 
-       about the support of attack vendor mapping sharing.";
+      "Augments the DOTS server capabilities with a 
+       paramter to indicate whether they can share
+       attack mapping details.";
     leaf vendor-mapping-enabled {
       type boolean;
       config false;
       description
-        "Support of sharing of attack vendor mapping.";
+        "Indicates that the server supports sharing 
+         attack vendor mapping details with DOTS clients.";
     }
   }
 
   augment "/ietf-data:dots-data" {
     if-feature "dots-telemetry";
     description
-      "Augments the DOTS server capabilities with a vendor
-       attack mapping list.";
+      "Augments the data channel with a vendor attack
+       mapping table of the DOTS server.";
     container vendor-mapping {
       config false;
       description
-        "A list of attack mapping list as supported by
-         the server.";
+        "Includes the list of vendor attack mapping details
+         that will be shared upon request with DOTS clients.";
       uses attack-mapping;
     }
   }

@@ -2649,14 +2649,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    When conveying attack details in DOTS telemetry messages (Sections
    7.2, 7.3, and 8), DOTS agents MUST NOT include 'attack-description'
    attribute except if the corresponding attack mapping details were not
-   shared with the peer DOTS agent (e.g., a DOTS server detects a new
-   attack type).
+   shared with the peer DOTS agent.
 
 7.2.  From DOTS Clients to DOTS Servers
 
    DOTS clients uses PUT request to signal pre-or-ongoing-mitigation
    telemetry to DOTS servers.  An example of such request is shown in
    Figure 36.
+
 
 
 
@@ -4930,7 +4930,7 @@ Boucadair, et al.       Expires December 28, 2020              [Page 88]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
-      "RFC DDDD: Distributed Denial-of-Service Open Threat
+      "RFC 8783: Distributed Denial-of-Service Open Threat
                  Signaling (DOTS) Data Channel Specification";
   }
 
@@ -4943,8 +4943,8 @@ Internet-Draft               DOTS Telemetry                    June 2020
      Author:  Mohamed Boucadair
               <mailto:mohamed.boucadair@orange.com>
 
-     Author:  Konda, Tirumaleswar Reddy
-              <mailto:TirumaleswarReddy_Konda@McAfee.com>";
+     Author:  Jon Shallow
+              <mailto:supjps-ietf@jpshallow.com>";
   description
     "This module contains YANG definitions for the sharing
      DDoS attack mapping details between a DOTS client and
@@ -4987,12 +4987,12 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
 
     description
-      "A set of information used fro sharing vendor attack mapping
+      "A set of information used for sharing vendor attack mapping
        information with a peer.";
     list vendor {
       key "vendor-id";
       description
-        "Vendor attack mapping information of the client.";
+        "Vendor attack mapping information of the client/server";
       leaf vendor-id {
         type uint32;
         description
@@ -5022,12 +5022,12 @@ Internet-Draft               DOTS Telemetry                    June 2020
   augment "/ietf-data:dots-data/ietf-data:dots-client" {
     if-feature "dots-telemetry";
     description
-      "Extends DOTS data channel with a list of vendor
-       attack mappings bound to a DOTS client.";
+      "Augments the data channel with a vendor attack
+       mapping table of the DOTS client.";
     container vendor-mapping {
       description
-        "Clients use this feature to share their vandor
-         attack mapping information.";
+        "Used by DOTS clients to share their vendor
+         attack mapping information with DOTS servers.";
       uses attack-mapping;
     }
   }
@@ -5043,26 +5043,28 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
 
     description
-      "Extends DOTS server's capabilities with an indication
-       about the support of attack vendor mapping sharing.";
+      "Augments the DOTS server capabilities with a
+       paramter to indicate whether they can share
+       attack mapping details.";
     leaf vendor-mapping-enabled {
       type boolean;
       config false;
       description
-        "Support of sharing of attack vendor mapping.";
+        "Indicates that the server supports sharing
+         attack vendor mapping details with DOTS clients.";
     }
   }
 
   augment "/ietf-data:dots-data" {
     if-feature "dots-telemetry";
     description
-      "Augments the DOTS server capabilities with a vendor
-       attack mapping list.";
+      "Augments the data channel with a vendor attack
+       mapping table of the DOTS server.";
     container vendor-mapping {
       config false;
       description
-        "A list of attack mapping list as supported by
-         the server.";
+        "Includes the list of vendor attack mapping details
+         that will be shared upon request with DOTS clients.";
       uses attack-mapping;
     }
   }
@@ -5088,8 +5090,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    |                      |             |      |  [-2, integer]| String |
    | mid-percentile       | decimal64   |TBA4  | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-   | high-percentile      | decimal64   |TBA5  | 6 tag 4       |        |
-   |                      |             |      |  [-2, integer]| String |
 
 
 
@@ -5098,6 +5098,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 91]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | high-percentile      | decimal64   |TBA5  | 6 tag 4       |        |
+   |                      |             |      |  [-2, integer]| String |
    | unit-config          | list        |TBA6  | 4 array       | Array  |
    | unit                 | enumeration |TBA7  | 0 unsigned    | String |
    | unit-status          | boolean     |TBA8  | 7 bits 20     | False  |
@@ -5144,8 +5146,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | spoofed-status       | boolean     |TBA44 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
    | low-percentile-c     | container   |TBA45 | 5 map         | Object |
-   | mid-percentile-c     | container   |TBA46 | 5 map         | Object |
-   | high-percentile-c    | container   |TBA47 | 5 map         | Object |
 
 
 
@@ -5154,6 +5154,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 92]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | mid-percentile-c     | container   |TBA46 | 5 map         | Object |
+   | high-percentile-c    | container   |TBA47 | 5 map         | Object |
    | peak-c               | container   |TBA48 | 5 map         | Object |
    | baseline             | container   |TBA49 | 5 map         | Object |
    | current-config       | container   |TBA50 | 5 map         | Object |
@@ -5200,8 +5202,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | query-type           | leaf-list   |TBA78 | 4 array       | Array  |
    |                      |             |      | 0 unsigned    | String |
    | vendor-id            | uint32      |TBA79 | 0 unsigned    | Number |
-   | ietf-dots-telemetry: |             |      |               |        |
-   |      telemetry-setup | container   |TBA80 | 5 map         | Object |
 
 
 
@@ -5210,6 +5210,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 93]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | ietf-dots-telemetry: |             |      |               |        |
+   |      telemetry-setup | container   |TBA80 | 5 map         | Object |
    | ietf-dots-telemetry: |             |      |               |        |
    |   total-traffic      | list        |TBA81 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
@@ -5256,8 +5258,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | ietf-dots-telemetry: |             |      |               |        |
    |    attack-severity   | enumeration |TBA102| 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
-   |     start-time       | uint64      |TBA103| 0 unsigned    | String |
-   | ietf-dots-telemetry: |             |      |               |        |
 
 
 
@@ -5266,6 +5266,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 94]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   |     start-time       | uint64      |TBA103| 0 unsigned    | String |
+   | ietf-dots-telemetry: |             |      |               |        |
    |      end-time        | uint64      |TBA104| 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
    |     source-count     | container   |TBA105| 5 map         | Object |
@@ -5312,8 +5314,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    o  Note to the RFC Editor: CBOR keys are assigned from the
       32768-49151 range.
 
-   +----------------------+-------+-------+------------+---------------+
-   | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
 
 
 
@@ -5322,6 +5322,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 95]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   +----------------------+-------+-------+------------+---------------+
+   | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
    |                      | Key   | Major | Controller | Document(s)   |
    |                      | Value | Type  |            |               |
    +======================+=======+=======+============+===============+
@@ -5368,8 +5370,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-description   | TBA38 |   3   |    IESG    |   [RFCXXXX]   |
    | attack-severity      | TBA39 |   0   |    IESG    |   [RFCXXXX]   |
-   | start-time           | TBA40 |   0   |    IESG    |   [RFCXXXX]   |
-   | end-time             | TBA41 |   0   |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -5378,6 +5378,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 96]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | start-time           | TBA40 |   0   |    IESG    |   [RFCXXXX]   |
+   | end-time             | TBA41 |   0   |    IESG    |   [RFCXXXX]   |
    | source-count         | TBA42 |   5   |    IESG    |   [RFCXXXX]   |
    | top-talker           | TBA43 |   5   |    IESG    |   [RFCXXXX]   |
    | spoofed-status       | TBA44 |   7   |    IESG    |   [RFCXXXX]   |
@@ -5424,8 +5426,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | total-attack-        | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
    |  connection-port     |       |       |            |               |
    | port                 | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
-   | query-type           | TBA78 |   4   |    IESG    |   [RFCXXXX]   |
-   | vendor-id            | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -5434,6 +5434,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 97]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   | query-type           | TBA78 |   4   |    IESG    |   [RFCXXXX]   |
+   | vendor-id            | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-telemetry: | TBA80 |   5   |    IESG    |   [RFCXXXX]   |
    |   telemetry-setup    |       |       |            |               |
    | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5480,8 +5482,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | ietf-dots-telemetry: | TBA101|   0   |    IESG    |   [RFCXXXX]   |
    |   attack-description |       |       |            |               |
    | ietf-dots-telemetry: | TBA102|   0   |    IESG    |   [RFCXXXX]   |
-   |    attack-severity   |       |       |            |               |
-   | ietf-dots-telemetry: | TBA103|   0   |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -5490,6 +5490,8 @@ Boucadair, et al.       Expires December 28, 2020              [Page 98]
 Internet-Draft               DOTS Telemetry                    June 2020
 
 
+   |    attack-severity   |       |       |            |               |
+   | ietf-dots-telemetry: | TBA103|   0   |    IESG    |   [RFCXXXX]   |
    |     start-time       |       |       |            |               |
    | ietf-dots-telemetry: | TBA104|   0   |    IESG    |   [RFCXXXX]   |
    |      end-time        |       |       |            |               |
@@ -5533,8 +5535,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    +======+===================+========================+=============+
    | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
    +------+-------------------+------------------------+-------------+
-
-
 
 
 
