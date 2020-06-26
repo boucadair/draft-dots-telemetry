@@ -130,17 +130,17 @@ Internet-Draft               DOTS Telemetry                    June 2020
      9.1.  DOTS Signal Channel Telemetry YANG Module . . . . . . . .  61
      9.2.  Vendor Attack Mapping Details YANG Module . . . . . . . .  88
    10. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  91
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  95
-     11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  95
-     11.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . .  99
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  96
+     11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  96
+     11.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 100
      11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 100
    12. Security Considerations . . . . . . . . . . . . . . . . . . . 100
      12.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 100
      12.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 101
    13. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 102
    14. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 102
-   15. References  . . . . . . . . . . . . . . . . . . . . . . . . . 102
-     15.1.  Normative References . . . . . . . . . . . . . . . . . . 102
+   15. References  . . . . . . . . . . . . . . . . . . . . . . . . . 103
+     15.1.  Normative References . . . . . . . . . . . . . . . . . . 103
      15.2.  Informative References . . . . . . . . . . . . . . . . . 104
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 105
 
@@ -2475,8 +2475,10 @@ Internet-Draft               DOTS Telemetry                    June 2020
        +--rw vendor-mapping {dots-telemetry}?
           +--rw vendor* [vendor-id]
              +--rw vendor-id         uint32
+             +--rw vendor-name?      string
+             +--rw latest-update?    uint64
              +--rw attack-mapping* [attack-id]
-                +--rw attack-id      uint32
+                +--rw attack-id             uint32
                 +--rw attack-description    string
      augment /ietf-data:dots-data/ietf-data:capabilities:
        +--ro vendor-mapping-enabled?   boolean {dots-telemetry}?
@@ -2484,8 +2486,10 @@ Internet-Draft               DOTS Telemetry                    June 2020
        +--ro vendor-mapping {dots-telemetry}?
           +--ro vendor* [vendor-id]
              +--ro vendor-id         uint32
+             +--ro vendor-name?      string
+             +--ro latest-update?    uint64
              +--ro attack-mapping* [attack-id]
-                +--ro attack-id      uint32
+                +--ro attack-id             uint32
                 +--ro attack-description    string
 
               Figure 30: Vendor Attack Mapping Tree Structure
@@ -2510,10 +2514,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
    A DOTS client MAY retrieve only the list of vendors supported by the
    DOTS server.  It does so by setting the "depth" parameter
-   (Section 4.8.2 of [RFC8040]) to "3" in the GET request as shown in
-   Figure 32.  An example of a response body received from the DOTS
-   server as a response to such request is illustrated in Figure 33.
-
 
 
 
@@ -2521,6 +2521,10 @@ Boucadair, et al.       Expires December 28, 2020              [Page 45]
 
 Internet-Draft               DOTS Telemetry                    June 2020
 
+
+   (Section 4.8.2 of [RFC8040]) to "3" in the GET request as shown in
+   Figure 32.  An example of a response body received from the DOTS
+   server as a response to such request is illustrated in Figure 33.
 
    GET /restconf/data/ietf-dots-data-channel:dots-data\
        /ietf-dots-mapping:vendor-mapping?depth=3 HTTP/1.1
@@ -2550,10 +2554,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    reference to the specific vendor attack mapping details, the DOTS
    client uses a POST request to install its vendor attack mapping
    details.  An example of such POST request is depicted in Figure 34.
-
-
-
-
 
 
 
@@ -4913,7 +4913,7 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
 9.2.  Vendor Attack Mapping Details YANG Module
 
-<CODE BEGINS> file "ietf-dots-mapping@2020-05-04.yang"
+<CODE BEGINS> file "ietf-dots-mapping@2020-06-26.yang"
 module ietf-dots-mapping {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-mapping";
@@ -4963,7 +4963,7 @@ Internet-Draft               DOTS Telemetry                    June 2020
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2020-05-04 {
+  revision 2020-06-26 {
     description
       "Initial revision.";
     reference
@@ -4998,6 +4998,17 @@ Internet-Draft               DOTS Telemetry                    June 2020
         description
           "Vendor ID is a security vendor's Enterprise Number.";
       }
+      leaf vendor-name {
+        type string;
+        description
+          "The name of the vendor (e.g., company A).";
+      }
+      leaf latest-update {
+        type uint64;
+        description
+          "The time the mapping table was updated. It is represented
+            in seconds relative to 1970-01-01T00:00:00Z in UTC time.";
+      }
       list attack-mapping {
         key "attack-id";
         description
@@ -5023,6 +5034,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
     if-feature "dots-telemetry";
     description
       "Augments the data channel with a vendor attack
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 90]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
        mapping table of the DOTS client.";
     container vendor-mapping {
       description
@@ -5034,14 +5053,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
   augment "/ietf-data:dots-data/ietf-data:capabilities" {
     if-feature "dots-telemetry";
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 90]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
     description
       "Augments the DOTS server capabilities with a
        paramter to indicate whether they can share
@@ -5079,6 +5090,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    o  Implementers may use the values in: https://github.com/boucadair/
       draft-dots-telemetry/blob/master/mapping-table.txt
 
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 91]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    +----------------------+-------------+------+---------------+--------+
    | Parameter Name       | YANG        | CBOR | CBOR Major    | JSON   |
    |                      | Type        | Key  |    Type &     | Type   |
@@ -5090,14 +5109,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    |                      |             |      |  [-2, integer]| String |
    | mid-percentile       | decimal64   |TBA4  | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 91]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    | high-percentile      | decimal64   |TBA5  | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
    | unit-config          | list        |TBA6  | 4 array       | Array  |
@@ -5135,6 +5146,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | high-percentile-l    | list        |TBA33 | 4 array       | Array  |
    | peak-l               | list        |TBA34 | 4 array       | Array  |
    | attack-detail        | list        |TBA35 | 4 array       | Array  |
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 92]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    | id                   | uint32      |TBA36 | 0 unsigned    | Number |
    | attack-id            | uint32      |TBA37 | 0 unsigned    | Number |
    | attack-description   | string      |TBA38 | 3 text string | String |
@@ -5146,14 +5165,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | spoofed-status       | boolean     |TBA44 | 7 bits 20     | False  |
    |                      |             |      | 7 bits 21     | True   |
    | low-percentile-c     | container   |TBA45 | 5 map         | Object |
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 92]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    | mid-percentile-c     | container   |TBA46 | 5 map         | Object |
    | high-percentile-c    | container   |TBA47 | 5 map         | Object |
    | peak-c               | container   |TBA48 | 5 map         | Object |
@@ -5191,6 +5202,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | total-traffic-       |             |      |               |        |
    |  -protocol           | list        |TBA72 | 4 array       | Array  |
    | total-traffic- port  | list        |TBA73 | 4 array       | Array  |
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 93]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    | total-attack-        |             |      |               |        |
    |  traffic-protocol    | list        |TBA74 | 4 array       | Array  |
    | total-attack-        |             |      |               |        |
@@ -5202,14 +5221,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | query-type           | leaf-list   |TBA78 | 4 array       | Array  |
    |                      |             |      | 0 unsigned    | String |
    | vendor-id            | uint32      |TBA79 | 0 unsigned    | Number |
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 93]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    | ietf-dots-telemetry: |             |      |               |        |
    |      telemetry-setup | container   |TBA80 | 5 map         | Object |
    | ietf-dots-telemetry: |             |      |               |        |
@@ -5247,6 +5258,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    |     request-ps       | uint64      |TBA96 | 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
    |   partial-request-ps | uint64      |TBA97 | 0 unsigned    | String |
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 94]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    | ietf-dots-telemetry: |             |      |               |        |
    |    attack-detail     | list        |TBA98 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
@@ -5258,14 +5277,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | ietf-dots-telemetry: |             |      |               |        |
    |    attack-severity   | enumeration |TBA102| 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 94]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    |     start-time       | uint64      |TBA103| 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
    |      end-time        | uint64      |TBA104| 0 unsigned    | String |
@@ -5301,6 +5312,16 @@ Internet-Draft               DOTS Telemetry                    June 2020
    |        vendor-id     | uint32      |TBA117| 0 unsigned    | Number |
    +----------------------+-------------+------+---------------+--------+
 
+
+
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 95]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
 11.  IANA Considerations
 
 11.1.  DOTS Signal Channel CBOR Key Values
@@ -5313,14 +5334,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
 
    o  Note to the RFC Editor: CBOR keys are assigned from the
       32768-49151 range.
-
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 95]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
    +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
@@ -5357,6 +5370,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | request-ps           | TBA26 |   0   |    IESG    |   [RFCXXXX]   |
    | request-client-ps    | TBA27 |   0   |    IESG    |   [RFCXXXX]   |
    | partial-request-ps   | TBA28 |   0   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 96]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    | partial-request-     | TBA29 |   0   |    IESG    |   [RFCXXXX]   |
    |        client-ps     |       |       |            |               |
    | total-attack-        | TBA30 |   5   |    IESG    |   [RFCXXXX]   |
@@ -5370,14 +5391,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-description   | TBA38 |   3   |    IESG    |   [RFCXXXX]   |
    | attack-severity      | TBA39 |   0   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 96]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    | start-time           | TBA40 |   0   |    IESG    |   [RFCXXXX]   |
    | end-time             | TBA41 |   0   |    IESG    |   [RFCXXXX]   |
    | source-count         | TBA42 |   5   |    IESG    |   [RFCXXXX]   |
@@ -5413,6 +5426,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | total-traffic-       | TBA69 |   4   |    IESG    |   [RFCXXXX]   |
    |  normal-per-protocol |       |       |            |               |
    | total-traffic-       | TBA70 |   4   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 97]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    |  normal-per-port     |       |       |            |               |
    | total-connection-    | TBA71 |   4   |    IESG    |   [RFCXXXX]   |
    |  capacity-per-port   |       |       |            |               |
@@ -5426,14 +5447,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | total-attack-        | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
    |  connection-port     |       |       |            |               |
    | port                 | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 97]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    | query-type           | TBA78 |   4   |    IESG    |   [RFCXXXX]   |
    | vendor-id            | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-telemetry: | TBA80 |   5   |    IESG    |   [RFCXXXX]   |
@@ -5469,6 +5482,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    |     embryonic        |       |       |            |               |
    | ietf-dots-telemetry: | TBA95 |   0   |    IESG    |   [RFCXXXX]   |
    |     connection-ps    |       |       |            |               |
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 98]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    | ietf-dots-telemetry: | TBA96 |   0   |    IESG    |   [RFCXXXX]   |
    |     request-ps       |       |       |            |               |
    | ietf-dots-telemetry: | TBA97 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5482,14 +5503,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    | ietf-dots-telemetry: | TBA101|   0   |    IESG    |   [RFCXXXX]   |
    |   attack-description |       |       |            |               |
    | ietf-dots-telemetry: | TBA102|   0   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 98]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    |    attack-severity   |       |       |            |               |
    | ietf-dots-telemetry: | TBA103|   0   |    IESG    |   [RFCXXXX]   |
    |     start-time       |       |       |            |               |
@@ -5525,6 +5538,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    +----------------------+-------+-------+------------+---------------+
 
 
+
+
+
+Boucadair, et al.       Expires December 28, 2020              [Page 99]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
 11.2.  DOTS Signal Channel Conflict Cause Codes
 
    This specification requests IANA to assign a new code from the "DOTS
@@ -5535,16 +5556,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    +======+===================+========================+=============+
    | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
    +------+-------------------+------------------------+-------------+
-
-
-
-
-
-
-Boucadair, et al.       Expires December 28, 2020              [Page 99]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
 11.3.  DOTS Signal Telemetry YANG Module
 
@@ -5584,6 +5595,13 @@ Internet-Draft               DOTS Telemetry                    June 2020
    security considerations that are specific to the DOTS signal channel
    extension defined in this document.
 
+
+
+Boucadair, et al.       Expires December 28, 2020             [Page 100]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    The DOTS telemetry information includes DOTS client network topology,
    DOTS client domain pipe capacity, normal traffic baseline and
    connections capacity, and threat and mitigation information.  Such
@@ -5594,14 +5612,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    DOTS clients may be co-located on network security services (e.g.,
    firewall) and a compromised security service potentially can do a lot
    more damage to the network.  This assumption differs from the often
-
-
-
-Boucadair, et al.       Expires December 28, 2020             [Page 100]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
-
    held view that devices are untrusted, often referred to as the "zero-
    trust model".  A compromised DOTS client can send fake DOTS telemetry
    data to a DOTS server to mislead the DOTS server.  This attack can be
@@ -5640,6 +5650,14 @@ Internet-Draft               DOTS Telemetry                    June 2020
    security considerations that are specific to the DOTS data channel
    extension defined in this document.
 
+
+
+
+Boucadair, et al.       Expires December 28, 2020             [Page 101]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    All data nodes defined in the YANG module specified in Section 9.2
    which can be created, modified, and deleted (i.e., config true, which
    is the default) are considered sensitive.  Write operations to these
@@ -5649,14 +5667,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    as discussed in [RFC8783].  Nevertheless, an attacker who can access
    a DOTS client is technically capable of undertaking various attacks,
    such as:
-
-
-
-
-Boucadair, et al.       Expires December 28, 2020             [Page 101]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
    o  Communicating invalid attack mapping details to the server
       ('/ietf-data:dots-data/ietf-data:dots-client/dots-
@@ -5697,6 +5707,13 @@ Internet-Draft               DOTS Telemetry                    June 2020
    Special thanks to Jon Shallow and Kaname Nishizuka for their
    implementation and interoperability work.
 
+
+
+Boucadair, et al.       Expires December 28, 2020             [Page 102]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
 15.  References
 
 15.1.  Normative References
@@ -5704,15 +5721,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    [Enterprise-Numbers]
               "Private Enterprise Numbers", May 2020,
               <http://www.iana.org/assignments/enterprise-numbers.html>.
-
-
-
-
-
-Boucadair, et al.       Expires December 28, 2020             [Page 102]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
    [I-D.ietf-dots-signal-call-home]
               Reddy.K, T., Boucadair, M., and J. Shallow, "Distributed
@@ -5753,14 +5761,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
               RFC 7950, DOI 10.17487/RFC7950, August 2016,
               <https://www.rfc-editor.org/info/rfc7950>.
 
-   [RFC7959]  Bormann, C. and Z. Shelby, Ed., "Block-Wise Transfers in
-              the Constrained Application Protocol (CoAP)", RFC 7959,
-              DOI 10.17487/RFC7959, August 2016,
-              <https://www.rfc-editor.org/info/rfc7959>.
-
-   [RFC7970]  Danyliw, R., "The Incident Object Description Exchange
-              Format Version 2", RFC 7970, DOI 10.17487/RFC7970,
-              November 2016, <https://www.rfc-editor.org/info/rfc7970>.
 
 
 
@@ -5769,6 +5769,15 @@ Boucadair, et al.       Expires December 28, 2020             [Page 103]
 
 Internet-Draft               DOTS Telemetry                    June 2020
 
+
+   [RFC7959]  Bormann, C. and Z. Shelby, Ed., "Block-Wise Transfers in
+              the Constrained Application Protocol (CoAP)", RFC 7959,
+              DOI 10.17487/RFC7959, August 2016,
+              <https://www.rfc-editor.org/info/rfc7959>.
+
+   [RFC7970]  Danyliw, R., "The Incident Object Description Exchange
+              Format Version 2", RFC 7970, DOI 10.17487/RFC7970,
+              November 2016, <https://www.rfc-editor.org/info/rfc7970>.
 
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
@@ -5806,6 +5815,17 @@ Internet-Draft               DOTS Telemetry                    June 2020
               Transmission", draft-bosh-core-new-block-04 (work in
               progress), June 2020.
 
+
+
+
+
+
+
+Boucadair, et al.       Expires December 28, 2020             [Page 104]
+
+Internet-Draft               DOTS Telemetry                    June 2020
+
+
    [I-D.doron-dots-telemetry]
               Doron, E., Reddy, T., Andreasen, F., Xia, L., and K.
               Nishizuka, "Distributed Denial-of-Service Open Threat
@@ -5817,14 +5837,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
               Deployment Considerations for Distributed-Denial-of-
               Service Open Threat Signaling (DOTS)", draft-ietf-dots-
               multihoming-04 (work in progress), May 2020.
-
-
-
-
-Boucadair, et al.       Expires December 28, 2020             [Page 104]
-
-Internet-Draft               DOTS Telemetry                    June 2020
-
 
    [I-D.ietf-dots-use-cases]
               Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
@@ -5860,18 +5872,6 @@ Authors' Addresses
    Email: mohamed.boucadair@orange.com
 
 
-   Tirumaleswar Reddy (editor)
-   McAfee, Inc.
-   Embassy Golf Link Business Park
-   Bangalore, Karnataka  560071
-   India
-
-   Email: kondtir@gmail.com
-
-
-
-
-
 
 
 
@@ -5880,6 +5880,15 @@ Authors' Addresses
 Boucadair, et al.       Expires December 28, 2020             [Page 105]
 
 Internet-Draft               DOTS Telemetry                    June 2020
+
+
+   Tirumaleswar Reddy (editor)
+   McAfee, Inc.
+   Embassy Golf Link Business Park
+   Bangalore, Karnataka  560071
+   India
+
+   Email: kondtir@gmail.com
 
 
    Ehud Doron
@@ -5904,15 +5913,6 @@ Internet-Draft               DOTS Telemetry                    June 2020
    United Kingdom
 
    Email: supjps-ietf@jpshallow.com
-
-
-
-
-
-
-
-
-
 
 
 
