@@ -2067,7 +2067,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
        +--rw vendor* [vendor-id]
           +--rw vendor-id         uint32
           +--rw vendor-name?      string
-          +--rw latest-update?    uint64
+          +--rw last-updated      uint64
           +--rw attack-mapping* [attack-id]
              +--rw attack-id             uint32
              +--rw attack-description    string
@@ -2078,7 +2078,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
        +--ro vendor* [vendor-id]
           +--ro vendor-id         uint32
           +--ro vendor-name?      string
-          +--ro latest-update?    uint64
+          +--ro last-updated      uint64
           +--ro attack-mapping* [attack-id]
              +--ro attack-id             uint32
              +--ro attack-description    string
@@ -4203,8 +4203,9 @@ module ietf-dots-mapping {
         description
           "The name of the vendor (e.g., company A).";
       }
-      leaf latest-update {
+      leaf last-updated {
         type uint64;
+        mandatory true;
         description
           "The time the mapping table was updated. It is represented
             in seconds relative to 1970-01-01T00:00:00Z in UTC time.";
