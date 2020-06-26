@@ -1939,13 +1939,13 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               <t hangText="attack-id:">Unique identifier assigned for the
               attack.</t>
 
-              <t hangText="attack-name:">Textual representation of the attack
-              description. Natural Language Processing techniques (e.g., word
-              embedding) can possibly be used to map the attack description to
-              an attack type. Textual representation of attack solves two
-              problems: (a) avoids the need to create mapping tables manually
-              between vendors and (b) avoids the need to standardize attack
-              types which keep evolving.</t>
+              <t hangText="attack-description:">Textual representation of the
+              attack description. Natural Language Processing techniques
+              (e.g., word embedding) can possibly be used to map the attack
+              description to an attack type. Textual representation of attack
+              solves two problems: (a) avoids the need to create mapping
+              tables manually between vendors and (b) avoids the need to
+              standardize attack types which keep evolving.</t>
 
               <t hangText="attack-severity:">Attack severity level. This
               attribute takes one of the values defined in Section 3.12.2 of
@@ -1991,7 +1991,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           +--rw attack-detail* [vendor-id attack-id]
              +--rw vendor-id          uint32
              +--rw attack-id          uint32
-             +--rw attack-name?       string
+             +--rw attack-description?       string
              +--rw attack-severity?   attack-severity
              +--rw start-time?        uint64
              +--rw end-time?          uint64
@@ -2027,12 +2027,12 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           DOTS signal channel, DOTS agents MAY use the DOTS data channel <xref
           target="RFC8783"></xref> to exchange vendor-specific attack mapping
           details (that is, {vendor identifier, attack identifier} ==&gt;
-          attack name). As such, DOTS agents do not have to convey
-          systematically an attack name in their telemetry messages over the
-          DOTS signal channel. The "ietf-dots-mapping" YANG module defined in
-          <xref target="data"></xref>) augments the "ietf-dots-data-channel".
-          The tree structure of this module is shown in <xref
-          target="abstract-data"></xref>.</t>
+          attack description). As such, DOTS agents do not have to convey
+          systematically an attack description in their telemetry messages
+          over the DOTS signal channel. The "ietf-dots-mapping" YANG module
+          defined in <xref target="data"></xref>) augments the
+          "ietf-dots-data-channel". The tree structure of this module is shown
+          in <xref target="abstract-data"></xref>.</t>
 
           <t><figure anchor="abstract-data"
               title="Vendor Attack Mapping Tree Structure">
@@ -2043,7 +2043,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           +--rw vendor-id         uint32
           +--rw attack-mapping* [attack-id]
              +--rw attack-id      uint32
-             +--rw attack-name    string
+             +--rw attack-description    string
   augment /ietf-data:dots-data/ietf-data:capabilities:
     +--ro vendor-mapping-enabled?   boolean {dots-telemetry}?
   augment /ietf-data:dots-data:
@@ -2052,7 +2052,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           +--ro vendor-id         uint32
           +--ro attack-mapping* [attack-id]
              +--ro attack-id      uint32
-             +--ro attack-name    string
+             +--ro attack-description    string
 ]]></artwork>
             </figure></t>
 
@@ -2132,12 +2132,12 @@ Content-Type: application/yang-data+json
         "attack-mapping": [
           {
             "attack-id": 1,
-            "attack-name": 
+            "attack-description": 
                "Include a description of this attack"
           },
           {
             "attack-id": 2,
-            "attack-name": 
+            "attack-description": 
                "Again, include a description of the attack"
           }
         ]
@@ -2187,9 +2187,9 @@ Accept: application/yang-data+json]]></artwork>
           (Sections <xref format="counter" target="preCtoS"></xref>, <xref
           format="counter" target="preStoC"></xref>, and <xref
           format="counter" target="status"></xref>), DOTS agents MUST NOT
-          include 'attack-name' attribute except if the corresponding attack
-          mapping details were not shared with the peer DOTS agent (e.g., a
-          DOTS server detects a new attack type).</t>
+          include 'attack-description' attribute except if the corresponding
+          attack mapping details were not shared with the peer DOTS agent
+          (e.g., a DOTS server detects a new attack type).</t>
         </section>
       </section>
 
@@ -2553,7 +2553,7 @@ Observe: 0]]></artwork>
     +--rw attack-detail* [vendor-id attack-id] {dots-telemetry}?
        +--rw vendor-id          uint32
        +--rw attack-id          uint32
-       +--rw attack-name?       string
+       +--rw attack-description?       string
        +--rw attack-severity?   attack-severity
        +--rw start-time?        uint64
        +--rw end-time?          uint64
@@ -2660,7 +2660,7 @@ Content-Format: "application/dots+cbor"
     +--rw attack-detail* [vendor-id attack-id] {dots-telemetry}?
        +--rw vendor-id          uint32
        +--rw attack-id          uint32
-       +--rw attack-name?       string
+       +--rw attack-description?       string
        +--rw attack-severity?   attack-severity
        +--rw start-time?        uint64
        +--rw end-time?          uint64
@@ -3537,7 +3537,7 @@ module ietf-dots-telemetry {
       description
         "Unique identifier assigned by the vendor for the attack.";
     }
-    leaf attack-name {
+    leaf attack-description {
       type string;
       description
         "Textual representation of attack description. Natural Language
@@ -4178,7 +4178,7 @@ module ietf-dots-mapping {
           description
             "Unique identifier assigned by the vendor for the attack.";
         }
-        leaf attack-name {
+        leaf attack-description {
           type string;
           mandatory true;
           description
@@ -4297,7 +4297,7 @@ module ietf-dots-mapping {
    | attack-detail        | list        |TBA35 | 4 array       | Array  |
    | id                   | uint32      |TBA36 | 0 unsigned    | Number |
    | attack-id            | uint32      |TBA37 | 0 unsigned    | Number |
-   | attack-name          | string      |TBA38 | 3 text string | String |
+   | attack-description   | string      |TBA38 | 3 text string | String |
    | attack-severity      | enumeration |TBA39 | 0 unsigned    | String |
    | start-time           | uint64      |TBA40 | 0 unsigned    | String |
    | end-time             | uint64      |TBA41 | 0 unsigned    | String |
@@ -4398,7 +4398,7 @@ module ietf-dots-mapping {
    | ietf-dots-telemetry: |             |      |               |        |
    |      attack-id       | uint32      |TBA100| 0 unsigned    | Number |
    | ietf-dots-telemetry: |             |      |               |        |
-   |     attack-name      | string      |TBA101| 3 text string | String |
+   |   attack-description | string      |TBA101| 3 text string | String |
    | ietf-dots-telemetry: |             |      |               |        |
    |    attack-severity   | enumeration |TBA102| 0 unsigned    | String |
    | ietf-dots-telemetry: |             |      |               |        |
@@ -4499,7 +4499,7 @@ module ietf-dots-mapping {
    | attack-detail        | TBA35 |   4   |    IESG    |   [RFCXXXX]   |
    | id                   | TBA36 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
-   | attack-name          | TBA38 |   3   |    IESG    |   [RFCXXXX]   |
+   | attack-description   | TBA38 |   3   |    IESG    |   [RFCXXXX]   |
    | attack-severity      | TBA39 |   0   |    IESG    |   [RFCXXXX]   |
    | start-time           | TBA40 |   0   |    IESG    |   [RFCXXXX]   |
    | end-time             | TBA41 |   0   |    IESG    |   [RFCXXXX]   |
@@ -4595,7 +4595,7 @@ module ietf-dots-mapping {
    | ietf-dots-telemetry: | TBA100|   0   |    IESG    |   [RFCXXXX]   |
    |      attack-id       |       |       |            |               |
    | ietf-dots-telemetry: | TBA101|   0   |    IESG    |   [RFCXXXX]   |
-   |     attack-name      |       |       |            |               |
+   |   attack-description |       |       |            |               |
    | ietf-dots-telemetry: | TBA102|   0   |    IESG    |   [RFCXXXX]   |
    |    attack-severity   |       |       |            |               |
    | ietf-dots-telemetry: | TBA103|   0   |    IESG    |   [RFCXXXX]   |
