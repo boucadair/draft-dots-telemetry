@@ -2128,6 +2128,8 @@ Accept: application/yang-data+json
     "vendor": [
       {
         "vendor-id": 1234,
+        "vendor-name": "mitigator-s",
+        "last-updated": 1576856561,
         "attack-mapping": []
       }
     ]
@@ -2158,6 +2160,8 @@ Content-Type: application/yang-data+json
     "vendor": [
       {
         "vendor-id": 345,
+        "vendor-name": "mitigator-c",
+        "last-updated": 1576812345,
         "attack-mapping": [
           {
             "attack-id": 1,
