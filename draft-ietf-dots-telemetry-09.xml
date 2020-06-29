@@ -2029,7 +2029,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           details (that is, {vendor identifier, attack identifier} ==&gt;
           attack description). As such, DOTS agents do not have to convey
           systematically an attack description in their telemetry messages
-          over the DOTS signal channel. </t>
+          over the DOTS signal channel.</t>
 
           <t>Multiple mappings for different vendor identifiers may be used;
           the DOTS agent transmitting telemetry information can elect to use
@@ -2221,8 +2221,7 @@ Accept: application/yang-data+json]]></artwork>
           format="counter" target="preStoC"></xref>, and <xref
           format="counter" target="status"></xref>), DOTS agents MUST NOT
           include 'attack-description' attribute except if the corresponding
-          attack mapping details were not shared with the peer DOTS agent.
-          </t>
+          attack mapping details were not shared with the peer DOTS agent.</t>
         </section>
       </section>
 
@@ -4405,7 +4404,6 @@ module ietf-dots-mapping {
    |      telemetry-setup | container   |TBA80 | 5 map         | Object |
    | ietf-dots-telemetry: |             |      |               |        |
    |   total-traffic      | list        |TBA81 | 4 array       | Array  |
-   | ietf-dots-telemetry: |             |      |               |        |
    | ietf-dots-telemetry: |             |      |               |        |
    | total-attack-traffic | list        |TBA82 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
