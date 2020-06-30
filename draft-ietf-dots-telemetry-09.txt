@@ -2863,7 +2863,7 @@ Internet-Draft               DOTS Telemetry                    June 2020
    Uri-Path: "dots"
    Uri-Path: "tm"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tmid=123"
+   Uri-Path: "tmid=567"
    Content-Format: "application/dots+cbor"
 
    {
@@ -2895,7 +2895,7 @@ Internet-Draft               DOTS Telemetry                    June 2020
    Uri-Path: "dots"
    Uri-Path: "tm"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tmid=123"
+   Uri-Path: "tmid=567"
    Observe: 0
 
     Figure 40: GET to Subscribe to Telemetry Asynchronous Notifications
@@ -3030,7 +3030,7 @@ Internet-Draft               DOTS Telemetry                    June 2020
      "ietf-dots-telemetry:telemetry": {
        "pre-or-ongoing-mitigation": [
          {
-           "tmid": 123,
+           "tmid": 567,
            "target": {
              "target-prefix": [
                "2001:db8::1/128"
