@@ -1,367 +1,372 @@
-
 module: ietf-dots-telemetry
-  augment /ietf-signal:dots-signal/ietf-signal:message-type/ietf-signal:mitigation-scope/ietf-signal:scope:
-    +--ro total-traffic* [unit] {dots-telemetry}?
-    |  +--ro unit                 unit
-    |  +--ro low-percentile-g?    yang:gauge64
-    |  +--ro mid-percentile-g?    yang:gauge64
-    |  +--ro high-percentile-g?   yang:gauge64
-    |  +--ro peak-g?              yang:gauge64
-    +--rw total-attack-traffic* [unit] {dots-telemetry}?
-    |  +--rw unit                 unit
-    |  +--rw low-percentile-g?    yang:gauge64
-    |  +--rw mid-percentile-g?    yang:gauge64
-    |  +--rw high-percentile-g?   yang:gauge64
-    |  +--rw peak-g?              yang:gauge64
-    +--ro total-attack-connection {dots-telemetry}?
-    |  +--ro low-percentile-c
-    |  |  +--ro connection?           yang:gauge64
-    |  |  +--ro embryonic?            yang:gauge64
-    |  |  +--ro connection-ps?        yang:gauge64
-    |  |  +--ro request-ps?           yang:gauge64
-    |  |  +--ro partial-request-ps?   yang:gauge64
-    |  +--ro mid-percentile-c
-    |  |  +--ro connection?           yang:gauge64
-    |  |  +--ro embryonic?            yang:gauge64
-    |  |  +--ro connection-ps?        yang:gauge64
-    |  |  +--ro request-ps?           yang:gauge64
-    |  |  +--ro partial-request-ps?   yang:gauge64
-    |  +--ro high-percentile-c
-    |  |  +--ro connection?           yang:gauge64
-    |  |  +--ro embryonic?            yang:gauge64
-    |  |  +--ro connection-ps?        yang:gauge64
-    |  |  +--ro request-ps?           yang:gauge64
-    |  |  +--ro partial-request-ps?   yang:gauge64
-    |  +--ro peak-c
-    |     +--ro connection?           yang:gauge64
-    |     +--ro embryonic?            yang:gauge64
-    |     +--ro connection-ps?        yang:gauge64
-    |     +--ro request-ps?           yang:gauge64
-    |     +--ro partial-request-ps?   yang:gauge64
-    +--rw attack-detail* [attack-id] {dots-telemetry}?
-       +--rw id?                uint32
-       +--rw attack-id          string
-       +--rw attack-name?       string
-       +--rw attack-severity?   attack-severity
-       +--rw start-time?        uint64
-       +--rw end-time?          uint64
-       +--rw source-count
-       |  +--rw low-percentile-g?    yang:gauge64
-       |  +--rw mid-percentile-g?    yang:gauge64
-       |  +--rw high-percentile-g?   yang:gauge64
-       |  +--rw peak-g?              yang:gauge64
-       +--rw top-talker
-          +--rw talker* [source-prefix]
-             +--rw spoofed-status?            boolean
-             +--rw source-prefix              inet:ip-prefix
-             +--rw source-port-range* [lower-port]
-             |  +--rw lower-port    inet:port-number
-             |  +--rw upper-port?   inet:port-number
-             +--rw source-icmp-type-range* [lower-type]
-             |  +--rw lower-type    uint8
-             |  +--rw upper-type?   uint8
-             +--rw total-attack-traffic* [unit]
-             |  +--rw unit                 unit
-             |  +--rw low-percentile-g?    yang:gauge64
-             |  +--rw mid-percentile-g?    yang:gauge64
-             |  +--rw high-percentile-g?   yang:gauge64
-             |  +--rw peak-g?              yang:gauge64
-             +--rw total-attack-connection
-                +--rw low-percentile-c
-                |  +--rw connection?           yang:gauge64
-                |  +--rw embryonic?            yang:gauge64
-                |  +--rw connection-ps?        yang:gauge64
-                |  +--rw request-ps?           yang:gauge64
-                |  +--rw partial-request-ps?   yang:gauge64
-                +--rw mid-percentile-c
-                |  +--rw connection?           yang:gauge64
-                |  +--rw embryonic?            yang:gauge64
-                |  +--rw connection-ps?        yang:gauge64
-                |  +--rw request-ps?           yang:gauge64
-                |  +--rw partial-request-ps?   yang:gauge64
-                +--rw high-percentile-c
-                |  +--rw connection?           yang:gauge64
-                |  +--rw embryonic?            yang:gauge64
-                |  +--rw connection-ps?        yang:gauge64
-                |  +--rw request-ps?           yang:gauge64
-                |  +--rw partial-request-ps?   yang:gauge64
-                +--rw peak-c
-                   +--rw connection?           yang:gauge64
-                   +--rw embryonic?            yang:gauge64
-                   +--rw connection-ps?        yang:gauge64
-                   +--rw request-ps?           yang:gauge64
-                   +--rw partial-request-ps?   yang:gauge64
-  augment /ietf-signal:dots-signal/ietf-signal:message-type:
+  augment-structure  /ietf-signal:dots-signal/ietf-signal:message-type
+                     /ietf-signal:mitigation-scope/ietf-signal:scope:
+    +-- (direction)? {dots-telemetry}?
+    |  +--:(server-to-client)
+    |     +-- total-traffic* [unit]
+    |     |  +-- unit                 unit
+    |     |  +-- low-percentile-g?    yang:gauge64
+    |     |  +-- mid-percentile-g?    yang:gauge64
+    |     |  +-- high-percentile-g?   yang:gauge64
+    |     |  +-- peak-g?              yang:gauge64
+    |     +-- total-attack-connection
+    |        +-- low-percentile-c
+    |        |  +-- connection?           yang:gauge64
+    |        |  +-- embryonic?            yang:gauge64
+    |        |  +-- connection-ps?        yang:gauge64
+    |        |  +-- request-ps?           yang:gauge64
+    |        |  +-- partial-request-ps?   yang:gauge64
+    |        +-- mid-percentile-c
+    |        |  +-- connection?           yang:gauge64
+    |        |  +-- embryonic?            yang:gauge64
+    |        |  +-- connection-ps?        yang:gauge64
+    |        |  +-- request-ps?           yang:gauge64
+    |        |  +-- partial-request-ps?   yang:gauge64
+    |        +-- high-percentile-c
+    |        |  +-- connection?           yang:gauge64
+    |        |  +-- embryonic?            yang:gauge64
+    |        |  +-- connection-ps?        yang:gauge64
+    |        |  +-- request-ps?           yang:gauge64
+    |        |  +-- partial-request-ps?   yang:gauge64
+    |        +-- peak-c
+    |           +-- connection?           yang:gauge64
+    |           +-- embryonic?            yang:gauge64
+    |           +-- connection-ps?        yang:gauge64
+    |           +-- request-ps?           yang:gauge64
+    |           +-- partial-request-ps?   yang:gauge64
+    +-- total-attack-traffic* [unit] {dots-telemetry}?
+    |  +-- unit                 unit
+    |  +-- low-percentile-g?    yang:gauge64
+    |  +-- mid-percentile-g?    yang:gauge64
+    |  +-- high-percentile-g?   yang:gauge64
+    |  +-- peak-g?              yang:gauge64
+    +-- attack-detail* [vendor-id attack-id] {dots-telemetry}?
+       +-- vendor-id             uint32
+       +-- attack-id             uint32
+       +-- attack-description?   string
+       +-- attack-severity?      attack-severity
+       +-- start-time?           uint64
+       +-- end-time?             uint64
+       +-- source-count
+       |  +-- low-percentile-g?    yang:gauge64
+       |  +-- mid-percentile-g?    yang:gauge64
+       |  +-- high-percentile-g?   yang:gauge64
+       |  +-- peak-g?              yang:gauge64
+       +-- top-talker
+          +-- talker* [source-prefix]
+             +-- spoofed-status?            boolean
+             +-- source-prefix              inet:ip-prefix
+             +-- source-port-range* [lower-port]
+             |  +-- lower-port    inet:port-number
+             |  +-- upper-port?   inet:port-number
+             +-- source-icmp-type-range* [lower-type]
+             |  +-- lower-type    uint8
+             |  +-- upper-type?   uint8
+             +-- total-attack-traffic* [unit]
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-connection
+                +-- low-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- mid-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- high-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- peak-c
+                   +-- connection?           yang:gauge64
+                   +-- embryonic?            yang:gauge64
+                   +-- connection-ps?        yang:gauge64
+                   +-- request-ps?           yang:gauge64
+                   +-- partial-request-ps?   yang:gauge64
+  augment-structure  /ietf-signal:dots-signal/ietf-signal:message-type:
     +--:(telemetry-setup) {dots-telemetry}?
-    |  +--ro max-config-values
-    |  |  +--ro measurement-interval?          interval
-    |  |  +--ro measurement-sample?            sample
-    |  |  +--ro low-percentile?                percentile
-    |  |  +--ro mid-percentile?                percentile
-    |  |  +--ro high-percentile?               percentile
-    |  |  +--ro server-originated-telemetry?   boolean
-    |  |  +--ro telemetry-notify-interval?     uint32
-    |  +--ro min-config-values
-    |  |  +--ro measurement-interval?        interval
-    |  |  +--ro measurement-sample?          sample
-    |  |  +--ro low-percentile?              percentile
-    |  |  +--ro mid-percentile?              percentile
-    |  |  +--ro high-percentile?             percentile
-    |  |  +--ro telemetry-notify-interval?   uint32
-    |  +--ro supported-units
-    |  |  +--ro unit-config* [unit]
-    |  |     +--ro unit           unit-type
-    |  |     +--ro unit-status?   boolean
-    |  +--rw telemetry* [cuid tsid]
-    |     +--rw cuid                         string
-    |     +--rw cdid?                        string
-    |     +--rw tsid                         uint32
-    |     +--rw (setup-type)?
+    |  +-- (direction)?
+    |  |  +--:(server-to-client)
+    |  |     +-- max-config-values
+    |  |     |  +-- measurement-interval?          interval
+    |  |     |  +-- measurement-sample?            sample
+    |  |     |  +-- low-percentile?                percentile
+    |  |     |  +-- mid-percentile?                percentile
+    |  |     |  +-- high-percentile?               percentile
+    |  |     |  +-- server-originated-telemetry?   boolean
+    |  |     |  +-- telemetry-notify-interval?     uint32
+    |  |     +-- min-config-values
+    |  |     |  +-- measurement-interval?        interval
+    |  |     |  +-- measurement-sample?          sample
+    |  |     |  +-- low-percentile?              percentile
+    |  |     |  +-- mid-percentile?              percentile
+    |  |     |  +-- high-percentile?             percentile
+    |  |     |  +-- telemetry-notify-interval?   uint32
+    |  |     +-- supported-units
+    |  |     |  +-- unit-config* [unit]
+    |  |     |     +-- unit           unit-type
+    |  |     |     +-- unit-status    boolean
+    |  |     +-- query-type*            query-type
+    |  +-- telemetry* [cuid tsid]
+    |     +-- cuid                         string
+    |     +-- cdid?                        string
+    |     +-- tsid                         uint32
+    |     +-- (setup-type)?
     |        +--:(telemetry-config)
-    |        |  +--rw current-config
-    |        |     +--rw measurement-interval?          interval
-    |        |     +--rw measurement-sample?            sample
-    |        |     +--rw low-percentile?                percentile
-    |        |     +--rw mid-percentile?                percentile
-    |        |     +--rw high-percentile?               percentile
-    |        |     +--rw unit-config* [unit]
-    |        |     |  +--rw unit           unit-type
-    |        |     |  +--rw unit-status?   boolean
-    |        |     +--rw server-originated-telemetry?   boolean
-    |        |     +--rw telemetry-notify-interval?     uint32
+    |        |  +-- current-config
+    |        |     +-- measurement-interval?          interval
+    |        |     +-- measurement-sample?            sample
+    |        |     +-- low-percentile?                percentile
+    |        |     +-- mid-percentile?                percentile
+    |        |     +-- high-percentile?               percentile
+    |        |     +-- unit-config* [unit]
+    |        |     |  +-- unit           unit-type
+    |        |     |  +-- unit-status    boolean
+    |        |     +-- server-originated-telemetry?   boolean
+    |        |     +-- telemetry-notify-interval?     uint32
     |        +--:(pipe)
-    |        |  +--rw total-pipe-capacity* [link-id unit]
-    |        |     +--rw link-id     nt:link-id
-    |        |     +--rw capacity    uint64
-    |        |     +--rw unit        unit
+    |        |  +-- total-pipe-capacity* [link-id unit]
+    |        |     +-- link-id     nt:link-id
+    |        |     +-- capacity    uint64
+    |        |     +-- unit        unit
     |        +--:(baseline)
-    |           +--rw baseline* [id]
-    |              +--rw id                                    uint32
-    |              +--rw target-prefix*                        inet:ip-prefix
-    |              +--rw target-port-range* [lower-port]
-    |              |  +--rw lower-port    inet:port-number
-    |              |  +--rw upper-port?   inet:port-number
-    |              +--rw target-protocol*                      uint8
-    |              +--rw target-fqdn*                          inet:domain-name
-    |              +--rw target-uri*                           inet:uri
-    |              +--rw alias-name*                           string
-    |              +--rw total-traffic-normal* [unit]
-    |              |  +--rw unit                 unit
-    |              |  +--rw low-percentile-g?    yang:gauge64
-    |              |  +--rw mid-percentile-g?    yang:gauge64
-    |              |  +--rw high-percentile-g?   yang:gauge64
-    |              |  +--rw peak-g?              yang:gauge64
-    |              +--rw total-traffic-normal-per-protocol* [unit protocol]
-    |              |  +--rw protocol             uint8
-    |              |  +--rw unit                 unit
-    |              |  +--rw low-percentile-g?    yang:gauge64
-    |              |  +--rw mid-percentile-g?    yang:gauge64
-    |              |  +--rw high-percentile-g?   yang:gauge64
-    |              |  +--rw peak-g?              yang:gauge64
-    |              +--rw total-traffic-normal-per-port* [unit port]
-    |              |  +--rw port                 inet:port-number
-    |              |  +--rw unit                 unit
-    |              |  +--rw low-percentile-g?    yang:gauge64
-    |              |  +--rw mid-percentile-g?    yang:gauge64
-    |              |  +--rw high-percentile-g?   yang:gauge64
-    |              |  +--rw peak-g?              yang:gauge64
-    |              +--rw total-connection-capacity* [protocol]
-    |              |  +--rw protocol                     uint8
-    |              |  +--rw connection?                  uint64
-    |              |  +--rw connection-client?           uint64
-    |              |  +--rw embryonic?                   uint64
-    |              |  +--rw embryonic-client?            uint64
-    |              |  +--rw connection-ps?               uint64
-    |              |  +--rw connection-client-ps?        uint64
-    |              |  +--rw request-ps?                  uint64
-    |              |  +--rw request-client-ps?           uint64
-    |              |  +--rw partial-request-ps?          uint64
-    |              |  +--rw partial-request-client-ps?   uint64
-    |              +--rw total-connection-capacity-per-port* [protocol port]
-    |                 +--rw port                         inet:port-number
-    |                 +--rw protocol                     uint8
-    |                 +--rw connection?                  uint64
-    |                 +--rw connection-client?           uint64
-    |                 +--rw embryonic?                   uint64
-    |                 +--rw embryonic-client?            uint64
-    |                 +--rw connection-ps?               uint64
-    |                 +--rw connection-client-ps?        uint64
-    |                 +--rw request-ps?                  uint64
-    |                 +--rw request-client-ps?           uint64
-    |                 +--rw partial-request-ps?          uint64
-    |                 +--rw partial-request-client-ps?   uint64
+    |           +-- baseline* [id]
+    |              +-- id                                    uint32
+    |              +-- target-prefix*                        inet:ip-prefix
+    |              +-- target-port-range* [lower-port]
+    |              |  +-- lower-port    inet:port-number
+    |              |  +-- upper-port?   inet:port-number
+    |              +-- target-protocol*                      uint8
+    |              +-- target-fqdn*                          inet:domain-name
+    |              +-- target-uri*                           inet:uri
+    |              +-- alias-name*                           string
+    |              +-- total-traffic-normal* [unit]
+    |              |  +-- unit                 unit
+    |              |  +-- low-percentile-g?    yang:gauge64
+    |              |  +-- mid-percentile-g?    yang:gauge64
+    |              |  +-- high-percentile-g?   yang:gauge64
+    |              |  +-- peak-g?              yang:gauge64
+    |              +-- total-traffic-normal-per-protocol* [unit protocol]
+    |              |  +-- protocol             uint8
+    |              |  +-- unit                 unit
+    |              |  +-- low-percentile-g?    yang:gauge64
+    |              |  +-- mid-percentile-g?    yang:gauge64
+    |              |  +-- high-percentile-g?   yang:gauge64
+    |              |  +-- peak-g?              yang:gauge64
+    |              +-- total-traffic-normal-per-port* [unit port]
+    |              |  +-- port                 inet:port-number
+    |              |  +-- unit                 unit
+    |              |  +-- low-percentile-g?    yang:gauge64
+    |              |  +-- mid-percentile-g?    yang:gauge64
+    |              |  +-- high-percentile-g?   yang:gauge64
+    |              |  +-- peak-g?              yang:gauge64
+    |              +-- total-connection-capacity* [protocol]
+    |              |  +-- protocol                     uint8
+    |              |  +-- connection?                  uint64
+    |              |  +-- connection-client?           uint64
+    |              |  +-- embryonic?                   uint64
+    |              |  +-- embryonic-client?            uint64
+    |              |  +-- connection-ps?               uint64
+    |              |  +-- connection-client-ps?        uint64
+    |              |  +-- request-ps?                  uint64
+    |              |  +-- request-client-ps?           uint64
+    |              |  +-- partial-request-ps?          uint64
+    |              |  +-- partial-request-client-ps?   uint64
+    |              +-- total-connection-capacity-per-port* [protocol port]
+    |                 +-- port                         inet:port-number
+    |                 +-- protocol                     uint8
+    |                 +-- connection?                  uint64
+    |                 +-- connection-client?           uint64
+    |                 +-- embryonic?                   uint64
+    |                 +-- embryonic-client?            uint64
+    |                 +-- connection-ps?               uint64
+    |                 +-- connection-client-ps?        uint64
+    |                 +-- request-ps?                  uint64
+    |                 +-- request-client-ps?           uint64
+    |                 +-- partial-request-ps?          uint64
+    |                 +-- partial-request-client-ps?   uint64
     +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid                             string
-          +--rw cdid?                            string
-          +--rw tmid                             uint32
-          +--rw target
-          |  +--rw target-prefix*       inet:ip-prefix
-          |  +--rw target-port-range* [lower-port]
-          |  |  +--rw lower-port    inet:port-number
-          |  |  +--rw upper-port?   inet:port-number
-          |  +--rw target-protocol*     uint8
-          |  +--rw target-fqdn*         inet:domain-name
-          |  +--rw target-uri*          inet:uri
-          |  +--rw alias-name*          string
-          |  +--rw mid-list*            uint32
-          +--rw total-traffic* [unit]
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-traffic-protocol* [unit protocol]
-          |  +--rw protocol             uint8
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-traffic-port* [unit port]
-          |  +--rw port                 inet:port-number
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-traffic* [unit]
-          |  +--rw protocol?            uint8
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-traffic-protocol* [unit protocol]
-          |  +--rw protocol             uint8
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-traffic-port* [unit port]
-          |  +--rw port                 inet:port-number
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-connection
-          |  +--rw low-percentile-l* [protocol]
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw mid-percentile-l* [protocol]
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw high-percentile-l* [protocol]
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw peak-l* [protocol]
-          |     +--rw protocol              uint8
-          |     +--rw connection?           yang:gauge64
-          |     +--rw embryonic?            yang:gauge64
-          |     +--rw connection-ps?        yang:gauge64
-          |     +--rw request-ps?           yang:gauge64
-          |     +--rw partial-request-ps?   yang:gauge64
-          +--rw total-attack-connection-port
-          |  +--rw low-percentile-l* [protocol port]
-          |  |  +--rw port                  inet:port-number
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw mid-percentile-l* [protocol port]
-          |  |  +--rw port                  inet:port-number
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw high-percentile-l* [protocol port]
-          |  |  +--rw port                  inet:port-number
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw peak-l* [protocol port]
-          |     +--rw port                  inet:port-number
-          |     +--rw protocol              uint8
-          |     +--rw connection?           yang:gauge64
-          |     +--rw embryonic?            yang:gauge64
-          |     +--rw connection-ps?        yang:gauge64
-          |     +--rw request-ps?           yang:gauge64
-          |     +--rw partial-request-ps?   yang:gauge64
-          +--rw attack-detail* [attack-id]
-             +--rw id?                uint32
-             +--rw attack-id          string
-             +--rw attack-name?       string
-             +--rw attack-severity?   attack-severity
-             +--rw start-time?        uint64
-             +--rw end-time?          uint64
-             +--rw source-count
-             |  +--rw low-percentile-g?    yang:gauge64
-             |  +--rw mid-percentile-g?    yang:gauge64
-             |  +--rw high-percentile-g?   yang:gauge64
-             |  +--rw peak-g?              yang:gauge64
-             +--rw top-talker
-                +--rw talker* [source-prefix]
-                   +--rw spoofed-status?            boolean
-                   +--rw source-prefix              inet:ip-prefix
-                   +--rw source-port-range* [lower-port]
-                   |  +--rw lower-port    inet:port-number
-                   |  +--rw upper-port?   inet:port-number
-                   +--rw source-icmp-type-range* [lower-type]
-                   |  +--rw lower-type    uint8
-                   |  +--rw upper-type?   uint8
-                   +--rw total-attack-traffic* [unit]
-                   |  +--rw unit                 unit
-                   |  +--rw low-percentile-g?    yang:gauge64
-                   |  +--rw mid-percentile-g?    yang:gauge64
-                   |  +--rw high-percentile-g?   yang:gauge64
-                   |  +--rw peak-g?              yang:gauge64
-                   +--rw total-attack-connection
-                      +--rw low-percentile-l* [protocol]
-                      |  +--rw protocol              uint8
-                      |  +--rw connection?           yang:gauge64
-                      |  +--rw embryonic?            yang:gauge64
-                      |  +--rw connection-ps?        yang:gauge64
-                      |  +--rw request-ps?           yang:gauge64
-                      |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw mid-percentile-l* [protocol]
-                      |  +--rw protocol              uint8
-                      |  +--rw connection?           yang:gauge64
-                      |  +--rw embryonic?            yang:gauge64
-                      |  +--rw connection-ps?        yang:gauge64
-                      |  +--rw request-ps?           yang:gauge64
-                      |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw high-percentile-l* [protocol]
-                      |  +--rw protocol              uint8
-                      |  +--rw connection?           yang:gauge64
-                      |  +--rw embryonic?            yang:gauge64
-                      |  +--rw connection-ps?        yang:gauge64
-                      |  +--rw request-ps?           yang:gauge64
-                      |  +--rw partial-request-ps?   yang:gauge64
-                      +--rw peak-l* [protocol]
-                         +--rw protocol              uint8
-                         +--rw connection?           yang:gauge64
-                         +--rw embryonic?            yang:gauge64
-                         +--rw connection-ps?        yang:gauge64
-                         +--rw request-ps?           yang:gauge64
-                         +--rw partial-request-ps?   yang:gauge64
+       +-- pre-or-ongoing-mitigation* [cuid tmid]
+          +-- cuid                             string
+          +-- cdid?                            string
+          +-- tmid                             uint32
+          +-- target
+          |  +-- target-prefix*       inet:ip-prefix
+          |  +-- target-port-range* [lower-port]
+          |  |  +-- lower-port    inet:port-number
+          |  |  +-- upper-port?   inet:port-number
+          |  +-- target-protocol*     uint8
+          |  +-- target-fqdn*         inet:domain-name
+          |  +-- target-uri*          inet:uri
+          |  +-- alias-name*          string
+          |  +-- mid-list*            uint32
+          +-- total-traffic* [unit]
+          |  +-- unit                 unit
+          |  +-- low-percentile-g?    yang:gauge64
+          |  +-- mid-percentile-g?    yang:gauge64
+          |  +-- high-percentile-g?   yang:gauge64
+          |  +-- peak-g?              yang:gauge64
+          +-- total-traffic-protocol* [unit protocol]
+          |  +-- protocol             uint8
+          |  +-- unit                 unit
+          |  +-- low-percentile-g?    yang:gauge64
+          |  +-- mid-percentile-g?    yang:gauge64
+          |  +-- high-percentile-g?   yang:gauge64
+          |  +-- peak-g?              yang:gauge64
+          +-- total-traffic-port* [unit port]
+          |  +-- port                 inet:port-number
+          |  +-- unit                 unit
+          |  +-- low-percentile-g?    yang:gauge64
+          |  +-- mid-percentile-g?    yang:gauge64
+          |  +-- high-percentile-g?   yang:gauge64
+          |  +-- peak-g?              yang:gauge64
+          +-- total-attack-traffic* [unit]
+          |  +-- protocol?            uint8
+          |  +-- unit                 unit
+          |  +-- low-percentile-g?    yang:gauge64
+          |  +-- mid-percentile-g?    yang:gauge64
+          |  +-- high-percentile-g?   yang:gauge64
+          |  +-- peak-g?              yang:gauge64
+          +-- total-attack-traffic-protocol* [unit protocol]
+          |  +-- protocol             uint8
+          |  +-- unit                 unit
+          |  +-- low-percentile-g?    yang:gauge64
+          |  +-- mid-percentile-g?    yang:gauge64
+          |  +-- high-percentile-g?   yang:gauge64
+          |  +-- peak-g?              yang:gauge64
+          +-- total-attack-traffic-port* [unit port]
+          |  +-- port                 inet:port-number
+          |  +-- unit                 unit
+          |  +-- low-percentile-g?    yang:gauge64
+          |  +-- mid-percentile-g?    yang:gauge64
+          |  +-- high-percentile-g?   yang:gauge64
+          |  +-- peak-g?              yang:gauge64
+          +-- total-attack-connection
+          |  +-- low-percentile-l* [protocol]
+          |  |  +-- protocol              uint8
+          |  |  +-- connection?           yang:gauge64
+          |  |  +-- embryonic?            yang:gauge64
+          |  |  +-- connection-ps?        yang:gauge64
+          |  |  +-- request-ps?           yang:gauge64
+          |  |  +-- partial-request-ps?   yang:gauge64
+          |  +-- mid-percentile-l* [protocol]
+          |  |  +-- protocol              uint8
+          |  |  +-- connection?           yang:gauge64
+          |  |  +-- embryonic?            yang:gauge64
+          |  |  +-- connection-ps?        yang:gauge64
+          |  |  +-- request-ps?           yang:gauge64
+          |  |  +-- partial-request-ps?   yang:gauge64
+          |  +-- high-percentile-l* [protocol]
+          |  |  +-- protocol              uint8
+          |  |  +-- connection?           yang:gauge64
+          |  |  +-- embryonic?            yang:gauge64
+          |  |  +-- connection-ps?        yang:gauge64
+          |  |  +-- request-ps?           yang:gauge64
+          |  |  +-- partial-request-ps?   yang:gauge64
+          |  +-- peak-l* [protocol]
+          |     +-- protocol              uint8
+          |     +-- connection?           yang:gauge64
+          |     +-- embryonic?            yang:gauge64
+          |     +-- connection-ps?        yang:gauge64
+          |     +-- request-ps?           yang:gauge64
+          |     +-- partial-request-ps?   yang:gauge64
+          +-- total-attack-connection-port
+          |  +-- low-percentile-l* [protocol port]
+          |  |  +-- port                  inet:port-number
+          |  |  +-- protocol              uint8
+          |  |  +-- connection?           yang:gauge64
+          |  |  +-- embryonic?            yang:gauge64
+          |  |  +-- connection-ps?        yang:gauge64
+          |  |  +-- request-ps?           yang:gauge64
+          |  |  +-- partial-request-ps?   yang:gauge64
+          |  +-- mid-percentile-l* [protocol port]
+          |  |  +-- port                  inet:port-number
+          |  |  +-- protocol              uint8
+          |  |  +-- connection?           yang:gauge64
+          |  |  +-- embryonic?            yang:gauge64
+          |  |  +-- connection-ps?        yang:gauge64
+          |  |  +-- request-ps?           yang:gauge64
+          |  |  +-- partial-request-ps?   yang:gauge64
+          |  +-- high-percentile-l* [protocol port]
+          |  |  +-- port                  inet:port-number
+          |  |  +-- protocol              uint8
+          |  |  +-- connection?           yang:gauge64
+          |  |  +-- embryonic?            yang:gauge64
+          |  |  +-- connection-ps?        yang:gauge64
+          |  |  +-- request-ps?           yang:gauge64
+          |  |  +-- partial-request-ps?   yang:gauge64
+          |  +-- peak-l* [protocol port]
+          |     +-- port                  inet:port-number
+          |     +-- protocol              uint8
+          |     +-- connection?           yang:gauge64
+          |     +-- embryonic?            yang:gauge64
+          |     +-- connection-ps?        yang:gauge64
+          |     +-- request-ps?           yang:gauge64
+          |     +-- partial-request-ps?   yang:gauge64
+          +-- attack-detail* [vendor-id attack-id]
+             +-- vendor-id             uint32
+             +-- attack-id             uint32
+             +-- attack-description?   string
+             +-- attack-severity?      attack-severity
+             +-- start-time?           uint64
+             +-- end-time?             uint64
+             +-- source-count
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- top-talker
+                +-- talker* [source-prefix]
+                   +-- spoofed-status?            boolean
+                   +-- source-prefix              inet:ip-prefix
+                   +-- source-port-range* [lower-port]
+                   |  +-- lower-port    inet:port-number
+                   |  +-- upper-port?   inet:port-number
+                   +-- source-icmp-type-range* [lower-type]
+                   |  +-- lower-type    uint8
+                   |  +-- upper-type?   uint8
+                   +-- total-attack-traffic* [unit]
+                   |  +-- unit                 unit
+                   |  +-- low-percentile-g?    yang:gauge64
+                   |  +-- mid-percentile-g?    yang:gauge64
+                   |  +-- high-percentile-g?   yang:gauge64
+                   |  +-- peak-g?              yang:gauge64
+                   +-- total-attack-connection
+                      +-- low-percentile-l* [protocol]
+                      |  +-- protocol              uint8
+                      |  +-- connection?           yang:gauge64
+                      |  +-- embryonic?            yang:gauge64
+                      |  +-- connection-ps?        yang:gauge64
+                      |  +-- request-ps?           yang:gauge64
+                      |  +-- partial-request-ps?   yang:gauge64
+                      +-- mid-percentile-l* [protocol]
+                      |  +-- protocol              uint8
+                      |  +-- connection?           yang:gauge64
+                      |  +-- embryonic?            yang:gauge64
+                      |  +-- connection-ps?        yang:gauge64
+                      |  +-- request-ps?           yang:gauge64
+                      |  +-- partial-request-ps?   yang:gauge64
+                      +-- high-percentile-l* [protocol]
+                      |  +-- protocol              uint8
+                      |  +-- connection?           yang:gauge64
+                      |  +-- embryonic?            yang:gauge64
+                      |  +-- connection-ps?        yang:gauge64
+                      |  +-- request-ps?           yang:gauge64
+                      |  +-- partial-request-ps?   yang:gauge64
+                      +-- peak-l* [protocol]
+                         +-- protocol              uint8
+                         +-- connection?           yang:gauge64
+                         +-- embryonic?            yang:gauge64
+                         +-- connection-ps?        yang:gauge64
+                         +-- request-ps?           yang:gauge64
+                         +-- partial-request-ps?   yang:gauge64
