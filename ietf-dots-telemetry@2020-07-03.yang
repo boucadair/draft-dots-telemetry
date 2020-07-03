@@ -31,11 +31,11 @@ module ietf-dots-telemetry {
       "Section 6.2 of RFC 8345: A YANG Data Model for Network
        Topologies";
   }
-  /*import ietf-yang-structure-ext {
+  import ietf-yang-structure-ext {
     prefix sx;
     reference
       "RFC 8791: YANG Data Structure Extensions";
-  }*/
+  }
 
   organization
     "IETF DDoS Open Threat Signaling (DOTS) Working Group";
@@ -1042,7 +1042,6 @@ module ietf-dots-telemetry {
     }
   }
 
-  //sx:augment-structure "/ietf-signal:dots-signal/ietf-signal:message-type/"
   augment "/ietf-signal:dots-signal/ietf-signal:message-type/"
         + "ietf-signal:mitigation-scope/ietf-signal:scope" {
     if-feature "dots-telemetry";
@@ -1088,7 +1087,6 @@ module ietf-dots-telemetry {
     }
   }
 
-  //sx:augment-structure "/ietf-signal:dots-signal/ietf-signal:message-type" {
   augment "/ietf-signal:dots-signal/ietf-signal:message-type" {
     if-feature "dots-telemetry";
     description
