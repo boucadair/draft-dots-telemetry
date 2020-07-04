@@ -74,13 +74,6 @@ module ietf-dots-telemetry {
                  Signaling (DOTS) Telemetry";
   }
 
-  feature dots-telemetry {
-    description
-      "This feature indicates that the DOTS signal channel is able
-       to convey DOTS telemetry data between DOTS clients and
-       servers.";
-  }
-
   typedef attack-severity {
     type enumeration {
       enum none {
@@ -364,7 +357,7 @@ module ietf-dots-telemetry {
            to control the selection of configuration
             and non-configuration data nodes.";
         reference
-          "Section 4.4.2 of RFC SSSS.";
+          "Section 4.4.2 of RFC 8782.";
       }
     }
     description
@@ -1042,16 +1035,15 @@ module ietf-dots-telemetry {
     }
   }
 
-  sx:augment-structure "/ietf-signal:dots-signal/ietf-signal:message-type/
-        + "ietf-signal:mitigation-scope/ietf-signal:scope" {
-    if-feature "dots-telemetry";
+  sx:augment-structure "/ietf-signal:dots-signal/ietf-signal:message-type/"
+                     + "ietf-signal:mitigation-scope/ietf-signal:scope" {
     description
       "Extends mitigation scope with telemetry update data.";
     choice direction {
       description
         "Indicates the communication direction in which the
          attributes can be included.";
-      case server-to-client {
+      case server-to-client-only {
         description
           "These attributes appear only in a mitigation message
            sent from the server to the client.";
@@ -1086,128 +1078,54 @@ module ietf-dots-telemetry {
       }
     }
   }
-
-  sx:augment-structure "/ietf-signal:dots-signal/ietf-signal:message-type" {
-    if-feature "dots-telemetry";
+  sx:structure dots-telemetry {
     description
-      "Add a new choice to enclose telemetry data in DOTS
-       signal channel.";
-    case telemetry-setup {
+      "Main container for DOTS telemetry message.";
+    choice telemetry-message-type {
       description
-        "Indicates the message is about telemetry.";
-      choice direction {
+        "Can be a telemetry-setup or telemetry data.";
+      case telemetry-setup {
         description
-          "Indicates the communication direction in which the
-           attributes can be included.";
-        case server-to-client {
+          "Indicates the message is about telemetry.";
+        choice direction {
           description
-            "These attributes appear only in a mitigation message
-             sent from the server to the client.";
-          container max-config-values {
+            "Indicates the communication direction in which the
+             attributes can be included.";
+          case server-to-client-only {
             description
-              "Maximum acceptable configuration values.";
-            uses percentile-config;
-            leaf server-originated-telemetry {
-              type boolean;
+              "These attributes appear only in a mitigation message
+               sent from the server to the client.";
+            container max-config-values {
               description
-                "Indicates whether the DOTS server can be instructed
-                 to send pre-or-ongoing-mitigation telemetry. If set to FALSE
-                 or the attribute is not present, this is an indication
-                 that the server does not support this capability.";
-            }
-            leaf telemetry-notify-interval {
-              type uint32 {
-                range "1 .. 3600";
-              }
-              must '. >= ../../min-config-values/telemetry-notify-interval' {
-                error-message
-                  "The value must be greater than or equal
-                   to the telemetry-notify-interval in the min-config-values";
-              }
-              units "seconds";
-              description
-                "Minimum number of seconds between successive
-                 telemetry notifications.";
-            }
-          }
-          container min-config-values {
-            description
-              "Minimum acceptable configuration values.";
-            uses percentile-config;
-            leaf telemetry-notify-interval {
-              type uint32 {
-                range "1 .. 3600";
-              }
-              units "seconds";
-              description
-                "Minimum number of seconds between successive
-                 telemetry notifications.";
-            }
-          }
-          container supported-units {
-            description
-              "Supported units and default activation status.";
-            uses unit-config;
-          }
-          leaf-list query-type {
-            type query-type;
-            description
-              "Indicates which query types are supported by
-               the server.";
-          }
-        }
-      }
-      list telemetry {
-        key "cuid tsid";
-        description
-          "The telemetry data per DOTS client.";
-        leaf cuid {
-          type string;
-          description
-            "A unique identifier that is
-             generated by a DOTS client to prevent
-             request collisions.  It is expected that the
-             cuid will remain consistent throughout the
-             lifetime of the DOTS client.";
-        }
-        leaf cdid {
-          type string;
-          description
-            "The cdid should be included by a server-domain
-             DOTS gateway to propagate the client domain
-             identification information from the
-             gateway's client-facing-side to the gateway's
-             server-facing-side, and from the gateway's
-             server-facing-side to the DOTS server.
-
-             It may be used by the final DOTS server
-             for policy enforcement purposes.";
-        }
-        leaf tsid {
-          type uint32;
-          description
-            "An identifier for the DOTS telemetry setup
-             data.";
-        }
-        choice setup-type {
-          description
-            "Can be a mitigation configuration, a pipe capacity,
-             or baseline message.";
-          case telemetry-config {
-            description
-              "Uses to set low, mid, and high percentile values.";
-            container current-config {
-              description
-                "Current configuration values.";
+                "Maximum acceptable configuration values.";
               uses percentile-config;
-              uses unit-config;
               leaf server-originated-telemetry {
                 type boolean;
                 description
-                  "Used by a DOTS client to enable/disable whether it
-                   accepts pre-or-ongoing-mitigation telemetry from
-                   the DOTS server.";
+                  "Indicates whether the DOTS server can be instructed
+                   to send pre-or-ongoing-mitigation telemetry. If set to FALSE
+                   or the attribute is not present, this is an indication
+                   that the server does not support this capability.";
               }
+              leaf telemetry-notify-interval {
+                type uint32 {
+                  range "1 .. 3600";
+                }
+                must '. >= ../../min-config-values/telemetry-notify-interval' {
+                  error-message
+                    "The value must be greater than or equal
+                     to the telemetry-notify-interval in the min-config-values";
+                }
+                units "seconds";
+                description
+                  "Minimum number of seconds between successive
+                   telemetry notifications.";
+              }
+            }
+            container min-config-values {
+              description
+                "Minimum acceptable configuration values.";
+              uses percentile-config;
               leaf telemetry-notify-interval {
                 type uint32 {
                   range "1 .. 3600";
@@ -1218,105 +1136,180 @@ module ietf-dots-telemetry {
                    telemetry notifications.";
               }
             }
-          }
-          case pipe {
-            description
-              "Total pipe capacity of a DOTS client domain";
-            list total-pipe-capacity {
-              key "link-id unit";
+            container supported-units {
               description
-                "Total pipe capacity of a DOTS client domain.";
-              leaf link-id {
-                type nt:link-id;
-                description
-                  "Identifier of an interconnection link.";
-              }
-              leaf capacity {
-                type uint64;
-                mandatory true;
-                description
-                  "Pipe capacity.";
-              }
-              leaf unit {
-                type unit;
-                description
-                  "The traffic can be measured using unit types: packets
-                   per second (PPS), Bits per Second (BPS), and/or
-                   bytes per second. DOTS agents auto-scale to the
-                   appropriate units (e.g., megabit-ps, kilobit-ps).";
-              }
+                "Supported units and default activation status.";
+              uses unit-config;
+            }
+            leaf-list query-type {
+              type query-type;
+              description
+                "Indicates which query types are supported by
+                 the server.";
             }
           }
-          case baseline {
+        }
+        list telemetry {
+          key "cuid tsid";
+          description
+            "The telemetry data per DOTS client.";
+          leaf cuid {
+            type string;
             description
-              "Traffic baseline information";
-            list baseline {
-              key "id";
+              "A unique identifier that is
+               generated by a DOTS client to prevent
+               request collisions.  It is expected that the
+               cuid will remain consistent throughout the
+               lifetime of the DOTS client.";
+          }
+          leaf cdid {
+            type string;
+            description
+              "The cdid should be included by a server-domain
+               DOTS gateway to propagate the client domain
+               identification information from the
+               gateway's client-facing-side to the gateway's
+               server-facing-side, and from the gateway's
+               server-facing-side to the DOTS server.
+
+               It may be used by the final DOTS server
+               for policy enforcement purposes.";
+          }
+          leaf tsid {
+            type uint32;
+            description
+              "An identifier for the DOTS telemetry setup
+               data.";
+          }
+          choice setup-type {
+            description
+              "Can be a mitigation configuration, a pipe capacity,
+               or baseline message.";
+            case telemetry-config {
+              description
+                "Uses to set low, mid, and high percentile values.";
+              container current-config {
+                description
+                  "Current configuration values.";
+                uses percentile-config;
+                uses unit-config;
+                leaf server-originated-telemetry {
+                  type boolean;
+                  description
+                    "Used by a DOTS client to enable/disable whether it
+                     accepts pre-or-ongoing-mitigation telemetry from
+                     the DOTS server.";
+                }
+                leaf telemetry-notify-interval {
+                  type uint32 {
+                    range "1 .. 3600";
+                  }
+                  units "seconds";
+                  description
+                    "Minimum number of seconds between successive
+                     telemetry notifications.";
+                }
+              }
+            }
+            case pipe {
+              description
+                "Total pipe capacity of a DOTS client domain";
+              list total-pipe-capacity {
+                key "link-id unit";
+                description
+                  "Total pipe capacity of a DOTS client domain.";
+                leaf link-id {
+                  type nt:link-id;
+                  description
+                    "Identifier of an interconnection link.";
+                }
+                leaf capacity {
+                  type uint64;
+                  mandatory true;
+                  description
+                    "Pipe capacity.";
+                }
+                leaf unit {
+                  type unit;
+                  description
+                    "The traffic can be measured using unit types: packets
+                     per second (PPS), Bits per Second (BPS), and/or
+                     bytes per second. DOTS agents auto-scale to the
+                     appropriate units (e.g., megabit-ps, kilobit-ps).";
+                }
+              }
+            }
+            case baseline {
               description
                 "Traffic baseline information";
-              leaf id {
-                type uint32;
-                must '. >= 1';
+              list baseline {
+                key "id";
                 description
-                  "A baseline entry identifier.";
+                  "Traffic baseline information";
+                leaf id {
+                  type uint32;
+                  must '. >= 1';
+                  description
+                    "A baseline entry identifier.";
+                }
+                uses baseline;
               }
-              uses baseline;
             }
           }
         }
       }
-    }
-    case telemetry {
-      description
-        "Indicates the message is about telemetry.";
-      list pre-or-ongoing-mitigation {
-        key "cuid tmid";
+      case telemetry {
         description
-          "Pre-or-ongoing-mitigation telemetry per DOTS client.";
-        leaf cuid {
-          type string;
+          "Indicates the message is about telemetry.";
+        list pre-or-ongoing-mitigation {
+          key "cuid tmid";
           description
-            "A unique identifier that is
-             generated by a DOTS client to prevent
-             request collisions.  It is expected that the
-             cuid will remain consistent throughout the
-             lifetime of the DOTS client.";
-        }
-        leaf cdid {
-          type string;
-          description
-            "The cdid should be included by a server-domain
-             DOTS gateway to propagate the client domain
-             identification information from the
-             gateway's client-facing-side to the gateway's
-             server-facing-side, and from the gateway's
-             server-facing-side to the DOTS server.
-
-             It may be used by the final DOTS server
-             for policy enforcement purposes.";
-        }
-        leaf tmid {
-          type uint32;
-          description
-            "An identifier to uniquely demux telemetry data sent
-             using the same message.";
-        }
-        container target {
-          description
-            "Indicates the target.";
-          uses ietf-data:target;
-          leaf-list alias-name {
+            "Pre-or-ongoing-mitigation telemetry per DOTS client.";
+          leaf cuid {
             type string;
             description
-              "An alias name that points to a resource.";
+              "A unique identifier that is
+               generated by a DOTS client to prevent
+               request collisions.  It is expected that the
+               cuid will remain consistent throughout the
+               lifetime of the DOTS client.";
           }
-          leaf-list mid-list {
+          leaf cdid {
+            type string;
+            description
+              "The cdid should be included by a server-domain
+               DOTS gateway to propagate the client domain
+               identification information from the
+               gateway's client-facing-side to the gateway's
+               server-facing-side, and from the gateway's
+               server-facing-side to the DOTS server.
+
+               It may be used by the final DOTS server
+               for policy enforcement purposes.";
+          }
+          leaf tmid {
             type uint32;
             description
-              "Reference a list of associated mitigation requests.";
+              "An identifier to uniquely demux telemetry data sent
+               using the same message.";
           }
+          container target {
+            description
+              "Indicates the target.";
+            uses ietf-data:target;
+            leaf-list alias-name {
+              type string;
+              description
+                "An alias name that points to a resource.";
+            }
+            leaf-list mid-list {
+              type uint32;
+              description
+                "Reference a list of associated mitigation requests.";
+            }
+          }
+          uses pre-or-ongoing-mitigation;
         }
-        uses pre-or-ongoing-mitigation;
       }
     }
   }
