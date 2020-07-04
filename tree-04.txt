@@ -1,5 +1,100 @@
 module: ietf-dots-telemetry
 
+  augment-structure /ietf-signal:dots-signal/ietf-signal:message-type
+                    /ietf-signal:mitigation-scope/ietf-signal:scope:
+    +-- (direction)?
+    |  +--:(server-to-client-only)
+    |     +-- total-traffic* [unit]
+    |     |  +-- unit                 unit
+    |     |  +-- low-percentile-g?    yang:gauge64
+    |     |  +-- mid-percentile-g?    yang:gauge64
+    |     |  +-- high-percentile-g?   yang:gauge64
+    |     |  +-- peak-g?              yang:gauge64
+    |     +-- total-attack-connection
+    |        +-- low-percentile-c
+    |        |  +-- connection?           yang:gauge64
+    |        |  +-- embryonic?            yang:gauge64
+    |        |  +-- connection-ps?        yang:gauge64
+    |        |  +-- request-ps?           yang:gauge64
+    |        |  +-- partial-request-ps?   yang:gauge64
+    |        +-- mid-percentile-c
+    |        |  +-- connection?           yang:gauge64
+    |        |  +-- embryonic?            yang:gauge64
+    |        |  +-- connection-ps?        yang:gauge64
+    |        |  +-- request-ps?           yang:gauge64
+    |        |  +-- partial-request-ps?   yang:gauge64
+    |        +-- high-percentile-c
+    |        |  +-- connection?           yang:gauge64
+    |        |  +-- embryonic?            yang:gauge64
+    |        |  +-- connection-ps?        yang:gauge64
+    |        |  +-- request-ps?           yang:gauge64
+    |        |  +-- partial-request-ps?   yang:gauge64
+    |        +-- peak-c
+    |           +-- connection?           yang:gauge64
+    |           +-- embryonic?            yang:gauge64
+    |           +-- connection-ps?        yang:gauge64
+    |           +-- request-ps?           yang:gauge64
+    |           +-- partial-request-ps?   yang:gauge64
+    +-- total-attack-traffic* [unit]
+    |  +-- unit                 unit
+    |  +-- low-percentile-g?    yang:gauge64
+    |  +-- mid-percentile-g?    yang:gauge64
+    |  +-- high-percentile-g?   yang:gauge64
+    |  +-- peak-g?              yang:gauge64
+    +-- attack-detail* [vendor-id attack-id]
+       +-- vendor-id             uint32
+       +-- attack-id             uint32
+       +-- attack-description?   string
+       +-- attack-severity?      attack-severity
+       +-- start-time?           uint64
+       +-- end-time?             uint64
+       +-- source-count
+       |  +-- low-percentile-g?    yang:gauge64
+       |  +-- mid-percentile-g?    yang:gauge64
+       |  +-- high-percentile-g?   yang:gauge64
+       |  +-- peak-g?              yang:gauge64
+       +-- top-talker
+          +-- talker* [source-prefix]
+             +-- spoofed-status?            boolean
+             +-- source-prefix              inet:ip-prefix
+             +-- source-port-range* [lower-port]
+             |  +-- lower-port    inet:port-number
+             |  +-- upper-port?   inet:port-number
+             +-- source-icmp-type-range* [lower-type]
+             |  +-- lower-type    uint8
+             |  +-- upper-type?   uint8
+             +-- total-attack-traffic* [unit]
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-connection
+                +-- low-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- mid-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- high-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- peak-c
+                   +-- connection?           yang:gauge64
+                   +-- embryonic?            yang:gauge64
+                   +-- connection-ps?        yang:gauge64
+                   +-- request-ps?           yang:gauge64
+                   +-- partial-request-ps?   yang:gauge64
+
   structure dots-telemetry:
     +-- (telemetry-message-type)?
        +--:(telemetry-setup)
@@ -287,97 +382,3 @@ module: ietf-dots-telemetry
                             +-- request-ps?           yang:gauge64
                             +-- partial-request-ps?   yang:gauge64
 
-  augment-structure /ietf-signal:dots-signal/ietf-signal:message-type
-                    /ietf-signal:mitigation-scope/ietf-signal:scope:
-    +-- (direction)?
-    |  +--:(server-to-client-only)
-    |     +-- total-traffic* [unit]
-    |     |  +-- unit                 unit
-    |     |  +-- low-percentile-g?    yang:gauge64
-    |     |  +-- mid-percentile-g?    yang:gauge64
-    |     |  +-- high-percentile-g?   yang:gauge64
-    |     |  +-- peak-g?              yang:gauge64
-    |     +-- total-attack-connection
-    |        +-- low-percentile-c
-    |        |  +-- connection?           yang:gauge64
-    |        |  +-- embryonic?            yang:gauge64
-    |        |  +-- connection-ps?        yang:gauge64
-    |        |  +-- request-ps?           yang:gauge64
-    |        |  +-- partial-request-ps?   yang:gauge64
-    |        +-- mid-percentile-c
-    |        |  +-- connection?           yang:gauge64
-    |        |  +-- embryonic?            yang:gauge64
-    |        |  +-- connection-ps?        yang:gauge64
-    |        |  +-- request-ps?           yang:gauge64
-    |        |  +-- partial-request-ps?   yang:gauge64
-    |        +-- high-percentile-c
-    |        |  +-- connection?           yang:gauge64
-    |        |  +-- embryonic?            yang:gauge64
-    |        |  +-- connection-ps?        yang:gauge64
-    |        |  +-- request-ps?           yang:gauge64
-    |        |  +-- partial-request-ps?   yang:gauge64
-    |        +-- peak-c
-    |           +-- connection?           yang:gauge64
-    |           +-- embryonic?            yang:gauge64
-    |           +-- connection-ps?        yang:gauge64
-    |           +-- request-ps?           yang:gauge64
-    |           +-- partial-request-ps?   yang:gauge64
-    +-- total-attack-traffic* [unit]
-    |  +-- unit                 unit
-    |  +-- low-percentile-g?    yang:gauge64
-    |  +-- mid-percentile-g?    yang:gauge64
-    |  +-- high-percentile-g?   yang:gauge64
-    |  +-- peak-g?              yang:gauge64
-    +-- attack-detail* [vendor-id attack-id]
-       +-- vendor-id             uint32
-       +-- attack-id             uint32
-       +-- attack-description?   string
-       +-- attack-severity?      attack-severity
-       +-- start-time?           uint64
-       +-- end-time?             uint64
-       +-- source-count
-       |  +-- low-percentile-g?    yang:gauge64
-       |  +-- mid-percentile-g?    yang:gauge64
-       |  +-- high-percentile-g?   yang:gauge64
-       |  +-- peak-g?              yang:gauge64
-       +-- top-talker
-          +-- talker* [source-prefix]
-             +-- spoofed-status?            boolean
-             +-- source-prefix              inet:ip-prefix
-             +-- source-port-range* [lower-port]
-             |  +-- lower-port    inet:port-number
-             |  +-- upper-port?   inet:port-number
-             +-- source-icmp-type-range* [lower-type]
-             |  +-- lower-type    uint8
-             |  +-- upper-type?   uint8
-             +-- total-attack-traffic* [unit]
-             |  +-- unit                 unit
-             |  +-- low-percentile-g?    yang:gauge64
-             |  +-- mid-percentile-g?    yang:gauge64
-             |  +-- high-percentile-g?   yang:gauge64
-             |  +-- peak-g?              yang:gauge64
-             +-- total-attack-connection
-                +-- low-percentile-c
-                |  +-- connection?           yang:gauge64
-                |  +-- embryonic?            yang:gauge64
-                |  +-- connection-ps?        yang:gauge64
-                |  +-- request-ps?           yang:gauge64
-                |  +-- partial-request-ps?   yang:gauge64
-                +-- mid-percentile-c
-                |  +-- connection?           yang:gauge64
-                |  +-- embryonic?            yang:gauge64
-                |  +-- connection-ps?        yang:gauge64
-                |  +-- request-ps?           yang:gauge64
-                |  +-- partial-request-ps?   yang:gauge64
-                +-- high-percentile-c
-                |  +-- connection?           yang:gauge64
-                |  +-- embryonic?            yang:gauge64
-                |  +-- connection-ps?        yang:gauge64
-                |  +-- request-ps?           yang:gauge64
-                |  +-- partial-request-ps?   yang:gauge64
-                +-- peak-c
-                   +-- connection?           yang:gauge64
-                   +-- embryonic?            yang:gauge64
-                   +-- connection-ps?        yang:gauge64
-                   +-- request-ps?           yang:gauge64
-                   +-- partial-request-ps?   yang:gauge64
