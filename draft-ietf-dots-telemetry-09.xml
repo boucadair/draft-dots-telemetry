@@ -557,19 +557,23 @@
 
       <t><figure anchor="abstract"
           title="New DOTS Message Types (YANG Tree Structure)">
-          <artwork><![CDATA[  augment /ietf-signal:dots-signal/ietf-signal:message-type:
-    +--:(telemetry-setup) {dots-telemetry}?
-    |   ...
-    |     +--rw (setup-type)?
-    |        +--:(telemetry-config)
-    |        |  ...
-    |        +--:(pipe)
-    |        | ...
-    |        +--:(baseline)
-    |        ...
-    +--:(telemetry) {dots-telemetry}?
-       ...
-
+          <artwork><![CDATA[  structure dots-telemetry:
+    +-- (telemetry-message-type)?
+       +--:(telemetry-setup)
+       |  ...
+       |  +-- telemetry* []
+       |     +-- (direction)?
+       |     |  +--:(server-to-client-only)
+       |     |     +-- tsid?                  uint32
+       |     +-- (setup-type)?
+       |        +--:(telemetry-config)
+       |        |  ...
+       |        +--:(pipe)
+       |        |  ...
+       |        +--:(baseline)
+       |           ...
+       +--:(telemetry)
+          ...
 ]]></artwork>
         </figure></t>
 
@@ -630,7 +634,7 @@
                  title="Retrieve Current DOTS Telemetry Configuration">
           <t>A GET request is used to obtain acceptable and current telemetry
           configuration parameters on the DOTS server. This request may
-          include a 'cdid' Path-URI when the request is relayed by a DOTS
+          include a 'cdid' Uri-Path when the request is relayed by a DOTS
           gateway. An example of such request is depicted in <xref
           target="GETa"></xref>.</t>
 
@@ -662,52 +666,54 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
 
           <t><figure anchor="tree-acceptable"
               title="Telemetry Configuration Tree Structure">
-              <artwork><![CDATA[  augment /ietf-signal:dots-signal/ietf-signal:message-type:
-    +--:(telemetry-setup) {dots-telemetry}?
-    |  +--ro max-config-values
-    |  |  +--ro measurement-interval?          interval
-    |  |  +--ro measurement-sample?            sample
-    |  |  +--ro low-percentile?                percentile
-    |  |  +--ro mid-percentile?                percentile
-    |  |  +--ro high-percentile?               percentile
-    |  |  +--ro server-originated-telemetry?   boolean
-    |  |  +--ro telemetry-notify-interval?     uint32
-    |  +--ro min-config-values
-    |  |  +--ro measurement-interval?        interval
-    |  |  +--ro measurement-sample?          sample
-    |  |  +--ro low-percentile?              percentile
-    |  |  +--ro mid-percentile?              percentile
-    |  |  +--ro high-percentile?             percentile
-    |  |  +--ro telemetry-notify-interval?   uint32
-    |  +--ro supported-units
-    |  |  +--ro unit-config* [unit]
-    |  |     +--ro unit           unit-type
-    |  |     +--ro unit-status    boolean
-    |  +--ro query-type*                  query-type
-    |  +--rw telemetry* [cuid tsid]
-    |     +--rw cuid                         string
-    |     +--rw cdid?                        string
-    |     +--rw tsid                         uint32
-    |     +--rw (setup-type)?
-    |        +--:(telemetry-config)
-    |        |  +--rw current-config
-    |        |     +--rw measurement-interval?          interval
-    |        |     +--rw measurement-sample?            sample
-    |        |     +--rw low-percentile?                percentile
-    |        |     +--rw mid-percentile?                percentile
-    |        |     +--rw high-percentile?               percentile
-    |        |     +--rw unit-config* [unit]
-    |        |     |  +--rw unit           unit-type
-    |        |     |  +--rw unit-status    boolean
-    |        |     +--rw server-originated-telemetry?   boolean
-    |        |     +--rw telemetry-notify-interval?     uint32
-    |        +--:(pipe)
-    |        ...
-    |        +--:(baseline)
-    |        ...
-    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-       ...
+              <artwork><![CDATA[  structure dots-telemetry:
+    +-- (telemetry-message-type)?
+       +--:(telemetry-setup)
+       |  +-- (direction)?
+       |  |  +--:(server-to-client-only)
+       |  |     +-- max-config-values
+       |  |     |  +-- measurement-interval?          interval
+       |  |     |  +-- measurement-sample?            sample
+       |  |     |  +-- low-percentile?                percentile
+       |  |     |  +-- mid-percentile?                percentile
+       |  |     |  +-- high-percentile?               percentile
+       |  |     |  +-- server-originated-telemetry?   boolean
+       |  |     |  +-- telemetry-notify-interval?     uint32
+       |  |     +-- min-config-values
+       |  |     |  +-- measurement-interval?        interval
+       |  |     |  +-- measurement-sample?          sample
+       |  |     |  +-- low-percentile?              percentile
+       |  |     |  +-- mid-percentile?              percentile
+       |  |     |  +-- high-percentile?             percentile
+       |  |     |  +-- telemetry-notify-interval?   uint32
+       |  |     +-- supported-units
+       |  |     |  +-- unit-config* [unit]
+       |  |     |     +-- unit           unit-type
+       |  |     |     +-- unit-status    boolean
+       |  |     +-- query-type*            query-type
+       |  +-- telemetry* []
+       |     +-- (direction)?
+       |     |  +--:(server-to-client-only)
+       |     |     +-- tsid?                  uint32
+       |     +-- (setup-type)?
+       |        +--:(telemetry-config)
+       |        |  +-- current-config
+       |        |     +-- measurement-interval?          interval
+       |        |     +-- measurement-sample?            sample
+       |        |     +-- low-percentile?                percentile
+       |        |     +-- mid-percentile?                percentile
+       |        |     +-- high-percentile?               percentile
+       |        |     +-- unit-config* [unit]
+       |        |     |  +-- unit           unit-type
+       |        |     |  +-- unit-status    boolean
+       |        |     +-- server-originated-telemetry?   boolean
+       |        |     +-- telemetry-notify-interval?     uint32
+       |        +--:(pipe)
+       |        |  ...
+       |        +--:(baseline)
+       |           ...
+       +--:(telemetry)
+          ...
 ]]></artwork>
             </figure></t>
 
@@ -952,27 +958,26 @@ Uri-Path: "tsid=123"
         shown in <xref target="ptree"></xref>.</t>
 
         <t><figure anchor="ptree" title="Pipe Tree Structure">
-            <artwork><![CDATA[  augment /ietf-signal:dots-signal/ietf-signal:message-type:
-    +--:(telemetry-setup) {dots-telemetry}?
-    |  ...
-    |  +--rw telemetry* [cuid tsid]
-    |     +--rw cuid                         string
-    |     +--rw cdid?                        string
-    |     +--rw tsid                         uint32
-    |     +--rw (setup-type)?
-    |        +--:(telemetry-config)
-    |        |  ...
-    |        +--:(pipe)
-    |        |  +--rw total-pipe-capacity* [link-id unit]
-    |        |     +--rw link-id     nt:link-id
-    |        |     +--rw capacity    uint64
-    |        |     +--rw unit        unit
-    |        +--:(baseline)
-    |        ...
-    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
+            <artwork><![CDATA[  structure dots-telemetry:
+    +-- (telemetry-message-type)?
+       +--:(telemetry-setup)
+       |  ...
+       |  +-- telemetry* []
+       |     +-- (direction)?
+       |     |  +--:(server-to-client-only)
+       |     |     +-- tsid?                  uint32
+       |     +-- (setup-type)?
+       |        +--:(telemetry-config)
+       |        |  ...
+       |        +--:(pipe)
+       |        |  +-- total-pipe-capacity* [link-id unit]
+       |        |     +-- link-id     nt:link-id
+       |        |     +-- capacity    uint64
+       |        |     +-- unit        unit
+       |        +--:(baseline)
+       |           ...
+       +--:(telemetry)
           ...
-
 ]]></artwork>
           </figure></t>
 
@@ -1297,76 +1302,84 @@ Content-Format: "application/dots+cbor"
         target="bltree"></xref>.</t>
 
         <t><figure anchor="bltree" title="Telemetry Baseline Tree Structure">
-            <artwork><![CDATA[  augment /ietf-signal:dots-signal/ietf-signal:message-type:
-    +--:(telemetry-setup) {dots-telemetry}?
-    |  ...
-    |  +--rw telemetry* [cuid tsid]
-    |     +--rw cuid                         string
-    |     +--rw cdid?                        string
-    |     +--rw tsid                         uint32
-    |     +--rw (setup-type)?
-    |        +--:(telemetry-config)
-    |        |  ...
-    |        +--:(pipe)
-    |        |  ...
-    |        +--:(baseline)
-    |           +--rw baseline* [id]
-    |              +--rw id                                    uint32
-    |              +--rw target-prefix*                        inet:ip-prefix
-    |              +--rw target-port-range* [lower-port]
-    |              |  +--rw lower-port    inet:port-number
-    |              |  +--rw upper-port?   inet:port-number
-    |              +--rw target-protocol*                      uint8
-    |              +--rw target-fqdn*                          inet:domain-name
-    |              +--rw target-uri*                           inet:uri
-    |              +--rw alias-name*                           string
-    |              +--rw total-traffic-normal* [unit]
-    |              |  +--rw unit                 unit
-    |              |  +--rw low-percentile-g?    yang:gauge64
-    |              |  +--rw mid-percentile-g?    yang:gauge64
-    |              |  +--rw high-percentile-g?   yang:gauge64
-    |              |  +--rw peak-g?              yang:gauge64
-    |              +--rw total-traffic-normal-per-protocol* [unit protocol]
-    |              |  +--rw unit                 unit
-    |              |  +--rw protocol             uint8
-    |              |  +--rw low-percentile-g?    yang:gauge64
-    |              |  +--rw mid-percentile-g?    yang:gauge64
-    |              |  +--rw high-percentile-g?   yang:gauge64
-    |              |  +--rw peak-g?              yang:gauge64
-    |              +--rw total-traffic-normal-per-port* [unit port]
-    |              |  +--rw port                 inet:port-number
-    |              |  +--rw unit                 unit
-    |              |  +--rw low-percentile-g?    yang:gauge64
-    |              |  +--rw mid-percentile-g?    yang:gauge64
-    |              |  +--rw high-percentile-g?   yang:gauge64
-    |              |  +--rw peak-g?              yang:gauge64
-    |              +--rw total-connection-capacity* [protocol]
-    |              |  +--rw protocol                     uint8
-    |              |  +--rw connection?                  uint64
-    |              |  +--rw connection-client?           uint64
-    |              |  +--rw embryonic?                   uint64
-    |              |  +--rw embryonic-client?            uint64
-    |              |  +--rw connection-ps?               uint64
-    |              |  +--rw connection-client-ps?        uint64
-    |              |  +--rw request-ps?                  uint64
-    |              |  +--rw request-client-ps?           uint64
-    |              |  +--rw partial-request-ps?          uint64
-    |              |  +--rw partial-request-client-ps?   uint64
-    |              +--rw total-connection-capacity-per-port* [protocol port]
-    |                 +--rw protocol                     uint8
-    |                 +--rw port                         inet:port-number
-    |                 +--rw connection?                  uint64
-    |                 +--rw connection-client?           uint64
-    |                 +--rw embryonic?                   uint64
-    |                 +--rw embryonic-client?            uint64
-    |                 +--rw connection-ps?               uint64
-    |                 +--rw connection-client-ps?        uint64
-    |                 +--rw request-ps?                  uint64
-    |                 +--rw request-client-ps?           uint64
-    |                 +--rw partial-request-ps?          uint64
-    |                 +--rw partial-request-client-ps?   uint64
-    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
+            <artwork><![CDATA[  structure dots-telemetry:
+    +-- (telemetry-message-type)?
+       +--:(telemetry-setup)
+       |  ...
+       |  +-- telemetry* []
+       |     +-- (direction)?
+       |     |  +--:(server-to-client-only)
+       |     |     +-- tsid?                  uint32
+       |     +-- (setup-type)?
+       |        +--:(telemetry-config)
+       |        |  ...
+       |        +--:(pipe)
+       |        |  ...
+       |        +--:(baseline)
+       |           +-- baseline* [id]
+       |              +-- id
+       |              |       uint32
+       |              +-- target-prefix*
+       |              |       inet:ip-prefix
+       |              +-- target-port-range* [lower-port]
+       |              |  +-- lower-port    inet:port-number
+       |              |  +-- upper-port?   inet:port-number
+       |              +-- target-protocol*                      uint8
+       |              +-- target-fqdn*
+       |              |       inet:domain-name
+       |              +-- target-uri*
+       |              |       inet:uri
+       |              +-- alias-name*
+       |              |       string
+       |              +-- total-traffic-normal* [unit]
+       |              |  +-- unit                 unit
+       |              |  +-- low-percentile-g?    yang:gauge64
+       |              |  +-- mid-percentile-g?    yang:gauge64
+       |              |  +-- high-percentile-g?   yang:gauge64
+       |              |  +-- peak-g?              yang:gauge64
+       |              +-- total-traffic-normal-per-protocol*
+       |              |       [unit protocol]
+       |              |  +-- protocol             uint8
+       |              |  +-- unit                 unit
+       |              |  +-- low-percentile-g?    yang:gauge64
+       |              |  +-- mid-percentile-g?    yang:gauge64
+       |              |  +-- high-percentile-g?   yang:gauge64
+       |              |  +-- peak-g?              yang:gauge64
+       |              +-- total-traffic-normal-per-port* [unit port]
+       |              |  +-- port                 inet:port-number
+       |              |  +-- unit                 unit
+       |              |  +-- low-percentile-g?    yang:gauge64
+       |              |  +-- mid-percentile-g?    yang:gauge64
+       |              |  +-- high-percentile-g?   yang:gauge64
+       |              |  +-- peak-g?              yang:gauge64
+       |              +-- total-connection-capacity* [protocol]
+       |              |  +-- protocol                     uint8
+       |              |  +-- connection?                  uint64
+       |              |  +-- connection-client?           uint64
+       |              |  +-- embryonic?                   uint64
+       |              |  +-- embryonic-client?            uint64
+       |              |  +-- connection-ps?               uint64
+       |              |  +-- connection-client-ps?        uint64
+       |              |  +-- request-ps?                  uint64
+       |              |  +-- request-client-ps?           uint64
+       |              |  +-- partial-request-ps?          uint64
+       |              |  +-- partial-request-client-ps?   uint64
+       |              +-- total-connection-capacity-per-port*
+       |                      [protocol port]
+       |                 +-- port
+       |                 |       inet:port-number
+       |                 +-- protocol                     uint8
+       |                 +-- connection?                  uint64
+       |                 +-- connection-client?           uint64
+       |                 +-- embryonic?                   uint64
+       |                 +-- embryonic-client?            uint64
+       |                 +-- connection-ps?               uint64
+       |                 +-- connection-client-ps?        uint64
+       |                 +-- request-ps?                  uint64
+       |                 +-- request-client-ps?           uint64
+       |                 +-- partial-request-ps?          uint64
+       |                 +-- partial-request-client-ps?   uint64
+       +--:(telemetry)
           ...
 ]]></artwork>
           </figure></t>
@@ -1619,35 +1632,47 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       messages MUST be marked as Non-Confirmable messages.</t>
 
       <t><figure anchor="tt" title="Telemetry Message Type Tree Structure ">
-          <artwork><![CDATA[  augment /ietf-signal:dots-signal/ietf-signal:message-type:
-    +--:(telemetry-setup) {dots-telemetry}?
-    |  +--rw telemetry* [cuid tsid]
-    |  ...
-    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid               string
-          +--rw cdid?              string
-          +--rw tmid               uint32
-          +--rw target
-          |  ...
-          +--rw total-traffic* [unit]
-          |  ...
-          +--rw total-traffic-protocol* [unit protocol]
-          |  ...
-          +--rw total-traffic-port* [unit port]
-          |  ...
-          +--rw total-attack-traffic* [unit]
-          |  ...
-          +--rw total-attack-traffic-protocol* [unit protocol]
-          |  ...
-          +--rw total-attack-traffic-port* [unit port]
-          |  ...
-          +--rw total-attack-connection
-          |  ...
-          +--rw total-attack-connection-port
-          |  ...
-          +--rw attack-detail* [vendor-id attack-id]
-             ...
+          <artwork><![CDATA[  structure dots-telemetry:
+    +-- (telemetry-message-type)?
+       +--:(telemetry-setup)
+       |  ...
+       |  +-- telemetry* []
+       |     +-- (direction)?
+       |     |  +--:(server-to-client-only)
+       |     |     +-- tsid?                  uint32
+       |     +-- (setup-type)?
+       |        +--:(telemetry-config)
+       |        |  ...
+       |        +--:(pipe)
+       |        |  ...
+       |        +--:(baseline)
+       |           ...
+       +--:(telemetry)
+       +--:(telemetry)
+          +-- pre-or-ongoing-mitigation* []
+             +-- (direction)?
+             |  +--:(server-to-client-only)
+             |     +-- tmid?                      uint32
+             +-- target
+             |  ...
+             +-- total-traffic* [unit]
+             |  ...
+             +-- total-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-traffic* [unit]
+             |  ...
+             +-- total-attack-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-attack-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-connection
+             |  ...
+             +-- total-attack-connection-port
+             |  ...
+             +-- attack-detail* [vendor-id attack-id]
+                ...
 ]]></artwork>
         </figure></t>
 
@@ -1665,39 +1690,39 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           pointer to a mitigation request ('mid-list').</t>
 
           <t><figure anchor="targett" title="Target Tree Structure">
-              <artwork><![CDATA[    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid               string
-          +--rw cdid?              string
-          +--rw tmid               uint32
-          +--rw target
-          |  +--rw target-prefix*       inet:ip-prefix
-          |  +--rw target-port-range* [lower-port]
-          |  |  +--rw lower-port    inet:port-number
-          |  |  +--rw upper-port?   inet:port-number
-          |  +--rw target-protocol*     uint8
-          |  +--rw target-fqdn*         inet:domain-name
-          |  +--rw target-uri*          inet:uri
-          |  +--rw alias-name*          string
-          |  +--rw mid-list*            uint32
-          +--rw total-traffic* [unit]
-          |  ...
-          +--rw total-traffic-protocol* [unit protocol]
-          |  ...
-          +--rw total-traffic-port* [unit port]
-          |  ...
-          +--rw total-attack-traffic* [unit]
-          |  ...
-          +--rw total-attack-traffic-protocol* [unit protocol]
-          |  ...
-          +--rw total-attack-traffic-port* [unit port]
-          |  ...
-          +--rw total-attack-connection
-          |  ...
-          +--rw total-attack-connection-port
-          |  ...
-          +--rw attack-detail* [vendor-id attack-id]
-             ...
+              <artwork><![CDATA[       +--:(telemetry)
+          +-- pre-or-ongoing-mitigation* []
+             +-- (direction)?
+             |  +--:(server-to-client-only)
+             |     +-- tmid?                      uint32
+             +-- target
+             |  +-- target-prefix*       inet:ip-prefix
+             |  +-- target-port-range* [lower-port]
+             |  |  +-- lower-port    inet:port-number
+             |  |  +-- upper-port?   inet:port-number
+             |  +-- target-protocol*     uint8
+             |  +-- target-fqdn*         inet:domain-name
+             |  +-- target-uri*          inet:uri
+             |  +-- alias-name*          string
+             |  +-- mid-list*            uint32
+             +-- total-traffic* [unit]
+             |  ...
+             +-- total-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-traffic* [unit]
+             |  ...
+             +-- total-attack-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-attack-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-connection
+             |  ...
+             +-- total-attack-connection-port
+             |  ...
+             +-- attack-detail* [vendor-id attack-id]
+                ...
 ]]></artwork>
             </figure></t>
 
@@ -1729,45 +1754,46 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           target per port number.</t>
 
           <t><figure anchor="ttt" title="Total Traffic Tree Structure">
-              <artwork><![CDATA[    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid               string
-          +--rw cdid?              string
-          +--rw tmid               uint32
-          +--rw target
-          |  ...
-          +--rw total-traffic* [unit]
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-traffic-protocol* [unit protocol]
-          |  +--rw protocol             uint8
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-traffic-port* [unit port]
-          |  +--rw port                 inet:port-number
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-traffic* [unit]
-          |  ...
-          +--rw total-attack-traffic-protocol* [unit protocol]
-          |  ...
-          +--rw total-attack-traffic-port* [unit port]
-          |  ...
-          +--rw total-attack-connection
-          |  ...
-          +--rw total-attack-connection-port
-          |  ...
-          +--rw attack-detail* [vendor-id attack-id]
-             ...
+              <artwork><![CDATA[       +--:(telemetry)
+          +-- pre-or-ongoing-mitigation* []
+             +-- (direction)?
+             |  +--:(server-to-client-only)
+             |     +-- tmid?                      uint32
+             +-- target
+             |  ...
+             +-- total-traffic* [unit]
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-traffic-protocol* [unit protocol]
+             |  +-- protocol             uint8
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-traffic-port* [unit port]
+             |  +-- port                 inet:port-number
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-traffic* [unit]
+             |  ...
+             +-- total-attack-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-attack-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-connection
+             |  ...
+             +-- total-attack-connection-port
+             |  ...
+             +-- attack-detail* [vendor-id attack-id]
+                ...
+
 ]]></artwork>
             </figure></t>
         </section>
@@ -1786,45 +1812,46 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           traffic for a target per port number.</t>
 
           <t><figure anchor="tatt" title="Total Attack Traffic Tree Structure">
-              <artwork><![CDATA[    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid               string
-          +--rw cdid?              string
-          +--rw tmid               uint32
-          +--rw target
-          |  ...
-          +--rw total-traffic* [unit]
-          |  ...
-          +--rw total-traffic-protocol* [unit protocol]
-          |  ...
-          +--rw total-traffic-port* [unit port]
-          |  ...
-          +--rw total-attack-traffic* [unit]
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-traffic-protocol* [unit protocol]
-          |  +--rw protocol             uint8
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-traffic-port* [unit port]
-          |  +--rw port                 inet:port-number
-          |  +--rw unit                 unit
-          |  +--rw low-percentile-g?    yang:gauge64
-          |  +--rw mid-percentile-g?    yang:gauge64
-          |  +--rw high-percentile-g?   yang:gauge64
-          |  +--rw peak-g?              yang:gauge64
-          +--rw total-attack-connection
-          |  ...
-          +--rw total-attack-connection-port
-          |  ...
-          +--rw attack-detail* [vendor-id attack-id]
-             ...
+              <artwork><![CDATA[       +--:(telemetry)
+          +-- pre-or-ongoing-mitigation* []
+             +-- (direction)?
+             |  +--:(server-to-client-only)
+             |     +-- tmid?                      uint32
+             +-- target
+             |  ...
+             +-- total-traffic* [unit]
+             |  ...
+             +-- total-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-traffic* [unit]
+             |  +-- protocol?            uint8
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-traffic-protocol* [unit protocol]
+             |  +-- protocol             uint8
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-traffic-port* [unit port]
+             |  +-- port                 inet:port-number
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-connection
+             |  ...
+             +-- total-attack-connection-port
+             |  ...
+             +-- attack-detail* [vendor-id attack-id]
+                ...
 ]]></artwork>
             </figure></t>
         </section>
@@ -1849,77 +1876,89 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
             </list>The total attack connections per port number is represented
           using 'total-attack-connection-port' attribute.<figure anchor="tact"
               title="Total Attack Connections Tree Structure">
-              <artwork><![CDATA[    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid               string
-          +--rw cdid?              string
-          +--rw tmid               uint32
-          +--rw target
-          |  ...
-          +--rw total-attack-connection
-          |  +--rw low-percentile-l* [protocol]
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw mid-percentile-l* [protocol]
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw high-percentile-l* [protocol]
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw peak-l* [protocol]
-          |     +--rw protocol              uint8
-          |     +--rw connection?           yang:gauge64
-          |     +--rw embryonic?            yang:gauge64
-          |     +--rw connection-ps?        yang:gauge64
-          |     +--rw request-ps?           yang:gauge64
-          |     +--rw partial-request-ps?   yang:gauge64
-          +--rw total-attack-connection-port
-          |  +--rw low-percentile-l* [protocol port]
-          |  |  +--rw port                  inet:port-number
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw mid-percentile-l* [protocol port]
-          |  |  +--rw port                  inet:port-number
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw high-percentile-l* [protocol port]
-          |  |  +--rw port                  inet:port-number
-          |  |  +--rw protocol              uint8
-          |  |  +--rw connection?           yang:gauge64
-          |  |  +--rw embryonic?            yang:gauge64
-          |  |  +--rw connection-ps?        yang:gauge64
-          |  |  +--rw request-ps?           yang:gauge64
-          |  |  +--rw partial-request-ps?   yang:gauge64
-          |  +--rw peak-l* [protocol port]
-          |     +--rw port                  inet:port-number
-          |     +--rw protocol              uint8
-          |     +--rw connection?           yang:gauge64
-          |     +--rw embryonic?            yang:gauge64
-          |     +--rw connection-ps?        yang:gauge64
-          |     +--rw request-ps?           yang:gauge64
-          |     +--rw partial-request-ps?   yang:gauge64
-          +--rw attack-detail* [vendor-id attack-id]
-             ...
+              <artwork><![CDATA[       +--:(telemetry)
+          +-- pre-or-ongoing-mitigation* []
+             +-- (direction)?
+             |  +--:(server-to-client-only)
+             |     +-- tmid?                      uint32
+             +-- target
+             |  ...
+             +-- total-traffic* [unit]
+             |  ...
+             +-- total-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-traffic* [unit]
+             |  ...
+             +-- total-attack-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-attack-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-connection
+             |  +-- low-percentile-l* [protocol]
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- mid-percentile-l* [protocol]
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- high-percentile-l* [protocol]
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- peak-l* [protocol]
+             |     +-- protocol              uint8
+             |     +-- connection?           yang:gauge64
+             |     +-- embryonic?            yang:gauge64
+             |     +-- connection-ps?        yang:gauge64
+             |     +-- request-ps?           yang:gauge64
+             |     +-- partial-request-ps?   yang:gauge64
+             +-- total-attack-connection-port
+             |  +-- low-percentile-l* [protocol port]
+             |  |  +-- port                  inet:port-number
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- mid-percentile-l* [protocol port]
+             |  |  +-- port                  inet:port-number
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- high-percentile-l* [protocol port]
+             |  |  +-- port                  inet:port-number
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- peak-l* [protocol port]
+             |     +-- port                  inet:port-number
+             |     +-- protocol              uint8
+             |     +-- connection?           yang:gauge64
+             |     +-- embryonic?            yang:gauge64
+             |     +-- connection-ps?        yang:gauge64
+             |     +-- request-ps?           yang:gauge64
+             |     +-- partial-request-ps?   yang:gauge64
+             +-- attack-detail* [vendor-id attack-id]
+                ...
 ]]></artwork>
             </figure></t>
         </section>
@@ -1981,45 +2020,87 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
             </list></t>
 
           <t><figure anchor="adt" title="Attack Detail Tree Structure">
-              <artwork><![CDATA[    +--:(telemetry) {dots-telemetry}?
-       +--rw pre-or-ongoing-mitigation* [cuid tmid]
-          +--rw cuid               string
-          +--rw cdid?              string
-          +--rw tmid               uint32
-          +--rw target
-          |  ...
-          +--rw attack-detail* [vendor-id attack-id]
-             +--rw vendor-id          uint32
-             +--rw attack-id          uint32
-             +--rw attack-description?       string
-             +--rw attack-severity?   attack-severity
-             +--rw start-time?        uint64
-             +--rw end-time?          uint64
-             +--rw top-talker
-                +--rw talker* [source-prefix]
-                   +--rw spoofed-status?            boolean
-                   +--rw source-prefix              inet:ip-prefix
-                   +--rw source-port-range* [lower-port]
-                   |  +--rw lower-port    inet:port-number
-                   |  +--rw upper-port?   inet:port-number
-                   +--rw source-icmp-type-range*    [lower-type]
-                   |  +--rw lower-type    uint8
-                   |  +--rw upper-type?   uint8
-                   +--rw total-attack-traffic* [unit]
-                   |  +--rw unit                 unit
-                   |  +--rw low-percentile-g?    yang:gauge64
-                   |  +--rw mid-percentile-g?    yang:gauge64
-                   |  +--rw high-percentile-g?   yang:gauge64
-                   |  +--rw peak-g?              yang:gauge64
-                   +--rw total-attack-connection
-                      +--rw low-percentile-l* [protocol]
-                      |  ...
-                      +--rw mid-percentile-l* [protocol]
-                      |  ...
-                      +--rw high-percentile-l* [protocol]
-                      |  ...
-                      +--rw peak-l* [protocol]
-                         ...
+              <artwork><![CDATA[       +--:(telemetry)
+          +-- pre-or-ongoing-mitigation* []
+             +-- (direction)?
+             |  +--:(server-to-client-only)
+             |     +-- tmid?                      uint32
+             +-- target
+             |  ...
+             +-- total-traffic* [unit]
+             |  ...
+             +-- total-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-traffic* [unit]
+             |  ...
+             +-- total-attack-traffic-protocol* [unit protocol]
+             |  ...
+             +-- total-attack-traffic-port* [unit port]
+             |  ...
+             +-- total-attack-connection
+             |  ...
+             +-- total-attack-connection-port
+             |  ...
+             +-- attack-detail* [vendor-id attack-id]
+                +-- vendor-id             uint32
+                +-- attack-id             uint32
+                +-- attack-description?   string
+                +-- attack-severity?      attack-severity
+                +-- start-time?           uint64
+                +-- end-time?             uint64
+                +-- source-count
+                |  +-- low-percentile-g?    yang:gauge64
+                |  +-- mid-percentile-g?    yang:gauge64
+                |  +-- high-percentile-g?   yang:gauge64
+                |  +-- peak-g?              yang:gauge64
+                +-- top-talker
+                   +-- talker* [source-prefix]
+                      +-- spoofed-status?            boolean
+                      +-- source-prefix              inet:ip-prefix
+                      +-- source-port-range* [lower-port]
+                      |  +-- lower-port    inet:port-number
+                      |  +-- upper-port?   inet:port-number
+                      +-- source-icmp-type-range* [lower-type]
+                      |  +-- lower-type    uint8
+                      |  +-- upper-type?   uint8
+                      +-- total-attack-traffic* [unit]
+                      |  +-- unit                 unit
+                      |  +-- low-percentile-g?    yang:gauge64
+                      |  +-- mid-percentile-g?    yang:gauge64
+                      |  +-- high-percentile-g?   yang:gauge64
+                      |  +-- peak-g?              yang:gauge64
+                      +-- total-attack-connection
+                         +-- low-percentile-l* [protocol]
+                         |  +-- protocol              uint8
+                         |  +-- connection?           yang:gauge64
+                         |  +-- embryonic?            yang:gauge64
+                         |  +-- connection-ps?        yang:gauge64
+                         |  +-- request-ps?           yang:gauge64
+                         |  +-- partial-request-ps?   yang:gauge64
+                         +-- mid-percentile-l* [protocol]
+                         |  +-- protocol              uint8
+                         |  +-- connection?           yang:gauge64
+                         |  +-- embryonic?            yang:gauge64
+                         |  +-- connection-ps?        yang:gauge64
+                         |  +-- request-ps?           yang:gauge64
+                         |  +-- partial-request-ps?   yang:gauge64
+                         +-- high-percentile-l* [protocol]
+                         |  +-- protocol              uint8
+                         |  +-- connection?           yang:gauge64
+                         |  +-- embryonic?            yang:gauge64
+                         |  +-- connection-ps?        yang:gauge64
+                         |  +-- request-ps?           yang:gauge64
+                         |  +-- partial-request-ps?   yang:gauge64
+                         +-- peak-l* [protocol]
+                            +-- protocol              uint8
+                            +-- connection?           yang:gauge64
+                            +-- embryonic?            yang:gauge64
+                            +-- connection-ps?        yang:gauge64
+                            +-- request-ps?           yang:gauge64
+                            +-- partial-request-ps?   yang:gauge64
+
 ]]></artwork>
             </figure></t>
 
@@ -2578,21 +2659,56 @@ Observe: 0]]></artwork>
         these attributes can be signalled by a DOTS client in a mitigation
         efficacy update (<xref target="eff"></xref>).<figure anchor="eff"
             title="Telemetry Efficacy Update Tree Structure">
-            <artwork><![CDATA[  augment /ietf-signal:dots-signal/ietf-signal:message-type
-          /ietf-signal:mitigation-scope/ietf-signal:scope:
-    +--rw total-attack-traffic* [unit] {dots-telemetry}?
-    |  ...
-    +--rw attack-detail* [vendor-id attack-id] {dots-telemetry}?
-       +--rw vendor-id          uint32
-       +--rw attack-id          uint32
-       +--rw attack-description?       string
-       +--rw attack-severity?   attack-severity
-       +--rw start-time?        uint64
-       +--rw end-time?          uint64
-       +--rw source-count
-       |  ...
-       +--rw top-talker
-          ...
+            <artwork><![CDATA[  augment-structure /signal:dots-signal/signal:message-type
+                    /signal:mitigation-scope/signal:scope:
+    +-- total-attack-traffic* [unit]
+    |  +-- unit                 unit
+    |  +-- low-percentile-g?    yang:gauge64
+    |  +-- mid-percentile-g?    yang:gauge64
+    |  +-- high-percentile-g?   yang:gauge64
+    |  +-- peak-g?              yang:gauge64
+    +-- attack-detail* [vendor-id attack-id]
+       +-- vendor-id             uint32
+       +-- attack-id             uint32
+       +-- attack-description?   string
+       +-- attack-severity?      attack-severity
+       +-- start-time?           uint64
+       +-- end-time?             uint64
+       +-- source-count
+       |  +-- low-percentile-g?    yang:gauge64
+       |  +-- mid-percentile-g?    yang:gauge64
+       |  +-- high-percentile-g?   yang:gauge64
+       |  +-- peak-g?              yang:gauge64
+       +-- top-talker
+          +-- talker* [source-prefix]
+             +-- spoofed-status?            boolean
+             +-- source-prefix              inet:ip-prefix
+             +-- source-port-range* [lower-port]
+             |  +-- lower-port    inet:port-number
+             |  +-- upper-port?   inet:port-number
+             +-- source-icmp-type-range* [lower-type]
+             |  +-- lower-type    uint8
+             |  +-- upper-type?   uint8
+             +-- total-attack-traffic* [unit]
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-connection
+                +-- low-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- mid-percentile-c
+                |  ...
+                +-- high-percentile-c
+                |  ...
+                +-- peak-c
+                   ...
+
 ]]></artwork>
           </figure></t>
 
@@ -2662,74 +2778,77 @@ Content-Format: "application/dots+cbor"
         target="module"></xref>) augments the "mitigation-scope" type message
         defined in "ietf-dots-signal" with telemetry data as depicted in
         following tree structure:<figure>
-            <artwork><![CDATA[  augment /ietf-signal:dots-signal/ietf-signal:message-type
-          /ietf-signal:mitigation-scope/ietf-signal:scope:
-    +--ro total-traffic* [unit] {dots-telemetry}?
-    |  +--ro unit                 unit
-    |  +--ro low-percentile-g?    yang:gauge64
-    |  +--ro mid-percentile-g?    yang:gauge64
-    |  +--ro high-percentile-g?   yang:gauge64
-    |  +--ro peak-g?              yang:gauge64
-    +--rw total-attack-traffic* [unit] {dots-telemetry}?
-    |  +--rw unit                 unit
-    |  +--rw low-percentile-g?    yang:gauge64
-    |  +--rw mid-percentile-g?    yang:gauge64
-    |  +--rw high-percentile-g?   yang:gauge64
-    |  +--rw peak-g?              yang:gauge64
-    +--ro total-attack-connection {dots-telemetry}?
-    |  +--ro low-percentile-c
-    |  |  +--ro connection?           yang:gauge64
-    |  |  +--ro embryonic?            yang:gauge64
-    |  |  +--ro connection-ps?        yang:gauge64
-    |  |  +--ro request-ps?           yang:gauge64
-    |  |  +--ro partial-request-ps?   yang:gauge64
-    |  +--ro mid-percentile-c
-    |  |  ...
-    |  +--ro high-percentile-c
-    |  |  ...
-    |  +--ro peak-c
-    |     ...
-    +--rw attack-detail* [vendor-id attack-id] {dots-telemetry}?
-       +--rw vendor-id          uint32
-       +--rw attack-id          uint32
-       +--rw attack-description?       string
-       +--rw attack-severity?   attack-severity
-       +--rw start-time?        uint64
-       +--rw end-time?          uint64
-       +--rw source-count
-       |  +--rw low-percentile-g?    yang:gauge64
-       |  +--rw mid-percentile-g?    yang:gauge64
-       |  +--rw high-percentile-g?   yang:gauge64
-       |  +--rw peak-g?              yang:gauge64
-       +--rw top-talker
-          +--rw talker* [source-prefix]
-             +--rw spoofed-status?            boolean
-             +--rw source-prefix              inet:ip-prefix
-             +--rw source-port-range* [lower-port]
-             |  +--rw lower-port    inet:port-number
-             |  +--rw upper-port?   inet:port-number
-             +--rw source-icmp-type-range*    [lower-type]
-             |  +--rw lower-type    uint8
-             |  +--rw upper-type?   uint8
-             +--rw total-attack-traffic* [unit]
-             |  +--rw unit                 unit
-             |  +--rw low-percentile-g?    yang:gauge64
-             |  +--rw mid-percentile-g?    yang:gauge64
-             |  +--rw high-percentile-g?   yang:gauge64
-             |  +--rw peak-g?              yang:gauge64
-             +--rw total-attack-connection
-                +--rw low-percentile-c
-                |  +--rw connection?           yang:gauge64
-                |  +--rw embryonic?            yang:gauge64
-                |  +--rw connection-ps?        yang:gauge64
-                |  +--rw request-ps?           yang:gauge64
-                |  +--rw partial-request-ps?   yang:gauge64
-                +--rw mid-percentile-c
+            <artwork><![CDATA[  augment-structure /signal:dots-signal/signal:message-type
+                    /signal:mitigation-scope/signal:scope:
+    +-- (direction)?
+    |  +--:(server-to-client-only)
+    |     +-- total-traffic* [unit]
+    |     |  +-- unit                 unit
+    |     |  +-- low-percentile-g?    yang:gauge64
+    |     |  +-- mid-percentile-g?    yang:gauge64
+    |     |  +-- high-percentile-g?   yang:gauge64
+    |     |  +-- peak-g?              yang:gauge64
+    |     +-- total-attack-connection
+    |        +-- low-percentile-c
+    |        |  +-- connection?           yang:gauge64
+    |        |  +-- embryonic?            yang:gauge64
+    |        |  +-- connection-ps?        yang:gauge64
+    |        |  +-- request-ps?           yang:gauge64
+    |        |  +-- partial-request-ps?   yang:gauge64
+    |        +-- mid-percentile-c
+    |        |  ...
+    |        +-- high-percentile-c
+    |        |  ...
+    |        +-- peak-c
+    |           ...
+    +-- total-attack-traffic* [unit]
+    |  +-- unit                 unit
+    |  +-- low-percentile-g?    yang:gauge64
+    |  +-- mid-percentile-g?    yang:gauge64
+    |  +-- high-percentile-g?   yang:gauge64
+    |  +-- peak-g?              yang:gauge64
+    +-- attack-detail* [vendor-id attack-id]
+       +-- vendor-id             uint32
+       +-- attack-id             uint32
+       +-- attack-description?   string
+       +-- attack-severity?      attack-severity
+       +-- start-time?           uint64
+       +-- end-time?             uint64
+       +-- source-count
+       |  +-- low-percentile-g?    yang:gauge64
+       |  +-- mid-percentile-g?    yang:gauge64
+       |  +-- high-percentile-g?   yang:gauge64
+       |  +-- peak-g?              yang:gauge64
+       +-- top-talker
+          +-- talker* [source-prefix]
+             +-- spoofed-status?            boolean
+             +-- source-prefix              inet:ip-prefix
+             +-- source-port-range* [lower-port]
+             |  +-- lower-port    inet:port-number
+             |  +-- upper-port?   inet:port-number
+             +-- source-icmp-type-range* [lower-type]
+             |  +-- lower-type    uint8
+             |  +-- upper-type?   uint8
+             +-- total-attack-traffic* [unit]
+             |  +-- unit                 unit
+             |  +-- low-percentile-g?    yang:gauge64
+             |  +-- mid-percentile-g?    yang:gauge64
+             |  +-- high-percentile-g?   yang:gauge64
+             |  +-- peak-g?              yang:gauge64
+             +-- total-attack-connection
+                +-- low-percentile-c
+                |  +-- connection?           yang:gauge64
+                |  +-- embryonic?            yang:gauge64
+                |  +-- connection-ps?        yang:gauge64
+                |  +-- request-ps?           yang:gauge64
+                |  +-- partial-request-ps?   yang:gauge64
+                +-- mid-percentile-c
                 |  ...
-                +--rw high-percentile-c
+                +-- high-percentile-c
                 |  ...
-                +--rw peak-c
+                +-- peak-c
                    ...
+
 ]]></artwork>
           </figure></t>
 
@@ -2820,17 +2939,17 @@ Observe: 0]]></artwork>
         and <xref target="RFC8345"></xref>.</t>
 
         <t><figure>
-            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-05-04.yang"
+            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-07-03.yang"
 module ietf-dots-telemetry {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-telemetry";
   prefix dots-telemetry;
 
   import ietf-dots-signal-channel {
-    prefix ietf-signal;
+    prefix signal;
     reference
-      "RFC 8782: Distributed Denial-of-Service Open Threat
-                 Signaling (DOTS) Signal Channel Specification";
+      "RFC UUUU: A YANG Data Model for Distributed Denial-of-Service
+                 Open Threat Signaling (DOTS) Signal Channel";
   }
   import ietf-dots-data-channel {
     prefix ietf-data;
@@ -2853,6 +2972,11 @@ module ietf-dots-telemetry {
     reference
       "Section 6.2 of RFC 8345: A YANG Data Model for Network
        Topologies";
+  }
+  import ietf-yang-structure-ext {
+    prefix sx;
+    reference
+      "RFC 8791: YANG Data Structure Extensions";
   }
 
   organization
@@ -2884,19 +3008,12 @@ module ietf-dots-telemetry {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2020-05-04 {
+  revision 2020-07-03 {
     description
       "Initial revision.";
     reference
       "RFC XXXX: Distributed Denial-of-Service Open Threat
                  Signaling (DOTS) Telemetry";
-  }
-
-  feature dots-telemetry {
-    description
-      "This feature indicates that the DOTS signal channel is able
-       to convey DOTS telemetry data between DOTS clients and
-       servers.";
   }
 
   typedef attack-severity {
@@ -3182,7 +3299,7 @@ module ietf-dots-telemetry {
            to control the selection of configuration
             and non-configuration data nodes.";
         reference
-          "Section 4.4.2 of RFC SSSS.";
+          "Section 4.4.2 of RFC 8782.";
       }
     }
     description
@@ -3860,29 +3977,36 @@ module ietf-dots-telemetry {
     }
   }
 
-  augment "/ietf-signal:dots-signal/ietf-signal:message-type/"
-        + "ietf-signal:mitigation-scope/ietf-signal:scope" {
-    if-feature "dots-telemetry";
+  sx:augment-structure "/signal:dots-signal/signal:message-type/"
+                     + "signal:mitigation-scope/signal:scope" {
     description
       "Extends mitigation scope with telemetry update data.";
-    list total-traffic {
-      key "unit";
-      config false;
+    choice direction {
       description
-        "Total traffic.";
-      uses traffic-unit;
+        "Indicates the communication direction in which the
+         attributes can be included.";
+      case server-to-client-only {
+        description
+          "These attributes appear only in a mitigation message
+           sent from the server to the client.";
+        list total-traffic {
+          key "unit";
+          description
+            "Total traffic.";
+          uses traffic-unit;
+        }
+        container total-attack-connection {
+          description
+            "Total attack connections.";
+          uses connection-percentile;
+        }
+      }
     }
     list total-attack-traffic {
       key "unit";
       description
         "Total attack traffic.";
       uses traffic-unit;
-    }
-    container total-attack-connection {
-      config false;
-      description
-        "Total attack connections.";
-      uses connection-percentile;
     }
     list attack-detail {
       key "vendor-id attack-id";
@@ -3896,122 +4020,54 @@ module ietf-dots-telemetry {
       }
     }
   }
-
-  augment "/ietf-signal:dots-signal/ietf-signal:message-type" {
-    if-feature "dots-telemetry";
+  sx:structure dots-telemetry {
     description
-      "Add a new choice to enclose telemetry data in DOTS
-       signal channel.";
-    case telemetry-setup {
+      "Main structure for DOTS telemetry message.";
+    choice telemetry-message-type {
       description
-        "Indicates the message is about telemetry.";
-      container max-config-values {
-        config false;
+        "Can be a telemetry-setup or telemetry data.";
+      case telemetry-setup {
         description
-          "Maximum acceptable configuration values.";
-        uses percentile-config;
-        leaf server-originated-telemetry {
-          type boolean;
+          "Indicates the message is about telemetry.";
+        choice direction {
           description
-            "Indicates whether the DOTS server can be instructed
-             to send pre-or-ongoing-mitigation telemetry. If set to FALSE
-             or the attribute is not present, this is an indication
-             that the server does not support this capability.";
-        }
-        leaf telemetry-notify-interval {
-          type uint32 {
-            range "1 .. 3600";
-          }
-          must '. >= ../../min-config-values/telemetry-notify-interval' {
-            error-message
-              "The value must be greater than or equal
-               to the telemetry-notify-interval in the min-config-values";
-          }
-          units "seconds";
-          description
-            "Minimum number of seconds between successive
-             telemetry notifications.";
-        }
-      }
-      container min-config-values {
-        config false;
-        description
-          "Minimum acceptable configuration values.";
-        uses percentile-config;
-        leaf telemetry-notify-interval {
-          type uint32 {
-            range "1 .. 3600";
-          }
-          units "seconds";
-          description
-            "Minimum number of seconds between successive
-             telemetry notifications.";
-        }
-      }
-      container supported-units {
-        config false;
-        description
-          "Supported units and default activation status.";
-        uses unit-config;
-      }
-      leaf-list query-type {
-        type query-type;
-        config false;
-        description
-          "Indicates which query types are supported by
-           the server.";
-      }
-      list telemetry {
-        key "cuid tsid";
-        description
-          "The telemetry data per DOTS client.";
-        leaf cuid {
-          type string;
-          description
-            "A unique identifier that is
-             generated by a DOTS client to prevent
-             request collisions.  It is expected that the
-             cuid will remain consistent throughout the
-             lifetime of the DOTS client.";
-        }
-        leaf cdid {
-          type string;
-          description
-            "The cdid should be included by a server-domain
-             DOTS gateway to propagate the client domain
-             identification information from the
-             gateway's client-facing-side to the gateway's
-             server-facing-side, and from the gateway's
-             server-facing-side to the DOTS server.
-
-             It may be used by the final DOTS server
-             for policy enforcement purposes.";
-        }
-        leaf tsid {
-          type uint32;
-          description
-            "An identifier for the DOTS telemetry setup
-             data.";
-        }
-        choice setup-type {
-          description
-            "Can be a mitigation configuration, a pipe capacity,
-             or baseline message.";
-          case telemetry-config {
+            "Indicates the communication direction in which the
+             attributes can be included.";
+          case server-to-client-only {
             description
-              "Uses to set low, mid, and high percentile values.";
-            container current-config {
+              "These attributes appear only in a mitigation message
+               sent from the server to the client.";
+            container max-config-values {
               description
-                "Current configuration values.";
+                "Maximum acceptable configuration values.";
               uses percentile-config;
-              uses unit-config;
               leaf server-originated-telemetry {
                 type boolean;
                 description
-                  "Used by a DOTS client to enable/disable whether it
-                   accepts pre-or-ongoing-mitigation telemetry from
-                   the DOTS server.";
+                  "Indicates whether the DOTS server can be instructed
+                   to send pre-or-ongoing-mitigation telemetry. If set to FALSE
+                   or the attribute is not present, this is an indication
+                   that the server does not support this capability.";
               }
+              leaf telemetry-notify-interval {
+                type uint32 {
+                  range "1 .. 3600";
+                }
+                must '. >= ../../min-config-values/telemetry-notify-interval' {
+                  error-message
+                    "The value must be greater than or equal
+                     to the telemetry-notify-interval in the min-config-values";
+                }
+                units "seconds";
+                description
+                  "Minimum number of seconds between successive
+                   telemetry notifications.";
+              }
+            }
+            container min-config-values {
+              description
+                "Minimum acceptable configuration values.";
+              uses percentile-config;
               leaf telemetry-notify-interval {
                 type uint32 {
                   range "1 .. 3600";
@@ -4022,105 +4078,154 @@ module ietf-dots-telemetry {
                    telemetry notifications.";
               }
             }
-          }
-          case pipe {
-            description
-              "Total pipe capacity of a DOTS client domain";
-            list total-pipe-capacity {
-              key "link-id unit";
+            container supported-units {
               description
-                "Total pipe capacity of a DOTS client domain.";
-              leaf link-id {
-                type nt:link-id;
+                "Supported units and default activation status.";
+              uses unit-config;
+            }
+            leaf-list query-type {
+              type query-type;
+              description
+                "Indicates which query types are supported by
+                 the server.";
+            }
+          }
+        }
+        list telemetry {
+          description
+            "The telemetry data per DOTS client.";
+          choice direction {
+            description
+              "Indicates the communication direction in which the
+               attributes can be included.";
+            case server-to-client-only {
+              description
+                "These attributes appear only in a mitigation message
+                 sent from the server to the client.";
+              leaf tsid {
+                type uint32;
                 description
-                  "Identifier of an interconnection link.";
-              }
-              leaf capacity {
-                type uint64;
-                mandatory true;
-                description
-                  "Pipe capacity.";
-              }
-              leaf unit {
-                type unit;
-                description
-                  "The traffic can be measured using unit types: packets
-                   per second (PPS), Bits per Second (BPS), and/or
-                   bytes per second. DOTS agents auto-scale to the
-                   appropriate units (e.g., megabit-ps, kilobit-ps).";
+                  "An identifier for the DOTS telemetry setup
+                   data.";
               }
             }
           }
-          case baseline {
+          choice setup-type {
             description
-              "Traffic baseline information";
-            list baseline {
-              key "id";
+              "Can be a mitigation configuration, a pipe capacity,
+               or baseline message.";
+            case telemetry-config {
+              description
+                "Uses to set low, mid, and high percentile values.";
+              container current-config {
+                description
+                  "Current configuration values.";
+                uses percentile-config;
+                uses unit-config;
+                leaf server-originated-telemetry {
+                  type boolean;
+                  description
+                    "Used by a DOTS client to enable/disable whether it
+                     accepts pre-or-ongoing-mitigation telemetry from
+                     the DOTS server.";
+                }
+                leaf telemetry-notify-interval {
+                  type uint32 {
+                    range "1 .. 3600";
+                  }
+                  units "seconds";
+                  description
+                    "Minimum number of seconds between successive
+                     telemetry notifications.";
+                }
+              }
+            }
+            case pipe {
+              description
+                "Total pipe capacity of a DOTS client domain";
+              list total-pipe-capacity {
+                key "link-id unit";
+                description
+                  "Total pipe capacity of a DOTS client domain.";
+                leaf link-id {
+                  type nt:link-id;
+                  description
+                    "Identifier of an interconnection link.";
+                }
+                leaf capacity {
+                  type uint64;
+                  mandatory true;
+                  description
+                    "Pipe capacity.";
+                }
+                leaf unit {
+                  type unit;
+                  description
+                    "The traffic can be measured using unit types: packets
+                     per second (PPS), Bits per Second (BPS), and/or
+                     bytes per second. DOTS agents auto-scale to the
+                     appropriate units (e.g., megabit-ps, kilobit-ps).";
+                }
+              }
+            }
+            case baseline {
               description
                 "Traffic baseline information";
-              leaf id {
-                type uint32;
-                must '. >= 1';
+              list baseline {
+                key "id";
                 description
-                  "A baseline entry identifier.";
+                  "Traffic baseline information";
+                leaf id {
+                  type uint32;
+                  must '. >= 1';
+                  description
+                    "A baseline entry identifier.";
+                }
+                uses baseline;
               }
-              uses baseline;
             }
           }
         }
       }
-    }
-    case telemetry {
-      description
-        "Indicates the message is about telemetry.";
-      list pre-or-ongoing-mitigation {
-        key "cuid tmid";
+      case telemetry {
         description
-          "Pre-or-ongoing-mitigation telemetry per DOTS client.";
-        leaf cuid {
-          type string;
+          "Indicates the message is about telemetry.";
+        list pre-or-ongoing-mitigation {
           description
-            "A unique identifier that is
-             generated by a DOTS client to prevent
-             request collisions.  It is expected that the
-             cuid will remain consistent throughout the
-             lifetime of the DOTS client.";
-        }
-        leaf cdid {
-          type string;
-          description
-            "The cdid should be included by a server-domain
-             DOTS gateway to propagate the client domain
-             identification information from the
-             gateway's client-facing-side to the gateway's
-             server-facing-side, and from the gateway's
-             server-facing-side to the DOTS server.
-
-             It may be used by the final DOTS server
-             for policy enforcement purposes.";
-        }
-        leaf tmid {
-          type uint32;
-          description
-            "An identifier to uniquely demux telemetry data sent
-             using the same message.";
-        }
-        container target {
-          description
-            "Indicates the target.";
-          uses ietf-data:target;
-          leaf-list alias-name {
-            type string;
+            "Pre-or-ongoing-mitigation telemetry per DOTS client.";
+          choice direction {
             description
-              "An alias name that points to a resource.";
+              "Indicates the communication direction in which the
+               attributes can be included.";
+            case server-to-client-only {
+              description
+                "These attributes appear only in a mitigation message
+                 sent from the server to the client.";
+              leaf tmid {
+                type uint32;
+                description
+                  "An identifier to uniquely demux telemetry data sent
+                   using the same message.";
+              }
+            }
           }
-          leaf-list mid-list {
-            type uint32;
+          container target {
             description
-              "Reference a list of associated mitigation requests.";
+              "Indicates the target.";
+            uses ietf-data:target;
+            leaf-list alias-name {
+              type string;
+              description
+                "An alias name that points to a resource.";
+            }
+            leaf-list mid-list {
+              type uint32;
+              description
+                "Reference a list of associated mitigation requests.";
+            }
           }
+          uses pre-or-ongoing-mitigation;
         }
-        uses pre-or-ongoing-mitigation;
       }
     }
   }
