@@ -4,14 +4,14 @@
 
 DOTS                                                   M. Boucadair, Ed.
 Internet-Draft                                                    Orange
-Intended status: Standards Track                           T. Reddy, Ed.
-Expires: January 7, 2021                                          McAfee
-                                                                E. Doron
+Updates: 8782 (if approved)                                T. Reddy, Ed.
+Intended status: Standards Track                                  McAfee
+Expires: January 9, 2021                                        E. Doron
                                                             Radware Ltd.
                                                                  M. Chen
                                                                     CMCC
                                                               J. Shallow
-                                                            July 6, 2020
+                                                            July 8, 2020
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 7, 2021.
+   This Internet-Draft will expire on January 9, 2021.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 1]
+Boucadair, et al.        Expires January 9, 2021                [Page 1]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -105,42 +105,43 @@ Table of Contents
      6.4.  Reset Installed Telemetry Setup . . . . . . . . . . . . .  33
      6.5.  Conflict with Other DOTS Clients of the Same Domain . . .  33
    7.  DOTS Pre-or-Ongoing Mitigation Telemetry  . . . . . . . . . .  34
-     7.1.  Pre-or-Ongoing-Mitigation DOTS Telemetry Attributes . . .  37
+     7.1.  Pre-or-Ongoing-Mitigation DOTS Telemetry Attributes . . .  36
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 2]
+Boucadair, et al.        Expires January 9, 2021                [Page 2]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
        7.1.1.  Target  . . . . . . . . . . . . . . . . . . . . . . .  37
-       7.1.2.  Total Traffic . . . . . . . . . . . . . . . . . . . .  39
-       7.1.3.  Total Attack Traffic  . . . . . . . . . . . . . . . .  40
-       7.1.4.  Total Attack Connections  . . . . . . . . . . . . . .  42
-       7.1.5.  Attack Details  . . . . . . . . . . . . . . . . . . .  45
-     7.2.  From DOTS Clients to DOTS Servers . . . . . . . . . . . .  51
-     7.3.  From DOTS Servers to DOTS Clients . . . . . . . . . . . .  54
-   8.  DOTS Telemetry Mitigation Status Update . . . . . . . . . . .  59
+       7.1.2.  Total Traffic . . . . . . . . . . . . . . . . . . . .  38
+       7.1.3.  Total Attack Traffic  . . . . . . . . . . . . . . . .  39
+       7.1.4.  Total Attack Connections  . . . . . . . . . . . . . .  41
+       7.1.5.  Attack Details  . . . . . . . . . . . . . . . . . . .  44
+     7.2.  From DOTS Clients to DOTS Servers . . . . . . . . . . . .  50
+     7.3.  From DOTS Servers to DOTS Clients . . . . . . . . . . . .  53
+   8.  DOTS Telemetry Mitigation Status Update . . . . . . . . . . .  58
      8.1.  DOTS Clients to Servers Mitigation Efficacy DOTS
-           Telemetry Attributes  . . . . . . . . . . . . . . . . . .  59
+           Telemetry Attributes  . . . . . . . . . . . . . . . . . .  58
      8.2.  DOTS Servers to Clients Mitigation Status DOTS Telemetry
-           Attributes  . . . . . . . . . . . . . . . . . . . . . . .  61
-   9.  YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  65
-     9.1.  DOTS Signal Channel Telemetry YANG Module . . . . . . . .  65
-     9.2.  Vendor Attack Mapping Details YANG Module . . . . . . . .  92
-   10. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  95
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  98
-     11.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  98
-     11.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 100
-     11.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 101
+           Attributes  . . . . . . . . . . . . . . . . . . . . . . .  60
+   9.  YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  64
+     9.1.  DOTS Signal Channel Telemetry YANG Module . . . . . . . .  64
+     9.2.  Vendor Attack Mapping Details YANG Module . . . . . . . .  91
+   10. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  94
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  97
+     11.1.  A New Range for Comprehension-optional Parameters  . . .  97
+     11.2.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  97
+     11.3.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 100
+     11.4.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 100
    12. Security Considerations . . . . . . . . . . . . . . . . . . . 101
      12.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 101
      12.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 102
    13. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 103
    14. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 103
-   15. References  . . . . . . . . . . . . . . . . . . . . . . . . . 104
-     15.1.  Normative References . . . . . . . . . . . . . . . . . . 104
+   15. References  . . . . . . . . . . . . . . . . . . . . . . . . . 103
+     15.1.  Normative References . . . . . . . . . . . . . . . . . . 103
      15.2.  Informative References . . . . . . . . . . . . . . . . . 105
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 106
 
@@ -161,15 +162,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
        infrastructure.  Typically, attack volumes may vary from a few
        100 Mbps to 100s of Gbps or even Tbps.  Attacks are commonly
        carried out leveraging botnets and attack reflectors for
-       amplification attacks such as NTP (Network Time Protocol), DNS
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 3]
+Boucadair, et al.        Expires January 9, 2021                [Page 3]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
+       amplification attacks such as NTP (Network Time Protocol), DNS
        (Domain Name System), SNMP (Simple Network Management Protocol),
        or SSDP (Simple Service Discovery Protocol).
 
@@ -217,15 +218,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
    security capabilities, as derived from the complexities and the
    intensity of these attacks.  In this circumstance, the DOTS client
    has invaluable knowledge about the actual attacks that need to be
-   handled by its DOTS server(s).  By enabling the DOTS client to share
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 4]
+Boucadair, et al.        Expires January 9, 2021                [Page 4]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
+   handled by its DOTS server(s).  By enabling the DOTS client to share
    this comprehensive knowledge of an ongoing attack under specific
    circumstances, the DOTS server can drastically increase its ability
    to accomplish successful mitigation.  While the attack is being
@@ -271,13 +272,12 @@ Internet-Draft               DOTS Telemetry                    July 2020
    enforcing countermeasures.  The DOTS Telemetry is an optional set of
    attributes that can be signaled in the DOTS signal channel protocol.
 
-   The meaning of the symbols in YANG tree diagrams is defined in
-   [RFC8340].
+   The meaning of the symbols in YANG tree diagrams are defined in
+   [RFC8340] and [RFC8791].
 
 
 
-
-Boucadair, et al.        Expires January 7, 2021                [Page 5]
+Boucadair, et al.        Expires January 9, 2021                [Page 5]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -333,7 +333,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 6]
+Boucadair, et al.        Expires January 9, 2021                [Page 6]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -389,7 +389,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 7]
+Boucadair, et al.        Expires January 9, 2021                [Page 7]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -445,7 +445,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 8]
+Boucadair, et al.        Expires January 9, 2021                [Page 8]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -501,7 +501,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021                [Page 9]
+Boucadair, et al.        Expires January 9, 2021                [Page 9]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -557,7 +557,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 10]
+Boucadair, et al.        Expires January 9, 2021               [Page 10]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -576,9 +576,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    The DOTS telemetry module (Section 9.1) is not intended to be used
    via NETCONF/RESTCONF for DOTS server management purposes.  It serves
-   only to provide a data model and encoding, but not a management data
-   model.  DOTS servers are allowed to update the non-configurable 'ro'
-   entities in the responses of DOTS telemetry messages.
+   only to provide a data model and encoding following [RFC8791].
 
    The DOTS telemetry module (Section 9.1) uses "enumerations" rather
    than "identities" to define units, samples, and intervals because
@@ -604,20 +602,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    used with a CoAP request to perform the desired DOTS operation.  The
    following telemetry path-suffixes are defined (Table 1):
 
-
-
-
-
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 11]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
               +-----------------+----------------+-----------+
               | Operation       | Operation Path | Details   |
               +=================+================+===========+
@@ -627,8 +611,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
                      Table 1: DOTS Telemetry Operations
 
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 11]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    Consequently, the "ietf-dots-telemetry" YANG module defined in
-   Section 9.1 augments the "ietf-dots-signal" with two new message
+   Section 9.1 defines data structure to represent new DOTS message
    types called "telemetry-setup" and "telemetry".  The tree structure
    is shown in Figure 1 (more details are provided in the following
    sections about the exact structure of "telemetry-setup" and
@@ -667,13 +658,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    configuration data following the considerations detailed in
    Section 6.4.
 
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 12]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    A DOTS server may detect conflicts when processing requests related
    to DOTS client domain pipe capacity or telemetry traffic baseline
    with requests from other DOTS clients of the same DOTS client domain.
@@ -682,6 +666,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    Telemetry setup configuration is bound to a DOTS client domain.  DOTS
    servers MUST NOT expect DOTS clients to send regular requests to
    refresh the telemetry setup configuration.  Any available telemetry
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 12]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    setup configuration has a validity timeout of the DOTS association
    with a DOTS client domain.  DOTS servers MUST NOT reset 'tsid'
    because a session failed with a DOTS client.  DOTS clients update
@@ -717,19 +709,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    include a 'cdid' Uri-Path when the request is relayed by a DOTS
    gateway.  An example of such request is depicted in Figure 2.
 
-
-
-
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 13]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    Header: GET (Code=0.01)
    Uri-Path: ".well-known"
    Uri-Path: "dots"
@@ -739,12 +718,21 @@ Internet-Draft               DOTS Telemetry                    July 2020
       Figure 2: GET to Retrieve Current and Acceptable DOTS Telemetry
                                Configuration
 
-   Upon receipt of such request, the DOTS server replies with a 2.05
-   (Content) response that conveys the current and telemetry parameters
-   acceptable by the DOTS server.  The tree structure of the response
-   message body is provided in Figure 3.  Note that the response also
-   includes any pipe (Section 6.2) and baseline information
-   (Section 6.3) maintained by the DOTS server for this DOTS client.
+   Upon receipt of such request, and assuming no error is encountered by
+   processing the request, the DOTS server replies with a 2.05 (Content)
+   response that conveys the current and telemetry parameters acceptable
+   by the DOTS server.  The tree structure of the response message body
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 13]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+   is provided in Figure 3.  Note that the response also includes any
+   pipe (Section 6.2) and baseline information (Section 6.3) maintained
+   by the DOTS server for this DOTS client.
 
    DOTS servers that support the capability of sending telemetry
    information to DOTS clients prior or during a mitigation
@@ -778,14 +766,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
           |  |     |  +-- unit-config* [unit]
           |  |     |     +-- unit           unit-type
           |  |     |     +-- unit-status    boolean
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 14]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
           |  |     +-- query-type*            query-type
           |  +-- telemetry* []
           |     +-- (direction)?
@@ -798,6 +778,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
           |        |     +-- measurement-sample?            sample
           |        |     +-- low-percentile?                percentile
           |        |     +-- mid-percentile?                percentile
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 14]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
           |        |     +-- high-percentile?               percentile
           |        |     +-- unit-config* [unit]
           |        |     |  +-- unit           unit-type
@@ -837,7 +825,19 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 15]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -880,7 +880,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
         The procedure specified in Section 4.4.1 of [RFC8782] MUST be
         followed for 'tsid' rollover.
 
-        This is a mandatory attribute.
+        This is a mandatory attribute.  'tsid' MUST follow 'cuid'.
 
    'cuid' and 'tsid' MUST NOT appear in the PUT request message body.
 
@@ -893,7 +893,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 16]
+Boucadair, et al.        Expires January 9, 2021               [Page 16]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -949,7 +949,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 17]
+Boucadair, et al.        Expires January 9, 2021               [Page 17]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 18]
+Boucadair, et al.        Expires January 9, 2021               [Page 18]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 19]
+Boucadair, et al.        Expires January 9, 2021               [Page 19]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1087,9 +1087,9 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 6.2.  Total Pipe Capacity
 
-   A DOTS client can communicate to its server(s) its DOTS client domain
-   pipe information.  The tree structure of the pipe information is
-   shown in Figure 9.
+   A DOTS client can communicate to the DOTS server(s) its DOTS client
+   domain pipe information.  The tree structure of the pipe information
+   is shown in Figure 9.
 
      structure dots-telemetry:
        +-- (telemetry-message-type)?
@@ -1117,7 +1117,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 20]
+Boucadair, et al.        Expires January 9, 2021               [Page 20]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 21]
+Boucadair, et al.        Expires January 9, 2021               [Page 21]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1206,8 +1206,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
                               (Single Homed)
 
    DOTS clients may be instructed to signal a link aggregate instead of
-   individual links.  For example, a DOTS client managing a DOTS client
-   domain having two interconnection links with an upstream ISP
+   individual links.  For example, a DOTS client that manages a DOTS
+   client domain having two interconnection links with an upstream ISP
    (Figure 12) can send a PUT request (shown in Figure 13) to
    communicate the aggregate link capacity with its ISP.  Signalling
    individual or aggregate link capacity is deployment-specific.
@@ -1229,7 +1229,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 22]
+Boucadair, et al.        Expires January 9, 2021               [Page 22]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1262,13 +1262,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
                              (Aggregated Link)
 
    Now consider that the DOTS client domain was upgraded to connect to
-   an additional ISP (ISP#B of Figure 14), the DOTS client can inform a
-   third-party DOTS server (that is, not hosted with ISP#A and ISP#B
-   domains) about this update by sending the PUT request depicted in
-   Figure 15.  This request also includes information related to "link1"
-   even if that link is not upgraded.  Upon receipt of this request, the
-   DOTS server removes the request with 'tsid=457' and updates its
-   configuration base to maintain two links (link#1 and link#2).
+   an additional ISP (e.g., ISP#B of Figure 14), the DOTS client can
+   inform a third-party DOTS server (that is, not hosted with ISP#A and
+   ISP#B domains) about this update by sending the PUT request depicted
+   in Figure 15.  This request also includes information related to
+   "link1" even if that link is not upgraded.  Upon receipt of this
+   request, the DOTS server removes the request with 'tsid=457' and
+   updates its configuration base to maintain two links (link#1 and
+   link#2).
 
 
 
@@ -1284,8 +1285,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-
-Boucadair, et al.        Expires January 7, 2021               [Page 23]
+Boucadair, et al.        Expires January 9, 2021               [Page 23]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 24]
+Boucadair, et al.        Expires January 9, 2021               [Page 24]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1353,7 +1353,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
    changes its ISP), the DOTS client can inform its DOTS server about
    this update (e.g., from the network configuration in Figure 10 to the
    one shown in Figure 16) by sending the PUT request depicted in
-   Figure 17.  Upon receipt of this request, the DOTS server removes
+   Figure 17.  Upon receipt of this request, and assuming no error is
+   encountered when processing the request, the DOTS server removes
    "link1" from its configuration bases for this DOTS client domain.
 
                         ,--,--,--.
@@ -1396,8 +1397,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-
-Boucadair, et al.        Expires January 7, 2021               [Page 25]
+Boucadair, et al.        Expires January 9, 2021               [Page 25]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1453,15 +1453,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 26]
+Boucadair, et al.        Expires January 9, 2021               [Page 26]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
 6.3.  Telemetry Baseline
 
-   A DOTS client can communicate to its server(s) its normal traffic
-   baseline and connections capacity:
+   A DOTS client can communicate to its DOTS server(s) its normal
+   traffic baseline and connections capacity:
 
    Total traffic normal baseline:  The percentile values representing
       the total traffic normal baseline.  It can be represented for a
@@ -1509,7 +1509,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 27]
+Boucadair, et al.        Expires January 9, 2021               [Page 27]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1532,7 +1532,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
       connection-capacity', while port-specific capabilities are
       represented using 'total-connection-capacity-per-port'.
 
-   The tree structure of the baseline is shown in Figure 18.
+   The tree structure of the normal traffic baseline is shown in
+   Figure 18.
 
      structure dots-telemetry:
        +-- (telemetry-message-type)?
@@ -1561,15 +1562,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
           |              |       inet:domain-name
           |              +-- target-uri*
           |              |       inet:uri
-          |              +-- alias-name*
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 28]
+Boucadair, et al.        Expires January 9, 2021               [Page 28]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
+          |              +-- alias-name*
           |              |       string
           |              +-- total-traffic-normal* [unit]
           |              |  +-- unit                 unit
@@ -1617,15 +1618,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
           |                 +-- connection-client-ps?        uint64
           |                 +-- request-ps?                  uint64
           |                 +-- request-client-ps?           uint64
-          |                 +-- partial-request-ps?          uint64
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 29]
+Boucadair, et al.        Expires January 9, 2021               [Page 29]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
+          |                 +-- partial-request-ps?          uint64
           |                 +-- partial-request-client-ps?   uint64
           +--:(telemetry)
              ...
@@ -1676,8 +1677,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-
-Boucadair, et al.        Expires January 7, 2021               [Page 30]
+Boucadair, et al.        Expires January 9, 2021               [Page 30]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 31]
+Boucadair, et al.        Expires January 9, 2021               [Page 31]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1778,7 +1778,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
           Figure 20: PUT to Convey the DOTS Traffic Baseline (2)
 
-   The traffic baseline information should be updated to reflect
+   The normal traffic baseline information should be updated to reflect
    legitimate overloads (e.g., flash crowds) to prevent unnecessary
    mitigation.
 
@@ -1789,7 +1789,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 32]
+Boucadair, et al.        Expires January 9, 2021               [Page 32]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 33]
+Boucadair, et al.        Expires January 9, 2021               [Page 33]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1859,9 +1859,9 @@ Internet-Draft               DOTS Telemetry                    July 2020
    is to allow for the complete knowledge of attacks and the various
    particulars that can best characterize attacks.
 
-   The "ietf-dots-telemetry" YANG module (Section 9.1) augments the
-   "ietf-dots-signal" with a new message type called "telemetry".  The
-   tree structure of the "telemetry" message type is shown Figure 24.
+   The "ietf-dots-telemetry" YANG module (Section 9.1) defines the data
+   structure of a new message type called "telemetry".  The tree
+   structure of the "telemetry" message type is shown in Figure 24.
 
    The pre-or-ongoing-mitigation telemetry attributes are indicated by
    the path-suffix '/tm'.  The '/tm' is appended to the path-prefix to
@@ -1879,7 +1879,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    Figure 22.  An example illustrating requests correlation by means of
    'target-prefix' is shown in Figure 23.
 
-   When generating telemetry data to send to a peer, the DOTS agent must
+   When generating telemetry data to send to a peer, the DOTS agent MUST
    auto-scale so that appropriate unit(s) are used.
 
    +-----------+                                           +-----------+
@@ -1901,7 +1901,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 34]
+Boucadair, et al.        Expires January 9, 2021               [Page 34]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1957,7 +1957,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 35]
+Boucadair, et al.        Expires January 9, 2021               [Page 35]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -1977,7 +1977,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
           |        |  ...
           |        +--:(baseline)
           |           ...
-          +--:(telemetry)
           +--:(telemetry)
              +-- pre-or-ongoing-mitigation* []
                 +-- (direction)?
@@ -2006,22 +2005,19 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
              Figure 24: Telemetry Message Type Tree Structure
 
-
-
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 36]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
 7.1.  Pre-or-Ongoing-Mitigation DOTS Telemetry Attributes
 
    The description and motivation behind each attribute are presented in
    Section 3.  DOTS telemetry attributes are optionally signaled and
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 36]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    therefore MUST NOT be treated as mandatory fields in the DOTS signal
    channel protocol.
 
@@ -2031,48 +2027,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    'target-prefix', 'target-port-range', 'target-protocol', 'target-
    fqdn', 'target-uri', 'alias-name', or a pointer to a mitigation
    request ('mid-list').
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 37]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
 
           +--:(telemetry)
              +-- pre-or-ongoing-mitigation* []
@@ -2110,6 +2064,16 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
                      Figure 25: Target Tree Structure
 
+
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 37]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    At least one of the attributes 'target-prefix', 'target-fqdn',
    'target-uri', 'alias-name', or 'mid-list' MUST be present in the
    target definition.
@@ -2121,14 +2085,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    If the target is subjected to resource consuming DDoS attacks, the
    same attributes defined for Section 7.1.4 are applicable for
    representing the attack.
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 38]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
 
    This is an optional sub-attribute.
 
@@ -2169,19 +2125,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 39]
+Boucadair, et al.        Expires January 9, 2021               [Page 38]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2237,7 +2181,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 40]
+Boucadair, et al.        Expires January 9, 2021               [Page 39]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2293,7 +2237,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 41]
+Boucadair, et al.        Expires January 9, 2021               [Page 40]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2349,7 +2293,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 42]
+Boucadair, et al.        Expires January 9, 2021               [Page 41]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2405,7 +2349,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 43]
+Boucadair, et al.        Expires January 9, 2021               [Page 42]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2461,7 +2405,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 44]
+Boucadair, et al.        Expires January 9, 2021               [Page 43]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2517,7 +2461,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 45]
+Boucadair, et al.        Expires January 9, 2021               [Page 44]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2573,7 +2517,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 46]
+Boucadair, et al.        Expires January 9, 2021               [Page 45]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2615,7 +2559,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
                                +-- request-ps?           yang:gauge64
                                +-- partial-request-ps?   yang:gauge64
 
-
                   Figure 29: Attack Detail Tree Structure
 
    In order to optimize the size of telemetry data conveyed over the
@@ -2629,7 +2572,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 47]
+
+Boucadair, et al.        Expires January 9, 2021               [Page 46]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2655,7 +2599,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    provided to the DOTS client when transmitting telemetry data to peer
    DOTS agent.
 
-   The "ietf-dots-mapping" YANG module defined in Section 9.2) augments
+   The "ietf-dots-mapping" YANG module defined in Section 9.2 augments
    the "ietf-dots-data-channel".  The tree structure of this module is
    shown in Figure 30.
 
@@ -2685,7 +2629,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 48]
+Boucadair, et al.        Expires January 9, 2021               [Page 47]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2741,7 +2685,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 49]
+Boucadair, et al.        Expires January 9, 2021               [Page 48]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2797,7 +2741,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 50]
+Boucadair, et al.        Expires January 9, 2021               [Page 49]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2853,7 +2797,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 51]
+Boucadair, et al.        Expires January 9, 2021               [Page 50]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2909,7 +2853,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 52]
+Boucadair, et al.        Expires January 9, 2021               [Page 51]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -2917,7 +2861,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
         The procedure specified in Section 4.4.1 of [RFC8782] MUST be
         followed for 'tmid' rollover.
 
-        This is a mandatory attribute.
+        This is a mandatory attribute.  'tmid' MUST follow 'cuid'.
 
    'cuid' and 'tmid' MUST NOT appear in the PUT request message body.
 
@@ -2935,9 +2879,9 @@ Internet-Draft               DOTS Telemetry                    July 2020
    no longer be available.
 
    The DOTS server indicates the result of processing a PUT request
-   using CoAP response codes.  The response code 2.04 (Changed) is
-   returned if the DOTS server has accepted the pre-or-ongoing-
-   mitigation telemetry.  The error response code 5.03 (Service
+   using CoAP response codes.  In particular, the response code 2.04
+   (Changed) is returned if the DOTS server has accepted the pre-or-
+   ongoing-mitigation telemetry.  The error response code 5.03 (Service
    Unavailable) is returned if the DOTS server has erred. 5.03 uses Max-
    Age option to indicate the number of seconds after which to retry.
 
@@ -2965,7 +2909,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 53]
+Boucadair, et al.        Expires January 9, 2021               [Page 52]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3021,7 +2965,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 54]
+Boucadair, et al.        Expires January 9, 2021               [Page 53]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3077,7 +3021,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 55]
+Boucadair, et al.        Expires January 9, 2021               [Page 54]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3133,7 +3077,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 56]
+Boucadair, et al.        Expires January 9, 2021               [Page 55]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3189,7 +3133,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 57]
+Boucadair, et al.        Expires January 9, 2021               [Page 56]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3245,7 +3189,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 58]
+Boucadair, et al.        Expires January 9, 2021               [Page 57]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3277,8 +3221,9 @@ Internet-Draft               DOTS Telemetry                    July 2020
       Section 7.1.5.
 
    The "ietf-dots-telemetry" YANG module augments the "mitigation-scope"
-   type message defined in "ietf-dots-signal" so that these attributes
-   can be signalled by a DOTS client in a mitigation efficacy update
+   type message defined in "ietf-dots-signal"
+   [I-D.boucadair-dots-rfc8782-yang-update] so that these attributes can
+   be signalled by a DOTS client in a mitigation efficacy update
    (Figure 44).
 
      augment-structure /signal:dots-signal/signal:message-type
@@ -3297,15 +3242,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
           +-- start-time?           uint64
           +-- end-time?             uint64
           +-- source-count
-          |  +-- low-percentile-g?    yang:gauge64
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 59]
+Boucadair, et al.        Expires January 9, 2021               [Page 58]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
+          |  +-- low-percentile-g?    yang:gauge64
           |  +-- mid-percentile-g?    yang:gauge64
           |  +-- high-percentile-g?   yang:gauge64
           |  +-- peak-g?              yang:gauge64
@@ -3346,6 +3291,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
    is RECOMMENDED that the DOTS client has already established a DOTS
    telemetry setup session with the server in 'idle' time.
 
+   An example of an efficacy update with telemetry attributes is
+   depicted in Figure 45.
 
 
 
@@ -3354,10 +3301,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 60]
+Boucadair, et al.        Expires January 9, 2021               [Page 59]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3413,21 +3357,22 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 61]
+Boucadair, et al.        Expires January 9, 2021               [Page 60]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
    As defined in [RFC8612], the actual mitigation activities can include
    several countermeasure mechanisms.  The DOTS server signals the
-   current operational status to each relevant countermeasure.  A list
-   of attacks detected by each countermeasure MAY also be included.  The
-   same attributes defined for Section 7.1.5 are applicable for
-   describing the attacks detected and mitigated.
+   current operational status of relevant countermeasures.  A list of
+   attacks detected by each countermeasure MAY also be included.  The
+   same attributes defined in Section 7.1.5 are applicable for
+   describing the attacks detected and mitigated at the DOTS server
+   domain.
 
    The "ietf-dots-telemetry" YANG module (Section 9.1) augments the
    "mitigation-scope" type message defined in "ietf-dots-signal" with
-   telemetry data as depicted in following tree structure:
+   telemetry data as depicted in the following tree structure:
 
      augment-structure /signal:dots-signal/signal:message-type
                        /signal:mitigation-scope/signal:scope:
@@ -3465,15 +3410,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
           +-- attack-severity?      attack-severity
           +-- start-time?           uint64
           +-- end-time?             uint64
-          +-- source-count
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 62]
+Boucadair, et al.        Expires January 9, 2021               [Page 61]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
+          +-- source-count
           |  +-- low-percentile-g?    yang:gauge64
           |  +-- mid-percentile-g?    yang:gauge64
           |  +-- high-percentile-g?   yang:gauge64
@@ -3524,8 +3469,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-
-Boucadair, et al.        Expires January 7, 2021               [Page 63]
+Boucadair, et al.        Expires January 9, 2021               [Page 62]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3581,7 +3525,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 64]
+Boucadair, et al.        Expires January 9, 2021               [Page 63]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3637,7 +3581,7 @@ module ietf-dots-telemetry {
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 65]
+Boucadair, et al.        Expires January 9, 2021               [Page 64]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3693,7 +3637,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 66]
+Boucadair, et al.        Expires January 9, 2021               [Page 65]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3749,7 +3693,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 67]
+Boucadair, et al.        Expires January 9, 2021               [Page 66]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3805,7 +3749,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 68]
+Boucadair, et al.        Expires January 9, 2021               [Page 67]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3861,7 +3805,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 69]
+Boucadair, et al.        Expires January 9, 2021               [Page 68]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3917,7 +3861,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 70]
+Boucadair, et al.        Expires January 9, 2021               [Page 69]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -3973,7 +3917,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 71]
+Boucadair, et al.        Expires January 9, 2021               [Page 70]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4029,7 +3973,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 72]
+Boucadair, et al.        Expires January 9, 2021               [Page 71]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4085,7 +4029,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 73]
+Boucadair, et al.        Expires January 9, 2021               [Page 72]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4141,7 +4085,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 74]
+Boucadair, et al.        Expires January 9, 2021               [Page 73]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4197,7 +4141,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 75]
+Boucadair, et al.        Expires January 9, 2021               [Page 74]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4253,7 +4197,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 76]
+Boucadair, et al.        Expires January 9, 2021               [Page 75]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4309,7 +4253,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 77]
+Boucadair, et al.        Expires January 9, 2021               [Page 76]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4365,7 +4309,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 78]
+Boucadair, et al.        Expires January 9, 2021               [Page 77]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4421,7 +4365,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 79]
+Boucadair, et al.        Expires January 9, 2021               [Page 78]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4477,7 +4421,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 80]
+Boucadair, et al.        Expires January 9, 2021               [Page 79]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4533,7 +4477,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 81]
+Boucadair, et al.        Expires January 9, 2021               [Page 80]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4589,7 +4533,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 82]
+Boucadair, et al.        Expires January 9, 2021               [Page 81]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4645,7 +4589,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 83]
+Boucadair, et al.        Expires January 9, 2021               [Page 82]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4701,7 +4645,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 84]
+Boucadair, et al.        Expires January 9, 2021               [Page 83]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4757,7 +4701,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 85]
+Boucadair, et al.        Expires January 9, 2021               [Page 84]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4813,7 +4757,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 86]
+Boucadair, et al.        Expires January 9, 2021               [Page 85]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4869,7 +4813,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 87]
+Boucadair, et al.        Expires January 9, 2021               [Page 86]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4879,7 +4823,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
   }
   sx:structure dots-telemetry {
     description
-      "Main structure for DOTS telemetry message.";
+      "Main structure for DOTS telemetry messages.";
     choice telemetry-message-type {
       description
         "Can be a telemetry-setup or telemetry data.";
@@ -4925,7 +4869,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 88]
+Boucadair, et al.        Expires January 9, 2021               [Page 87]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -4981,7 +4925,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 89]
+Boucadair, et al.        Expires January 9, 2021               [Page 88]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5037,7 +4981,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 90]
+Boucadair, et al.        Expires January 9, 2021               [Page 89]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5093,7 +5037,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 91]
+Boucadair, et al.        Expires January 9, 2021               [Page 90]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5149,7 +5093,7 @@ module ietf-dots-mapping {
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 92]
+Boucadair, et al.        Expires January 9, 2021               [Page 91]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5205,7 +5149,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 93]
+Boucadair, et al.        Expires January 9, 2021               [Page 92]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5261,7 +5205,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 94]
+Boucadair, et al.        Expires January 9, 2021               [Page 93]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5317,7 +5261,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 95]
+Boucadair, et al.        Expires January 9, 2021               [Page 94]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5373,7 +5317,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 96]
+Boucadair, et al.        Expires January 9, 2021               [Page 95]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5429,7 +5373,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021               [Page 97]
+Boucadair, et al.        Expires January 9, 2021               [Page 96]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5447,7 +5391,34 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 11.  IANA Considerations
 
-11.1.  DOTS Signal Channel CBOR Key Values
+11.1.  A New Range for Comprehension-optional Parameters
+
+   This specification requests IANA to update the allocation policy of
+   "DOTS Signal Channel CBOR Key Values" registry [Key-Map] as follows:
+
+   OLD:
+   +-------------+-------------------------+------------------------+
+   | Range       | Registration Procedures | Note                   |
+   +=============+=========================+========================+
+   | 1-16383     | IETF Review             | comprehension-required |
+   | 16384-32767 | Specification Required  | comprehension-optional |
+   | 32768-49151 | IETF Review             | comprehension-optional |
+   | 49152-65535 | Private Use             | comprehension-optional |
+   +-------------+-------------------------+------------------------+
+
+   NEW:
+   +-------------+-------------------------+------------------------+
+   | Range       | Registration Procedures | Note                   |
+   +=============+=========================+========================+
+   | 1-127       | IETF Review             | comprehension-required |
+   | 128-255     | IETF Review             | comprehension-optional |
+   | 256-16383   | IETF Review             | comprehension-required |
+   | 16384-32767 | Specification Required  | comprehension-optional |
+   | 32768-49151 | IETF Review             | comprehension-optional |
+   | 49152-65535 | Private Use             | comprehension-optional |
+   +-------------+-------------------------+------------------------+
+
+11.2.  DOTS Signal Channel CBOR Key Values
 
    This specification registers the DOTS telemetry attributes in the
    IANA "DOTS Signal Channel CBOR Key Values" registry [Key-Map].
@@ -5455,8 +5426,16 @@ Internet-Draft               DOTS Telemetry                    July 2020
    The DOTS telemetry attributes defined in this specification are
    comprehension-optional parameters.
 
-   o  Note to the RFC Editor: CBOR keys are assigned from the
-      32768-49151 range.
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 97]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+   o  Note to the RFC Editor: CBOR keys are assigned from the 128-255
+      range.
 
    +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
@@ -5482,14 +5461,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | peak-g               | TBA16 |   0   |    IESG    |   [RFCXXXX]   |
    | total-attack-traffic | TBA17 |   4   |    IESG    |   [RFCXXXX]   |
    | total-traffic        | TBA18 |   4   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 98]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    | total-connection-    | TBA19 |   4   |    IESG    |   [RFCXXXX]   |
    |        capacity      |       |       |            |               |
    | connection           | TBA20 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5511,6 +5482,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | peak-l               | TBA34 |   4   |    IESG    |   [RFCXXXX]   |
    | attack-detail        | TBA35 |   4   |    IESG    |   [RFCXXXX]   |
    | id                   | TBA36 |   0   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 98]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-description   | TBA38 |   3   |    IESG    |   [RFCXXXX]   |
    | attack-severity      | TBA39 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5538,14 +5517,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | talker               | TBA59 |   0   |    IESG    |   [RFCXXXX]   |
    | source-prefix        | TBA60 |   0   |    IESG    |   [RFCXXXX]   |
    | mid-list             | TBA61 |   4   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.        Expires January 7, 2021               [Page 99]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    | source-port-range    | TBA62 |   4   |    IESG    |   [RFCXXXX]   |
    | source-icmp-type-    | TBA63 |   4   |    IESG    |   [RFCXXXX]   |
    |           range      |       |       |            |               |
@@ -5567,6 +5538,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    |  traffic-protocol    |       |       |            |               |
    | total-attack-        | TBA75 |   4   |    IESG    |   [RFCXXXX]   |
    |  traffic-port        |       |       |            |               |
+
+
+
+Boucadair, et al.        Expires January 9, 2021               [Page 99]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    | total-attack-        | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
    |  connection-port     |       |       |            |               |
    | port                 | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5586,21 +5565,10 @@ Internet-Draft               DOTS Telemetry                    July 2020
    +----------------------+-------+-------+------------+---------------+
 
 
-11.2.  DOTS Signal Channel Conflict Cause Codes
+11.3.  DOTS Signal Channel Conflict Cause Codes
 
    This specification requests IANA to assign a new code from the "DOTS
    Signal Channel Conflict Cause Codes" registry [Cause].
-
-
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021              [Page 100]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
 
    +------+-------------------+------------------------+-------------+
    | Code | Label             |   Description          |  Reference  |
@@ -5608,7 +5576,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
    +------+-------------------+------------------------+-------------+
 
-11.3.  DOTS Signal Telemetry YANG Module
+11.4.  DOTS Signal Telemetry YANG Module
 
    This document requests IANA to register the following URIs in the
    "ns" subregistry within the "IETF XML Registry" [RFC3688]:
@@ -5624,6 +5592,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
    This document requests IANA to register the following YANG modules in
    the "YANG Module Names" subregistry [RFC7950] within the "YANG
    Parameters" registry.
+
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 100]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
 
             name: ietf-dots-telemetry
             namespace: urn:ietf:params:xml:ns:yang:ietf-dots-telemetry
@@ -5649,15 +5626,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    The DOTS telemetry information includes DOTS client network topology,
    DOTS client domain pipe capacity, normal traffic baseline and
    connections capacity, and threat and mitigation information.  Such
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021              [Page 101]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    information is sensitive; it MUST be protected at rest by the DOTS
    server domain to prevent data leakage.
 
@@ -5681,6 +5649,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    attacks from compromised DOTS clients.  The following non-
    comprehensive list of mitigation techniques can be used by a DOTS
    server to handle misbehaving DOTS clients:
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 101]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
 
    o  The probing rate (defined in Section 4.5 of [RFC8782]) can be used
       to limit the average data rate to the DOTS server.
@@ -5706,14 +5682,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    All data nodes defined in the YANG module specified in Section 9.2
    which can be created, modified, and deleted (i.e., config true, which
    is the default) are considered sensitive.  Write operations to these
-
-
-
-Boucadair, et al.        Expires January 7, 2021              [Page 102]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    data nodes without proper protection can have a negative effect on
    network operations.  Appropriate security measures are recommended to
    prevent illegitimate users from invoking DOTS data channel primitives
@@ -5737,6 +5705,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    o  '/ietf-data:dots-data/dots-telemetry:vendor-mapping' can be used
       by a compromised DOTS client to leak the attack detection
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 102]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       capabilities of the DOTS server.  This is a variation of the
       compromised DOTS client attacks discussed in Section 12.1.
 
@@ -5760,15 +5737,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    Special thanks to Jon Shallow and Kaname Nishizuka for their
    implementation and interoperability work.
 
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021              [Page 103]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
+   Many thanks to Jan Lindblad for the yangdoctors review.
 
 15.  References
 
@@ -5778,11 +5747,28 @@ Internet-Draft               DOTS Telemetry                    July 2020
               "Private Enterprise Numbers", May 2020,
               <http://www.iana.org/assignments/enterprise-numbers.html>.
 
+   [I-D.boucadair-dots-rfc8782-yang-update]
+              Boucadair, M. and J. Shallow, "A YANG Data Model for
+              Distributed Denial-of-Service Open Threat Signaling (DOTS)
+              Signal Channel", draft-boucadair-dots-rfc8782-yang-
+              update-00 (work in progress), July 2020.
+
    [I-D.ietf-dots-signal-call-home]
               Reddy.K, T., Boucadair, M., and J. Shallow, "Distributed
               Denial-of-Service Open Threat Signaling (DOTS) Signal
               Channel Call Home", draft-ietf-dots-signal-call-home-08
               (work in progress), March 2020.
+
+
+
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 103]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
 
    [I-D.ietf-dots-signal-filter-control]
               Nishizuka, K., Boucadair, M., Reddy.K, T., and T. Nagata,
@@ -5817,15 +5803,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
               RFC 7950, DOI 10.17487/RFC7950, August 2016,
               <https://www.rfc-editor.org/info/rfc7950>.
 
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021              [Page 104]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    [RFC7959]  Bormann, C. and Z. Shelby, Ed., "Block-Wise Transfers in
               the Constrained Application Protocol (CoAP)", RFC 7959,
               DOI 10.17487/RFC7959, August 2016,
@@ -5838,6 +5815,16 @@ Internet-Draft               DOTS Telemetry                    July 2020
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
+
+
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 104]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -5859,6 +5846,10 @@ Internet-Draft               DOTS Telemetry                    July 2020
               Channel Specification", RFC 8783, DOI 10.17487/RFC8783,
               May 2020, <https://www.rfc-editor.org/info/rfc8783>.
 
+   [RFC8791]  Bierman, A., Bjoerklund, M., and K. Watsen, "YANG Data
+              Structure Extensions", RFC 8791, DOI 10.17487/RFC8791,
+              June 2020, <https://www.rfc-editor.org/info/rfc8791>.
+
 15.2.  Informative References
 
    [Cause]    IANA, "DOTS Signal Channel Conflict Cause Codes",
@@ -5871,17 +5862,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
               Transmission", draft-bosh-core-new-block-04 (work in
               progress), June 2020.
 
-
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021              [Page 105]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    [I-D.doron-dots-telemetry]
               Doron, E., Reddy, T., Andreasen, F., Xia, L., and K.
               Nishizuka, "Distributed Denial-of-Service Open Threat
@@ -5893,6 +5873,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
               Deployment Considerations for Distributed-Denial-of-
               Service Open Threat Signaling (DOTS)", draft-ietf-dots-
               multihoming-04 (work in progress), May 2020.
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 105]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
 
    [I-D.ietf-dots-use-cases]
               Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
@@ -5928,16 +5916,6 @@ Authors' Addresses
    Email: mohamed.boucadair@orange.com
 
 
-
-
-
-
-
-Boucadair, et al.        Expires January 7, 2021              [Page 106]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    Tirumaleswar Reddy (editor)
    McAfee, Inc.
    Embassy Golf Link Business Park
@@ -5945,6 +5923,19 @@ Internet-Draft               DOTS Telemetry                    July 2020
    India
 
    Email: kondtir@gmail.com
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 106]
+
+Internet-Draft               DOTS Telemetry                    July 2020
 
 
    Ehud Doron
@@ -5989,4 +5980,13 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.        Expires January 7, 2021              [Page 107]
+
+
+
+
+
+
+
+
+
+Boucadair, et al.        Expires January 9, 2021              [Page 107]

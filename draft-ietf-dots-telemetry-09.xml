@@ -10,7 +10,8 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-09" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-09" ipr="trust200902"
+     updates="8782">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -257,8 +258,8 @@
       enforcing countermeasures. The DOTS Telemetry is an optional set of
       attributes that can be signaled in the DOTS signal channel protocol.</t>
 
-      <t>The meaning of the symbols in YANG tree diagrams is defined in <xref
-      target="RFC8340"></xref>.</t>
+      <t>The meaning of the symbols in YANG tree diagrams are defined in <xref
+      target="RFC8340"></xref> and <xref target="RFC8791"></xref>.</t>
     </section>
 
     <section anchor="overview" title="DOTS Telemetry: Overview and Purpose">
@@ -508,10 +509,8 @@
 
         <t>The DOTS telemetry module (<xref target="module"></xref>) is not
         intended to be used via NETCONF/RESTCONF for DOTS server management
-        purposes. It serves only to provide a data model and encoding, but not
-        a management data model. DOTS servers are allowed to update the
-        non-configurable 'ro' entities in the responses of DOTS telemetry
-        messages.</t>
+        purposes. It serves only to provide a data model and encoding
+        following <xref target="RFC8791"></xref>.</t>
 
         <t>The DOTS telemetry module (<xref target="module"></xref>) uses
         "enumerations" rather than "identities" to define units, samples, and
@@ -549,7 +548,7 @@
         </figure></t>
 
       <t>Consequently, the "ietf-dots-telemetry" YANG module defined in <xref
-      target="module"></xref> augments the "ietf-dots-signal" with two new
+      target="module"></xref> defines data structure to represent new DOTS
       message types called "telemetry-setup" and "telemetry". The tree
       structure is shown in <xref target="abstract"></xref> (more details are
       provided in the following sections about the exact structure of
@@ -647,14 +646,15 @@ Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
             </figure></t>
 
-          <t>Upon receipt of such request, the DOTS server replies with a 2.05
-          (Content) response that conveys the current and telemetry parameters
-          acceptable by the DOTS server. The tree structure of the response
-          message body is provided in <xref target="tree-acceptable"></xref>.
-          Note that the response also includes any pipe (<xref
-          target="tpipe"></xref>) and baseline information (<xref
-          target="tbl"></xref>) maintained by the DOTS server for this DOTS
-          client.</t>
+          <t>Upon receipt of such request, and assuming no error is
+          encountered by processing the request, the DOTS server replies with
+          a 2.05 (Content) response that conveys the current and telemetry
+          parameters acceptable by the DOTS server. The tree structure of the
+          response message body is provided in <xref
+          target="tree-acceptable"></xref>. Note that the response also
+          includes any pipe (<xref target="tpipe"></xref>) and baseline
+          information (<xref target="tbl"></xref>) maintained by the DOTS
+          server for this DOTS client.</t>
 
           <t>DOTS servers that support the capability of sending telemetry
           information to DOTS clients prior or during a mitigation (<xref
@@ -771,8 +771,8 @@ Content-Format: "application/dots+cbor"
               parameters for the telemetry). <vspace blankLines="1" />The
               procedure specified in Section 4.4.1 of <xref
               target="RFC8782"></xref> MUST be followed for 'tsid'
-              rollover.<vspace blankLines="1" />This is a mandatory
-              attribute.</t>
+              rollover.<vspace blankLines="1" />This is a mandatory attribute.
+              'tsid' MUST follow 'cuid'.</t>
             </list></t>
 
           <t>'cuid' and 'tsid' MUST NOT appear in the PUT request message
@@ -953,7 +953,7 @@ Uri-Path: "tsid=123"
       </section>
 
       <section anchor="tpipe" title="Total Pipe Capacity">
-        <t>A DOTS client can communicate to its server(s) its DOTS client
+        <t>A DOTS client can communicate to the DOTS server(s) its DOTS client
         domain pipe information. The tree structure of the pipe information is
         shown in <xref target="ptree"></xref>.</t>
 
@@ -1057,7 +1057,7 @@ Content-Format: "application/dots+cbor"
             </figure></t>
 
           <t>DOTS clients may be instructed to signal a link aggregate instead
-          of individual links. For example, a DOTS client managing a DOTS
+          of individual links. For example, a DOTS client that manages a DOTS
           client domain having two interconnection links with an upstream ISP
           (<xref target="singleagg"></xref>) can send a PUT request (shown in
           <xref target="putp1a"></xref>) to communicate the aggregate link
@@ -1102,8 +1102,8 @@ Content-Format: "application/dots+cbor"
             </figure></t>
 
           <t>Now consider that the DOTS client domain was upgraded to connect
-          to an additional ISP (ISP#B of <xref target="multi"></xref>), the
-          DOTS client can inform a third-party DOTS server (that is, not
+          to an additional ISP (e.g., ISP#B of <xref target="multi"></xref>),
+          the DOTS client can inform a third-party DOTS server (that is, not
           hosted with ISP#A and ISP#B domains) about this update by sending
           the PUT request depicted in <xref target="putp2"></xref>. This
           request also includes information related to "link1" even if that
@@ -1168,9 +1168,10 @@ Content-Format: "application/dots+cbor"
           server about this update (e.g., from the network configuration in
           <xref target="single"></xref> to the one shown in <xref
           target="single2"></xref>) by sending the PUT request depicted in
-          <xref target="putp3"></xref>. Upon receipt of this request, the DOTS
-          server removes "link1" from its configuration bases for this DOTS
-          client domain.</t>
+          <xref target="putp3"></xref>. Upon receipt of this request, and
+          assuming no error is encountered when processing the request, the
+          DOTS server removes "link1" from its configuration bases for this
+          DOTS client domain.</t>
 
           <t><figure anchor="single2" title="Multi-Homed DOTS Client Domain">
               <artwork><![CDATA[                     ,--,--,--.     
@@ -1238,8 +1239,8 @@ Content-Format: "application/dots+cbor"
       </section>
 
       <section anchor="tbl" title="Telemetry Baseline">
-        <t>A DOTS client can communicate to its server(s) its normal traffic
-        baseline and connections capacity:<list style="hanging">
+        <t>A DOTS client can communicate to its DOTS server(s) its normal
+        traffic baseline and connections capacity:<list style="hanging">
             <t hangText="Total traffic normal baseline:">The percentile values
             representing the total traffic normal baseline. It can be
             represented for a target using 'total-traffic-normal'.<vspace
@@ -1298,7 +1299,7 @@ Content-Format: "application/dots+cbor"
             'total-connection-capacity-per-port'.</t>
           </list></t>
 
-        <t>The tree structure of the baseline is shown in <xref
+        <t>The tree structure of the normal traffic baseline is shown in <xref
         target="bltree"></xref>.</t>
 
         <t><figure anchor="bltree" title="Telemetry Baseline Tree Structure">
@@ -1502,9 +1503,9 @@ Content-Format: "application/dots+cbor"
 ]]></artwork>
             </figure></t>
 
-          <t>The traffic baseline information should be updated to reflect
-          legitimate overloads (e.g., flash crowds) to prevent unnecessary
-          mitigation.</t>
+          <t>The normal traffic baseline information should be updated to
+          reflect legitimate overloads (e.g., flash crowds) to prevent
+          unnecessary mitigation.</t>
         </section>
 
         <section title="Retrieve Installed Normal Traffic Baseline">
@@ -1571,9 +1572,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       attacks.</t>
 
       <t>The "ietf-dots-telemetry" YANG module (<xref target="module"></xref>)
-      augments the "ietf-dots-signal" with a new message type called
-      "telemetry". The tree structure of the "telemetry" message type is shown
-      <xref target="tt"></xref>.</t>
+      defines the data structure of a new message type called "telemetry". The
+      tree structure of the "telemetry" message type is shown in <xref
+      target="tt"></xref>.</t>
 
       <t>The pre-or-ongoing-mitigation telemetry attributes are indicated by
       the path-suffix '/tm'. The '/tm' is appended to the path-prefix to form
@@ -1591,7 +1592,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       target="mid-co"></xref>. An example illustrating requests correlation by
       means of 'target-prefix' is shown in <xref target="mid-co2"></xref>.</t>
 
-      <t>When generating telemetry data to send to a peer, the DOTS agent must
+      <t>When generating telemetry data to send to a peer, the DOTS agent MUST
       auto-scale so that appropriate unit(s) are used.</t>
 
       <t><figure anchor="mid-co"
@@ -1647,7 +1648,6 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
        |        |  ...
        |        +--:(baseline)
        |           ...
-       +--:(telemetry)
        +--:(telemetry)
           +-- pre-or-ongoing-mitigation* []
              +-- (direction)?
@@ -2100,7 +2100,6 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
                             +-- connection-ps?        yang:gauge64
                             +-- request-ps?           yang:gauge64
                             +-- partial-request-ps?   yang:gauge64
-
 ]]></artwork>
             </figure></t>
 
@@ -2136,7 +2135,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           telemetry data to peer DOTS agent.</t>
 
           <t>The "ietf-dots-mapping" YANG module defined in <xref
-          target="data"></xref>) augments the "ietf-dots-data-channel". The
+          target="data"></xref> augments the "ietf-dots-data-channel". The
           tree structure of this module is shown in <xref
           target="abstract-data"></xref>.</t>
 
@@ -2362,8 +2361,8 @@ Content-Format: "application/dots+cbor"
             a DOTS client to convey pre-or-ongoing-mitigation telemetry).
             <vspace blankLines="1" />The procedure specified in Section 4.4.1
             of <xref target="RFC8782"></xref> MUST be followed for 'tmid'
-            rollover.<vspace blankLines="1" />This is a mandatory
-            attribute.</t>
+            rollover.<vspace blankLines="1" />This is a mandatory attribute.
+            'tmid' MUST follow 'cuid'.</t>
           </list></t>
 
         <t>'cuid' and 'tmid' MUST NOT appear in the PUT request message
@@ -2383,11 +2382,12 @@ Content-Format: "application/dots+cbor"
         longer be available.</t>
 
         <t>The DOTS server indicates the result of processing a PUT request
-        using CoAP response codes. The response code 2.04 (Changed) is
-        returned if the DOTS server has accepted the pre-or-ongoing-mitigation
-        telemetry. The error response code 5.03 (Service Unavailable) is
-        returned if the DOTS server has erred. 5.03 uses Max-Age option to
-        indicate the number of seconds after which to retry.</t>
+        using CoAP response codes. In particular, the response code 2.04
+        (Changed) is returned if the DOTS server has accepted the
+        pre-or-ongoing-mitigation telemetry. The error response code 5.03
+        (Service Unavailable) is returned if the DOTS server has erred. 5.03
+        uses Max-Age option to indicate the number of seconds after which to
+        retry.</t>
 
         <t>How long a DOTS server maintains a 'tmid' as active or logs the
         enclosed telemetry information is implementation-specific. Note that
@@ -2655,9 +2655,10 @@ Observe: 0]]></artwork>
           </list></t>
 
         <t>The "ietf-dots-telemetry" YANG module augments the
-        "mitigation-scope" type message defined in "ietf-dots-signal" so that
-        these attributes can be signalled by a DOTS client in a mitigation
-        efficacy update (<xref target="eff"></xref>).<figure anchor="eff"
+        "mitigation-scope" type message defined in "ietf-dots-signal" <xref
+        target="I-D.boucadair-dots-rfc8782-yang-update"></xref> so that these
+        attributes can be signalled by a DOTS client in a mitigation efficacy
+        update (<xref target="eff"></xref>).<figure anchor="eff"
             title="Telemetry Efficacy Update Tree Structure">
             <artwork><![CDATA[  augment-structure /signal:dots-signal/signal:message-type
                     /signal:mitigation-scope/signal:scope:
@@ -2716,6 +2717,9 @@ Observe: 0]]></artwork>
         it is RECOMMENDED that the DOTS client has already established a DOTS
         telemetry setup session with the server in 'idle' time.</t>
 
+        <t>An example of an efficacy update with telemetry attributes is
+        depicted in <xref target="effu"></xref>.</t>
+
         <t><figure anchor="effu"
             title="An Example of Mitigation Efficacy Update with Telemetry Attributes">
             <artwork><![CDATA[Header: PUT (Code=0.03)
@@ -2768,15 +2772,15 @@ Content-Format: "application/dots+cbor"
 
         <t>As defined in <xref target="RFC8612"></xref>, the actual mitigation
         activities can include several countermeasure mechanisms. The DOTS
-        server signals the current operational status to each relevant
-        countermeasure. A list of attacks detected by each countermeasure MAY
-        also be included. The same attributes defined for <xref
+        server signals the current operational status of relevant
+        countermeasures. A list of attacks detected by each countermeasure MAY
+        also be included. The same attributes defined in <xref
         target="attackdetails"></xref> are applicable for describing the
-        attacks detected and mitigated.</t>
+        attacks detected and mitigated at the DOTS server domain.</t>
 
         <t>The "ietf-dots-telemetry" YANG module (<xref
         target="module"></xref>) augments the "mitigation-scope" type message
-        defined in "ietf-dots-signal" with telemetry data as depicted in
+        defined in "ietf-dots-signal" with telemetry data as depicted in the
         following tree structure:<figure>
             <artwork><![CDATA[  augment-structure /signal:dots-signal/signal:message-type
                     /signal:mitigation-scope/signal:scope:
@@ -4022,7 +4026,7 @@ module ietf-dots-telemetry {
   }
   sx:structure dots-telemetry {
     description
-      "Main structure for DOTS telemetry message.";
+      "Main structure for DOTS telemetry messages.";
     choice telemetry-message-type {
       description
         "Can be a telemetry-setup or telemetry data.";
@@ -4522,6 +4526,36 @@ module ietf-dots-mapping {
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
+      <section title="A New Range for Comprehension-optional Parameters">
+        <t>This specification requests IANA to update the allocation policy of
+        "DOTS Signal Channel CBOR Key Values" registry <xref
+        target="Key-Map"></xref> as follows:</t>
+
+        <t><figure>
+            <artwork><![CDATA[OLD:
++-------------+-------------------------+------------------------+
+| Range       | Registration Procedures | Note                   |
++=============+=========================+========================+
+| 1-16383     | IETF Review             | comprehension-required | 
+| 16384-32767 | Specification Required  | comprehension-optional |
+| 32768-49151 | IETF Review             | comprehension-optional |
+| 49152-65535 | Private Use             | comprehension-optional |
++-------------+-------------------------+------------------------+
+
+NEW:
++-------------+-------------------------+------------------------+
+| Range       | Registration Procedures | Note                   |
++=============+=========================+========================+
+| 1-127       | IETF Review             | comprehension-required | 
+| 128-255     | IETF Review             | comprehension-optional | 
+| 256-16383   | IETF Review             | comprehension-required | 
+| 16384-32767 | Specification Required  | comprehension-optional |
+| 32768-49151 | IETF Review             | comprehension-optional |
+| 49152-65535 | Private Use             | comprehension-optional |
++-------------+-------------------------+------------------------+]]></artwork>
+          </figure></t>
+      </section>
+
       <section anchor="map" title="DOTS Signal Channel CBOR Key Values">
         <t>This specification registers the DOTS telemetry attributes in the
         IANA "DOTS Signal Channel CBOR Key Values" registry <xref
@@ -4531,8 +4565,8 @@ module ietf-dots-mapping {
         comprehension-optional parameters.</t>
 
         <t><list style="symbols">
-            <t>Note to the RFC Editor: CBOR keys are assigned from the
-            32768-49151 range.</t>
+            <t>Note to the RFC Editor: CBOR keys are assigned from the 128-255
+            range.</t>
           </list><figure align="center">
             <artwork><![CDATA[   +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
@@ -4808,6 +4842,8 @@ module ietf-dots-mapping {
 
       <t>Special thanks to Jon Shallow and Kaname Nishizuka for their
       implementation and interoperability work.</t>
+
+      <t>Many thanks to Jan Lindblad for the yangdoctors review.</t>
     </section>
   </middle>
 
@@ -4844,6 +4880,10 @@ module ietf-dots-mapping {
       <?rfc include='reference.RFC.8040'?>
 
       <?rfc ?>
+
+      <?rfc include='reference.RFC.8791'?>
+
+      <?rfc include='reference.I-D.boucadair-dots-rfc8782-yang-update'?>
 
       <reference anchor="Enterprise-Numbers"
                  target="http://www.iana.org/assignments/enterprise-numbers.html">
