@@ -239,7 +239,7 @@
       protocol <xref target="RFC8782"></xref>. Nevertheless, when DOTS
       telemetry attributes are available to a DOTS agent, and absent any
       policy, it can signal the attributes in order to optimize the overall
-      mitigation service provisioned using DOTS. </t>
+      mitigation service provisioned using DOTS.</t>
     </section>
 
     <section anchor="notation" title="Terminology">
@@ -306,10 +306,10 @@
         is asking to mitigate. For the DOTS client side team, it is important
         to realize that the DOTS clients receive the required service. For
         example, understanding that "I asked for mitigation of two attacks and
-        my DOTS server detects and mitigates only one". Cases of inconsistency
-        in attack classification between DOTS clients and servers can be
-        highlighted, and maybe handled, using the DOTS telemetry
-        attributes.</t>
+        my DOTS server detects and mitigates only one of them". Cases of
+        inconsistency in attack classification between DOTS clients and
+        servers can be highlighted, and maybe handled, using the DOTS
+        telemetry attributes.</t>
 
         <t>In addition, management and orchestration systems, at both DOTS
         client and server sides, can use DOTS telemetry as a feedback to
@@ -408,7 +408,7 @@
         that the mitigator does not overwhelm the DOTS client pipes by sending
         back "clean traffic", or what it believes is "clean". This can happen
         when the mitigator has not managed to detect and mitigate all the
-        attacks launched towards the DOTS client domain. </t>
+        attacks launched towards the DOTS client domain.</t>
 
         <t>In this case, it can be valuable to DOTS clients to signal to DOTS
         servers the "total pipe capacity", which is the level of traffic the
@@ -433,26 +433,30 @@
     <section title="Design Overview">
       <t></t>
 
-      <section title="Telemetry Operations">
+      <section title="Overview of Telemetry Operations">
         <t>This document specifies an extension to the DOTS signal channel
         protocol. Considerations about how to establish, maintain, and make
         use of the DOTS signal channel are specified in <xref
         target="RFC8782"></xref>.</t>
 
-        <t>Once the DOTS signal channel is established, DOTS agents that
+        <t>Once the DOTS signal channel is established, DOTS clients that
         support the DOTS telemetry extension proceed with the telemetry setup
-        configuration as detailed in <xref target="conf"></xref>. DOTS agents
-        can then include DOTS telemetry attributes (<xref
-        target="pre"></xref>) using the DOTS signal channel. Typically, a DOTS
-        client can use separate messages to share with a DOTS server telemetry
-        data bound to an ongoing mitigation (<xref target="preCtoS"></xref>).
-        Also, a DOTS client that is interested to receive telemetry
-        notifications related to some of its resources follows the procedure
-        defined in <xref target="preStoC"></xref>.</t>
+        configuration (e.g., measurement interval, telemetry notification
+        interface, pipe capacity, normal traffic baseline) as detailed in
+        <xref target="conf"></xref>. DOTS agents can then include DOTS
+        telemetry attributes using the DOTS signal channel (<xref
+        target="pre"></xref>). Typically, a DOTS client can use separate
+        messages to share with its DOTS server(s) a set of telemetry data
+        bound to an ongoing mitigation (<xref target="preCtoS"></xref>). Also,
+        a DOTS client that is interested to receive telemetry notifications
+        related to some of its resources follows the procedure defined in
+        <xref target="preStoC"></xref>. The DOTS client can then decide to
+        send a mitigation request if the notified attack cannot be mitigated
+        locally within the DOTS client domain.</t>
 
         <t>Aggregate DOTS telemetry data can also be included in efficacy
         update (<xref target="effu-S"></xref>) or mitigation update (<xref
-        target="premStoC"></xref>) messages. </t>
+        target="premStoC"></xref>) messages.</t>
       </section>
 
       <section title="Generic Considerations">
@@ -486,59 +490,61 @@
         <section anchor="control" title="Controlling Configuration Data">
           <t>The DOTS server follows the same considerations discussed in
           Section of 4.5.3 of <xref target="RFC8782"></xref> for managing DOTS
-          telemetry configuration freshness and notification. Likewise, a DOTS
-          client may control the selection of configuration and
-          non-configuration data nodes when sending a GET request by means of
-          the 'c' Uri-Query option and following the procedure specified in
-          Section of 4.4.2 of <xref target="RFC8782"></xref>. These
-          considerations are not re-iterated in the following sections.</t>
+          telemetry configuration freshness and notification.</t>
+
+          <t>Likewise, a DOTS client may control the selection of
+          configuration and non-configuration data nodes when sending a GET
+          request by means of the 'c' Uri-Query option and following the
+          procedure specified in Section of 4.4.2 of <xref
+          target="RFC8782"></xref>. These considerations are not re-iterated
+          in the following sections.</t>
         </section>
+      </section>
 
-        <section title="Block-wise Transfer">
-          <t>DOTS clients can use Block-wise transfer <xref
-          target="RFC7959"></xref> with the recommendation detailed in Section
-          4.4.2 of <xref target="RFC8782"></xref> to control the size of a
-          response when the data to be returned does not fit within a single
-          datagram.</t>
+      <section title="Block-wise Transfer">
+        <t>DOTS clients can use Block-wise transfer <xref
+        target="RFC7959"></xref> with the recommendation detailed in Section
+        4.4.2 of <xref target="RFC8782"></xref> to control the size of a
+        response when the data to be returned does not fit within a single
+        datagram.</t>
 
-          <t>DOTS clients can also use CoAP Block1 Option in a PUT request
-          (see Section 2.5 of <xref target="RFC7959"></xref>) to initiate
-          large transfers, but these Block1 transfers will fail if the inbound
-          "pipe" is running full, so consideration needs to be made to try to
-          fit this PUT into a single transfer, or to separate out the PUT into
-          several discrete PUTs where each of them fits into a single
-          packet.</t>
+        <t>DOTS clients can also use CoAP Block1 Option in a PUT request (see
+        Section 2.5 of <xref target="RFC7959"></xref>) to initiate large
+        transfers, but these Block1 transfers will fail if the inbound "pipe"
+        is running full, so consideration needs to be made to try to fit this
+        PUT into a single transfer, or to separate out the PUT into several
+        discrete PUTs where each of them fits into a single packet.</t>
 
-          <t>Block3 and Block 4 Options that are similar to the CoAP Block1
-          and Block2 Options, but enable faster transmissions of big blocks of
-          data with less packet interchanges, are defined in <xref
-          target="I-D.bosh-core-new-block"></xref>. DOTS implementations can
-          consider the use of Block3 and Block 4 Options.</t>
-        </section>
+        <t>Block3 and Block 4 Options that are similar to the CoAP Block1 and
+        Block2 Options, but enable faster transmissions of big blocks of data
+        with less packet interchanges, are defined in <xref
+        target="I-D.bosh-core-new-block"></xref>. DOTS implementations can
+        consider the use of Block3 and Block 4 Options.</t>
+      </section>
 
-        <section title="DOTS Multi-homing Considerations">
-          <t>Multi-homed DOTS clients are assumed to follow the
-          recommendations in <xref target="I-D.ietf-dots-multihoming"></xref>
-          to select which DOTS server to contact and which IP prefixes to
-          include in a telemetry message to a given peer DOTS server. For
-          example, if each upstream network exposes a DOTS server and the DOTS
-          client maintains DOTS channels with all of them, only the
-          information related to prefixes assigned by an upstream network to
-          the DOTS client domain will be signaled via the DOTS channel
-          established with the DOTS server of that upstream network.
-          Considerations related to whether (and how) a DOTS client gleans
-          some telemetry information (e.g., attack details) it receives from a
-          first DOTS server and share it with a second DOTS server are
-          implementation and deployment-specific.</t>
-        </section>
+      <section title="DOTS Multi-homing Considerations">
+        <t>Multi-homed DOTS clients are assumed to follow the recommendations
+        in <xref target="I-D.ietf-dots-multihoming"></xref> to select which
+        DOTS server to contact and which IP prefixes to include in a telemetry
+        message to a given peer DOTS server. For example, if each upstream
+        network exposes a DOTS server and the DOTS client maintains DOTS
+        channels with all of them, only the information related to prefixes
+        assigned by an upstream network to the DOTS client domain will be
+        signaled via the DOTS channel established with the DOTS server of that
+        upstream network.</t>
+
+        <t>Considerations related to whether (and how) a DOTS client gleans
+        some telemetry information (e.g., attack details) it receives from a
+        first DOTS server and share it with a second DOTS server are
+        implementation and deployment-specific.</t>
       </section>
 
       <section title="YANG Considerations">
         <t>Telemetry messages exchanged between DOTS agents are serialized
-        using Concise Binary Object Representation (CBOR). CBOR-encoded
-        payloads are used to carry signal channel-specific payload messages
-        which convey request parameters and response information such as
-        errors.</t>
+        using Concise Binary Object Representation (CBOR) <xref
+        target="RFC7252"></xref>. CBOR-encoded payloads are used to carry
+        signal channel-specific payload messages which convey request
+        parameters and response information such as errors.</t>
 
         <t>This document specifies a YANG module for representing DOTS
         telemetry message types (<xref target="module"></xref>). All
@@ -644,7 +650,8 @@
       mitigation.</t>
 
       <t>DOTS telemetry setup configuration request and response messages are
-      marked as Confirmable messages.</t>
+      marked as Confirmable messages (Section 2.1 of <xref
+      target="RFC7252"></xref>).</t>
 
       <section anchor="tconfig" title="Telemetry Configuration">
         <t>A DOTS client can negotiate with its server(s) a set of telemetry
@@ -826,7 +833,7 @@ Content-Format: "application/dots+cbor"
           deleted and no longer be available at the DOTS server.</t>
 
           <t>The DOTS server indicates the result of processing the PUT
-          request using the following response codes:<list style="symbols">
+          request using the following Response Codes:<list style="symbols">
               <t>If the request is missing a mandatory attribute, does not
               include 'cuid' or 'tsid' Uri-Path parameters, or contains one or
               more invalid or unknown parameters, 4.00 (Bad Request) MUST be
@@ -835,7 +842,7 @@ Content-Format: "application/dots+cbor"
               <t>If the DOTS server does not find the 'tsid' parameter value
               conveyed in the PUT request in its configuration data and if the
               DOTS server has accepted the configuration parameters, then a
-              response code 2.01 (Created) MUST be returned in the
+              2.01 (Created) Response Code MUST be returned in the
               response.</t>
 
               <t>If the DOTS server finds the 'tsid' parameter value conveyed
@@ -956,7 +963,7 @@ Uri-Path: "tsid=123"]]></artwork>
           <t>If the DOTS server does not find the 'tsid' Uri-Path value
           conveyed in the GET request in its configuration data for the
           requesting DOTS client, it MUST respond with a 4.04 (Not Found)
-          error response code.</t>
+          error Response Code.</t>
         </section>
 
         <section anchor="DEL" title="Delete DOTS Telemetry Configuration">
@@ -980,7 +987,7 @@ Uri-Path: "tsid=123"
           <t>The DOTS server resets the DOTS telemetry configuration back to
           the default values and acknowledges a DOTS client's request to
           remove the DOTS telemetry configuration using 2.02 (Deleted)
-          response code. A 2.02 (Deleted) Response Code is returned even if
+          Response Code. A 2.02 (Deleted) Response Code is returned even if
           the 'tsid' parameter value conveyed in the DELETE request does not
           exist in its configuration data before the request.</t>
 
@@ -1667,7 +1674,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       notifications, but as a single notification.</t>
 
       <t>DOTS pre-or-ongoing-mitigation telemetry request and response
-      messages MUST be marked as Non-Confirmable messages.</t>
+      messages MUST be marked as Non-Confirmable messages (Section 2.1 of
+      <xref target="RFC7252"></xref>).</t>
 
       <t><figure anchor="tt" title="Telemetry Message Type Tree Structure ">
           <artwork><![CDATA[  structure dots-telemetry:
@@ -2419,11 +2427,11 @@ Content-Format: "application/dots+cbor"
         longer be available.</t>
 
         <t>The DOTS server indicates the result of processing a PUT request
-        using CoAP response codes. In particular, the response code 2.04
-        (Changed) is returned if the DOTS server has accepted the
-        pre-or-ongoing-mitigation telemetry. The error response code 5.03
-        (Service Unavailable) is returned if the DOTS server has erred. 5.03
-        uses Max-Age option to indicate the number of seconds after which to
+        using CoAP Response Codes. In particular, the 2.04 (Changed) Response
+        Code is returned if the DOTS server has accepted the
+        pre-or-ongoing-mitigation telemetry. The 5.03 (Service Unavailable)
+        Response Code is returned if the DOTS server has erred. 5.03 uses
+        Max-Age option to indicate the number of seconds after which to
         retry.</t>
 
         <t>How long a DOTS server maintains a 'tmid' as active or logs the
@@ -2969,9 +2977,104 @@ Observe: 0]]></artwork>
 
         <t>If the target query does not match the target of the enclosed 'mid'
         as maintained by the DOTS server, the latter MUST respond with a 4.04
-        (Not Found) error response code. The DOTS server MUST NOT add a new
+        (Not Found) error Response Code. The DOTS server MUST NOT add a new
         observe entry if this query overlaps with an existing one.</t>
       </section>
+    </section>
+
+    <section title="Error Handling">
+      <t>This section is a summary of the Error Code responses that can be
+      returned by a DOTS server. These error responses MUST contain a CoAP
+      4.xx or 5.xx Response Code.</t>
+
+      <t>In general, there may be an additional plain text diagnostic payload
+      (Section 5.5.2 of <xref target="RFC8782"></xref>) to help
+      troubleshooting in the body of the response unless detailed
+      otherwise.</t>
+
+      <t>Errors returned by a DOTS server can be broken into two categories,
+      those associated with the CoAP protocol itself and those generated
+      during the validation of the provided data by the DOTS server. </t>
+
+      <t>The following list of common CoAP errors that are implemented by DOTS
+      servers. This list is not exhaustive, other errors defined by CoAP and
+      associated RFCs may be applicable. <list style="symbols">
+          <t>4.00 (Bad Request) is returned by the DOTS server when the DOTS
+          client has sent a request that violates the DOTS protocol <xref
+          target="RFC8782"></xref>. </t>
+
+          <t>4.01 (Unauthorized) is returned by the DOTS server when the DOTS
+          client is not authorized to access the DOTS server <xref
+          target="RFC8782"></xref>. </t>
+
+          <t>4.02 (Bad Option) is returned by the DOTS server when one or more
+          CoAP options are unknown or malformed by the CoAP protocol layer
+          <xref target="RFC7252"></xref>. </t>
+
+          <t>4.04 (Not Found) is returned by the DOTS server when the DOTS
+          client is requesting a &lsquo;mid&rsquo; or &lsquo;sid&rsquo; that
+          is not valid <xref target="RFC8782"></xref>. </t>
+
+          <t>4.05 (Method Not Allowed) is returned by the DOTS server when the
+          DOTS client is requesting a resource by a method (GET etc.) that is
+          not supported by the DOTS server <xref target="RFC8782"></xref>
+          <xref target="RFC7252"></xref>. </t>
+
+          <t>4.08 (Request Entity Incomplete) is returned by the DOTS server
+          if one or multiple blocks of a block transfer request is missing
+          <xref target="RFC7959"></xref>. </t>
+
+          <t>4.09 (Conflict) is returned by the DOTS server if the DOTS server
+          detects that a request conflicts with a previous request. The
+          response body is formatted using "application/dots+cbor", and
+          contains the "conflict-clause" <xref target="RFC8782"></xref>. </t>
+
+          <t>4.13 (Request Entity Too Large) may be returned by the DOTS
+          server during a block transfer request <xref
+          target="RFC7959"></xref>. </t>
+
+          <t>4.15 (Unsupported Content-Format) is returned by the DOTS server
+          when the Content-Format used in the request is not formatted as
+          "application/dots+cbor" <xref target="RFC8782"></xref>. </t>
+
+          <t>4.22 (Unprocessable Entity) is returned by the DOTS server when
+          one or more session configuration parameters are not valid <xref
+          target="RFC8782"></xref>. </t>
+
+          <t>5.03 (Service Unavailable) is returned by the DOTS server if the
+          DOTS server is unable to handle the request. An example is the DOTS
+          server needs to redirect the DOTS client to use an alternate DOTS
+          server. The response body is formatted using
+          "application/dots+cbor", and contains how to handle the 5.03 code
+          <xref target="RFC8782"></xref>. </t>
+
+          <t>5.08 (Hop Limit Reached) is returned by the DOTS server if there
+          is a data path loop through upstream DOTS gateways. The response
+          body is formatted using plain text and contains a list of servers
+          that are in the data path loop <xref target="RFC8768"></xref>. </t>
+        </list></t>
+
+      <t>The following additional error cases apply for the telemetry
+      extension:</t>
+
+      <t><list style="symbols">
+          <t>4.00 (Bad Request) is returned by the DOTS server when the DOTS
+          client has sent a request that violates the DOTS telemetry
+          extension. </t>
+
+          <t>4.04 (Not Found) is returned by the DOTS server when the DOTS
+          client is requesting a &lsquo;tsid&rsquo; or &lsquo;tmid&rsquo; that
+          is not valid.</t>
+
+          <t>4.00 (Bad Request) is returned by the DOTS server when the DOTS
+          client has sent a request with invalid query types (e.g., not
+          supported, malformed).</t>
+
+          <t>4.04 (Not Found) is returned by the DOTS server when the DOTS
+          client has sent a request with a target query that does not match
+          the target of the enclosed 'mid' as maintained by the DOTS
+          server.</t>
+        </list></t>
     </section>
 
     <section title="YANG Modules">
@@ -4920,9 +5023,13 @@ NEW:
 
       <?rfc include='reference.RFC.8040'?>
 
+      <?rfc include='reference.RFC.7252'?>
+
       <?rfc ?>
 
       <?rfc include='reference.RFC.8791'?>
+
+      <?rfc include='reference.RFC.8768'?>
 
       <?rfc include='reference.I-D.boucadair-dots-rfc8782-yang-update'?>
 

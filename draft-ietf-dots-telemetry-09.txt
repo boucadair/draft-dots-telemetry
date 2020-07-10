@@ -82,16 +82,16 @@ Table of Contents
      3.2.  Enahnced Detection  . . . . . . . . . . . . . . . . . . .   7
      3.3.  Efficient Mitigation  . . . . . . . . . . . . . . . . . .   9
    4.  Design Overview . . . . . . . . . . . . . . . . . . . . . . .   9
-     4.1.  Telemetry Operations  . . . . . . . . . . . . . . . . . .   9
+     4.1.  Overview of Telemetry Operations  . . . . . . . . . . . .   9
      4.2.  Generic Considerations  . . . . . . . . . . . . . . . . .  10
        4.2.1.  DOTS Client Identification  . . . . . . . . . . . . .  10
        4.2.2.  DOTS Gateways . . . . . . . . . . . . . . . . . . . .  10
        4.2.3.  Empty URI Paths . . . . . . . . . . . . . . . . . . .  10
        4.2.4.  Controlling Configuration Data  . . . . . . . . . . .  10
-       4.2.5.  Block-wise Transfer . . . . . . . . . . . . . . . . .  10
-       4.2.6.  DOTS Multi-homing Considerations  . . . . . . . . . .  11
-     4.3.  YANG Considerations . . . . . . . . . . . . . . . . . . .  11
-     4.4.  A Note About Examples . . . . . . . . . . . . . . . . . .  12
+     4.3.  Block-wise Transfer . . . . . . . . . . . . . . . . . . .  11
+     4.4.  DOTS Multi-homing Considerations  . . . . . . . . . . . .  11
+     4.5.  YANG Considerations . . . . . . . . . . . . . . . . . . .  11
+     4.6.  A Note About Examples . . . . . . . . . . . . . . . . . .  12
    5.  Telemetry Operation Paths . . . . . . . . . . . . . . . . . .  12
    6.  DOTS Telemetry Setup Configuration  . . . . . . . . . . . . .  13
      6.1.  Telemetry Configuration . . . . . . . . . . . . . . . . .  14
@@ -131,24 +131,25 @@ Internet-Draft               DOTS Telemetry                    July 2020
            Telemetry Attributes  . . . . . . . . . . . . . . . . . .  58
      8.2.  DOTS Servers to Clients Mitigation Status DOTS Telemetry
            Attributes  . . . . . . . . . . . . . . . . . . . . . . .  60
-   9.  YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  64
-     9.1.  DOTS Signal Channel Telemetry YANG Module . . . . . . . .  64
-     9.2.  Vendor Attack Mapping Details YANG Module . . . . . . . .  91
-   10. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  94
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  97
-     11.1.  A New Range for Comprehension-optional Parameters  . . .  97
-     11.2.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  97
-     11.3.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 100
-     11.4.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 100
-   12. Security Considerations . . . . . . . . . . . . . . . . . . . 101
-     12.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 101
-     12.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 102
-   13. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 103
-   14. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 103
-   15. References  . . . . . . . . . . . . . . . . . . . . . . . . . 103
-     15.1.  Normative References . . . . . . . . . . . . . . . . . . 103
-     15.2.  Informative References . . . . . . . . . . . . . . . . . 105
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 106
+   9.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .  64
+   10. YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  66
+     10.1.  DOTS Signal Channel Telemetry YANG Module  . . . . . . .  66
+     10.2.  Vendor Attack Mapping Details YANG Module  . . . . . . .  93
+   11. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  96
+   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  99
+     12.1.  A New Range for Comprehension-optional Parameters  . . .  99
+     12.2.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . .  99
+     12.3.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 102
+     12.4.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 102
+   13. Security Considerations . . . . . . . . . . . . . . . . . . . 103
+     13.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 103
+     13.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 104
+   14. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 104
+   15. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 105
+   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 105
+     16.1.  Normative References . . . . . . . . . . . . . . . . . . 105
+     16.2.  Informative References . . . . . . . . . . . . . . . . . 107
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 108
 
 1.  Introduction
 
@@ -161,7 +162,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
        taking down the actual delivered services, but rather to
        eliminate various network elements (routers, switches, firewalls,
        transit links, and so on) from serving legitimate users traffic.
-
 
 
 
@@ -342,10 +342,10 @@ Internet-Draft               DOTS Telemetry                    July 2020
    client is asking to mitigate.  For the DOTS client side team, it is
    important to realize that the DOTS clients receive the required
    service.  For example, understanding that "I asked for mitigation of
-   two attacks and my DOTS server detects and mitigates only one".
-   Cases of inconsistency in attack classification between DOTS clients
-   and servers can be highlighted, and maybe handled, using the DOTS
-   telemetry attributes.
+   two attacks and my DOTS server detects and mitigates only one of
+   them".  Cases of inconsistency in attack classification between DOTS
+   clients and servers can be highlighted, and maybe handled, using the
+   DOTS telemetry attributes.
 
    In addition, management and orchestration systems, at both DOTS
    client and server sides, can use DOTS telemetry as a feedback to
@@ -481,23 +481,23 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 4.  Design Overview
 
-4.1.  Telemetry Operations
+4.1.  Overview of Telemetry Operations
 
    This document specifies an extension to the DOTS signal channel
    protocol.  Considerations about how to establish, maintain, and make
    use of the DOTS signal channel are specified in [RFC8782].
 
-   Once the DOTS signal channel is established, DOTS agents that support
-   the DOTS telemetry extension proceed with the telemetry setup
-   configuration as detailed in Section 6.  DOTS agents can then include
-   DOTS telemetry attributes (Section 7.1) using the DOTS signal
-   channel.  Typically, a DOTS client can use separate messages to share
-   with a DOTS server telemetry data bound to an ongoing mitigation
-   (Section 7.2).  Also, a DOTS client that is interested to receive
-   telemetry notifications related to some of its resources follows the
-   procedure defined in Section 7.3.
-
-
+   Once the DOTS signal channel is established, DOTS clients that
+   support the DOTS telemetry extension proceed with the telemetry setup
+   configuration (e.g., measurement interval, telemetry notification
+   interface, pipe capacity, normal traffic baseline) as detailed in
+   Section 6.  DOTS agents can then include DOTS telemetry attributes
+   using the DOTS signal channel (Section 7.1).  Typically, a DOTS
+   client can use separate messages to share with its DOTS server(s) a
+   set of telemetry data bound to an ongoing mitigation (Section 7.2).
+   Also, a DOTS client that is interested to receive telemetry
+   notifications related to some of its resources follows the procedure
+   defined in Section 7.3.  The DOTS client can then decide to send a
 
 
 
@@ -505,6 +505,9 @@ Boucadair, et al.       Expires January 10, 2021                [Page 9]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
+
+   mitigation request if the notified attack cannot be mitigated locally
+   within the DOTS client domain.
 
    Aggregate DOTS telemetry data can also be included in efficacy update
    (Section 8.1) or mitigation update (Section 8.2) messages.
@@ -539,19 +542,16 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    The DOTS server follows the same considerations discussed in
    Section of 4.5.3 of [RFC8782] for managing DOTS telemetry
-   configuration freshness and notification.  Likewise, a DOTS client
-   may control the selection of configuration and non-configuration data
-   nodes when sending a GET request by means of the 'c' Uri-Query option
-   and following the procedure specified in Section of 4.4.2 of
-   [RFC8782].  These considerations are not re-iterated in the following
-   sections.
+   configuration freshness and notification.
 
-4.2.5.  Block-wise Transfer
+   Likewise, a DOTS client may control the selection of configuration
+   and non-configuration data nodes when sending a GET request by means
+   of the 'c' Uri-Query option and following the procedure specified in
+   Section of 4.4.2 of [RFC8782].  These considerations are not re-
+   iterated in the following sections.
 
-   DOTS clients can use Block-wise transfer [RFC7959] with the
-   recommendation detailed in Section 4.4.2 of [RFC8782] to control the
-   size of a response when the data to be returned does not fit within a
-   single datagram.
+
+
 
 
 
@@ -561,6 +561,13 @@ Boucadair, et al.       Expires January 10, 2021               [Page 10]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
+
+4.3.  Block-wise Transfer
+
+   DOTS clients can use Block-wise transfer [RFC7959] with the
+   recommendation detailed in Section 4.4.2 of [RFC8782] to control the
+   size of a response when the data to be returned does not fit within a
+   single datagram.
 
    DOTS clients can also use CoAP Block1 Option in a PUT request (see
    Section 2.5 of [RFC7959]) to initiate large transfers, but these
@@ -575,7 +582,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    [I-D.bosh-core-new-block].  DOTS implementations can consider the use
    of Block3 and Block 4 Options.
 
-4.2.6.  DOTS Multi-homing Considerations
+4.4.  DOTS Multi-homing Considerations
 
    Multi-homed DOTS clients are assumed to follow the recommendations in
    [I-D.ietf-dots-multihoming] to select which DOTS server to contact
@@ -585,31 +592,24 @@ Internet-Draft               DOTS Telemetry                    July 2020
    them, only the information related to prefixes assigned by an
    upstream network to the DOTS client domain will be signaled via the
    DOTS channel established with the DOTS server of that upstream
-   network.  Considerations related to whether (and how) a DOTS client
-   gleans some telemetry information (e.g., attack details) it receives
-   from a first DOTS server and share it with a second DOTS server are
-   implementation and deployment-specific.
+   network.
 
-4.3.  YANG Considerations
+   Considerations related to whether (and how) a DOTS client gleans some
+   telemetry information (e.g., attack details) it receives from a first
+   DOTS server and share it with a second DOTS server are implementation
+   and deployment-specific.
+
+4.5.  YANG Considerations
 
    Telemetry messages exchanged between DOTS agents are serialized using
-   Concise Binary Object Representation (CBOR).  CBOR-encoded payloads
-   are used to carry signal channel-specific payload messages which
-   convey request parameters and response information such as errors.
+   Concise Binary Object Representation (CBOR) [RFC7252].  CBOR-encoded
+   payloads are used to carry signal channel-specific payload messages
+   which convey request parameters and response information such as
+   errors.
 
    This document specifies a YANG module for representing DOTS telemetry
-   message types (Section 9.1).  All parameters in the payload of the
-   DOTS signal channel are mapped to CBOR types as specified in
-   Section 10.
+   message types (Section 10.1).  All parameters in the payload of the
 
-   The DOTS telemetry module (Section 9.1) is not intended to be used
-   via NETCONF/RESTCONF for DOTS server management purposes.  It serves
-   only to provide a data model and encoding following [RFC8791].
-
-   The DOTS telemetry module (Section 9.1) uses "enumerations" rather
-   than "identities" to define units, samples, and intervals because
-   otherwise the namespace identifier "ietf-dots-telemetry" must be
-   included when a telemetry attribute is included (e.g., in a
 
 
 
@@ -618,17 +618,28 @@ Boucadair, et al.       Expires January 10, 2021               [Page 11]
 Internet-Draft               DOTS Telemetry                    July 2020
 
 
+   DOTS signal channel are mapped to CBOR types as specified in
+   Section 11.
+
+   The DOTS telemetry module (Section 10.1) is not intended to be used
+   via NETCONF/RESTCONF for DOTS server management purposes.  It serves
+   only to provide a data model and encoding following [RFC8791].
+
+   The DOTS telemetry module (Section 10.1) uses "enumerations" rather
+   than "identities" to define units, samples, and intervals because
+   otherwise the namespace identifier "ietf-dots-telemetry" must be
+   included when a telemetry attribute is included (e.g., in a
    mitigation efficacy update).  The use of "identities" is thus
    suboptimal from a message compactness standpoint.
 
-4.4.  A Note About Examples
+4.6.  A Note About Examples
 
    Examples are provided for illustration purposes.  The document does
    not aim to provide a comprehensive list of message examples.
 
    The authoritative reference for validating telemetry messages is the
-   YANG module (Section 9.1) and the mapping table established in
-   Section 10.
+   YANG module (Section 10.1) and the mapping table established in
+   Section 11.
 
 5.  Telemetry Operation Paths
 
@@ -648,22 +659,11 @@ Internet-Draft               DOTS Telemetry                    July 2020
                      Table 1: DOTS Telemetry Operations
 
    Consequently, the "ietf-dots-telemetry" YANG module defined in
-   Section 9.1 defines data structure to represent new DOTS message
+   Section 10.1 defines data structure to represent new DOTS message
    types called "telemetry-setup" and "telemetry".  The tree structure
    is shown in Figure 1.  More details are provided in Sections 6 and 7
    about the exact structure of "telemetry-setup" and "telemetry"
    message types.
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -720,7 +720,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    may impact attack mitigation.
 
    DOTS telemetry setup configuration request and response messages are
-   marked as Confirmable messages.
+   marked as Confirmable messages (Section 2.1 of [RFC7252]).
 
 
 
@@ -923,7 +923,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    and no longer be available at the DOTS server.
 
    The DOTS server indicates the result of processing the PUT request
-   using the following response codes:
+   using the following Response Codes:
 
    o  If the request is missing a mandatory attribute, does not include
       'cuid' or 'tsid' Uri-Path parameters, or contains one or more
@@ -932,8 +932,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    o  If the DOTS server does not find the 'tsid' parameter value
       conveyed in the PUT request in its configuration data and if the
-      DOTS server has accepted the configuration parameters, then a
-      response code 2.01 (Created) MUST be returned in the response.
+      DOTS server has accepted the configuration parameters, then a 2.01
+      (Created) Response Code MUST be returned in the response.
 
    o  If the DOTS server finds the 'tsid' parameter value conveyed in
       the PUT request in its configuration data and if the DOTS server
@@ -1054,7 +1054,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    If the DOTS server does not find the 'tsid' Uri-Path value conveyed
    in the GET request in its configuration data for the requesting DOTS
-   client, it MUST respond with a 4.04 (Not Found) error response code.
+   client, it MUST respond with a 4.04 (Not Found) error Response Code.
 
 
 
@@ -1083,7 +1083,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    The DOTS server resets the DOTS telemetry configuration back to the
    default values and acknowledges a DOTS client's request to remove the
-   DOTS telemetry configuration using 2.02 (Deleted) response code.  A
+   DOTS telemetry configuration using 2.02 (Deleted) Response Code.  A
    2.02 (Deleted) Response Code is returned even if the 'tsid' parameter
    value conveyed in the DELETE request does not exist in its
    configuration data before the request.
@@ -1836,7 +1836,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
       1: Overlapping targets (Section 4.4.1 of [RFC8782]).
 
-      TBA: Overlapping pipe scope (see Section 11).
+      TBA: Overlapping pipe scope (see Section 12).
 
 
 
@@ -1859,7 +1859,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    is to allow for the complete knowledge of attacks and the various
    particulars that can best characterize attacks.
 
-   The "ietf-dots-telemetry" YANG module (Section 9.1) defines the data
+   The "ietf-dots-telemetry" YANG module (Section 10.1) defines the data
    structure of a new message type called "telemetry".  The tree
    structure of the "telemetry" message type is shown in Figure 24.
 
@@ -1926,8 +1926,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
    notification.
 
    DOTS pre-or-ongoing-mitigation telemetry request and response
-   messages MUST be marked as Non-Confirmable messages.
-
+   messages MUST be marked as Non-Confirmable messages (Section 2.1 of
+   [RFC7252]).
 
 
 
@@ -2599,7 +2599,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    provided to the DOTS client when transmitting telemetry data to peer
    DOTS agent.
 
-   The "ietf-dots-mapping" YANG module defined in Section 9.2 augments
+   The "ietf-dots-mapping" YANG module defined in Section 10.2 augments
    the "ietf-dots-data-channel".  The tree structure of this module is
    shown in Figure 30.
 
@@ -2879,11 +2879,12 @@ Internet-Draft               DOTS Telemetry                    July 2020
    no longer be available.
 
    The DOTS server indicates the result of processing a PUT request
-   using CoAP response codes.  In particular, the response code 2.04
-   (Changed) is returned if the DOTS server has accepted the pre-or-
-   ongoing-mitigation telemetry.  The error response code 5.03 (Service
-   Unavailable) is returned if the DOTS server has erred. 5.03 uses Max-
-   Age option to indicate the number of seconds after which to retry.
+   using CoAP Response Codes.  In particular, the 2.04 (Changed)
+   Response Code is returned if the DOTS server has accepted the pre-or-
+   ongoing-mitigation telemetry.  The 5.03 (Service Unavailable)
+   Response Code is returned if the DOTS server has erred. 5.03 uses
+   Max-Age option to indicate the number of seconds after which to
+   retry.
 
    How long a DOTS server maintains a 'tmid' as active or logs the
    enclosed telemetry information is implementation-specific.  Note that
@@ -2898,6 +2899,21 @@ Internet-Draft               DOTS Telemetry                    July 2020
    (Figure 37).  Sending a DELETE with no 'tmid' indicates that all
    'tmids' must be deactivated (Figure 38).
 
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 52]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    Header: DELETE (Code=0.04)
    Uri-Path: ".well-known"
    Uri-Path: "dots"
@@ -2906,13 +2922,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    Uri-Path: "tmid=123"
 
           Figure 37: Delete a Pre-or-Ongoing-Mitigation Telemetry
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 52]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
 
    Header: DELETE (Code=0.04)
    Uri-Path: ".well-known"
@@ -2953,15 +2962,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    their respective 'tmid' values.  If such two requests have
    overlapping 'target', the PUT request with higher numeric 'tmid'
    value will override the request with a lower numeric 'tmid' value.
-   The overlapped lower numeric 'tmid' MUST be automatically deleted and
-   no longer be available.
-
-
-
-
-
-
-
 
 
 
@@ -2969,6 +2969,9 @@ Boucadair, et al.       Expires January 10, 2021               [Page 53]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
+
+   The overlapped lower numeric 'tmid' MUST be automatically deleted and
+   no longer be available.
 
    Header: PUT (Code=0.03)
    Uri-Path: ".well-known"
@@ -3012,9 +3015,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
     Figure 40: GET to Subscribe to Telemetry Asynchronous Notifications
                            for a Specific 'tmid'
-
-
-
 
 
 
@@ -3220,7 +3220,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
       DOTS client perspective during an active mitigation.  See
       Section 7.1.5.
 
-   The "ietf-dots-telemetry" YANG module (Section 9.1) augments the
+   The "ietf-dots-telemetry" YANG module (Section 10.1) augments the
    "mitigation-scope" message type defined in "ietf-dots-signal"
    [I-D.boucadair-dots-rfc8782-yang-update] so that these attributes can
    be signalled by a DOTS client in a mitigation efficacy update
@@ -3370,7 +3370,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    describing the attacks detected and mitigated at the DOTS server
    domain.
 
-   The "ietf-dots-telemetry" YANG module (Section 9.1) augments the
+   The "ietf-dots-telemetry" YANG module (Section 10.1) augments the
    "mitigation-scope" message type defined in "ietf-dots-signal"
    [I-D.boucadair-dots-rfc8782-yang-update] with telemetry data as
    depicted in the following tree structure:
@@ -3547,12 +3547,112 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    If the target query does not match the target of the enclosed 'mid'
    as maintained by the DOTS server, the latter MUST respond with a 4.04
-   (Not Found) error response code.  The DOTS server MUST NOT add a new
+   (Not Found) error Response Code.  The DOTS server MUST NOT add a new
    observe entry if this query overlaps with an existing one.
 
-9.  YANG Modules
+9.  Error Handling
 
-9.1.  DOTS Signal Channel Telemetry YANG Module
+   This section is a summary of the Error Code responses that can be
+   returned by a DOTS server.  These error responses MUST contain a CoAP
+   4.xx or 5.xx Response Code.
+
+   In general, there may be an additional plain text diagnostic payload
+   (Section 5.5.2 of [RFC8782]) to help troubleshooting in the body of
+   the response unless detailed otherwise.
+
+   Errors returned by a DOTS server can be broken into two categories,
+   those associated with the CoAP protocol itself and those generated
+   during the validation of the provided data by the DOTS server.
+
+   The following list of common CoAP errors that are implemented by DOTS
+   servers.  This list is not exhaustive, other errors defined by CoAP
+   and associated RFCs may be applicable.
+
+   o  4.00 (Bad Request) is returned by the DOTS server when the DOTS
+      client has sent a request that violates the DOTS protocol
+      [RFC8782].
+
+   o  4.01 (Unauthorized) is returned by the DOTS server when the DOTS
+      client is not authorized to access the DOTS server [RFC8782].
+
+   o  4.02 (Bad Option) is returned by the DOTS server when one or more
+      CoAP options are unknown or malformed by the CoAP protocol layer
+      [RFC7252].
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 64]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+   o  4.04 (Not Found) is returned by the DOTS server when the DOTS
+      client is requesting a 'mid' or 'sid' that is not valid [RFC8782].
+
+   o  4.05 (Method Not Allowed) is returned by the DOTS server when the
+      DOTS client is requesting a resource by a method (GET etc.) that
+      is not supported by the DOTS server [RFC8782] [RFC7252].
+
+   o  4.08 (Request Entity Incomplete) is returned by the DOTS server if
+      one or multiple blocks of a block transfer request is missing
+      [RFC7959].
+
+   o  4.09 (Conflict) is returned by the DOTS server if the DOTS server
+      detects that a request conflicts with a previous request.  The
+      response body is formatted using "application/dots+cbor", and
+      contains the "conflict-clause" [RFC8782].
+
+   o  4.13 (Request Entity Too Large) may be returned by the DOTS server
+      during a block transfer request [RFC7959].
+
+   o  4.15 (Unsupported Content-Format) is returned by the DOTS server
+      when the Content-Format used in the request is not formatted as
+      "application/dots+cbor" [RFC8782].
+
+   o  4.22 (Unprocessable Entity) is returned by the DOTS server when
+      one or more session configuration parameters are not valid
+      [RFC8782].
+
+   o  5.03 (Service Unavailable) is returned by the DOTS server if the
+      DOTS server is unable to handle the request.  An example is the
+      DOTS server needs to redirect the DOTS client to use an alternate
+      DOTS server.  The response body is formatted using "application/
+      dots+cbor", and contains how to handle the 5.03 code [RFC8782].
+
+   o  5.08 (Hop Limit Reached) is returned by the DOTS server if there
+      is a data path loop through upstream DOTS gateways.  The response
+      body is formatted using plain text and contains a list of servers
+      that are in the data path loop [RFC8768].
+
+   The following additional error cases apply for the telemetry
+   extension:
+
+   o  4.00 (Bad Request) is returned by the DOTS server when the DOTS
+      client has sent a request that violates the DOTS telemetry
+      extension.
+
+   o  4.04 (Not Found) is returned by the DOTS server when the DOTS
+      client is requesting a 'tsid' or 'tmid' that is not valid.
+
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 65]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+   o  4.00 (Bad Request) is returned by the DOTS server when the DOTS
+      client has sent a request with invalid query types (e.g., not
+      supported, malformed).
+
+   o  4.04 (Not Found) is returned by the DOTS server when the DOTS
+      client has sent a request with a target query that does not match
+      the target of the enclosed 'mid' as maintained by the DOTS server.
+
+10.  YANG Modules
+
+10.1.  DOTS Signal Channel Telemetry YANG Module
 
    This module uses types defined in [RFC6991] and [RFC8345].
 
@@ -3578,14 +3678,6 @@ module ietf-dots-telemetry {
     prefix yang;
     reference
       "Section 3 of RFC 6991";
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 64]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
   }
   import ietf-inet-types {
     prefix inet;
@@ -3598,6 +3690,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       "Section 6.2 of RFC 8345: A YANG Data Model for Network
        Topologies";
   }
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 66]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
   import ietf-yang-structure-ext {
     prefix sx;
     reference
@@ -3634,14 +3734,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
      the RFC itself for full legal notices.";
 
   revision 2020-07-03 {
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 65]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
     description
       "Initial revision.";
     reference
@@ -3654,6 +3746,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       enum none {
         value 1;
         description
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 67]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
           "No effect on the DOTS client domain.";
       }
       enum low {
@@ -3690,14 +3790,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
     type enumeration {
       enum packet-ps {
         value 1;
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 66]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
         description
           "Packets per second (pps).";
       }
@@ -3710,6 +3802,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
         value 3;
         description
           "Bytes per second (Byte/s).";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 68]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       }
     }
     description
@@ -3746,14 +3846,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       enum kilobyte-ps {
         value 6;
         description
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 67]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
           "Kilobytes per second (kBps).";
       }
       enum megapacket-ps {
@@ -3766,6 +3858,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
         description
           "Megabits per second (Mbps).";
       }
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 69]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       enum megabyte-ps {
         value 9;
         description
@@ -3802,14 +3902,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
           "Terabytes per second (TBps).";
       }
     }
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 68]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
     description
       "Enumeration to indicate which unit is used.";
   }
@@ -3822,6 +3914,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
           "Hour.";
       }
       enum day {
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 70]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         value 2;
         description
           "Day.";
@@ -3858,14 +3958,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
         description
           "30 seconds measurement period.";
       }
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 69]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
       enum minute {
         value 4;
         description
@@ -3878,6 +3970,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       }
       enum 10-minutes {
         value 6;
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 71]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         description
           "10 minutes measurement period.";
       }
@@ -3914,14 +4014,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       }
       enum target-port {
         value 2;
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 70]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
         description
           "Query based on target port number.";
       }
@@ -3934,6 +4026,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
         value 4;
         description
           "Query based on target FQDN.";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 72]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       }
       enum target-uri {
         value 5;
@@ -3970,14 +4070,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
         description
           "Query based on 'c' Uri-Query option that is used
            to control the selection of configuration
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 71]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
             and non-configuration data nodes.";
         reference
           "Section 4.4.2 of RFC 8782.";
@@ -3990,6 +4082,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
   grouping percentile-config {
     description
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 73]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       "Configuration of low, mid, and high percentile values.";
     leaf measurement-interval {
       type interval;
@@ -4026,14 +4126,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       must '. >= ../mid-percentile' {
         error-message
           "The high-percentile must be greater than
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 72]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
            or equal to the mid-percentile.";
       }
       default "90.00";
@@ -4046,6 +4138,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
   grouping percentile {
     description
       "Generic grouping for percentile.";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 74]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
     leaf low-percentile-g {
       type yang:gauge64;
       description
@@ -4082,14 +4182,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
           "Can be packet-ps, bit-ps, or byte-ps.";
       }
       leaf unit-status {
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 73]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
         type boolean;
         mandatory true;
         description
@@ -4102,6 +4194,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
     description
       "Grouping of traffic as a function of the measurement unit.";
     leaf unit {
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 75]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       type unit;
       description
         "The traffic can be measured using unit types: packet-ps,
@@ -4138,14 +4238,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
         "Port number.";
     }
     uses traffic-unit;
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 74]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
   }
 
   grouping total-connection-capacity {
@@ -4158,6 +4250,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
         "The maximum number of simultaneous connections that
          are allowed to the target server.";
     }
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 76]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
     leaf connection-client {
       type uint64;
       description
@@ -4194,14 +4294,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
     leaf request-ps {
       type uint64;
       description
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 75]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
         "The maximum number of requests allowed per second
          to the target server.";
     }
@@ -4214,6 +4306,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
     leaf partial-request-ps {
       type uint64;
       description
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 77]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         "The maximum number of partial requests allowed per
          second to the target server.";
     }
@@ -4250,14 +4350,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
          the target server.";
     }
     leaf embryonic {
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 76]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
       type yang:gauge64;
       description
         "The number of simultaneous embryonic connections to
@@ -4270,6 +4362,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
          the target server.";
     }
     leaf request-ps {
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 78]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       type yang:gauge64;
       description
         "The number of attack requests per second to
@@ -4306,14 +4406,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
         "Peak attack connections.";
       uses connection;
     }
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 77]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
   }
 
   grouping connection-protocol {
@@ -4326,6 +4418,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
          Values are taken from the IANA Protocol Numbers registry:
          <https://www.iana.org/assignments/protocol-numbers/>.";
     }
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 79]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
     uses connection;
   }
 
@@ -4362,14 +4462,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       uses connection-protocol;
     }
     list peak-l {
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 78]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
       key "protocol";
       description
         "Peak attack connections per protocol.";
@@ -4382,6 +4474,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       "Total attack connections per port number.";
     list low-percentile-l {
       key "protocol port";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 80]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       description
         "Low percentile of attack connections per port number.";
       uses connection-port;
@@ -4418,14 +4518,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       description
         "Vendor ID is a security vendor's Enterprise Number.";
     }
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 79]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
     leaf attack-id {
       type uint32;
       description
@@ -4438,6 +4530,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
          Processing techniques (e.g., word embedding) can possibly be used
          to map the attack description to an attack type.";
     }
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 81]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
     leaf attack-severity {
       type attack-severity;
       description
@@ -4474,14 +4574,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       leaf spoofed-status {
         type boolean;
         description
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 80]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
           "Indicates whether this address is spoofed.";
       }
       leaf source-prefix {
@@ -4494,6 +4586,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
         description
           "Port range. When only lower-port is
            present, it represents a single port number.";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 82]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         leaf lower-port {
           type inet:port-number;
           mandatory true;
@@ -4530,14 +4630,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
                or equal to lower ICMP type.";
           }
           description
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 81]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
             "Upper type of the ICMP type range.";
         }
       }
@@ -4550,6 +4642,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       container total-attack-connection {
         description
           "Total attack connections issued from this source.";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 83]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         uses connection-percentile;
       }
     }
@@ -4586,14 +4686,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
         leaf upper-port {
           type inet:port-number;
           must '. >= ../lower-port' {
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 82]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
             error-message
               "The upper port number must be greater than
                or equal to lower port number.";
@@ -4606,6 +4698,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
         key "lower-type";
         description
           "ICMP type range. When only lower-type is
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 84]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
            present, it represents a single ICMP type.";
         leaf lower-type {
           type uint8;
@@ -4642,14 +4742,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
     description
       "Grouping for the telemetry baseline.";
     uses ietf-data:target;
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 83]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
     leaf-list alias-name {
       type string;
       description
@@ -4662,6 +4754,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       uses traffic-unit;
     }
     list total-traffic-normal-per-protocol {
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 85]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
       key "unit protocol";
       description
         "Total traffic normal baselines per protocol.";
@@ -4698,14 +4798,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
     list total-traffic {
       key "unit";
       description
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 84]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
         "Total traffic.";
       uses traffic-unit;
     }
@@ -4718,6 +4810,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
     list total-traffic-port {
       key "unit port";
       description
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 86]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         "Total traffic per port.";
       uses traffic-unit-port;
     }
@@ -4754,14 +4854,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       description
         "Provides a set of attack details.";
       uses attack-detail;
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 85]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
       container top-talker {
         description
           "Lists the top attack sources.";
@@ -4774,6 +4866,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
                      + "signal:mitigation-scope/signal:scope" {
     description
       "Extends mitigation scope with telemetry update data.";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 87]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
     choice direction {
       description
         "Indicates the communication direction in which the
@@ -4810,14 +4910,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
         description
           "Top attack sources.";
         uses top-talker-aggregate;
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 86]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
       }
     }
   }
@@ -4830,6 +4922,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       case telemetry-setup {
         description
           "Indicates the message is about telemetry.";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 88]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         choice direction {
           description
             "Indicates the communication direction in which the
@@ -4866,14 +4966,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
               }
             }
             container min-config-values {
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 87]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
               description
                 "Minimum acceptable configuration values.";
               uses percentile-config;
@@ -4886,6 +4978,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
                   "Minimum number of seconds between successive
                    telemetry notifications.";
               }
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 89]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
             }
             container supported-units {
               description
@@ -4922,14 +5022,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
           choice setup-type {
             description
               "Can be a mitigation configuration, a pipe capacity,
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 88]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
                or baseline message.";
             case telemetry-config {
               description
@@ -4942,6 +5034,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
                 leaf server-originated-telemetry {
                   type boolean;
                   description
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 90]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
                     "Used by a DOTS client to enable/disable whether it
                      accepts pre-or-ongoing-mitigation telemetry from
                      the DOTS server.";
@@ -4978,14 +5078,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
                 leaf unit {
                   type unit;
                   description
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 89]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
                     "The traffic can be measured using unit types: packets
                      per second (PPS), Bits per Second (BPS), and/or
                      bytes per second. DOTS agents auto-scale to the
@@ -4998,6 +5090,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
                 "Traffic baseline information";
               list baseline {
                 key "id";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 91]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
                 description
                   "Traffic baseline information";
                 leaf id {
@@ -5034,14 +5134,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
               }
             }
           }
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 90]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
           container target {
             description
               "Indicates the target.";
@@ -5054,6 +5146,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
             leaf-list mid-list {
               type uint32;
               description
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 92]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
                 "Reference a list of associated mitigation requests.";
             }
           }
@@ -5065,7 +5165,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 }
 <CODE ENDS>
 
-9.2.  Vendor Attack Mapping Details YANG Module
+10.2.  Vendor Attack Mapping Details YANG Module
 
 <CODE BEGINS> file "ietf-dots-mapping@2020-06-26.yang"
 module ietf-dots-mapping {
@@ -5090,14 +5190,6 @@ module ietf-dots-mapping {
               <mailto:mohamed.boucadair@orange.com>
 
      Author:  Jon Shallow
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 91]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
               <mailto:supjps-ietf@jpshallow.com>";
   description
     "This module contains YANG definitions for the sharing
@@ -5110,6 +5202,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
      Redistribution and use in source and binary forms, with or
      without modification, is permitted pursuant to, and subject
      to the license terms contained in, the Simplified BSD License
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 93]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
      set forth in Section 4.c of the IETF Trust's Legal Provisions
      Relating to IETF Documents
      (http://trustee.ietf.org/license-info).
@@ -5146,14 +5246,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
       }
       leaf vendor-name {
         type string;
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 92]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
         description
           "The name of the vendor (e.g., company A).";
       }
@@ -5166,6 +5258,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
       }
       list attack-mapping {
         key "attack-id";
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 94]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
         description
           "Attack mapping details.";
         leaf attack-id {
@@ -5202,14 +5302,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
     if-feature "dots-telemetry";
     description
       "Augments the DOTS server capabilities with a
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 93]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
        parameter to indicate whether they can share
        attack mapping details.";
     leaf vendor-mapping-enabled {
@@ -5222,6 +5314,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
   }
 
   augment "/ietf-data:dots-data" {
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 95]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
     if-feature "dots-telemetry";
     description
       "Augments the data channel with a vendor attack
@@ -5237,7 +5337,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
 }
 <CODE ENDS>
 
-10.  YANG/JSON Mapping Parameters to CBOR
+11.  YANG/JSON Mapping Parameters to CBOR
 
    All DOTS telemetry parameters in the payload of the DOTS signal
    channel MUST be mapped to CBOR types as shown in the following table:
@@ -5258,14 +5358,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    |                      |             |      |  [-2, integer]| String |
    | high-percentile      | decimal64   |TBA5  | 6 tag 4       |        |
    |                      |             |      |  [-2, integer]| String |
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 94]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    | unit-config          | list        |TBA6  | 4 array       | Array  |
    | unit                 | enumeration |TBA7  | 0 unsigned    | String |
    | unit-status          | boolean     |TBA8  | 7 bits 20     | False  |
@@ -5278,6 +5370,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | low-percentile-g     | yang:gauge64|TBA13 | 0 unsigned    | String |
    | mid-percentile-g     | yang:gauge64|TBA14 | 0 unsigned    | String |
    | high-percentile-g    | yang:gauge64|TBA15 | 0 unsigned    | String |
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 96]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    | peak-g               | yang:gauge64|TBA16 | 0 unsigned    | String |
    | total-attack-traffic | list        |TBA17 | 4 array       | Array  |
    | total-traffic        | list        |TBA18 | 4 array       | Array  |
@@ -5314,14 +5414,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | low-percentile-c     | container   |TBA45 | 5 map         | Object |
    | mid-percentile-c     | container   |TBA46 | 5 map         | Object |
    | high-percentile-c    | container   |TBA47 | 5 map         | Object |
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 95]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    | peak-c               | container   |TBA48 | 5 map         | Object |
    | baseline             | container   |TBA49 | 5 map         | Object |
    | current-config       | container   |TBA50 | 5 map         | Object |
@@ -5334,6 +5426,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    |           interval   |             |      |               |        |
    | tmid                 | uint32      |TBA56 | 0 unsigned    | Number |
    | measurement-interval | enumeration |TBA57 | 0 unsigned    | String |
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 97]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    | measurement-sample   | enumeration |TBA58 | 0 unsigned    | String |
    | talker               | list        |TBA59 | 4 array       | Array  |
    | source-prefix        | inet:       |TBA60 | 3 text string | String |
@@ -5370,14 +5470,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | vendor-id            | uint32      |TBA79 | 0 unsigned    | Number |
    | ietf-dots-telemetry: |             |      |               |        |
    |      telemetry-setup | container   |TBA80 | 5 map         | Object |
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 96]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    | ietf-dots-telemetry: |             |      |               |        |
    |   total-traffic      | list        |TBA81 | 4 array       | Array  |
    | ietf-dots-telemetry: |             |      |               |        |
@@ -5389,9 +5481,18 @@ Internet-Draft               DOTS Telemetry                    July 2020
    |    attack-detail     | list        |TBA84 | 4 array       | Array  |
    +----------------------+-------------+------+---------------+--------+
 
-11.  IANA Considerations
 
-11.1.  A New Range for Comprehension-optional Parameters
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 98]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+12.  IANA Considerations
+
+12.1.  A New Range for Comprehension-optional Parameters
 
    This specification requests IANA to update the allocation policy of
    "DOTS Signal Channel CBOR Key Values" registry [Key-Map] as follows:
@@ -5418,7 +5519,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | 49152-65535 | Private Use             | comprehension-optional |
    +-------------+-------------------------+------------------------+
 
-11.2.  DOTS Signal Channel CBOR Key Values
+12.2.  DOTS Signal Channel CBOR Key Values
 
    This specification registers the DOTS telemetry attributes in the
    IANA "DOTS Signal Channel CBOR Key Values" registry [Key-Map].
@@ -5426,16 +5527,8 @@ Internet-Draft               DOTS Telemetry                    July 2020
    The DOTS telemetry attributes defined in this specification are
    comprehension-optional parameters.
 
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 97]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    o  Note to the RFC Editor: CBOR keys are assigned from the 128-255
-      range (Section 11.1).
+      range (Section 12.1).
 
    +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
@@ -5445,6 +5538,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | tsid                 | TBA1  |   0   |    IESG    |   [RFCXXXX]   |
    | telemetry            | TBA2  |   5   |    IESG    |   [RFCXXXX]   |
    | low-percentile       | TBA3  | 6tag4 |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.       Expires January 10, 2021               [Page 99]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    | mid-percentile       | TBA4  | 6tag4 |    IESG    |   [RFCXXXX]   |
    | high-percentile      | TBA5  | 6tag4 |    IESG    |   [RFCXXXX]   |
    | unit-config          | TBA6  |   4   |    IESG    |   [RFCXXXX]   |
@@ -5482,14 +5583,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | peak-l               | TBA34 |   4   |    IESG    |   [RFCXXXX]   |
    | attack-detail        | TBA35 |   4   |    IESG    |   [RFCXXXX]   |
    | id                   | TBA36 |   0   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 98]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-description   | TBA38 |   3   |    IESG    |   [RFCXXXX]   |
    | attack-severity      | TBA39 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5501,6 +5594,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | low-percentile-c     | TBA45 |   5   |    IESG    |   [RFCXXXX]   |
    | mid-percentile-c     | TBA46 |   5   |    IESG    |   [RFCXXXX]   |
    | high-percentile-c    | TBA47 |   5   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 100]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    | peak-c               | TBA48 |   5   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-signal-cha | TBA49 |   5   |    IESG    |   [RFCXXXX]   |
    | current-config       | TBA50 |   5   |    IESG    |   [RFCXXXX]   |
@@ -5538,14 +5639,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    |  traffic-protocol    |       |       |            |               |
    | total-attack-        | TBA75 |   4   |    IESG    |   [RFCXXXX]   |
    |  traffic-port        |       |       |            |               |
-
-
-
-Boucadair, et al.       Expires January 10, 2021               [Page 99]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    | total-attack-        | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
    |  connection-port     |       |       |            |               |
    | port                 | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5557,6 +5650,14 @@ Internet-Draft               DOTS Telemetry                    July 2020
    |   total-traffic      |       |       |            |               |
    | ietf-dots-telemetry: | TBA82 |   0   |    IESG    |   [RFCXXXX]   |
    | total-attack-traffic |       |       |            |               |
+
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 101]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    | ietf-dots-telemetry: | TBA83 |   0   |    IESG    |   [RFCXXXX]   |
    | total-attack-        |       |       |            |               |
    |        connection    |       |       |            |               |
@@ -5565,7 +5666,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    +----------------------+-------+-------+------------+---------------+
 
 
-11.3.  DOTS Signal Channel Conflict Cause Codes
+12.3.  DOTS Signal Channel Conflict Cause Codes
 
    This specification requests IANA to assign a new code from the "DOTS
    Signal Channel Conflict Cause Codes" registry [Cause].
@@ -5576,7 +5677,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
    | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
    +------+-------------------+------------------------+-------------+
 
-11.4.  DOTS Signal Telemetry YANG Module
+12.4.  DOTS Signal Telemetry YANG Module
 
    This document requests IANA to register the following URIs in the
    "ns" subregistry within the "IETF XML Registry" [RFC3688]:
@@ -5593,15 +5694,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    the "YANG Module Names" subregistry [RFC7950] within the "YANG
    Parameters" registry.
 
-
-
-
-
-Boucadair, et al.       Expires January 10, 2021              [Page 100]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
             name: ietf-dots-telemetry
             namespace: urn:ietf:params:xml:ns:yang:ietf-dots-telemetry
             maintained by IANA: N
@@ -5614,9 +5706,17 @@ Internet-Draft               DOTS Telemetry                    July 2020
             prefix: dots-mapping
             reference: RFC XXXX
 
-12.  Security Considerations
 
-12.1.  DOTS Signal Channel Telemetry
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 102]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+13.  Security Considerations
+
+13.1.  DOTS Signal Channel Telemetry
 
    The security considerations for the DOTS signal channel protocol are
    discussed in Section 10 of [RFC8782].  The following discusses the
@@ -5650,14 +5750,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
    comprehensive list of mitigation techniques can be used by a DOTS
    server to handle misbehaving DOTS clients:
 
-
-
-
-Boucadair, et al.       Expires January 10, 2021              [Page 101]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    o  The probing rate (defined in Section 4.5 of [RFC8782]) can be used
       to limit the average data rate to the DOTS server.
 
@@ -5668,18 +5760,28 @@ Internet-Draft               DOTS Telemetry                    July 2020
       time-limit on the number of active pre-or-ongoing-mitigation
       telemetry data (identified by 'tmid') from the DOTS client.
 
+
+
+
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 103]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    Note also that telemetry notification interval may be used to rate-
    limit the pre-or-ongoing-mitigation telemetry notifications received
    by a DOTS client domain.
 
-12.2.  Vendor Attack Mapping
+13.2.  Vendor Attack Mapping
 
    The security considerations for the DOTS data channel protocol are
    discussed in Section 10 of [RFC8783].  The following discusses the
    security considerations that are specific to the DOTS data channel
    extension defined in this document.
 
-   All data nodes defined in the YANG module specified in Section 9.2
+   All data nodes defined in the YANG module specified in Section 10.2
    which can be created, modified, and deleted (i.e., config true, which
    is the default) are considered sensitive.  Write operations to these
    data nodes without proper protection can have a negative effect on
@@ -5695,7 +5797,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
       correlating attack details.
 
    Some of the readable data nodes in the YANG module specified in
-   Section 9.2 may be considered sensitive.  It is thus important to
+   Section 10.2 may be considered sensitive.  It is thus important to
    control read access to these data nodes.  These are the data nodes
    and their sensitivity:
 
@@ -5705,19 +5807,10 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    o  '/ietf-data:dots-data/dots-telemetry:vendor-mapping' can be used
       by a compromised DOTS client to leak the attack detection
-
-
-
-
-Boucadair, et al.       Expires January 10, 2021              [Page 102]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
       capabilities of the DOTS server.  This is a variation of the
-      compromised DOTS client attacks discussed in Section 12.1.
+      compromised DOTS client attacks discussed in Section 13.1.
 
-13.  Contributors
+14.  Contributors
 
    The following individuals have contributed to this document:
 
@@ -5725,7 +5818,15 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    o  Pan Wei, Huawei, Email: william.panwei@huawei.com
 
-14.  Acknowledgements
+
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 104]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+15.  Acknowledgements
 
    The authors would like to thank Flemming Andreasen, Liang Xia, and
    Kaname Nishizuka co-authors of [I-D.doron-dots-telemetry] and
@@ -5739,9 +5840,9 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
    Many thanks to Jan Lindblad for the yangdoctors review.
 
-15.  References
+16.  References
 
-15.1.  Normative References
+16.1.  Normative References
 
    [Enterprise-Numbers]
               "Private Enterprise Numbers", May 2020,
@@ -5759,17 +5860,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
               Channel Call Home", draft-ietf-dots-signal-call-home-08
               (work in progress), March 2020.
 
-
-
-
-
-
-
-Boucadair, et al.       Expires January 10, 2021              [Page 103]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    [I-D.ietf-dots-signal-filter-control]
               Nishizuka, K., Boucadair, M., Reddy.K, T., and T. Nagata,
               "Controlling Filtering Rules Using Distributed Denial-of-
@@ -5782,6 +5872,16 @@ Internet-Draft               DOTS Telemetry                    July 2020
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 105]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
               <https://www.rfc-editor.org/info/rfc3688>.
@@ -5793,6 +5893,11 @@ Internet-Draft               DOTS Telemetry                    July 2020
    [RFC7049]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
               October 2013, <https://www.rfc-editor.org/info/rfc7049>.
+
+   [RFC7252]  Shelby, Z., Hartke, K., and C. Bormann, "The Constrained
+              Application Protocol (CoAP)", RFC 7252,
+              DOI 10.17487/RFC7252, June 2014,
+              <https://www.rfc-editor.org/info/rfc7252>.
 
    [RFC7641]  Hartke, K., "Observing Resources in the Constrained
               Application Protocol (CoAP)", RFC 7641,
@@ -5816,16 +5921,6 @@ Internet-Draft               DOTS Telemetry                    July 2020
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
 
-
-
-
-
-
-Boucadair, et al.       Expires January 10, 2021              [Page 104]
-
-Internet-Draft               DOTS Telemetry                    July 2020
-
-
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
@@ -5834,6 +5929,19 @@ Internet-Draft               DOTS Telemetry                    July 2020
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
               Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
               2018, <https://www.rfc-editor.org/info/rfc8345>.
+
+
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 106]
+
+Internet-Draft               DOTS Telemetry                    July 2020
+
+
+   [RFC8768]  Boucadair, M., Reddy.K, T., and J. Shallow, "Constrained
+              Application Protocol (CoAP) Hop-Limit Option", RFC 8768,
+              DOI 10.17487/RFC8768, March 2020,
+              <https://www.rfc-editor.org/info/rfc8768>.
 
    [RFC8782]  Reddy.K, T., Ed., Boucadair, M., Ed., Patil, P.,
               Mortensen, A., and N. Teague, "Distributed Denial-of-
@@ -5850,7 +5958,7 @@ Internet-Draft               DOTS Telemetry                    July 2020
               Structure Extensions", RFC 8791, DOI 10.17487/RFC8791,
               June 2020, <https://www.rfc-editor.org/info/rfc8791>.
 
-15.2.  Informative References
+16.2.  Informative References
 
    [Cause]    IANA, "DOTS Signal Channel Conflict Cause Codes",
               <https://www.iana.org/assignments/dots/dots.xhtml#dots-
@@ -5877,7 +5985,11 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.       Expires January 10, 2021              [Page 105]
+
+
+
+
+Boucadair, et al.       Expires January 10, 2021              [Page 107]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5933,7 +6045,7 @@ Authors' Addresses
 
 
 
-Boucadair, et al.       Expires January 10, 2021              [Page 106]
+Boucadair, et al.       Expires January 10, 2021              [Page 108]
 
 Internet-Draft               DOTS Telemetry                    July 2020
 
@@ -5989,4 +6101,4 @@ Internet-Draft               DOTS Telemetry                    July 2020
 
 
 
-Boucadair, et al.       Expires January 10, 2021              [Page 107]
+Boucadair, et al.       Expires January 10, 2021              [Page 109]
