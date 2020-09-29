@@ -4,13 +4,13 @@ module ietf-dots-telemetry {
   prefix dots-telemetry;
 
   import ietf-dots-signal-channel {
-    prefix signal;
+    prefix dots-signal;
     reference
-      "RFC UUUU: A YANG Data Model for Distributed Denial-of-Service
-                 Open Threat Signaling (DOTS) Signal Channel";
+      "RFC UUUU: Distributed Denial-of-Service Open Threat Signaling 
+                 (DOTS) Signal Channel Specification";
   }
   import ietf-dots-data-channel {
-    prefix ietf-data;
+    prefix data-channel;
     reference
       "RFC 8783: Distributed Denial-of-Service Open Threat
                  Signaling (DOTS) Data Channel Specification";
@@ -51,7 +51,7 @@ module ietf-dots-telemetry {
   description
     "This module contains YANG definitions for the signaling
      of DOTS telemetry exchanged between a DOTS client and
-     a DOTS server, by means of the DOTS signal channel.
+     a DOTS server by means of the DOTS signal channel.
 
      Copyright (c) 2020 IETF Trust and the persons identified as
      authors of the code.  All rights reserved.
@@ -503,7 +503,7 @@ module ietf-dots-telemetry {
 
   grouping total-connection-capacity {
     description
-      "Total Connections Capacity. These attributes are
+      "Total Connections Capacity. These data nodes are
        useful to detect resource consuming DDoS attacks";
     leaf connection {
       type uint64;
@@ -572,7 +572,7 @@ module ietf-dots-telemetry {
 
   grouping total-connection-capacity-protocol {
     description
-      "Total Connections Capacity per protocol. These attributes are
+      "Total Connections Capacity per protocol. These data nodes are
        useful to detect resource consuming DDoS attacks.";
     leaf protocol {
       type uint8;
@@ -586,7 +586,7 @@ module ietf-dots-telemetry {
 
   grouping connection {
     description
-      "A set of attributes which represent the attack
+      "A set of data nodes which represent the attack
        characteristics";
     leaf connection {
       type yang:gauge64;
@@ -748,8 +748,8 @@ module ietf-dots-telemetry {
       type string;
       description
         "Textual representation of attack description. Natural Language
-         Processing techniques (e.g., word embedding) can possibly be used
-         to map the attack description to an attack type.";
+         Processing techniques (e.g., word embedding) can possibly be
+         used to map the attack description to an attack type.";
     }
     leaf attack-severity {
       type attack-severity;
@@ -760,8 +760,8 @@ module ietf-dots-telemetry {
     leaf start-time {
       type uint64;
       description
-        "The time the attack started. Start time is represented in seconds
-         relative to 1970-01-01T00:00:00Z in UTC time.";
+        "The time the attack started. Start time is represented in 
+         seconds relative to 1970-01-01T00:00:00Z in UTC time.";
     }
     leaf end-time {
       type uint64;
@@ -930,7 +930,7 @@ module ietf-dots-telemetry {
   grouping baseline {
     description
       "Grouping for the telemetry baseline.";
-    uses ietf-data:target;
+    uses data-channel:target;
     leaf-list alias-name {
       type string;
       description
@@ -1035,17 +1035,19 @@ module ietf-dots-telemetry {
     }
   }
 
-  sx:augment-structure "/signal:dots-signal/signal:message-type/"
-                     + "signal:mitigation-scope/signal:scope" {
+  sx:augment-structure "/dots-signal:dots-signal/"
+                     + "dots-signal:message-type/"
+                     + "dots-signal:mitigation-scope/"
+                     + "dots-signal:scope" {
     description
       "Extends mitigation scope with telemetry update data.";
     choice direction {
       description
         "Indicates the communication direction in which the
-         attributes can be included.";
+         data nodes can be included.";
       case server-to-client-only {
         description
-          "These attributes appear only in a mitigation message
+          "These data nodes appear only in a mitigation message
            sent from the server to the client.";
         list total-traffic {
           key "unit";
@@ -1080,7 +1082,7 @@ module ietf-dots-telemetry {
   }
   sx:structure dots-telemetry {
     description
-      "Main structure for DOTS telemetry message.";
+      "Main structure for DOTS telemetry messages.";
     choice telemetry-message-type {
       description
         "Can be a telemetry-setup or telemetry data.";
@@ -1090,10 +1092,10 @@ module ietf-dots-telemetry {
         choice direction {
           description
             "Indicates the communication direction in which the
-             attributes can be included.";
+             data nodes can be included.";
           case server-to-client-only {
             description
-              "These attributes appear only in a mitigation message
+              "These data nodes appear only in a mitigation message
                sent from the server to the client.";
             container max-config-values {
               description
@@ -1103,20 +1105,23 @@ module ietf-dots-telemetry {
                 type boolean;
                 description
                   "Indicates whether the DOTS server can be instructed
-                   to send pre-or-ongoing-mitigation telemetry. If set to FALSE
-                   or the attribute is not present, this is an indication
-                   that the server does not support this capability.";
+                   to send pre-or-ongoing-mitigation telemetry. If set 
+                   to FALSE or the data node is not present, this is 
+                   an indication that the server does not support this 
+                   capability.";
               }
               leaf telemetry-notify-interval {
                 type uint32 {
                   range "1 .. 3600";
                 }
-                must '. >= ../../min-config-values/telemetry-notify-interval' {
+                units "seconds";
+                must ". >= ../../min-config-values" 
+                   + "/telemetry-notify-interval" {
                   error-message
                     "The value must be greater than or equal
-                     to the telemetry-notify-interval in the min-config-values";
+                     to the telemetry-notify-interval in the 
+                     min-config-values";
                 }
-                units "seconds";
                 description
                   "Minimum number of seconds between successive
                    telemetry notifications.";
@@ -1155,10 +1160,10 @@ module ietf-dots-telemetry {
           choice direction {
             description
               "Indicates the communication direction in which the
-               attributes can be included.";
+               data nodes can be included.";
             case server-to-client-only {
               description
-                "These attributes appear only in a mitigation message
+                "These data nodes appear only in a mitigation message
                  sent from the server to the client.";
               leaf tsid {
                 type uint32;
@@ -1219,10 +1224,11 @@ module ietf-dots-telemetry {
                 leaf unit {
                   type unit;
                   description
-                    "The traffic can be measured using unit types: packets
-                     per second (PPS), Bits per Second (BPS), and/or
-                     bytes per second. DOTS agents auto-scale to the
-                     appropriate units (e.g., megabit-ps, kilobit-ps).";
+                    "The traffic can be measured using unit types: 
+                     packets per second (PPS), Bits per Second (BPS), 
+                     and/or bytes per second. DOTS agents auto-scale 
+                     to the appropriate units (e.g., megabit-ps, 
+                     kilobit-ps).";
                 }
               }
             }
@@ -1254,10 +1260,10 @@ module ietf-dots-telemetry {
           choice direction {
             description
               "Indicates the communication direction in which the
-               attributes can be included.";
+               data nodes can be included.";
             case server-to-client-only {
               description
-                "These attributes appear only in a mitigation message
+                "These data nodes appear only in a mitigation message
                  sent from the server to the client.";
               leaf tmid {
                 type uint32;
@@ -1270,7 +1276,7 @@ module ietf-dots-telemetry {
           container target {
             description
               "Indicates the target.";
-            uses ietf-data:target;
+            uses data-channel:target;
             leaf-list alias-name {
               type string;
               description
