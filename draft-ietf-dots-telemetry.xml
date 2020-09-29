@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-11" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-12" ipr="trust200902">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -525,11 +525,11 @@
         PUT into a single transfer, or to separate out the PUT into several
         discrete PUTs where each of them fits into a single packet.</t>
 
-        <t>Block3 and Block 4 Options that are similar to the CoAP Block1 and
-        Block2 Options, but enable faster transmissions of big blocks of data
-        with less packet interchanges, are defined in <xref
+        <t>Quick-Block1 and Quick-Block2 Options that are similar to the CoAP
+        Block1 and Block2 Options, but enable faster transmissions of big
+        blocks of data with less packet interchanges, are defined in <xref
         target="I-D.ietf-core-new-block"></xref>. DOTS implementations can
-        consider the use of Block3 and Block 4 Options.</t>
+        consider the use of Quick-Block1 and Quick-Block2 Options.</t>
       </section>
 
       <section title="DOTS Multi-homing Considerations">
@@ -4070,8 +4070,10 @@ module ietf-dots-telemetry {
     }
   }
 
-  sx:augment-structure "/dots-signal:dots-signal/dots-signal:message-type/"
-                     + "dots-signal:mitigation-scope/dots-signal:scope" {
+  sx:augment-structure "/dots-signal:dots-signal/"
+                     + "dots-signal:message-type/"
+                     + "dots-signal:mitigation-scope/"
+                     + "dots-signal:scope" {
     description
       "Extends mitigation scope with telemetry update data.";
     choice direction {
@@ -4147,6 +4149,7 @@ module ietf-dots-telemetry {
                 type uint32 {
                   range "1 .. 3600";
                 }
+                units "seconds";
                 must ". >= ../../min-config-values" 
                    + "/telemetry-notify-interval" {
                   error-message
@@ -4154,7 +4157,6 @@ module ietf-dots-telemetry {
                      to the telemetry-notify-interval in the 
                      min-config-values";
                 }
-                units "seconds";
                 description
                   "Minimum number of seconds between successive
                    telemetry notifications.";
@@ -4946,8 +4948,6 @@ module ietf-dots-mapping {
       <?rfc ?>
 
       <?rfc include='reference.RFC.8791'?>
-
-      <?rfc include='reference.RFC.8768'?>
 
       <?rfc include='reference.RFC.6020'?>
 
