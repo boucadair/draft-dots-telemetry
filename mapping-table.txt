@@ -116,4 +116,6 @@
    |        connection    | container   |32883 | 5 map         | Object |
    | ietf-dots-telemetry: |             |      |               |        |
    |    attack-detail     | list        |32884 | 4 array       | Array  |
+   | ietf-dots-telemetry: |             |      |               |        |
+   |          telemetry   | container   |32885 | 5 map         | Object |
    +----------------------+-------------+------+---------------+--------+ 
