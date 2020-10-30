@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-12" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-13" ipr="trust200902">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -373,7 +373,7 @@
         resources with the DOTS client's normal baseline. The DOTS server
         mitigators use the baseline to familiarize themselves with the attack
         victim's normal behavior and target the baseline as the level of
-        normality they need to achieve. Fed with this inforamtion, the overall
+        normality they need to achieve. Fed with this information, the overall
         mitigation performances is expected to be improved in terms of time to
         mitigate, accuracy, false-negative, and false-positive.</t>
 
@@ -2194,8 +2194,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
           <t>The "ietf-dots-mapping" YANG module defined in <xref
           target="data"></xref> augments the "ietf-dots-data-channel" <xref
-          target="RFC8783"></xref>. The tree structure of this module is shown
-          in <xref target="abstract-data"></xref>.</t>
+          target="RFC8783"></xref>. The tree structure of the
+          "ietf-dots-mapping" module is shown in <xref
+          target="abstract-data"></xref>.</t>
 
           <t><figure anchor="abstract-data"
               title="Vendor Attack Mapping Tree Structure">
@@ -3032,7 +3033,7 @@ Observe: 0]]></artwork>
         and <xref target="RFC8345"></xref>.</t>
 
         <t><figure>
-            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-07-03.yang"
+            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-10-08.yang"
 module ietf-dots-telemetry {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-telemetry";
@@ -3101,7 +3102,7 @@ module ietf-dots-telemetry {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2020-07-03 {
+  revision 2020-10-08 {
     description
       "Initial revision.";
     reference
@@ -4070,10 +4071,10 @@ module ietf-dots-telemetry {
     }
   }
 
-  sx:augment-structure "/dots-signal:dots-signal/"
-                     + "dots-signal:message-type/"
-                     + "dots-signal:mitigation-scope/"
-                     + "dots-signal:scope" {
+  sx:augment-structure "/dots-signal:dots-signal"
+                     + "/dots-signal:message-type"
+                     + "/dots-signal:mitigation-scope"
+                     + "/dots-signal:scope" {
     description
       "Extends mitigation scope with telemetry update data.";
     choice direction {
@@ -4616,6 +4617,8 @@ module ietf-dots-mapping {
 |        connection    | container   |TBA83 | 5 map         | Object |
 | ietf-dots-telemetry: |             |      |               |        |
 |    attack-detail     | list        |TBA84 | 4 array       | Array  |
+| ietf-dots-telemetry: |             |      |               |        |
+|         telemetry    | container   |TBA85 | 5 map         | Object |
 +----------------------+-------------+------+---------------+--------+  
 ]]></artwork>
         </figure></t>
@@ -4743,6 +4746,8 @@ module ietf-dots-mapping {
    |        connection    |       |       |            |               |
    | ietf-dots-telemetry: | TBA84 |   4   |    IESG    |   [RFCXXXX]   |
    |     attack-detail    |       |       |            |               |
+   | ietf-dots-telemetry: | TBA85 |   5   |    IESG    |   [RFCXXXX]   |
+   |        telemetry     |       |       |            |               |
    +----------------------+-------+-------+------------+---------------+
 
 ]]></artwork>
