@@ -525,11 +525,11 @@
         PUT into a single transfer, or to separate out the PUT into several
         discrete PUTs where each of them fits into a single packet.</t>
 
-        <t>Quick-Block1 and Quick-Block2 Options that are similar to the CoAP
-        Block1 and Block2 Options, but enable faster transmissions of big
-        blocks of data with less packet interchanges, are defined in <xref
+        <t>Q-Block1 and Q-Block2 Options that are similar to the CoAP Block1
+        and Block2 Options, but enable faster transmissions of big blocks of
+        data with less packet interchanges, are defined in <xref
         target="I-D.ietf-core-new-block"></xref>. DOTS implementations can
-        consider the use of Quick-Block1 and Quick-Block2 Options.</t>
+        consider the use of Q-Block1 and Q-Block2 Options.</t>
       </section>
 
       <section title="DOTS Multi-homing Considerations">
