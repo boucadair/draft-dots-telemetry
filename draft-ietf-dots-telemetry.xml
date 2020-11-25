@@ -2680,8 +2680,8 @@ Observe: 0]]></artwork>
         protocol) filter applied.</t>
 
         <t>A DOTS server may aggregate pre-or-ongoing-mitigation data (e.g.,
-        'top-talkers') for all targets of a domain, or when justified, send
-        specific information (e.g., 'top-talkers') per individual targets.</t>
+        'top-talker') for all targets of a domain, or when justified, send
+        specific information (e.g., 'top-talker') per individual targets.</t>
 
         <t>The DOTS client may log pre-or-ongoing-mitigation telemetry data
         with an alert sent to an administrator or a network controller. The
@@ -3245,6 +3245,51 @@ module ietf-dots-telemetry {
         value 15;
         description
           "Terabytes per second (TBps).";
+      }
+      enum petapacket-ps {
+        value 16;
+        description
+          "Peta packets per second (Ppps).";
+      }
+      enum petabit-ps {
+        value 17;
+        description
+          "Petabits per second (Pbps).";
+      }
+      enum petabyte-ps {
+        value 18;
+        description
+          "Exabytes per second (PBps).";
+      }
+      enum exapacket-ps {
+        value 19;
+        description
+          "Exa packets per second (Epps).";
+      }
+      enum exabit-ps {
+        value 20;
+        description
+          "Exabits per second (Ebps).";
+      }
+      enum exabyte-ps {
+        value 21;
+        description
+          "Exabytes per second (EBps).";
+      }
+      enum zettapacket-ps {
+        value 22;
+        description
+          "Zetta packets per second (Zpps).";
+      }
+      enum zettabit-ps {
+        value 23;
+        description
+          "Zettabits per second (Zbps).";
+      }
+      enum zettabyte-ps {
+        value 24;
+        description
+          "Zettabytes per second (ZBps).";
       }
     }
     description
