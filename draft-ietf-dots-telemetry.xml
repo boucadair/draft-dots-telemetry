@@ -1826,6 +1826,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?           yang:gauge64
              +-- total-traffic-protocol* [unit protocol]
              |  +-- protocol             uint8
              |  +-- unit                 unit
@@ -1833,6 +1834,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?           yang:gauge64
              +-- total-traffic-port* [unit port]
              |  +-- port                 inet:port-number
              |  +-- unit                 unit
@@ -1840,6 +1842,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?           yang:gauge64
              +-- total-attack-traffic* [unit]
              |  ...
              +-- total-attack-traffic-protocol* [unit protocol]
@@ -1891,6 +1894,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?           yang:gauge64
              +-- total-attack-traffic-protocol* [unit protocol]
              |  +-- protocol             uint8
              |  +-- unit                 unit
@@ -1898,6 +1902,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?           yang:gauge64
              +-- total-attack-traffic-port* [unit port]
              |  +-- port                 inet:port-number
              |  +-- unit                 unit
@@ -1905,6 +1910,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?           yang:gauge64
              +-- total-attack-connection
              |  ...
              +-- total-attack-connection-port
@@ -1977,6 +1983,13 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  |  +-- request-ps?           yang:gauge64
              |  |  +-- partial-request-ps?   yang:gauge64
              |  +-- peak-l* [protocol]
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- current-l* [protocol]
              |     +-- protocol              uint8
              |     +-- connection?           yang:gauge64
              |     +-- embryonic?            yang:gauge64
@@ -2009,6 +2022,14 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  |  +-- request-ps?           yang:gauge64
              |  |  +-- partial-request-ps?   yang:gauge64
              |  +-- peak-l* [protocol port]
+             |  |  +-- port                  inet:port-number
+             |  |  +-- protocol              uint8
+             |  |  +-- connection?           yang:gauge64
+             |  |  +-- embryonic?            yang:gauge64
+             |  |  +-- connection-ps?        yang:gauge64
+             |  |  +-- request-ps?           yang:gauge64
+             |  |  +-- partial-request-ps?   yang:gauge64
+             |  +-- current-l* [protocol port]
              |     +-- port                  inet:port-number
              |     +-- protocol              uint8
              |     +-- connection?           yang:gauge64
@@ -2113,6 +2134,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
                 |  +-- mid-percentile-g?    yang:gauge64
                 |  +-- high-percentile-g?   yang:gauge64
                 |  +-- peak-g?              yang:gauge64
+                |  +-- current-g?           yang:gauge64
                 +-- top-talker
                    +-- talker* [source-prefix]
                       +-- spoofed-status?            boolean
@@ -2129,6 +2151,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
                       |  +-- mid-percentile-g?    yang:gauge64
                       |  +-- high-percentile-g?   yang:gauge64
                       |  +-- peak-g?              yang:gauge64
+                      |  +-- current-g?           yang:gauge64
                       +-- total-attack-connection
                          +-- low-percentile-l* [protocol]
                          |  +-- protocol              uint8
@@ -2152,6 +2175,13 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
                          |  +-- request-ps?           yang:gauge64
                          |  +-- partial-request-ps?   yang:gauge64
                          +-- peak-l* [protocol]
+                         |  +-- protocol              uint8
+                         |  +-- connection?           yang:gauge64
+                         |  +-- embryonic?            yang:gauge64
+                         |  +-- connection-ps?        yang:gauge64
+                         |  +-- request-ps?           yang:gauge64
+                         |  +-- partial-request-ps?   yang:gauge64
+                         +-- current-l* [protocol]
                             +-- protocol              uint8
                             +-- connection?           yang:gauge64
                             +-- embryonic?            yang:gauge64
@@ -2730,6 +2760,7 @@ Observe: 0]]></artwork>
     |  +-- mid-percentile-g?    yang:gauge64
     |  +-- high-percentile-g?   yang:gauge64
     |  +-- peak-g?              yang:gauge64
+    |  +-- current-g?           yang:gauge64
     +-- attack-detail* [vendor-id attack-id]
        +-- vendor-id             uint32
        +-- attack-id             uint32
@@ -2742,6 +2773,7 @@ Observe: 0]]></artwork>
        |  +-- mid-percentile-g?    yang:gauge64
        |  +-- high-percentile-g?   yang:gauge64
        |  +-- peak-g?              yang:gauge64
+       |  +-- current-g?              yang:gauge64
        +-- top-talker
           +-- talker* [source-prefix]
              +-- spoofed-status?            boolean
@@ -2758,6 +2790,7 @@ Observe: 0]]></artwork>
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?              yang:gauge64
              +-- total-attack-connection
                 +-- low-percentile-c
                 |  +-- connection?           yang:gauge64
@@ -2770,6 +2803,8 @@ Observe: 0]]></artwork>
                 +-- high-percentile-c
                 |  ...
                 +-- peak-c
+                |  ...
+                +-- current-c
                    ...
 
 ]]></artwork>
@@ -2856,6 +2891,7 @@ Content-Format: "application/dots+cbor"
     |     |  +-- mid-percentile-g?    yang:gauge64
     |     |  +-- high-percentile-g?   yang:gauge64
     |     |  +-- peak-g?              yang:gauge64
+    |     |  +-- current-g?           yang:gauge64
     |     +-- total-attack-connection
     |        +-- low-percentile-c
     |        |  +-- connection?           yang:gauge64
@@ -2868,6 +2904,8 @@ Content-Format: "application/dots+cbor"
     |        +-- high-percentile-c
     |        |  ...
     |        +-- peak-c
+    |        |  ...
+    |        +-- current-c
     |           ...
     +-- total-attack-traffic* [unit]
     |  +-- unit                 unit
@@ -2875,6 +2913,7 @@ Content-Format: "application/dots+cbor"
     |  +-- mid-percentile-g?    yang:gauge64
     |  +-- high-percentile-g?   yang:gauge64
     |  +-- peak-g?              yang:gauge64
+    |  +-- current-g?           yang:gauge64
     +-- attack-detail* [vendor-id attack-id]
        +-- vendor-id             uint32
        +-- attack-id             uint32
@@ -2887,6 +2926,7 @@ Content-Format: "application/dots+cbor"
        |  +-- mid-percentile-g?    yang:gauge64
        |  +-- high-percentile-g?   yang:gauge64
        |  +-- peak-g?              yang:gauge64
+       |  +-- current-g?           yang:gauge64
        +-- top-talker
           +-- talker* [source-prefix]
              +-- spoofed-status?            boolean
@@ -2903,6 +2943,7 @@ Content-Format: "application/dots+cbor"
              |  +-- mid-percentile-g?    yang:gauge64
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
+             |  +-- current-g?           yang:gauge64
              +-- total-attack-connection
                 +-- low-percentile-c
                 |  +-- connection?           yang:gauge64
@@ -2915,6 +2956,8 @@ Content-Format: "application/dots+cbor"
                 +-- high-percentile-c
                 |  ...
                 +-- peak-c
+                |  ...
+                +-- current-c
                    ...
 
 ]]></artwork>
@@ -3033,7 +3076,7 @@ Observe: 0]]></artwork>
         and <xref target="RFC8345"></xref>.</t>
 
         <t><figure>
-            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-10-08.yang"
+            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-11-25.yang"
 module ietf-dots-telemetry {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-telemetry";
@@ -3102,7 +3145,7 @@ module ietf-dots-telemetry {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2020-10-08 {
+  revision 2020-11-25 {
     description
       "Initial revision.";
     reference
@@ -3553,6 +3596,18 @@ module ietf-dots-telemetry {
     uses percentile;
   }
 
+  grouping traffic-unit-all {
+    description
+      "Grouping of traffic as a function of the measurement unit,
+       including current values.";
+    uses traffic-unit;
+    leaf current-g {
+      type yang:gauge64;
+      description
+        "Current observed value.";
+    }
+  }
+
   grouping traffic-unit-protocol {
     description
       "Grouping of traffic of a given transport protocol as
@@ -3570,6 +3625,18 @@ module ietf-dots-telemetry {
     uses traffic-unit;
   }
 
+  grouping traffic-unit-protocol-all {
+    description
+      "Grouping of traffic of a given transport protocol as,
+       including current values.";
+    uses traffic-unit-protocol;
+    leaf current-g {
+      type yang:gauge64;
+      description
+        "Current observed value.";
+    }
+  }
+
   grouping traffic-unit-port {
     description
       "Grouping of traffic bound to a port number as
@@ -3580,6 +3647,19 @@ module ietf-dots-telemetry {
         "Port number.";
     }
     uses traffic-unit;
+  }
+
+  grouping traffic-unit-port-all {
+    description
+      "Grouping of traffic bound to a port number as
+       a function of the measurement unit, including
+       current values.";
+    uses traffic-unit-port;
+    leaf current-g {
+      type yang:gauge64;
+      description
+        "Current observed value.";
+    }
   }
 
   grouping total-connection-capacity {
@@ -3726,6 +3806,17 @@ module ietf-dots-telemetry {
     }
   }
 
+  grouping connection-all {
+    description
+      "Total attack connections including current values.";
+    uses connection-percentile; 
+    container current-c {
+      description
+        "Current attack connections.";
+      uses connection;
+    }
+  }
+
   grouping connection-protocol {
     description
       "Total attack connections.";
@@ -3779,6 +3870,18 @@ module ietf-dots-telemetry {
     }
   }
 
+  grouping connection-protocol-all {
+    description
+      "Total attack connections per protocol, including current values.";
+    uses connection-protocol-percentile; 
+    list current-l {
+      key "protocol";
+      description
+        "Current attack connections per protocol.";
+      uses connection-protocol;
+    }
+  }
+
   grouping connection-protocol-port-percentile {
     description
       "Total attack connections per port number.";
@@ -3804,6 +3907,18 @@ module ietf-dots-telemetry {
       key "protocol port";
       description
         "Peak attack connections per port number.";
+      uses connection-port;
+    }
+  }
+
+  grouping connection-protocol-port-all {
+    description
+      "Total attack connections per port number, including current values.";
+    uses connection-protocol-port-percentile; 
+    list current-l {
+      key "protocol port";
+      description
+        "Current attack connections per port number.";
       uses connection-port;
     }
   }
@@ -3855,6 +3970,11 @@ module ietf-dots-telemetry {
         "Indicates the count of unique sources involved
          in the attack.";
       uses percentile;
+      leaf current-g {
+        type yang:gauge64;
+        description
+          "Current observed value.";
+      }
     }
   }
 
@@ -3923,12 +4043,12 @@ module ietf-dots-telemetry {
         key "unit";
         description
           "Total attack traffic issued from this source.";
-        uses traffic-unit;
+        uses traffic-unit-all;
       }
       container total-attack-connection {
         description
           "Total attack connections issued from this source.";
-        uses connection-percentile;
+        uses connection-all;
       }
     }
   }
@@ -3998,12 +4118,12 @@ module ietf-dots-telemetry {
         key "unit";
         description
           "Total attack traffic issued from this source.";
-        uses traffic-unit;
+        uses traffic-unit-all;
       }
       container total-attack-connection {
         description
           "Total attack connections issued from this source.";
-        uses connection-protocol-percentile;
+        uses connection-protocol-all;
       }
     }
   }
@@ -4061,47 +4181,47 @@ module ietf-dots-telemetry {
       key "unit";
       description
         "Total traffic.";
-      uses traffic-unit;
+      uses traffic-unit-all;
     }
     list total-traffic-protocol {
       key "unit protocol";
       description
         "Total traffic per protocol.";
-      uses traffic-unit-protocol;
+      uses traffic-unit-protocol-all;
     }
     list total-traffic-port {
       key "unit port";
       description
         "Total traffic per port.";
-      uses traffic-unit-port;
+      uses traffic-unit-port-all;
     }
     list total-attack-traffic {
       key "unit";
       description
         "Total attack traffic.";
-      uses traffic-unit-protocol;
+      uses traffic-unit-protocol-all;
     }
     list total-attack-traffic-protocol {
       key "unit protocol";
       description
         "Total attack traffic per protocol.";
-      uses traffic-unit-protocol;
+      uses traffic-unit-protocol-all;
     }
     list total-attack-traffic-port {
       key "unit port";
       description
         "Total attack traffic per port.";
-      uses traffic-unit-port;
+      uses traffic-unit-port-all;
     }
     container total-attack-connection {
       description
         "Total attack connections.";
-      uses connection-protocol-percentile;
+      uses connection-protocol-all;
     }
     container total-attack-connection-port {
       description
         "Total attack connections.";
-      uses connection-protocol-port-percentile;
+      uses connection-protocol-port-all;
     }
     list attack-detail {
       key "vendor-id attack-id";
@@ -4134,12 +4254,12 @@ module ietf-dots-telemetry {
           key "unit";
           description
             "Total traffic.";
-          uses traffic-unit;
+          uses traffic-unit-all;
         }
         container total-attack-connection {
           description
             "Total attack connections.";
-          uses connection-percentile;
+          uses connection-all;
         }
       }
     }
@@ -4147,7 +4267,7 @@ module ietf-dots-telemetry {
       key "unit";
       description
         "Total attack traffic.";
-      uses traffic-unit;
+      uses traffic-unit-all;
     }
     list attack-detail {
       key "vendor-id attack-id";
@@ -4664,6 +4784,9 @@ module ietf-dots-mapping {
 |    attack-detail     | list        |TBA84 | 4 array       | Array  |
 | ietf-dots-telemetry: |             |      |               |        |
 |         telemetry    | container   |TBA85 | 5 map         | Object |
+| current-g            | yang:gauge64|TBA86 | 0 unsigned    | String |
+| current-l            | list        |TBA87 | 4 array       | Array  |
+| current-c            | container   |TBA88 | 5 map         | Object |
 +----------------------+-------------+------+---------------+--------+  
 ]]></artwork>
         </figure></t>
@@ -4793,6 +4916,9 @@ module ietf-dots-mapping {
    |     attack-detail    |       |       |            |               |
    | ietf-dots-telemetry: | TBA85 |   5   |    IESG    |   [RFCXXXX]   |
    |        telemetry     |       |       |            |               |
+   | current-g            | TBA86 |   0   |    IESG    |   [RFCXXXX]   |
+   | current-l            | TBA87 |   4   |    IESG    |   [RFCXXXX]   |
+   | current-c            | TBA88 |   5   |    IESG    |   [RFCXXXX]   |
    +----------------------+-------+-------+------------+---------------+
 
 ]]></artwork>
