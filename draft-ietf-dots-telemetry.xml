@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-13" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-15" ipr="trust200902">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -1802,9 +1802,10 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
         <section anchor="tot" title="Total Traffic">
           <t>The 'total-traffic' attribute (<xref target="ttt"></xref>)
-          conveys the percentile values of total traffic observed during a
-          DDoS attack. More granular total traffic can be conveyed in
-          'total-traffic-protocol' and 'total-traffic-port'.</t>
+          conveys the percentile values (including peak and current observed
+          values) of total traffic observed during a DDoS attack. More
+          granular total traffic can be conveyed in 'total-traffic-protocol'
+          and 'total-traffic-port'.</t>
 
           <t>The 'total-traffic-protocol' represents the total traffic for a
           target and is transport-protocol specific.</t>
@@ -1924,10 +1925,10 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         <section anchor="attackconn" title="Total Attack Connections">
           <t>If the target is subjected to resource consuming DDoS attack, the
           'total-attack-connection' attribute is used to convey the percentile
-          values of total attack connections. The following optional
-          subattributes for the target per transport protocol are included to
-          represent the attack characteristics:<?rfc subcompact="yes" ?><list
-              style="symbols">
+          values (including peak and current observed values) of total attack
+          connections. The following optional subattributes for the target per
+          transport protocol are included to represent the attack
+          characteristics:<?rfc subcompact="yes" ?><list style="symbols">
               <t>The number of simultaneous attack connections to the
               target.</t>
 

@@ -15,7 +15,7 @@ Expires: May 29, 2021                                             McAfee
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
-                      draft-ietf-dots-telemetry-13
+                      draft-ietf-dots-telemetry-15
 
 Abstract
 
@@ -2091,9 +2091,9 @@ Internet-Draft               DOTS Telemetry                November 2020
 7.1.2.  Total Traffic
 
    The 'total-traffic' attribute (Figure 26) conveys the percentile
-   values of total traffic observed during a DDoS attack.  More granular
-   total traffic can be conveyed in 'total-traffic-protocol' and 'total-
-   traffic-port'.
+   values (including peak and current observed values) of total traffic
+   observed during a DDoS attack.  More granular total traffic can be
+   conveyed in 'total-traffic-protocol' and 'total-traffic-port'.
 
    The 'total-traffic-protocol' represents the total traffic for a
    target and is transport-protocol specific.
@@ -2302,9 +2302,10 @@ Internet-Draft               DOTS Telemetry                November 2020
 
    If the target is subjected to resource consuming DDoS attack, the
    'total-attack-connection' attribute is used to convey the percentile
-   values of total attack connections.  The following optional
-   subattributes for the target per transport protocol are included to
-   represent the attack characteristics:
+   values (including peak and current observed values) of total attack
+   connections.  The following optional subattributes for the target per
+   transport protocol are included to represent the attack
+   characteristics:
 
    o  The number of simultaneous attack connections to the target.
    o  The number of simultaneous embryonic connections to the target.
@@ -2345,7 +2346,6 @@ Internet-Draft               DOTS Telemetry                November 2020
                 |  |  +-- protocol              uint8
                 |  |  +-- connection?           yang:gauge64
                 |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
 
 
 
@@ -2354,6 +2354,7 @@ Boucadair, et al.         Expires May 29, 2021                 [Page 42]
 Internet-Draft               DOTS Telemetry                November 2020
 
 
+                |  |  +-- connection-ps?        yang:gauge64
                 |  |  +-- request-ps?           yang:gauge64
                 |  |  +-- partial-request-ps?   yang:gauge64
                 |  +-- high-percentile-l* [protocol]
@@ -2401,7 +2402,6 @@ Internet-Draft               DOTS Telemetry                November 2020
                 |  |  +-- embryonic?            yang:gauge64
                 |  |  +-- connection-ps?        yang:gauge64
                 |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
 
 
 
@@ -2410,6 +2410,7 @@ Boucadair, et al.         Expires May 29, 2021                 [Page 43]
 Internet-Draft               DOTS Telemetry                November 2020
 
 
+                |  |  +-- partial-request-ps?   yang:gauge64
                 |  +-- peak-l* [protocol port]
                 |  |  +-- port                  inet:port-number
                 |  |  +-- protocol              uint8
@@ -2456,8 +2457,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
    start-time:  The time the attack started.  The attack's start time is
       expressed in seconds relative to 1970-01-01T00:00Z in UTC time
-      (Section 2.4.1 of [RFC7049]).  The CBOR encoding is modified so
-      that the leading tag 1 (epoch-based date/time) MUST be omitted.
+
 
 
 
@@ -2465,6 +2465,9 @@ Boucadair, et al.         Expires May 29, 2021                 [Page 44]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
+
+      (Section 2.4.1 of [RFC7049]).  The CBOR encoding is modified so
+      that the leading tag 1 (epoch-based date/time) MUST be omitted.
 
    end-time:  The time the attack ended.  The attack end time is
       expressed in seconds relative to 1970-01-01T00:00Z in UTC time
@@ -2511,9 +2514,6 @@ Internet-Draft               DOTS Telemetry                November 2020
                 |  ...
                 +-- total-attack-connection-port
                 |  ...
-                +-- attack-detail* [vendor-id attack-id]
-                   +-- vendor-id             uint32
-                   +-- attack-id             uint32
 
 
 
@@ -2522,6 +2522,9 @@ Boucadair, et al.         Expires May 29, 2021                 [Page 45]
 Internet-Draft               DOTS Telemetry                November 2020
 
 
+                +-- attack-detail* [vendor-id attack-id]
+                   +-- vendor-id             uint32
+                   +-- attack-id             uint32
                    +-- attack-description?   string
                    +-- attack-severity?      attack-severity
                    +-- start-time?           uint64
@@ -2567,9 +2570,6 @@ Internet-Draft               DOTS Telemetry                November 2020
                             +-- high-percentile-l* [protocol]
                             |  +-- protocol              uint8
                             |  +-- connection?           yang:gauge64
-                            |  +-- embryonic?            yang:gauge64
-                            |  +-- connection-ps?        yang:gauge64
-                            |  +-- request-ps?           yang:gauge64
 
 
 
@@ -2578,6 +2578,9 @@ Boucadair, et al.         Expires May 29, 2021                 [Page 46]
 Internet-Draft               DOTS Telemetry                November 2020
 
 
+                            |  +-- embryonic?            yang:gauge64
+                            |  +-- connection-ps?        yang:gauge64
+                            |  +-- request-ps?           yang:gauge64
                             |  +-- partial-request-ps?   yang:gauge64
                             +-- peak-l* [protocol]
                             |  +-- protocol              uint8
@@ -2623,9 +2626,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    the DOTS server and the DOTS server SHOULD use the vendor mappings(s)
    provided to the DOTS client when transmitting telemetry data to peer
    DOTS agent.
-
-
-
 
 
 
