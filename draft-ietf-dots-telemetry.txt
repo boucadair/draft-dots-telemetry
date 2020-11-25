@@ -2477,7 +2477,7 @@ Internet-Draft               DOTS Telemetry                November 2020
    source-count:  A count of sources involved in the attack targeting
       the victim.
 
-   top-talkers:  A list of top talkers among attack sources.  The top
+   top-talker:  A list of top talkers among attack sources.  The top
       talkers are represented using the 'source-prefix'.
 
       'spoofed-status' indicates whether a top talker is a spoofed IP
