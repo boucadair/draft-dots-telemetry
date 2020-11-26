@@ -3342,23 +3342,38 @@ module ietf-dots-telemetry {
 
   typedef interval {
     type enumeration {
-      enum hour {
+      enum 5-minutes {
         value 1;
+        description
+          "5 minutes.";
+      }
+      enum 10-minutes {
+        value 2;
+        description
+          "10 minutes.";
+      }
+      enum 30-minutes {
+        value 3;
+        description
+          "30 minutes.";
+      }
+      enum hour {
+        value 4;
         description
           "Hour.";
       }
       enum day {
-        value 2;
+        value 5;
         description
           "Day.";
       }
       enum week {
-        value 3;
+        value 6;
         description
           "Week.";
       }
       enum month {
-        value 4;
+        value 7;
         description
           "Month.";
       }
@@ -3502,7 +3517,10 @@ module ietf-dots-telemetry {
       type sample;
       description
         "Defines the time distribution for measuring
-         values that are used to compute percentiles.";
+         values that are used to compute percentiles.
+
+         The measurement sample value must be less than the
+         measurement interval value.";
     }
     leaf low-percentile {
       type percentile;

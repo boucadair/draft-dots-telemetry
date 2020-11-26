@@ -5,13 +5,13 @@
 DOTS                                                   M. Boucadair, Ed.
 Internet-Draft                                                    Orange
 Intended status: Standards Track                           T. Reddy, Ed.
-Expires: May 29, 2021                                             McAfee
+Expires: May 30, 2021                                             McAfee
                                                                 E. Doron
                                                             Radware Ltd.
                                                                  M. Chen
                                                                     CMCC
                                                               J. Shallow
-                                                       November 25, 2020
+                                                       November 26, 2020
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 29, 2021.
+   This Internet-Draft will expire on May 30, 2021.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 1]
+Boucadair, et al.         Expires May 30, 2021                  [Page 1]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 2]
+Boucadair, et al.         Expires May 30, 2021                  [Page 2]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -134,19 +134,19 @@ Internet-Draft               DOTS Telemetry                November 2020
    9.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .  65
    10. YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  66
      10.1.  DOTS Signal Channel Telemetry YANG Module  . . . . . . .  66
-     10.2.  Vendor Attack Mapping Details YANG Module  . . . . . . .  95
-   11. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  98
-   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 101
-     12.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 101
+     10.2.  Vendor Attack Mapping Details YANG Module  . . . . . . .  96
+   11. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . .  99
+   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 102
+     12.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 102
      12.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 104
-     12.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 104
+     12.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 105
    13. Security Considerations . . . . . . . . . . . . . . . . . . . 105
      13.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 105
      13.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 106
    14. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 107
    15. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 107
    16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 107
-     16.1.  Normative References . . . . . . . . . . . . . . . . . . 107
+     16.1.  Normative References . . . . . . . . . . . . . . . . . . 108
      16.2.  Informative References . . . . . . . . . . . . . . . . . 109
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 110
 
@@ -165,7 +165,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 3]
+Boucadair, et al.         Expires May 30, 2021                  [Page 3]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -221,7 +221,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 4]
+Boucadair, et al.         Expires May 30, 2021                  [Page 4]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -277,7 +277,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 5]
+Boucadair, et al.         Expires May 30, 2021                  [Page 5]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -333,7 +333,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 6]
+Boucadair, et al.         Expires May 30, 2021                  [Page 6]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -389,7 +389,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 7]
+Boucadair, et al.         Expires May 30, 2021                  [Page 7]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -445,7 +445,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 8]
+Boucadair, et al.         Expires May 30, 2021                  [Page 8]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -501,7 +501,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                  [Page 9]
+Boucadair, et al.         Expires May 30, 2021                  [Page 9]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -557,7 +557,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 10]
+Boucadair, et al.         Expires May 30, 2021                 [Page 10]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -613,7 +613,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 11]
+Boucadair, et al.         Expires May 30, 2021                 [Page 11]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -669,7 +669,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 12]
+Boucadair, et al.         Expires May 30, 2021                 [Page 12]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -725,7 +725,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 13]
+Boucadair, et al.         Expires May 30, 2021                 [Page 13]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -781,7 +781,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 14]
+Boucadair, et al.         Expires May 30, 2021                 [Page 14]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -837,7 +837,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 15]
+Boucadair, et al.         Expires May 30, 2021                 [Page 15]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -893,7 +893,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 16]
+Boucadair, et al.         Expires May 30, 2021                 [Page 16]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -949,7 +949,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 17]
+Boucadair, et al.         Expires May 30, 2021                 [Page 17]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 18]
+Boucadair, et al.         Expires May 30, 2021                 [Page 18]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 19]
+Boucadair, et al.         Expires May 30, 2021                 [Page 19]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 20]
+Boucadair, et al.         Expires May 30, 2021                 [Page 20]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 21]
+Boucadair, et al.         Expires May 30, 2021                 [Page 21]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 22]
+Boucadair, et al.         Expires May 30, 2021                 [Page 22]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 23]
+Boucadair, et al.         Expires May 30, 2021                 [Page 23]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 24]
+Boucadair, et al.         Expires May 30, 2021                 [Page 24]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 25]
+Boucadair, et al.         Expires May 30, 2021                 [Page 25]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 26]
+Boucadair, et al.         Expires May 30, 2021                 [Page 26]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 27]
+Boucadair, et al.         Expires May 30, 2021                 [Page 27]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 28]
+Boucadair, et al.         Expires May 30, 2021                 [Page 28]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 29]
+Boucadair, et al.         Expires May 30, 2021                 [Page 29]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 30]
+Boucadair, et al.         Expires May 30, 2021                 [Page 30]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 31]
+Boucadair, et al.         Expires May 30, 2021                 [Page 31]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 32]
+Boucadair, et al.         Expires May 30, 2021                 [Page 32]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 33]
+Boucadair, et al.         Expires May 30, 2021                 [Page 33]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1901,7 +1901,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 34]
+Boucadair, et al.         Expires May 30, 2021                 [Page 34]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -1957,7 +1957,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 35]
+Boucadair, et al.         Expires May 30, 2021                 [Page 35]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2013,7 +2013,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 36]
+Boucadair, et al.         Expires May 30, 2021                 [Page 36]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2069,7 +2069,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 37]
+Boucadair, et al.         Expires May 30, 2021                 [Page 37]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2125,7 +2125,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 38]
+Boucadair, et al.         Expires May 30, 2021                 [Page 38]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2181,7 +2181,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 39]
+Boucadair, et al.         Expires May 30, 2021                 [Page 39]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2237,7 +2237,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 40]
+Boucadair, et al.         Expires May 30, 2021                 [Page 40]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2293,7 +2293,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 41]
+Boucadair, et al.         Expires May 30, 2021                 [Page 41]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2349,7 +2349,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 42]
+Boucadair, et al.         Expires May 30, 2021                 [Page 42]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2405,7 +2405,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 43]
+Boucadair, et al.         Expires May 30, 2021                 [Page 43]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2461,7 +2461,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 44]
+Boucadair, et al.         Expires May 30, 2021                 [Page 44]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2517,7 +2517,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 45]
+Boucadair, et al.         Expires May 30, 2021                 [Page 45]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2573,7 +2573,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 46]
+Boucadair, et al.         Expires May 30, 2021                 [Page 46]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2629,7 +2629,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 47]
+Boucadair, et al.         Expires May 30, 2021                 [Page 47]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2685,7 +2685,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 48]
+Boucadair, et al.         Expires May 30, 2021                 [Page 48]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2741,7 +2741,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 49]
+Boucadair, et al.         Expires May 30, 2021                 [Page 49]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2797,7 +2797,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 50]
+Boucadair, et al.         Expires May 30, 2021                 [Page 50]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2853,7 +2853,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 51]
+Boucadair, et al.         Expires May 30, 2021                 [Page 51]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2909,7 +2909,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 52]
+Boucadair, et al.         Expires May 30, 2021                 [Page 52]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -2965,7 +2965,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 53]
+Boucadair, et al.         Expires May 30, 2021                 [Page 53]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3021,7 +3021,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 54]
+Boucadair, et al.         Expires May 30, 2021                 [Page 54]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3077,7 +3077,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 55]
+Boucadair, et al.         Expires May 30, 2021                 [Page 55]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3133,7 +3133,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 56]
+Boucadair, et al.         Expires May 30, 2021                 [Page 56]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3189,7 +3189,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 57]
+Boucadair, et al.         Expires May 30, 2021                 [Page 57]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3245,7 +3245,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 58]
+Boucadair, et al.         Expires May 30, 2021                 [Page 58]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3301,7 +3301,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 59]
+Boucadair, et al.         Expires May 30, 2021                 [Page 59]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3357,7 +3357,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 60]
+Boucadair, et al.         Expires May 30, 2021                 [Page 60]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3413,7 +3413,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 61]
+Boucadair, et al.         Expires May 30, 2021                 [Page 61]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3469,7 +3469,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 62]
+Boucadair, et al.         Expires May 30, 2021                 [Page 62]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3525,7 +3525,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 63]
+Boucadair, et al.         Expires May 30, 2021                 [Page 63]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3581,7 +3581,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 64]
+Boucadair, et al.         Expires May 30, 2021                 [Page 64]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3637,7 +3637,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 65]
+Boucadair, et al.         Expires May 30, 2021                 [Page 65]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3693,7 +3693,7 @@ module ietf-dots-telemetry {
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 66]
+Boucadair, et al.         Expires May 30, 2021                 [Page 66]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3749,7 +3749,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 67]
+Boucadair, et al.         Expires May 30, 2021                 [Page 67]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3805,7 +3805,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 68]
+Boucadair, et al.         Expires May 30, 2021                 [Page 68]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3861,7 +3861,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 69]
+Boucadair, et al.         Expires May 30, 2021                 [Page 69]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3917,7 +3917,7 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 70]
+Boucadair, et al.         Expires May 30, 2021                 [Page 70]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
@@ -3953,31 +3953,46 @@ Internet-Draft               DOTS Telemetry                November 2020
 
   typedef interval {
     type enumeration {
-      enum hour {
+      enum 5-minutes {
         value 1;
         description
-          "Hour.";
+          "5 minutes.";
       }
-      enum day {
+      enum 10-minutes {
         value 2;
         description
-          "Day.";
+          "10 minutes.";
       }
-      enum week {
+      enum 30-minutes {
         value 3;
         description
-          "Week.";
+          "30 minutes.";
       }
-      enum month {
+      enum hour {
         value 4;
 
 
 
-Boucadair, et al.         Expires May 29, 2021                 [Page 71]
+Boucadair, et al.         Expires May 30, 2021                 [Page 71]
 
 Internet-Draft               DOTS Telemetry                November 2020
 
 
+        description
+          "Hour.";
+      }
+      enum day {
+        value 5;
+        description
+          "Day.";
+      }
+      enum week {
+        value 6;
+        description
+          "Week.";
+      }
+      enum month {
+        value 7;
         description
           "Month.";
       }
@@ -4011,6 +4026,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       enum 5-minutes {
         value 5;
         description
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 72]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
           "5 minutes measurement period.";
       }
       enum 10-minutes {
@@ -4026,14 +4049,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       enum hour {
         value 8;
         description
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 72]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
           "One hour measurement period.";
       }
     }
@@ -4067,6 +4082,14 @@ Internet-Draft               DOTS Telemetry                November 2020
         description
           "Query based on target protocol.";
       }
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 73]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
       enum target-fqdn {
         value 4;
         description
@@ -4082,14 +4105,6 @@ Internet-Draft               DOTS Telemetry                November 2020
         description
           "Query based on target alias.";
       }
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 73]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       enum mid {
         value 7;
         description
@@ -4123,6 +4138,14 @@ Internet-Draft               DOTS Telemetry                November 2020
     description
       "Enumeration support for query types that can be used
        in a GET request to filter out data.";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 74]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
   }
 
   grouping percentile-config {
@@ -4137,15 +4160,10 @@ Internet-Draft               DOTS Telemetry                November 2020
       type sample;
       description
         "Defines the time distribution for measuring
-         values that are used to compute percentiles.";
+         values that are used to compute percentiles.
 
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 74]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
+         The measurement sample value must be less than the
+         measurement interval value.";
     }
     leaf low-percentile {
       type percentile;
@@ -4176,6 +4194,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       default "90.00";
       description
         "High percentile. If set to the same value as mid-percentiles,
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 75]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
          this means high-percentiles are disabled.";
     }
   }
@@ -4194,14 +4220,6 @@ Internet-Draft               DOTS Telemetry                November 2020
         "Mid percentile value.";
     }
     leaf high-percentile-g {
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 75]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       type yang:gauge64;
       description
         "High percentile value.";
@@ -4232,6 +4250,14 @@ Internet-Draft               DOTS Telemetry                November 2020
         description
           "Enable/disable the use of the measurement unit type.";
       }
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 76]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
     }
   }
 
@@ -4250,14 +4276,6 @@ Internet-Draft               DOTS Telemetry                November 2020
 
   grouping traffic-unit-all {
     description
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 76]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       "Grouping of traffic as a function of the measurement unit,
        including current values.";
     uses traffic-unit;
@@ -4288,6 +4306,14 @@ Internet-Draft               DOTS Telemetry                November 2020
   grouping traffic-unit-protocol-all {
     description
       "Grouping of traffic of a given transport protocol as,
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 77]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
        including current values.";
     uses traffic-unit-protocol;
     leaf current-g {
@@ -4306,14 +4332,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       description
         "Port number.";
     }
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 77]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
     uses traffic-unit;
   }
 
@@ -4344,6 +4362,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       type uint64;
       description
         "The maximum number of simultaneous connections that
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 78]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
          are allowed to the target server per client.";
     }
     leaf embryonic {
@@ -4362,14 +4388,6 @@ Internet-Draft               DOTS Telemetry                November 2020
          that are allowed to the target server per client.";
     }
     leaf connection-ps {
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 78]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       type uint64;
       description
         "The maximum number of connections allowed per second
@@ -4400,6 +4418,14 @@ Internet-Draft               DOTS Telemetry                November 2020
          second to the target server.";
     }
     leaf partial-request-client-ps {
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 79]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
       type uint64;
       description
         "The maximum number of partial requests allowed per
@@ -4418,14 +4444,6 @@ Internet-Draft               DOTS Telemetry                November 2020
          Values are taken from the IANA Protocol Numbers registry:
          <https://www.iana.org/assignments/protocol-numbers/>.";
     }
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 79]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
     uses total-connection-capacity;
   }
 
@@ -4456,6 +4474,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       description
         "The number of attack requests per second to
          the target server.";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 80]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
     }
     leaf partial-request-ps {
       type yang:gauge64;
@@ -4474,14 +4500,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       uses connection;
     }
     container mid-percentile-c {
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 80]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       description
         "Mid percentile of attack connections.";
       uses connection;
@@ -4512,6 +4530,14 @@ Internet-Draft               DOTS Telemetry                November 2020
   grouping connection-protocol {
     description
       "Total attack connections.";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 81]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
     leaf protocol {
       type uint8;
       description
@@ -4530,14 +4556,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       description
         "Port number.";
     }
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 81]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
     uses connection-protocol;
   }
 
@@ -4568,6 +4586,14 @@ Internet-Draft               DOTS Telemetry                November 2020
         "Peak attack connections per protocol.";
       uses connection-protocol;
     }
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 82]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
   }
 
   grouping connection-protocol-all {
@@ -4586,14 +4612,6 @@ Internet-Draft               DOTS Telemetry                November 2020
     description
       "Total attack connections per port number.";
     list low-percentile-l {
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 82]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       key "protocol port";
       description
         "Low percentile of attack connections per port number.";
@@ -4624,6 +4642,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       "Total attack connections per port number, including current values.";
     uses connection-protocol-port-percentile;
     list current-l {
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 83]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
       key "protocol port";
       description
         "Current attack connections per port number.";
@@ -4642,14 +4668,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       type uint32;
       description
         "Vendor ID is a security vendor's Enterprise Number.";
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 83]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
     }
     leaf attack-id {
       type uint32;
@@ -4680,6 +4698,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       description
         "The time the attack ended. End time is represented in seconds
          relative to 1970-01-01T00:00:00Z in UTC time.";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 84]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
     }
     container source-count {
       description
@@ -4698,14 +4724,6 @@ Internet-Draft               DOTS Telemetry                November 2020
     description
       "Top attack sources.";
     list talker {
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 84]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       key "source-prefix";
       description
         "IPv4 or IPv6 prefix identifying the attacker(s).";
@@ -4736,6 +4754,14 @@ Internet-Draft               DOTS Telemetry                November 2020
             error-message
               "The upper port number must be greater than
                or equal to lower port number.";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 85]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
           }
           description
             "Upper port number of the port range.";
@@ -4754,14 +4780,6 @@ Internet-Draft               DOTS Telemetry                November 2020
         }
         leaf upper-type {
           type uint8;
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 85]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
           must '. >= ../lower-type' {
             error-message
               "The upper ICMP type must be greater than
@@ -4792,6 +4810,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       key "source-prefix";
       description
         "IPv4 or IPv6 prefix identifying the attacker(s).";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 86]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
       leaf spoofed-status {
         type boolean;
         description
@@ -4810,14 +4836,6 @@ Internet-Draft               DOTS Telemetry                November 2020
         leaf lower-port {
           type inet:port-number;
           mandatory true;
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 86]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
           description
             "Lower port number of the port range.";
         }
@@ -4848,6 +4866,14 @@ Internet-Draft               DOTS Telemetry                November 2020
           must '. >= ../lower-type' {
             error-message
               "The upper ICMP type must be greater than
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 87]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
                or equal to lower ICMP type.";
           }
           description
@@ -4866,14 +4892,6 @@ Internet-Draft               DOTS Telemetry                November 2020
         uses connection-protocol-all;
       }
     }
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 87]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
   }
 
   grouping baseline {
@@ -4904,6 +4922,14 @@ Internet-Draft               DOTS Telemetry                November 2020
       uses traffic-unit-port;
     }
     list total-connection-capacity {
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 88]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
       key "protocol";
       description
         "Total connection capacity.";
@@ -4921,14 +4947,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       uses total-connection-capacity-protocol;
     }
   }
-
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 88]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
 
   grouping pre-or-ongoing-mitigation {
     description
@@ -4960,6 +4978,14 @@ Internet-Draft               DOTS Telemetry                November 2020
     list total-attack-traffic-protocol {
       key "unit protocol";
       description
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 89]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
         "Total attack traffic per protocol.";
       uses traffic-unit-protocol-all;
     }
@@ -4978,14 +5004,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       description
         "Total attack connections.";
       uses connection-protocol-port-all;
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 89]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
     }
     list attack-detail {
       key "vendor-id attack-id";
@@ -5016,6 +5034,14 @@ Internet-Draft               DOTS Telemetry                November 2020
            sent from the server to the client.";
         list total-traffic {
           key "unit";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 90]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
           description
             "Total traffic.";
           uses traffic-unit-all;
@@ -5034,14 +5060,6 @@ Internet-Draft               DOTS Telemetry                November 2020
       uses traffic-unit-all;
     }
     list attack-detail {
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 90]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       key "vendor-id attack-id";
       description
         "Attack details";
@@ -5072,6 +5090,14 @@ Internet-Draft               DOTS Telemetry                November 2020
                sent from the server to the client.";
             container max-config-values {
               description
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 91]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
                 "Maximum acceptable configuration values.";
               uses percentile-config;
               leaf server-originated-telemetry {
@@ -5090,14 +5116,6 @@ Internet-Draft               DOTS Telemetry                November 2020
                 units "seconds";
                 must ". >= ../../min-config-values"
                    + "/telemetry-notify-interval" {
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 91]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
                   error-message
                     "The value must be greater than or equal
                      to the telemetry-notify-interval in the
@@ -5128,6 +5146,14 @@ Internet-Draft               DOTS Telemetry                November 2020
               uses unit-config;
             }
             leaf-list query-type {
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 92]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
               type query-type;
               description
                 "Indicates which query types are supported by
@@ -5146,14 +5172,6 @@ Internet-Draft               DOTS Telemetry                November 2020
               description
                 "These data nodes appear only in a mitigation message
                  sent from the server to the client.";
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 92]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
               leaf tsid {
                 type uint32;
                 description
@@ -5184,6 +5202,14 @@ Internet-Draft               DOTS Telemetry                November 2020
                 leaf telemetry-notify-interval {
                   type uint32 {
                     range "1 .. 3600";
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 93]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
                   }
                   units "seconds";
                   description
@@ -5202,14 +5228,6 @@ Internet-Draft               DOTS Telemetry                November 2020
                 leaf link-id {
                   type nt:link-id;
                   description
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 93]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
                     "Identifier of an interconnection link.";
                 }
                 leaf capacity {
@@ -5240,6 +5258,14 @@ Internet-Draft               DOTS Telemetry                November 2020
                   type uint32;
                   must '. >= 1';
                   description
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 94]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
                     "A baseline entry identifier.";
                 }
                 uses baseline;
@@ -5258,14 +5284,6 @@ Internet-Draft               DOTS Telemetry                November 2020
             description
               "Indicates the communication direction in which the
                data nodes can be included.";
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 94]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
             case server-to-client-only {
               description
                 "These data nodes appear only in a mitigation message
@@ -5296,6 +5314,14 @@ Internet-Draft               DOTS Telemetry                November 2020
           uses pre-or-ongoing-mitigation;
         }
       }
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 95]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
     }
   }
 }
@@ -5314,14 +5340,6 @@ Internet-Draft               DOTS Telemetry                November 2020
      reference
        "RFC 8783: Distributed Denial-of-Service Open Threat
                   Signaling (DOTS) Data Channel Specification";
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 95]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
    }
 
    organization
@@ -5353,6 +5371,13 @@ Internet-Draft               DOTS Telemetry                November 2020
       This version of this YANG module is part of RFC XXXX; see
       the RFC itself for full legal notices.";
 
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 96]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
    revision 2020-06-26 {
      description
        "Initial revision.";
@@ -5370,14 +5395,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    grouping attack-mapping {
      description
        "A set of information used for sharing vendor attack mapping
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 96]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
         information with a peer.";
      list vendor {
        key "vendor-id";
@@ -5409,6 +5426,14 @@ Internet-Draft               DOTS Telemetry                November 2020
            description
              "Unique identifier assigned by the vendor for the attack.";
          }
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 97]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
          leaf attack-description {
            type string;
            mandatory true;
@@ -5426,14 +5451,6 @@ Internet-Draft               DOTS Telemetry                November 2020
      if-feature "dots-telemetry";
      description
        "Augments the data channel with a vendor attack
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 97]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
         mapping table of the DOTS client.";
      container vendor-mapping {
        description
@@ -5465,6 +5482,14 @@ Internet-Draft               DOTS Telemetry                November 2020
         mapping table of the DOTS server.";
      container vendor-mapping {
        config false;
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 98]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
        description
          "Includes the list of vendor attack mapping details
           that will be shared upon request with DOTS clients.";
@@ -5481,14 +5506,6 @@ Internet-Draft               DOTS Telemetry                November 2020
 
    o  Implementers may use the values in: https://github.com/boucadair/
       draft-dots-telemetry/blob/master/mapping-table.txt
-
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 98]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
 
   +----------------------+-------------+------+---------------+--------+
   | Parameter Name       | YANG        | CBOR | CBOR Major    | JSON   |
@@ -5521,6 +5538,14 @@ Internet-Draft               DOTS Telemetry                November 2020
   | total-connection-    |             |      |               |        |
   |        capacity      | list        |TBA19 | 4 array       | Array  |
   | connection           | uint64      |TBA20 | 0 unsigned    | String |
+
+
+
+Boucadair, et al.         Expires May 30, 2021                 [Page 99]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
   | connection-client    | uint64      |TBA21 | 0 unsigned    | String |
   | embryonic            | uint64      |TBA22 | 0 unsigned    | String |
   | embryonic-client     | uint64      |TBA23 | 0 unsigned    | String |
@@ -5538,14 +5563,6 @@ Internet-Draft               DOTS Telemetry                November 2020
   | high-percentile-l    | list        |TBA33 | 4 array       | Array  |
   | peak-l               | list        |TBA34 | 4 array       | Array  |
   | attack-detail        | list        |TBA35 | 4 array       | Array  |
-
-
-
-Boucadair, et al.         Expires May 29, 2021                 [Page 99]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
   | id                   | uint32      |TBA36 | 0 unsigned    | Number |
   | attack-id            | uint32      |TBA37 | 0 unsigned    | Number |
   | attack-description   | string      |TBA38 | 3 text string | String |
@@ -5577,6 +5594,14 @@ Internet-Draft               DOTS Telemetry                November 2020
   |                      |   ip-prefix |      |               |        |
   | mid-list             | leaf-list   |TBA61 | 4 array       | Array  |
   |                      | uint32      |      | 0 unsigned    | Number |
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 100]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
   | source-port-range    | list        |TBA62 | 4 array       | Array  |
   | source-icmp-type-    | list        |TBA63 | 4 array       | Array  |
   |    range             |             |      |               |        |
@@ -5594,14 +5619,6 @@ Internet-Draft               DOTS Telemetry                November 2020
   | total-traffic-       |             |      |               |        |
   |  -protocol           | list        |TBA72 | 4 array       | Array  |
   | total-traffic- port  | list        |TBA73 | 4 array       | Array  |
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 100]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
   | total-attack-        |             |      |               |        |
   |  traffic-protocol    | list        |TBA74 | 4 array       | Array  |
   | total-attack-        |             |      |               |        |
@@ -5631,6 +5648,16 @@ Internet-Draft               DOTS Telemetry                November 2020
   | current-c            | container   |TBA88 | 5 map         | Object |
   +----------------------+-------------+------+---------------+--------+
 
+
+
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 101]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
 12.  IANA Considerations
 
 12.1.  DOTS Signal Channel CBOR Key Values
@@ -5650,14 +5677,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    |                      | Value | Type  |            |               |
    +======================+=======+=======+============+===============+
    | tsid                 | TBA1  |   0   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 101]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
    | telemetry            | TBA2  |   5   |    IESG    |   [RFCXXXX]   |
    | low-percentile       | TBA3  | 6tag4 |    IESG    |   [RFCXXXX]   |
    | mid-percentile       | TBA4  | 6tag4 |    IESG    |   [RFCXXXX]   |
@@ -5687,6 +5706,14 @@ Internet-Draft               DOTS Telemetry                November 2020
    | request-ps           | TBA26 |   0   |    IESG    |   [RFCXXXX]   |
    | request-client-ps    | TBA27 |   0   |    IESG    |   [RFCXXXX]   |
    | partial-request-ps   | TBA28 |   0   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 102]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
    | partial-request-     | TBA29 |   0   |    IESG    |   [RFCXXXX]   |
    |        client-ps     |       |       |            |               |
    | total-attack-        | TBA30 |   5   |    IESG    |   [RFCXXXX]   |
@@ -5706,14 +5733,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    | top-talker           | TBA43 |   5   |    IESG    |   [RFCXXXX]   |
    | spoofed-status       | TBA44 |   7   |    IESG    |   [RFCXXXX]   |
    | low-percentile-c     | TBA45 |   5   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 102]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
    | mid-percentile-c     | TBA46 |   5   |    IESG    |   [RFCXXXX]   |
    | high-percentile-c    | TBA47 |   5   |    IESG    |   [RFCXXXX]   |
    | peak-c               | TBA48 |   5   |    IESG    |   [RFCXXXX]   |
@@ -5743,6 +5762,14 @@ Internet-Draft               DOTS Telemetry                November 2020
    | total-traffic-       | TBA69 |   4   |    IESG    |   [RFCXXXX]   |
    |  normal-per-protocol |       |       |            |               |
    | total-traffic-       | TBA70 |   4   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 103]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
    |  normal-per-port     |       |       |            |               |
    | total-connection-    | TBA71 |   4   |    IESG    |   [RFCXXXX]   |
    |  capacity-per-port   |       |       |            |               |
@@ -5762,14 +5789,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    |   telemetry-setup    |       |       |            |               |
    | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
    |   total-traffic      |       |       |            |               |
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 103]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
    | ietf-dots-telemetry: | TBA82 |   0   |    IESG    |   [RFCXXXX]   |
    | total-attack-traffic |       |       |            |               |
    | ietf-dots-telemetry: | TBA83 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5796,6 +5815,17 @@ Internet-Draft               DOTS Telemetry                November 2020
     | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
     +------+-------------------+------------------------+-------------+
 
+
+
+
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 104]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
 12.3.  DOTS Signal Telemetry YANG Module
 
    This document requests IANA to register the following URIs in the
@@ -5812,19 +5842,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    This document requests IANA to register the following YANG modules in
    the "YANG Module Names" subregistry [RFC6020] within the "YANG
    Parameters" registry.
-
-
-
-
-
-
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 104]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
 
             name: ietf-dots-telemetry
             namespace: urn:ietf:params:xml:ns:yang:ietf-dots-telemetry
@@ -5857,6 +5874,14 @@ Internet-Draft               DOTS Telemetry                November 2020
    DOTS clients may be co-located on network security services (e.g.,
    firewall) and a compromised security service potentially can do a lot
    more damage to the network.  This assumption differs from the often
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 105]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
    held view that devices are untrusted, often referred to as the "zero-
    trust model".  A compromised DOTS client can send fake DOTS telemetry
    data to a DOTS server to mislead the DOTS server.  This attack can be
@@ -5873,14 +5898,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    attacks from compromised DOTS clients.  The following non-
    comprehensive list of mitigation techniques can be used by a DOTS
    server to handle misbehaving DOTS clients:
-
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 105]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
 
    o  The probing rate (defined in Section 4.5 of
       [I-D.ietf-dots-rfc8782-bis]) can be used to limit the average data
@@ -5914,6 +5931,13 @@ Internet-Draft               DOTS Telemetry                November 2020
    a DOTS client is technically capable of undertaking various attacks,
    such as:
 
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 106]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
    o  Communicating invalid attack mapping details to the server
       ('/data-channel:dots-data/data-channel:dots-client/dots-
       telemetry:vendor-mapping'), which will mislead the server when
@@ -5930,14 +5954,6 @@ Internet-Draft               DOTS Telemetry                November 2020
 
    o  '/data-channel:dots-data/dots-telemetry:vendor-mapping' can be
       used by a compromised DOTS client to leak the attack detection
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 106]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
       capabilities of the DOTS server.  This is a variation of the
       compromised DOTS client attacks discussed in Section 13.1.
 
@@ -5966,6 +5982,18 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 16.  References
 
+
+
+
+
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 107]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
 16.1.  Normative References
 
    [Enterprise-Numbers]
@@ -5984,15 +6012,6 @@ Internet-Draft               DOTS Telemetry                November 2020
               Service Open Threat Signaling (DOTS) Signal Channel",
               draft-ietf-dots-signal-filter-control-07 (work in
               progress), June 2020.
-
-
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 107]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -6021,6 +6040,16 @@ Internet-Draft               DOTS Telemetry                November 2020
               DOI 10.17487/RFC7252, June 2014,
               <https://www.rfc-editor.org/info/rfc7252>.
 
+
+
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 108]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
    [RFC7641]  Hartke, K., "Observing Resources in the Constrained
               Application Protocol (CoAP)", RFC 7641,
               DOI 10.17487/RFC7641, September 2015,
@@ -6042,13 +6071,6 @@ Internet-Draft               DOTS Telemetry                November 2020
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 108]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -6074,6 +6096,16 @@ Internet-Draft               DOTS Telemetry                November 2020
               <https://www.iana.org/assignments/dots/dots.xhtml#dots-
               signal-channel-conflict-cause-codes>.
 
+
+
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 109]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
+
    [I-D.doron-dots-telemetry]
               Doron, E., Reddy, T., Andreasen, F., Xia, L., and K.
               Nishizuka, "Distributed Denial-of-Service Open Threat
@@ -6098,14 +6130,6 @@ Internet-Draft               DOTS Telemetry                November 2020
               Signaling", draft-ietf-dots-use-cases-25 (work in
               progress), July 2020.
 
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 109]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
    [Key-Map]  IANA, "DOTS Signal Channel CBOR Key Values",
               <https://www.iana.org/assignments/dots/dots.xhtml#dots-
               signal-channel-cbor-key-values>.
@@ -6125,6 +6149,18 @@ Internet-Draft               DOTS Telemetry                November 2020
               <https://www.rfc-editor.org/info/rfc8612>.
 
 Authors' Addresses
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires May 30, 2021                [Page 110]
+
+Internet-Draft               DOTS Telemetry                November 2020
+
 
    Mohamed Boucadair (editor)
    Orange
@@ -6152,16 +6188,6 @@ Authors' Addresses
    Email: ehudd@radware.com
 
 
-
-
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 110]
-
-Internet-Draft               DOTS Telemetry                November 2020
-
-
    Meiling Chen
    CMCC
    32, Xuanwumen West
@@ -6187,30 +6213,4 @@ Internet-Draft               DOTS Telemetry                November 2020
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Boucadair, et al.         Expires May 29, 2021                [Page 111]
+Boucadair, et al.         Expires May 30, 2021                [Page 111]
