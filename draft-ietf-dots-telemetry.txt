@@ -3854,7 +3854,7 @@ Internet-Draft               DOTS Telemetry                December 2020
     }
     description
       "Enumeration to indicate which unit class is used.
-       These types are supoorted: pps, bit/s, and Byte/s.";
+       These types are supported: pps, bit/s, and Byte/s.";
   }
 
   typedef unit {
@@ -4216,7 +4216,7 @@ Internet-Draft               DOTS Telemetry                December 2020
        are used to compute telemetry data.
 
        The grouping indicates a measurement interval,
-       a measurement sample perdiod, and low/mid/high
+       a measurement sample period, and low/mid/high
        percentile values.";
     leaf measurement-interval {
       type interval;
@@ -4794,7 +4794,7 @@ Internet-Draft               DOTS Telemetry                December 2020
   grouping top-talker-aggregate {
     description
       "An aggregate of top attack sources. This aggregate is
-       used when included in a mitigation request, in particular.";
+       typically used when included in a mitigation request.";
     list talker {
       key "source-prefix";
       description

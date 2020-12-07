@@ -3230,7 +3230,7 @@ module ietf-dots-telemetry {
     }
     description
       "Enumeration to indicate which unit class is used.
-       These types are supoorted: pps, bit/s, and Byte/s.";
+       These types are supported: pps, bit/s, and Byte/s.";
   }
 
   typedef unit {
@@ -3536,7 +3536,7 @@ module ietf-dots-telemetry {
        are used to compute telemetry data. 
 
        The grouping indicates a measurement interval, 
-       a measurement sample perdiod, and low/mid/high 
+       a measurement sample period, and low/mid/high 
        percentile values.";
     leaf measurement-interval {
       type interval;
@@ -4033,8 +4033,8 @@ module ietf-dots-telemetry {
 
   grouping top-talker-aggregate {
     description
-      "An aggregate of top attack sources. This aggregate is
-       used when included in a mitigation request, in particular.";
+      "An aggregate of top attack sources. This aggregate is 
+       typically used when included in a mitigation request.";
     list talker {
       key "source-prefix";
       description
