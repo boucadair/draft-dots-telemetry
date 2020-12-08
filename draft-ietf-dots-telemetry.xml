@@ -2246,7 +2246,10 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           target="data"></xref> augments the "ietf-dots-data-channel" <xref
           target="RFC8783"></xref>. The tree structure of the
           "ietf-dots-mapping" module is shown in <xref
-          target="abstract-data"></xref>.</t>
+          target="abstract-data"></xref>. Note that DOTS clients can use
+          tools, e.g., YANG Library <xref target="RFC8525"></xref>, to
+          retrieve the list of features and deviations supported by the DOTS
+          server. </t>
 
           <t><figure anchor="abstract-data"
               title="Vendor Attack Mapping Tree Structure">
@@ -2277,8 +2280,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           <t>A DOTS client sends a GET request to retrieve the capabilities
           supported by a DOTS server as per Section 7.1 of <xref
           target="RFC8783"></xref>. This request is meant to assess whether
-          vendor attack mapping details feature is supported by the server
-          (i.e., check the value of 'vendor-mapping-enabled').</t>
+          the capability of sharing vendor attack mapping details is supported
+          by the server (i.e., check the value of 'vendor-mapping-enabled').
+          </t>
 
           <t>If 'vendor-mapping-enabled' is set to 'true', A DOTS client MAY
           send a GET request to retrieve the DOTS server's vendor attack
@@ -5224,6 +5228,8 @@ module ietf-dots-mapping {
 
     <references title="Informative References">
       <?rfc include='reference.RFC.2330'?>
+
+      <?rfc include='reference.RFC.8525'?>
 
       <?rfc include='reference.I-D.doron-dots-telemetry'?>
 
