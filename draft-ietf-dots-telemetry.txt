@@ -641,6 +641,9 @@ Internet-Draft               DOTS Telemetry                December 2020
    The DOTS telemetry module (Section 10.1) is not intended to be used
    via NETCONF/RESTCONF for DOTS server management purposes.  It serves
    only to provide a data model and encoding following [RFC8791].
+   Server deviations are strongly discouraged as the peer DOTS agent
+   does not have means to retrieve the list of deviations and that
+   interoperability issues are likely to be encountered.
 
    The DOTS telemetry module (Section 10.1) uses "enumerations" rather
    than "identities" to define units, samples, and intervals because
@@ -652,20 +655,17 @@ Internet-Draft               DOTS Telemetry                December 2020
 
    The DOTS telemetry module (Section 10.1) includes some lists for
    which no key statement is included.  This behavior is compliant with
-   [RFC8791].  The reason for not including these keys in the module is
-   because these keys are not included in the request message body but
-   as mandatory Uri-Paths in requests (Sections 6 and 7).  Otherwise,
-   whenever a key statement is used in the module, the same definition
-   as in Section 7.8.2 of [RFC7950] is assumed.
+   [RFC8791].  The reason for not including these keys is because they
+   are not included in the request message body but as mandatory Uri-
+   Paths in requests (Sections 6 and 7).  Otherwise, whenever a key
+   statement is used in the module, the same definition as in
+   Section 7.8.2 of [RFC7950] is assumed.
 
    In order to optimize the data exchanged over the DOTS signal channel,
    the document specifies a second YANG module ("ietf-dots-mapping",
    Section 10.2) that augments the DOTS data channel [RFC8783].  This
    augmentation can be used during idle time to share the attack mapping
    details (Section 7.1.5).  DOTS clients can use tools, e.g., YANG
-   Library [RFC8525], to retrieve the list of features and deviations
-   supported by the DOTS server.
-
 
 
 
@@ -673,6 +673,9 @@ Boucadair, et al.         Expires June 11, 2021                [Page 12]
 
 Internet-Draft               DOTS Telemetry                December 2020
 
+
+   Library [RFC8525], to retrieve the list of features and deviations
+   supported by the DOTS server.
 
 4.6.  A Note About Examples
 
@@ -709,9 +712,6 @@ Internet-Draft               DOTS Telemetry                December 2020
    is shown in Figure 1.  More details are provided in Sections 6 and 7
    about the exact structure of 'telemetry-setup' and 'telemetry'
    message types.
-
-
-
 
 
 

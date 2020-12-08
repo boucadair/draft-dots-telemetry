@@ -571,7 +571,10 @@
         <t>The DOTS telemetry module (<xref target="module"></xref>) is not
         intended to be used via NETCONF/RESTCONF for DOTS server management
         purposes. It serves only to provide a data model and encoding
-        following <xref target="RFC8791"></xref>.</t>
+        following <xref target="RFC8791"></xref>. Server deviations are
+        strongly discouraged as the peer DOTS agent does not have means to
+        retrieve the list of deviations and that interoperability issues are
+        likely to be encountered. </t>
 
         <t>The DOTS telemetry module (<xref target="module"></xref>) uses
         "enumerations" rather than "identities" to define units, samples, and
@@ -584,12 +587,12 @@
         <t>The DOTS telemetry module (<xref target="module"></xref>) includes
         some lists for which no key statement is included. This behavior is
         compliant with <xref target="RFC8791"></xref>. The reason for not
-        including these keys in the module is because these keys are not
-        included in the request message body but as mandatory Uri-Paths in
-        requests (Sections <xref format="counter" target="conf"></xref> and
-        <xref format="counter" target="pre-t"></xref>). Otherwise, whenever a
-        key statement is used in the module, the same definition as in Section
-        7.8.2 of <xref target="RFC7950"></xref> is assumed. </t>
+        including these keys is because they are not included in the request
+        message body but as mandatory Uri-Paths in requests (Sections <xref
+        format="counter" target="conf"></xref> and <xref format="counter"
+        target="pre-t"></xref>). Otherwise, whenever a key statement is used
+        in the module, the same definition as in Section 7.8.2 of <xref
+        target="RFC7950"></xref> is assumed. </t>
 
         <t>In order to optimize the data exchanged over the DOTS signal
         channel, the document specifies a second YANG module
