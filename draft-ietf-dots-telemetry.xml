@@ -581,12 +581,24 @@
         "identities" is thus suboptimal from a message compactness standpoint;
         one of the key requirements for DOTS messages.</t>
 
+        <t>The DOTS telemetry module (<xref target="module"></xref>) includes
+        some lists for which no key statement is included. This behavior is
+        compliant with <xref target="RFC8791"></xref>. The reason for not
+        including these keys in the module is because these keys are not
+        included in the request message body but as mandatory Uri-Paths in
+        requests (Sections <xref format="counter" target="conf"></xref> and
+        <xref format="counter" target="pre-t"></xref>). Otherwise, whenever a
+        key statement is used in the module, the same definition as in Section
+        7.8.2 of <xref target="RFC7950"></xref> is assumed. </t>
+
         <t>In order to optimize the data exchanged over the DOTS signal
         channel, the document specifies a second YANG module
         ("ietf-dots-mapping", <xref target="data"></xref>) that augments the
         DOTS data channel <xref target="RFC8783"></xref>. This augmentation
         can be used during idle time to share the attack mapping details
-        (<xref target="attackdetails"></xref>). </t>
+        (<xref target="attackdetails"></xref>). DOTS clients can use tools,
+        e.g., YANG Library <xref target="RFC8525"></xref>, to retrieve the
+        list of features and deviations supported by the DOTS server. </t>
       </section>
 
       <section title="A Note About Examples">
@@ -2246,10 +2258,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           target="data"></xref> augments the "ietf-dots-data-channel" <xref
           target="RFC8783"></xref>. The tree structure of the
           "ietf-dots-mapping" module is shown in <xref
-          target="abstract-data"></xref>. Note that DOTS clients can use
-          tools, e.g., YANG Library <xref target="RFC8525"></xref>, to
-          retrieve the list of features and deviations supported by the DOTS
-          server. </t>
+          target="abstract-data"></xref>. </t>
 
           <t><figure anchor="abstract-data"
               title="Vendor Attack Mapping Tree Structure">
@@ -3097,10 +3106,14 @@ Observe: 0]]></artwork>
       <section anchor="module"
                title="DOTS Signal Channel Telemetry YANG Module">
         <t>This module uses types defined in <xref target="RFC6991"></xref>
-        and <xref target="RFC8345"></xref>.</t>
+        and <xref target="RFC8345"></xref>.<list style="empty">
+            <t>Note to the RFC Editor: Please replace "RFC UUUU" with the RFC
+            number to be assigned to <xref
+            target="I-D.ietf-dots-rfc8782-bis"></xref>.</t>
+          </list></t>
 
         <t><figure>
-            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-11-25.yang"
+            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-12-07.yang"
 module ietf-dots-telemetry {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-telemetry";
@@ -3169,7 +3182,7 @@ module ietf-dots-telemetry {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2020-07-12 {
+  revision 2020-12-07 {
     description
       "Initial revision.";
     reference
