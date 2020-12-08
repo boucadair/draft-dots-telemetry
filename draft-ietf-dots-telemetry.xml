@@ -203,22 +203,22 @@
       undertaken on traffic deemed suspicious. Various use cases are discussed
       in <xref target="I-D.ietf-dots-use-cases"></xref>.</t>
 
-      <t>Typically, DOTS clients can be integrated within a DDoS attack
-      detector, or network and security elements that have been actively
-      engaged with ongoing attacks. The DOTS client mitigation environment
-      determines that it is no longer possible or practical for it to handle
-      these attacks. This can be due to a lack of resources or security
-      capabilities, as derived from the complexities and the intensity of
-      these attacks. In this circumstance, the DOTS client has invaluable
-      knowledge about the actual attacks that need to be handled by its DOTS
-      server(s). By enabling the DOTS client to share this comprehensive
-      knowledge of an ongoing attack under specific circumstances, the DOTS
-      server can drastically increase its ability to accomplish successful
-      mitigation. While the attack is being handled by the DOTS server
-      associated mitigation resources, the DOTS server has the knowledge about
-      the ongoing attack mitigation. The DOTS server can share this
-      information with the DOTS client so that the client can better assess
-      and evaluate the actual mitigation realized.</t>
+      <t>DOTS clients can be integrated within a DDoS attack detector, or
+      network and security elements that have been actively engaged with
+      ongoing attacks. The DOTS client mitigation environment determines that
+      it is no longer possible or practical for it to handle these attacks.
+      This can be due to a lack of resources or security capabilities, as
+      derived from the complexities and the intensity of these attacks. In
+      this circumstance, the DOTS client has invaluable knowledge about the
+      actual attacks that need to be handled by its DOTS server(s). By
+      enabling the DOTS client to share this comprehensive knowledge of an
+      ongoing attack under specific circumstances, the DOTS server can
+      drastically increase its ability to accomplish successful mitigation.
+      While the attack is being handled by the DOTS server associated
+      mitigation resources, the DOTS server has the knowledge about the
+      ongoing attack mitigation. The DOTS server can share this information
+      with the DOTS client so that the client can better assess and evaluate
+      the actual mitigation realized.</t>
 
       <t>DOTS clients can send mitigation hints derived from attack details to
       DOTS servers, with the full understanding that the DOTS server may
@@ -456,14 +456,14 @@
         interface, pipe capacity, normal traffic baseline) as detailed in
         <xref target="conf"></xref>. DOTS agents can then include DOTS
         telemetry attributes using the DOTS signal channel (<xref
-        target="pre"></xref>). Typically, a DOTS client can use separate
-        messages to share with its DOTS server(s) a set of telemetry data
-        bound to an ongoing mitigation (<xref target="preCtoS"></xref>). Also,
-        a DOTS client that is interested to receive telemetry notifications
-        related to some of its resources follows the procedure defined in
-        <xref target="preStoC"></xref>. The DOTS client can then decide to
-        send a mitigation request if the notified attack cannot be mitigated
-        locally within the DOTS client domain.</t>
+        target="pre"></xref>). A DOTS client can use separate messages to
+        share with its DOTS server(s) a set of telemetry data bound to an
+        ongoing mitigation (<xref target="preCtoS"></xref>). Also, a DOTS
+        client that is interested to receive telemetry notifications related
+        to some of its resources follows the procedure defined in <xref
+        target="preStoC"></xref>. The DOTS client can then decide to send a
+        mitigation request if the notified attack cannot be mitigated locally
+        within the DOTS client domain.</t>
 
         <t>Aggregate DOTS telemetry data can also be included in efficacy
         update (<xref target="effu-S"></xref>) or mitigation update (<xref
@@ -1094,13 +1094,13 @@ Uri-Path: "tsid=123"
             </list></t>
 
           <t>DOTS clients SHOULD minimize the number of active 'tsids' used
-          for pipe information. Typically, in order to avoid maintaining a
-          long list of 'tsids' for pipe information, it is RECOMMENDED that
-          DOTS clients include in any request to update information related to
-          a given link the information of other links (already communicated
-          using a lower 'tsid' value). Doing so, this update request will
-          override these existing requests and hence optimize the number of
-          'tsid' request per DOTS client. <list style="symbols">
+          for pipe information. In order to avoid maintaining a long list of
+          'tsids' for pipe information, it is RECOMMENDED that DOTS clients
+          include in any request to update information related to a given link
+          the information of other links (already communicated using a lower
+          'tsid' value). Doing so, this update request will override these
+          existing requests and hence optimize the number of 'tsid' request
+          per DOTS client. <list style="symbols">
               <t>Note: This assumes that all link information can fit in one
               single message.</t>
             </list></t>
@@ -1499,14 +1499,13 @@ Content-Format: "application/dots+cbor"
           overlapping with each other or with 'target-prefix'.</t>
 
           <t>DOTS clients SHOULD minimize the number of active 'tsids' used
-          for baseline information. Typically, in order to avoid maintaining a
-          long list of 'tsids' for baseline information, it is RECOMMENDED
-          that DOTS clients include in a request to update information related
-          to a given target, the information of other targets (already
-          communicated using a lower 'tsid' value) (assuming this fits within
-          one single datagram). This update request will override these
-          existing requests and hence optimize the number of 'tsid' request
-          per DOTS client.</t>
+          for baseline information. In order to avoid maintaining a long list
+          of 'tsids' for baseline information, it is RECOMMENDED that DOTS
+          clients include in a request to update information related to a
+          given target, the information of other targets (already communicated
+          using a lower 'tsid' value) (assuming this fits within one single
+          datagram). This update request will override these existing requests
+          and hence optimize the number of 'tsid' request per DOTS client.</t>
 
           <t>If no target attribute is included in the request, this is an
           indication that the baseline information applies for the DOTS client
@@ -4436,7 +4435,7 @@ module ietf-dots-telemetry {
           description
             "The telemetry data per DOTS client.  The keys
              of the list are 'cuid' and 'tsid', but these keys are not
-             represented here behcause these keys are conveyed as 
+             represented here because these keys are conveyed as 
              mandatory Uri-Paths in requests.  Omitting keys
              is compliant with RFC8791.";
           choice direction {
@@ -4546,7 +4545,7 @@ module ietf-dots-telemetry {
           description
             "Pre-or-ongoing-mitigation telemetry per DOTS client. The keys
              of the list are 'cuid' and 'tmid', but these keys are not
-             represented here behcause these keys are conveyed as 
+             represented here because these keys are conveyed as 
              mandatory Uri-Paths in requests.  Omitting keys
              is compliant with RFC8791.";
           choice direction {
