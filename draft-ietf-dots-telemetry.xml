@@ -190,7 +190,7 @@
       attacks detection and mitigation are most certainly complicated and
       highly convoluted tasks. They demand a comprehensive knowledge of the
       attack attributes, the targeted normal behavior (including, normal
-      traffic patterns), as well as the attacker's on-going and past actions.
+      traffic patterns), as well as the attacker's ongoing and past actions.
       Even more challenging, retrieving all the analytics needed for detecting
       these attacks is not simple to obtain with the industry's current
       capabilities.</t>
@@ -1078,7 +1078,8 @@ Uri-Path: "tsid=123"
         target="RFC8345"></xref>.</t>
 
         <t>The unit used by a DOTS client when conveying pipe information is
-        captured in 'unit' attribute.</t>
+        captured in 'unit' attribute. The DOTS client MUST auto-scale so that
+        the appropriate unit is used.</t>
 
         <section title="Convey DOTS Client Domain Pipe Capacity">
           <t>Similar considerations to those specified in <xref
@@ -1343,8 +1344,10 @@ Content-Format: "application/dots+cbor"
             ('total-traffic-normal-per-port') baseline is represented for each
             port number bound to a target.<vspace blankLines="1" />If the DOTS
             client negotiated percentile values and units (<xref
-            target="tconfig"></xref>), these negotiated values will be used
-            instead of the default ones.</t>
+            target="tconfig"></xref>), these negotiated parameters will be
+            used instead of the default ones. For each used unit class, the
+            DOTS client MUST auto-scale so that the appropriate unit is
+            used.</t>
 
             <t hangText="Total connections capacity:">If the target is
             subjected to resource consuming DDoS attacks, the following

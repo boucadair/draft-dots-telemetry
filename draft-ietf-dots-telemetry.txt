@@ -203,7 +203,7 @@ Internet-Draft               DOTS Telemetry                December 2020
    attacks detection and mitigation are most certainly complicated and
    highly convoluted tasks.  They demand a comprehensive knowledge of
    the attack attributes, the targeted normal behavior (including,
-   normal traffic patterns), as well as the attacker's on-going and past
+   normal traffic patterns), as well as the attacker's ongoing and past
    actions.  Even more challenging, retrieving all the analytics needed
    for detecting these attacks is not simple to obtain with the
    industry's current capabilities.
@@ -1207,7 +1207,8 @@ Internet-Draft               DOTS Telemetry                December 2020
    Each of these links is identified with a 'link-id' [RFC8345].
 
    The unit used by a DOTS client when conveying pipe information is
-   captured in 'unit' attribute.
+   captured in 'unit' attribute.  The DOTS client MUST auto-scale so
+   that the appropriate unit is used.
 
 6.2.1.  Convey DOTS Client Domain Pipe Capacity
 
@@ -1225,7 +1226,6 @@ Internet-Draft               DOTS Telemetry                December 2020
    DOTS clients SHOULD minimize the number of active 'tsids' used for
    pipe information.  In order to avoid maintaining a long list of
    'tsids' for pipe information, it is RECOMMENDED that DOTS clients
-   include in any request to update information related to a given link
 
 
 
@@ -1234,6 +1234,7 @@ Boucadair, et al.         Expires June 11, 2021                [Page 22]
 Internet-Draft               DOTS Telemetry                December 2020
 
 
+   include in any request to update information related to a given link
    the information of other links (already communicated using a lower
    'tsid' value).  Doing so, this update request will override these
    existing requests and hence optimize the number of 'tsid' request per
@@ -1280,7 +1281,6 @@ Internet-Draft               DOTS Telemetry                December 2020
 
       Figure 11: Example of a PUT Request to Convey Pipe Information
                               (Single Homed)
-
 
 
 
@@ -1547,8 +1547,9 @@ Internet-Draft               DOTS Telemetry                December 2020
       target.
 
       If the DOTS client negotiated percentile values and units
-      (Section 6.1), these negotiated values will be used instead of the
-      default ones.
+      (Section 6.1), these negotiated parameters will be used instead of
+      the default ones.  For each used unit class, the DOTS client MUST
+      auto-scale so that the appropriate unit is used.
 
    Total connections capacity:  If the target is subjected to resource
       consuming DDoS attacks, the following optional attributes for the
@@ -1560,7 +1561,6 @@ Internet-Draft               DOTS Telemetry                December 2020
 
       *  The maximum number of simultaneous connections that are allowed
          to the target per client.
-
 
 
 
