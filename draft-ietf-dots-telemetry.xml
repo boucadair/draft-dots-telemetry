@@ -775,7 +775,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
        |  |     |  +-- mid-percentile?              percentile
        |  |     |  +-- high-percentile?             percentile
        |  |     |  +-- telemetry-notify-interval?   uint32
-       |  |     +-- supported-units
+       |  |     +-- supported-unit-classes
        |  |     |  +-- unit-config* [unit]
        |  |     |     +-- unit           unit-class
        |  |     |     +-- unit-status    boolean
@@ -3249,7 +3249,7 @@ module ietf-dots-telemetry {
     }
     description
       "Enumeration to indicate which unit class is used.
-       These types are supported: pps, bit/s, and Byte/s.";
+       These classes are supported: pps, bit/s, and Byte/s.";
   }
 
   typedef unit {
@@ -4414,9 +4414,9 @@ module ietf-dots-telemetry {
                    telemetry notifications.";
               }
             }
-            container supported-units {
+            container supported-unit-classes {
               description
-                "Supported units and default activation status.";
+                "Supported unit classes and default activation status.";
               uses unit-config;
             }
             leaf-list query-type {
@@ -4823,7 +4823,7 @@ module ietf-dots-mapping {
 | current-config       | container   |TBA50 | 5 map         | Object |
 | max-config-values    | container   |TBA51 | 5 map         | Object |
 | min-config-values    | container   |TBA52 | 5 map         | Object |
-| supported-units      | container   |TBA53 | 5 map         | Object |
+|supported-unit-classes| container   |TBA53 | 5 map         | Object |
 | server-originated-   | boolean     |TBA54 | 7 bits 20     | False  |
 |          telemetry   |             |      | 7 bits 21     | True   |
 | telemetry-notify-    | uint32      |TBA55 | 0 unsigned    | Number |
@@ -4961,7 +4961,7 @@ module ietf-dots-mapping {
    | current-config       | TBA50 |   5   |    IESG    |   [RFCXXXX]   |
    | max-config-value     | TBA51 |   5   |    IESG    |   [RFCXXXX]   |
    | min-config-values    | TBA52 |   5   |    IESG    |   [RFCXXXX]   |
-   | supported-units      | TBA55 |   5   |    IESG    |   [RFCXXXX]   |
+   |supported-unit-classes| TBA55 |   5   |    IESG    |   [RFCXXXX]   |
    | server-originated-   | TBA54 |   7   |    IESG    |   [RFCXXXX]   |
    |          telemetry   |       |       |            |               |
    | telemetry-notify-    | TBA55 |   0   |    IESG    |   [RFCXXXX]   |
