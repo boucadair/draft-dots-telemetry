@@ -5023,7 +5023,9 @@ module ietf-dots-mapping {
 
            Table 3: Registered DOTS Signal Channel CBOR Key Values
 ]]></artwork>
-          </figure></t>
+          </figure>Note that 'lower-type' and 'upper-type' are also requested
+        for assignment in the call-home I-D. Both I-Ds should be sync'ed as
+        depending the one that will make it first to the IANA. </t>
       </section>
 
       <section title="DOTS Signal Channel Conflict Cause Codes">

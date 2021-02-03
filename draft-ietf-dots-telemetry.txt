@@ -145,9 +145,9 @@ Internet-Draft               DOTS Telemetry                February 2021
      13.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 108
    14. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 109
    15. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 109
-   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 109
+   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 110
      16.1.  Normative References . . . . . . . . . . . . . . . . . . 110
-     16.2.  Informative References . . . . . . . . . . . . . . . . . 111
+     16.2.  Informative References . . . . . . . . . . . . . . . . . 112
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 113
 
 1.  Introduction
@@ -5917,18 +5917,18 @@ Internet-Draft               DOTS Telemetry                February 2021
 
            Table 3: Registered DOTS Signal Channel CBOR Key Values
 
+   Note that 'lower-type' and 'upper-type' are also requested for
+   assignment in the call-home I-D.  Both I-Ds should be sync'ed as
+   depending the one that will make it first to the IANA.
+
 12.2.  DOTS Signal Channel Conflict Cause Codes
 
    This specification requests IANA to assign a new code from the "DOTS
    Signal Channel Conflict Cause Codes" registry [Cause].
 
-    +------+-------------------+------------------------+-------------+
-    | Code | Label             |   Description          |  Reference  |
-    +======+===================+========================+=============+
-    | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
-    +------+-------------------+------------------------+-------------+
 
-       Table 4: Registered DOTS Signal Channel Conflict Cause Code
+
+
 
 
 
@@ -5937,6 +5937,14 @@ Boucadair, et al.        Expires August 7, 2021               [Page 106]
 
 Internet-Draft               DOTS Telemetry                February 2021
 
+
+    +------+-------------------+------------------------+-------------+
+    | Code | Label             |   Description          |  Reference  |
+    +======+===================+========================+=============+
+    | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
+    +------+-------------------+------------------------+-------------+
+
+       Table 4: Registered DOTS Signal Channel Conflict Cause Code
 
 12.3.  DOTS Signal Telemetry YANG Module
 
@@ -5978,14 +5986,6 @@ Internet-Draft               DOTS Telemetry                February 2021
 
    The DOTS telemetry information includes DOTS client network topology,
    DOTS client domain pipe capacity, normal traffic baseline and
-   connections capacity, and threat and mitigation information.  Such
-   information is sensitive; it MUST be protected at rest by the DOTS
-   server domain to prevent data leakage.
-
-   DOTS clients are typically trusted devices by the DOTS client domain.
-   DOTS clients may be co-located on network security services (e.g.,
-   firewall) and a compromised security service potentially can do a lot
-   more damage to the network.  This assumption differs from the often
 
 
 
@@ -5994,6 +5994,14 @@ Boucadair, et al.        Expires August 7, 2021               [Page 107]
 Internet-Draft               DOTS Telemetry                February 2021
 
 
+   connections capacity, and threat and mitigation information.  Such
+   information is sensitive; it MUST be protected at rest by the DOTS
+   server domain to prevent data leakage.
+
+   DOTS clients are typically trusted devices by the DOTS client domain.
+   DOTS clients may be co-located on network security services (e.g.,
+   firewall) and a compromised security service potentially can do a lot
+   more damage to the network.  This assumption differs from the often
    held view that devices are untrusted, often referred to as the "zero-
    trust model".  A compromised DOTS client can send fake DOTS telemetry
    data to a DOTS server to mislead the DOTS server.  This attack can be
@@ -6033,6 +6041,15 @@ Internet-Draft               DOTS Telemetry                February 2021
    security considerations that are specific to the DOTS data channel
    extension defined in this document.
 
+
+
+
+
+Boucadair, et al.        Expires August 7, 2021               [Page 108]
+
+Internet-Draft               DOTS Telemetry                February 2021
+
+
    All data nodes defined in the YANG module specified in Section 10.2
    which can be created, modified, and deleted (i.e., config true, which
    is the default) are considered sensitive.  Write operations to these
@@ -6042,13 +6059,6 @@ Internet-Draft               DOTS Telemetry                February 2021
    as discussed in [RFC8783].  Nevertheless, an attacker who can access
    a DOTS client is technically capable of undertaking various attacks,
    such as:
-
-
-
-Boucadair, et al.        Expires August 7, 2021               [Page 108]
-
-Internet-Draft               DOTS Telemetry                February 2021
-
 
    o  Communicating invalid attack mapping details to the server
       ('/data-channel:dots-data/data-channel:dots-client/dots-
@@ -6089,22 +6099,17 @@ Internet-Draft               DOTS Telemetry                February 2021
    Special thanks to Jon Shallow and Kaname Nishizuka for their
    implementation and interoperability work.
 
-   Many thanks to Jan Lindblad for the yangdoctors review and Nagendra
-   Nainar for the opsdir review.
-
-16.  References
-
-
-
-
-
-
 
 
 Boucadair, et al.        Expires August 7, 2021               [Page 109]
 
 Internet-Draft               DOTS Telemetry                February 2021
 
+
+   Many thanks to Jan Lindblad for the yangdoctors review and Nagendra
+   Nainar for the opsdir review.
+
+16.  References
 
 16.1.  Normative References
 
@@ -6148,11 +6153,6 @@ Internet-Draft               DOTS Telemetry                February 2021
               DOI 10.17487/RFC7252, June 2014,
               <https://www.rfc-editor.org/info/rfc7252>.
 
-   [RFC7641]  Hartke, K., "Observing Resources in the Constrained
-              Application Protocol (CoAP)", RFC 7641,
-              DOI 10.17487/RFC7641, September 2015,
-              <https://www.rfc-editor.org/info/rfc7641>.
-
 
 
 
@@ -6161,6 +6161,11 @@ Boucadair, et al.        Expires August 7, 2021               [Page 110]
 
 Internet-Draft               DOTS Telemetry                February 2021
 
+
+   [RFC7641]  Hartke, K., "Observing Resources in the Constrained
+              Application Protocol (CoAP)", RFC 7641,
+              DOI 10.17487/RFC7641, September 2015,
+              <https://www.rfc-editor.org/info/rfc7641>.
 
    [RFC7950]  Bjorklund, M., Ed., "The YANG 1.1 Data Modeling Language",
               RFC 7950, DOI 10.17487/RFC7950, August 2016,
@@ -6202,11 +6207,6 @@ Internet-Draft               DOTS Telemetry                February 2021
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/info/rfc8949>.
 
-16.2.  Informative References
-
-   [Cause]    IANA, "DOTS Signal Channel Conflict Cause Codes",
-              <https://www.iana.org/assignments/dots/dots.xhtml#dots-
-              signal-channel-conflict-cause-codes>.
 
 
 
@@ -6217,6 +6217,12 @@ Boucadair, et al.        Expires August 7, 2021               [Page 111]
 
 Internet-Draft               DOTS Telemetry                February 2021
 
+
+16.2.  Informative References
+
+   [Cause]    IANA, "DOTS Signal Channel Conflict Cause Codes",
+              <https://www.iana.org/assignments/dots/dots.xhtml#dots-
+              signal-channel-conflict-cause-codes>.
 
    [I-D.doron-dots-telemetry]
               Doron, E., Reddy, T., Andreasen, F., Xia, L., and K.
@@ -6260,12 +6266,6 @@ Internet-Draft               DOTS Telemetry                February 2021
               DOI 10.17487/RFC8525, March 2019,
               <https://www.rfc-editor.org/info/rfc8525>.
 
-   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
-              Threat Signaling (DOTS) Requirements", RFC 8612,
-              DOI 10.17487/RFC8612, May 2019,
-              <https://www.rfc-editor.org/info/rfc8612>.
-
-
 
 
 
@@ -6273,6 +6273,11 @@ Boucadair, et al.        Expires August 7, 2021               [Page 112]
 
 Internet-Draft               DOTS Telemetry                February 2021
 
+
+   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
+              Threat Signaling (DOTS) Requirements", RFC 8612,
+              DOI 10.17487/RFC8612, May 2019,
+              <https://www.rfc-editor.org/info/rfc8612>.
 
 Authors' Addresses
 
@@ -6315,11 +6320,6 @@ Authors' Addresses
    United Kingdom
 
    Email: supjps-ietf@jpshallow.com
-
-
-
-
-
 
 
 
