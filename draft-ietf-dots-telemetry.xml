@@ -566,7 +566,7 @@
         DOTS signal channel are mapped to CBOR types as specified in <xref
         target="map1"></xref>. As a reminder, Section 3 of <xref
         target="I-D.ietf-dots-rfc8782-bis"></xref> defines the rules for
-        mapping YANG-modeled data to CBOR. </t>
+        mapping YANG-modeled data to CBOR.</t>
 
         <t>The DOTS telemetry module (<xref target="module"></xref>) is not
         intended to be used via NETCONF/RESTCONF for DOTS server management
@@ -574,7 +574,7 @@
         following <xref target="RFC8791"></xref>. Server deviations are
         strongly discouraged as the peer DOTS agent does not have means to
         retrieve the list of deviations and that interoperability issues are
-        likely to be encountered. </t>
+        likely to be encountered.</t>
 
         <t>The DOTS telemetry module (<xref target="module"></xref>) uses
         "enumerations" rather than "identities" to define units, samples, and
@@ -592,7 +592,7 @@
         format="counter" target="conf"></xref> and <xref format="counter"
         target="pre-t"></xref>). Otherwise, whenever a key statement is used
         in the module, the same definition as in Section 7.8.2 of <xref
-        target="RFC7950"></xref> is assumed. </t>
+        target="RFC7950"></xref> is assumed.</t>
 
         <t>In order to optimize the data exchanged over the DOTS signal
         channel, the document specifies a second YANG module
@@ -601,7 +601,7 @@
         can be used during idle time to share the attack mapping details
         (<xref target="attackdetails"></xref>). DOTS clients can use tools,
         e.g., YANG Library <xref target="RFC8525"></xref>, to retrieve the
-        list of features and deviations supported by the DOTS server. </t>
+        list of features and deviations supported by the DOTS server.</t>
       </section>
 
       <section title="A Note About Examples">
@@ -2263,7 +2263,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           target="data"></xref> augments the "ietf-dots-data-channel" <xref
           target="RFC8783"></xref>. The tree structure of the
           "ietf-dots-mapping" module is shown in <xref
-          target="abstract-data"></xref>. </t>
+          target="abstract-data"></xref>.</t>
 
           <t><figure anchor="abstract-data"
               title="Vendor Attack Mapping Tree Structure">
@@ -2295,8 +2295,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           supported by a DOTS server as per Section 7.1 of <xref
           target="RFC8783"></xref>. This request is meant to assess whether
           the capability of sharing vendor attack mapping details is supported
-          by the server (i.e., check the value of 'vendor-mapping-enabled').
-          </t>
+          by the server (i.e., check the value of
+          'vendor-mapping-enabled').</t>
 
           <t>If 'vendor-mapping-enabled' is set to 'true', A DOTS client MAY
           send a GET request to retrieve the DOTS server's vendor attack
@@ -4856,8 +4856,8 @@ module ietf-dots-mapping {
 | total-connection-    |             |      |               |        |
 |  capacity-per-port   | list        |TBA71 | 4 array       | Array  |
 | total-traffic-       |             |      |               |        |
-|  -protocol           | list        |TBA72 | 4 array       | Array  |
-| total-traffic- port  | list        |TBA73 | 4 array       | Array  |
+|   protocol           | list        |TBA72 | 4 array       | Array  |
+| total-traffic-port  | list        |TBA73 | 4 array       | Array  |
 | total-attack-        |             |      |               |        |
 |  traffic-protocol    | list        |TBA74 | 4 array       | Array  |
 | total-attack-        |             |      |               |        |
@@ -4992,7 +4992,7 @@ module ietf-dots-mapping {
    | total-connection-    | TBA71 |   4   |    IESG    |   [RFCXXXX]   |
    |  capacity-per-port   |       |       |            |               |
    | total-traffic-       | TBA72 |   4   |    IESG    |   [RFCXXXX]   |
-   |  -protocol           |       |       |            |               |
+   |   protocol           |       |       |            |               |
    | total-traffic-port   | TBA73 |   4   |    IESG    |   [RFCXXXX]   |
    | total-attack-        | TBA74 |   4   |    IESG    |   [RFCXXXX]   |
    |  traffic-protocol    |       |       |            |               |
