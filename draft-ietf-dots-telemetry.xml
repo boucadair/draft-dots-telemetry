@@ -4857,7 +4857,7 @@ module ietf-dots-mapping {
 |  capacity-per-port   | list        |TBA71 | 4 array       | Array  |
 | total-traffic-       |             |      |               |        |
 |   protocol           | list        |TBA72 | 4 array       | Array  |
-| total-traffic-port  | list        |TBA73 | 4 array       | Array  |
+| total-traffic-port   | list        |TBA73 | 4 array       | Array  |
 | total-attack-        |             |      |               |        |
 |  traffic-protocol    | list        |TBA74 | 4 array       | Array  |
 | total-attack-        |             |      |               |        |
