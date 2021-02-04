@@ -4844,47 +4844,47 @@ module ietf-dots-mapping {
 | source-port-range    | list        |TBA62 | 4 array       | Array  |
 | source-icmp-type-    | list        |TBA63 | 4 array       | Array  |
 |    range             |             |      |               |        |
-| lower-type           | uint8       |TBA64 | 0 unsigned    | Number |
-| upper-type           | uint8       |TBA65 | 0 unsigned    | Number |
-| target               | container   |TBA66 | 5 map         | Object |   
-| capacity             | uint64      |TBA67 | 0 unsigned    | String |
-| protocol             | uint8       |TBA68 | 0 unsigned    | Number |
+| target               | container   |TBA64 | 5 map         | Object |   
+| capacity             | uint64      |TBA65 | 0 unsigned    | String |
+| protocol             | uint8       |TBA66 | 0 unsigned    | Number |
 | total-traffic-       |             |      |               |        |
-|  normal-per-protocol | list        |TBA69 | 4 array       | Array  |
+|  normal-per-protocol | list        |TBA67 | 4 array       | Array  |
 | total-traffic-       |             |      |               |        |
-|  normal-per-port     | list        |TBA70 | 4 array       | Array  |
+|  normal-per-port     | list        |TBA68 | 4 array       | Array  |
 | total-connection-    |             |      |               |        |
-|  capacity-per-port   | list        |TBA71 | 4 array       | Array  |
+|  capacity-per-port   | list        |TBA69 | 4 array       | Array  |
 | total-traffic-       |             |      |               |        |
-|   protocol           | list        |TBA72 | 4 array       | Array  |
-| total-traffic-port   | list        |TBA73 | 4 array       | Array  |
+|   protocol           | list        |TBA70 | 4 array       | Array  |
+| total-traffic-port   | list        |TBA71 | 4 array       | Array  |
 | total-attack-        |             |      |               |        |
-|  traffic-protocol    | list        |TBA74 | 4 array       | Array  |
+|  traffic-protocol    | list        |TBA72 | 4 array       | Array  |
 | total-attack-        |             |      |               |        |
-|  traffic-port        | list        |TBA75 | 4 array       | Array  |
+|  traffic-port        | list        |TBA73 | 4 array       | Array  |
 | total-attack-        |             |      |               |        |
-|  connection-port     | list        |TBA76 | 4 array       | Array  |
+|  connection-port     | list        |TBA74 | 4 array       | Array  |
 | port                 | inet:       |      |               |        |
-|                      |  port-number|TBA77 | 0 unsigned    | Number |
-| query-type           | leaf-list   |TBA78 | 4 array       | Array  |
+|                      |  port-number|TBA75 | 0 unsigned    | Number |
+| query-type           | leaf-list   |TBA76 | 4 array       | Array  |
 |                      |             |      | 0 unsigned    | String |
-| vendor-id            | uint32      |TBA79 | 0 unsigned    | Number |
+| vendor-id            | uint32      |TBA77 | 0 unsigned    | Number |
 | ietf-dots-telemetry: |             |      |               |        |
-|      telemetry-setup | container   |TBA80 | 5 map         | Object |
+|      telemetry-setup | container   |TBA78 | 5 map         | Object |
 | ietf-dots-telemetry: |             |      |               |        |
-|   total-traffic      | list        |TBA81 | 4 array       | Array  |
+|   total-traffic      | list        |TBA79 | 4 array       | Array  |
 | ietf-dots-telemetry: |             |      |               |        |
-| total-attack-traffic | list        |TBA82 | 4 array       | Array  |
+| total-attack-traffic | list        |TBA80 | 4 array       | Array  |
 | ietf-dots-telemetry: |             |      |               |        |
 |    total-attack-     |             |      |               |        |
-|        connection    | container   |TBA83 | 5 map         | Object |
+|        connection    | container   |TBA81 | 5 map         | Object |
 | ietf-dots-telemetry: |             |      |               |        |
-|    attack-detail     | list        |TBA84 | 4 array       | Array  |
+|    attack-detail     | list        |TBA82 | 4 array       | Array  |
 | ietf-dots-telemetry: |             |      |               |        |
-|         telemetry    | container   |TBA85 | 5 map         | Object |
-| current-g            | yang:gauge64|TBA86 | 0 unsigned    | String |
-| current-l            | list        |TBA87 | 4 array       | Array  |
-| current-c            | container   |TBA88 | 5 map         | Object |
+|         telemetry    | container   |TBA83 | 5 map         | Object |
+| current-g            | yang:gauge64|TBA84 | 0 unsigned    | String |
+| current-l            | list        |TBA85 | 4 array       | Array  |
+| current-c            | container   |TBA86 | 5 map         | Object |
+| lower-type           | uint8       |TBA87 | 0 unsigned    | Number |
+| upper-type           | uint8       |TBA88 | 0 unsigned    | Number |
 +----------------------+-------------+------+---------------+--------+ 
 
                Table 2: YANG/JSON Mapping Parameters to CBOR 
@@ -4980,52 +4980,52 @@ module ietf-dots-mapping {
    | source-port-range    | TBA62 |   4   |    IESG    |   [RFCXXXX]   |
    | source-icmp-type-    | TBA63 |   4   |    IESG    |   [RFCXXXX]   |
    |           range      |       |       |            |               |
-   | lower-type           | TBA64 |   0   |    IESG    |   [RFCXXXX]   |
-   | upper-type           | TBA65 |   0   |    IESG    |   [RFCXXXX]   |
-   | target               | TBA66 |   5   |    IESG    |   [RFCXXXX]   |
-   | capacity             | TBA67 |   0   |    IESG    |   [RFCXXXX]   |
-   | protocol             | TBA68 |   0   |    IESG    |   [RFCXXXX]   |
-   | total-traffic-       | TBA69 |   4   |    IESG    |   [RFCXXXX]   |
+   | target               | TBA64 |   5   |    IESG    |   [RFCXXXX]   |
+   | capacity             | TBA65 |   0   |    IESG    |   [RFCXXXX]   |
+   | protocol             | TBA66 |   0   |    IESG    |   [RFCXXXX]   |
+   | total-traffic-       | TBA67 |   4   |    IESG    |   [RFCXXXX]   |
    |  normal-per-protocol |       |       |            |               |
-   | total-traffic-       | TBA70 |   4   |    IESG    |   [RFCXXXX]   |
+   | total-traffic-       | TBA68 |   4   |    IESG    |   [RFCXXXX]   |
    |  normal-per-port     |       |       |            |               |
-   | total-connection-    | TBA71 |   4   |    IESG    |   [RFCXXXX]   |
+   | total-connection-    | TBA69 |   4   |    IESG    |   [RFCXXXX]   |
    |  capacity-per-port   |       |       |            |               |
-   | total-traffic-       | TBA72 |   4   |    IESG    |   [RFCXXXX]   |
+   | total-traffic-       | TBA70 |   4   |    IESG    |   [RFCXXXX]   |
    |   protocol           |       |       |            |               |
-   | total-traffic-port   | TBA73 |   4   |    IESG    |   [RFCXXXX]   |
-   | total-attack-        | TBA74 |   4   |    IESG    |   [RFCXXXX]   |
+   | total-traffic-port   | TBA71 |   4   |    IESG    |   [RFCXXXX]   |
+   | total-attack-        | TBA72 |   4   |    IESG    |   [RFCXXXX]   |
    |  traffic-protocol    |       |       |            |               |
-   | total-attack-        | TBA75 |   4   |    IESG    |   [RFCXXXX]   |
+   | total-attack-        | TBA73 |   4   |    IESG    |   [RFCXXXX]   |
    |  traffic-port        |       |       |            |               |
-   | total-attack-        | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
+   | total-attack-        | TBA74 |   4   |    IESG    |   [RFCXXXX]   |
    |  connection-port     |       |       |            |               |
-   | port                 | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
-   | query-type           | TBA78 |   4   |    IESG    |   [RFCXXXX]   |
-   | vendor-id            | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
-   | ietf-dots-telemetry: | TBA80 |   5   |    IESG    |   [RFCXXXX]   |
+   | port                 | TBA75 |   0   |    IESG    |   [RFCXXXX]   |
+   | query-type           | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
+   | vendor-id            | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA78 |   5   |    IESG    |   [RFCXXXX]   |
    |   telemetry-setup    |       |       |            |               |
-   | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
    |   total-traffic      |       |       |            |               |
-   | ietf-dots-telemetry: | TBA82 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA80 |   0   |    IESG    |   [RFCXXXX]   |
    | total-attack-traffic |       |       |            |               |
-   | ietf-dots-telemetry: | TBA83 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
    | total-attack-        |       |       |            |               |
    |        connection    |       |       |            |               |
-   | ietf-dots-telemetry: | TBA84 |   4   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA82 |   4   |    IESG    |   [RFCXXXX]   |
    |     attack-detail    |       |       |            |               |
-   | ietf-dots-telemetry: | TBA85 |   5   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA83 |   5   |    IESG    |   [RFCXXXX]   |
    |        telemetry     |       |       |            |               |
-   | current-g            | TBA86 |   0   |    IESG    |   [RFCXXXX]   |
-   | current-l            | TBA87 |   4   |    IESG    |   [RFCXXXX]   |
-   | current-c            | TBA88 |   5   |    IESG    |   [RFCXXXX]   |
+   | current-g            | TBA84 |   0   |    IESG    |   [RFCXXXX]   |
+   | current-l            | TBA85 |   4   |    IESG    |   [RFCXXXX]   |
+   | current-c            | TBA86 |   5   |    IESG    |   [RFCXXXX]   |
+   | lower-type           | TBA87 |   0   |    IESG    |   [RFCXXXX]   |
+   | upper-type           | TBA88 |   0   |    IESG    |   [RFCXXXX]   |
    +----------------------+-------+-------+------------+---------------+
 
            Table 3: Registered DOTS Signal Channel CBOR Key Values
 ]]></artwork>
           </figure>Note that 'lower-type' and 'upper-type' are also requested
         for assignment in the call-home I-D. Both I-Ds should be sync'ed as
-        depending the one that will make it first to the IANA. </t>
+        depending the one that will make it first to the IANA.</t>
       </section>
 
       <section title="DOTS Signal Channel Conflict Cause Codes">
