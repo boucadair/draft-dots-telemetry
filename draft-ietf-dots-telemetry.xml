@@ -4984,11 +4984,11 @@ module ietf-dots-mapping {
    | mid-percentile-c     | TBA46 |   5   |    IESG    |   [RFCXXXX]   |
    | high-percentile-c    | TBA47 |   5   |    IESG    |   [RFCXXXX]   |
    | peak-c               | TBA48 |   5   |    IESG    |   [RFCXXXX]   |
-   | ietf-dots-signal-cha | TBA49 |   5   |    IESG    |   [RFCXXXX]   |
+   | baseline             | TBA49 |   5   |    IESG    |   [RFCXXXX]   |
    | current-config       | TBA50 |   5   |    IESG    |   [RFCXXXX]   |
    | max-config-value     | TBA51 |   5   |    IESG    |   [RFCXXXX]   |
    | min-config-values    | TBA52 |   5   |    IESG    |   [RFCXXXX]   |
-   |supported-unit-classes| TBA55 |   5   |    IESG    |   [RFCXXXX]   |
+   |supported-unit-classes| TBA53 |   5   |    IESG    |   [RFCXXXX]   |
    | server-originated-   | TBA54 |   7   |    IESG    |   [RFCXXXX]   |
    |          telemetry   |       |       |            |               |
    | telemetry-notify-    | TBA55 |   0   |    IESG    |   [RFCXXXX]   |
@@ -4996,8 +4996,8 @@ module ietf-dots-mapping {
    | tmid                 | TBA56 |   0   |    IESG    |   [RFCXXXX]   |
    | measurement-interval | TBA57 |   0   |    IESG    |   [RFCXXXX]   |
    | measurement-sample   | TBA58 |   0   |    IESG    |   [RFCXXXX]   |
-   | talker               | TBA59 |   0   |    IESG    |   [RFCXXXX]   |
-   | source-prefix        | TBA60 |   0   |    IESG    |   [RFCXXXX]   |
+   | talker               | TBA59 |   4   |    IESG    |   [RFCXXXX]   |
+   | source-prefix        | TBA60 |   3   |    IESG    |   [RFCXXXX]   |
    | mid-list             | TBA61 |   4   |    IESG    |   [RFCXXXX]   |
    | source-port-range    | TBA62 |   4   |    IESG    |   [RFCXXXX]   |
    | source-icmp-type-    | TBA63 |   4   |    IESG    |   [RFCXXXX]   |
@@ -5025,11 +5025,11 @@ module ietf-dots-mapping {
    | vendor-id            | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-telemetry: | TBA78 |   5   |    IESG    |   [RFCXXXX]   |
    |   telemetry-setup    |       |       |            |               |
-   | ietf-dots-telemetry: | TBA79 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA79 |   4   |    IESG    |   [RFCXXXX]   |
    |   total-traffic      |       |       |            |               |
-   | ietf-dots-telemetry: | TBA80 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA80 |   4   |    IESG    |   [RFCXXXX]   |
    | total-attack-traffic |       |       |            |               |
-   | ietf-dots-telemetry: | TBA81 |   0   |    IESG    |   [RFCXXXX]   |
+   | ietf-dots-telemetry: | TBA81 |   5   |    IESG    |   [RFCXXXX]   |
    | total-attack-        |       |       |            |               |
    |        connection    |       |       |            |               |
    | ietf-dots-telemetry: | TBA82 |   4   |    IESG    |   [RFCXXXX]   |
