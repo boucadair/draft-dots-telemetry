@@ -4314,7 +4314,7 @@ module ietf-dots-telemetry {
     }
     container total-attack-connection-port {
       description
-        "Total attack connections per target port.";
+        "Total attack connections per target port number.";
       uses connection-protocol-port-all;
     }
     list attack-detail {
