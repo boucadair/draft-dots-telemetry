@@ -531,7 +531,8 @@
         and Block2 Options, but enable robust transmissions of big blocks of
         data with less packet interchanges using NON messages, are defined in
         <xref target="I-D.ietf-core-new-block"></xref>. DOTS implementations
-        can consider the use of Q-Block1 and Q-Block2 Options.</t>
+        can consider the use of Q-Block1 and Q-Block2 Options <xref
+        target="I-D.ietf-dots-robust-blocks"></xref>.</t>
       </section>
 
       <section title="DOTS Multi-homing Considerations">
@@ -1092,9 +1093,9 @@ Uri-Path: "tsid=123"
               MUST be automatically deleted and no longer be available.</t>
             </list></t>
 
-          <t>DOTS clients SHOULD minimize the number of active 'tsids' used
+          <t>DOTS clients SHOULD minimize the number of active 'tsid's used
           for pipe information. In order to avoid maintaining a long list of
-          'tsids' for pipe information, it is RECOMMENDED that DOTS clients
+          'tsid's for pipe information, it is RECOMMENDED that DOTS clients
           include in any request to update information related to a given link
           the information of other links (already communicated using a lower
           'tsid' value). Doing so, this update request will override these
@@ -1506,9 +1507,9 @@ Content-Format: "application/dots+cbor"
           if the addresses associated with the FQDN, URI, or alias are
           overlapping with each other or with 'target-prefix'.</t>
 
-          <t>DOTS clients SHOULD minimize the number of active 'tsids' used
+          <t>DOTS clients SHOULD minimize the number of active 'tsid's used
           for baseline information. In order to avoid maintaining a long list
-          of 'tsids' for baseline information, it is RECOMMENDED that DOTS
+          of 'tsid's for baseline information, it is RECOMMENDED that DOTS
           clients include in a request to update information related to a
           given target, the information of other targets (already communicated
           using a lower 'tsid' value) (assuming this fits within one single
@@ -2533,12 +2534,12 @@ Content-Format: "application/dots+cbor"
         the DOTS server as a function of the updates received from the peer
         DOTS client.</t>
 
-        <t>A DOTS client that lost the state of its active 'tmids' or has to
+        <t>A DOTS client that lost the state of its active 'tmid's or has to
         set 'tmid' back to zero (e.g., crash or restart) MUST send a GET
         request to the DOTS server to retrieve the list of active 'tmid'
         values. The DOTS client may then delete 'tmid's that should not be
         active anymore (<xref target="spa"></xref>). Sending a DELETE with no
-        'tmid' indicates that all 'tmids' must be deactivated (<xref
+        'tmid' indicates that all 'tmid's must be deactivated (<xref
         target="dpa"></xref>).</t>
 
         <t><figure anchor="spa"
@@ -2704,7 +2705,7 @@ Observe: 0]]></artwork>
         <t>An example of a request to subscribe to asynchronous telemetry
         notifications regarding UDP traffic is shown in <xref
         target="notif_filter-tm"></xref>. This filter will be applied for all
-        'tmids'.</t>
+        'tmid's.</t>
 
         <t><figure anchor="notif_filter-tm"
             title="GET Request to Receive Telemetry Asynchronous Notifications Filtered using Uri-Query">
@@ -5281,6 +5282,8 @@ module ietf-dots-mapping {
       <?rfc include='reference.RFC.4960'?>
 
       <?rfc include='reference.I-D.ietf-core-new-block'?>
+
+      <?rfc include='reference.I-D.ietf-dots-robust-blocks'?>
 
       <reference anchor="Key-Map"
                  target="https://www.iana.org/assignments/dots/dots.xhtml#dots-signal-channel-cbor-key-values">

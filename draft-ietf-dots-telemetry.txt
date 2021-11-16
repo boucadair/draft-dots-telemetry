@@ -598,7 +598,7 @@ Internet-Draft               DOTS Telemetry                November 2021
    Block2 Options, but enable robust transmissions of big blocks of data
    with less packet interchanges using NON messages, are defined in
    [I-D.ietf-core-new-block].  DOTS implementations can consider the use
-   of Q-Block1 and Q-Block2 Options.
+   of Q-Block1 and Q-Block2 Options [I-D.ietf-dots-robust-blocks].
 
 4.4.  DOTS Multi-homing Considerations
 
@@ -1223,9 +1223,9 @@ Internet-Draft               DOTS Telemetry                November 2021
       numeric 'tsid' value.  The overlapped lower numeric 'tsid' MUST be
       automatically deleted and no longer be available.
 
-   DOTS clients SHOULD minimize the number of active 'tsids' used for
+   DOTS clients SHOULD minimize the number of active 'tsid's used for
    pipe information.  In order to avoid maintaining a long list of
-   'tsids' for pipe information, it is RECOMMENDED that DOTS clients
+   'tsid's for pipe information, it is RECOMMENDED that DOTS clients
 
 
 
@@ -1738,9 +1738,9 @@ Boucadair, et al.         Expires May 20, 2022                 [Page 31]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-   DOTS clients SHOULD minimize the number of active 'tsids' used for
+   DOTS clients SHOULD minimize the number of active 'tsid's used for
    baseline information.  In order to avoid maintaining a long list of
-   'tsids' for baseline information, it is RECOMMENDED that DOTS clients
+   'tsid's for baseline information, it is RECOMMENDED that DOTS clients
    include in a request to update information related to a given target,
    the information of other targets (already communicated using a lower
    'tsid' value) (assuming this fits within one single datagram).  This
@@ -3060,12 +3060,12 @@ Internet-Draft               DOTS Telemetry                November 2021
    DOTS server as a function of the updates received from the peer DOTS
    client.
 
-   A DOTS client that lost the state of its active 'tmids' or has to set
+   A DOTS client that lost the state of its active 'tmid's or has to set
    'tmid' back to zero (e.g., crash or restart) MUST send a GET request
    to the DOTS server to retrieve the list of active 'tmid' values.  The
    DOTS client may then delete 'tmid's that should not be active anymore
    (Figure 37).  Sending a DELETE with no 'tmid' indicates that all
-   'tmids' must be deactivated (Figure 38).
+   'tmid's must be deactivated (Figure 38).
 
 
 
@@ -3266,7 +3266,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    An example of a request to subscribe to asynchronous telemetry
    notifications regarding UDP traffic is shown in Figure 42.  This
-   filter will be applied for all 'tmids'.
+   filter will be applied for all 'tmid's.
 
    Header: GET (Code=0.01)
    Uri-Path: ".well-known"
@@ -6292,6 +6292,13 @@ Internet-Draft               DOTS Telemetry                November 2021
               Service Open Threat Signaling (DOTS)", draft-ietf-dots-
               multihoming-08 (work in progress), October 2021.
 
+   [I-D.ietf-dots-robust-blocks]
+              Boucadair, M. and J. Shallow, "Distributed Denial-of-
+              Service Open Threat Signaling (DOTS) Signal Channel
+              Configuration Attributes for Robust Block Transmission",
+              draft-ietf-dots-robust-blocks-00 (work in progress),
+              August 2021.
+
    [Key-Map]  IANA, "DOTS Signal Channel CBOR Key Values",
               <https://www.iana.org/assignments/dots/dots.xhtml#dots-
               signal-channel-cbor-key-values>.
@@ -6314,13 +6321,6 @@ Internet-Draft               DOTS Telemetry                November 2021
               DOI 10.17487/RFC8525, March 2019,
               <https://www.rfc-editor.org/info/rfc8525>.
 
-   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
-              Threat Signaling (DOTS) Requirements", RFC 8612,
-              DOI 10.17487/RFC8612, May 2019,
-              <https://www.rfc-editor.org/info/rfc8612>.
-
-
-
 
 
 
@@ -6329,6 +6329,11 @@ Boucadair, et al.         Expires May 20, 2022                [Page 113]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
+              Threat Signaling (DOTS) Requirements", RFC 8612,
+              DOI 10.17487/RFC8612, May 2019,
+              <https://www.rfc-editor.org/info/rfc8612>.
 
    [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
               L., and K. Nishizuka, "Use Cases for DDoS Open Threat
@@ -6372,6 +6377,15 @@ Authors' Addresses
    Email: chenmeiling@chinamobile.com
 
 
+
+
+
+
+Boucadair, et al.         Expires May 20, 2022                [Page 114]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
    Jon Shallow
    United Kingdom
 
@@ -6381,4 +6395,46 @@ Authors' Addresses
 
 
 
-Boucadair, et al.         Expires May 20, 2022                [Page 114]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires May 20, 2022                [Page 115]
