@@ -4533,7 +4533,7 @@ module ietf-dots-telemetry {
                   type unit;
                   description
                     "The traffic can be measured using unit classes: 
-                     packets per second (pps), bits per Second (bit/s), 
+                     packets per second (pps), bits per second (bit/s), 
                      and/or bytes per second (Byte/s). 
 
                      For a given unit class, the DOTS agents auto-scales 
