@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-15" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-16" ipr="trust200902">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -180,20 +180,20 @@
       attacks. These attacks are assembled from dynamic attack vectors
       (Network/Application) and tactics. As such, multiple attack vectors
       formed by multiple attack types and volumes are launched simultaneously
-      towards a victim. Multi-vector attacks are harder to detect and defend against.
-      Multiple and simultaneous mitigation techniques are needed to defeat
-      such attack campaigns. It is also common for attackers to change attack
-      vectors right after a successful mitigation, burdening their opponents
-      with changing their defense methods.</t>
+      towards a victim. Multi-vector attacks are harder to detect and defend
+      against. Multiple and simultaneous mitigation techniques are needed to
+      defeat such attack campaigns. It is also common for attackers to change
+      attack vectors right after a successful mitigation, burdening their
+      opponents with changing their defense methods.</t>
 
       <t>The conclusion derived from these real scenarios is that modern
       attacks detection and mitigation are most certainly complicated and
       highly convoluted tasks. They demand a comprehensive knowledge of the
-      attack attributes, the normal behavior of the targeted systems (including normal
-      traffic patterns), as well as the attacker's ongoing and past actions.
-      Even more challenging, retrieving all the analytics needed for detecting
-      these attacks is not simple with the industry's current reporting
-      capabilities.</t>
+      attack attributes, the normal behavior of the targeted systems
+      (including normal traffic patterns), as well as the attacker's ongoing
+      and past actions. Even more challenging, retrieving all the analytics
+      needed for detecting these attacks is not simple with the industry's
+      current reporting capabilities.</t>
 
       <t>The DOTS signal channel protocol <xref target="RFC9132"></xref> is
       used to carry information about a network resource or a network (or a
@@ -205,19 +205,19 @@
       <t>DOTS clients can be integrated within a DDoS attack detector, or
       network and security elements that have been actively engaged with
       ongoing attacks. The DOTS client mitigation environment determines that
-      it is no longer possible or practical for it to handle these attacks itself.
-      This can be due to a lack of resources or security capabilities, as
-      derived from the complexities and the intensity of these attacks. In
+      it is no longer possible or practical for it to handle these attacks
+      itself. This can be due to a lack of resources or security capabilities,
+      as derived from the complexities and the intensity of these attacks. In
       this circumstance, the DOTS client has invaluable knowledge about the
       actual attacks that need to be handled by its DOTS server(s). By
       enabling the DOTS client to share this comprehensive knowledge of an
       ongoing attack under specific circumstances, the DOTS server can
       drastically increase its ability to accomplish successful mitigation.
       While the attack is being handled by the mitigation resources associated
-      with the DOTS server, the DOTS server has knowledge about the
-      ongoing attack mitigation. The DOTS server can share this information
-      with the DOTS client so that the client can better assess and evaluate
-      the actual mitigation realized.</t>
+      with the DOTS server, the DOTS server has knowledge about the ongoing
+      attack mitigation. The DOTS server can share this information with the
+      DOTS client so that the client can better assess and evaluate the actual
+      mitigation realized.</t>
 
       <t>DOTS clients can send mitigation hints derived from attack details to
       DOTS servers, with the full understanding that the DOTS server may
@@ -236,8 +236,8 @@
       attributes are not mandatory attributes of the DOTS signal channel
       protocol <xref target="RFC9132"></xref>. Nevertheless, when DOTS
       telemetry attributes are available to a DOTS agent, and absent any
-      limitation by policy, it can signal the attributes in order to optimize the overall
-      mitigation service provisioned using DOTS.</t>
+      limitation by policy, it can signal the attributes in order to optimize
+      the overall mitigation service provisioned using DOTS.</t>
     </section>
 
     <section anchor="notation" title="Terminology">
@@ -276,9 +276,9 @@
       <t>Timely and effective signaling of up-to-date DDoS telemetry to all
       elements involved in the mitigation process is essential and improves
       the overall DDoS mitigation service effectiveness. Bi-directional
-      feedback between DOTS agents is required for increased awareness by
-      each party of the attack and mitigation efforts, supporting a superior
-      and highly efficient attack mitigation service.</t>
+      feedback between DOTS agents is required for increased awareness by each
+      party of the attack and mitigation efforts, supporting a superior and
+      highly efficient attack mitigation service.</t>
 
       <section title="Need More Visibility">
         <t>When signaling a mitigation request, it is most certainly
@@ -289,8 +289,8 @@
 
         <t>If attacks are already detected and categorized within a DOTS
         client domain, the DOTS server, and its associated mitigation
-        services, can proactively benefit from this information and optimize the
-        overall service delivery. It is important to note that DOTS client
+        services, can proactively benefit from this information and optimize
+        the overall service delivery. It is important to note that DOTS client
         domains' and DOTS server domains' detection and mitigation approaches
         can be different, and can potentially result in different results and
         attack classifications. The DDoS mitigation service treats the ongoing
@@ -298,17 +298,16 @@
         completely rely or trust the attack details conveyed by DOTS
         clients.</t>
 
-        <t>In addition to the DOTS server directly using telemetry data
-        as operational hints, the DOTS server security operation team also
-        benefits from telemetry data.  A basic requirement of security operation
-        teams is to be aware of and
-        get visibility into the attacks they need to handle. This holds
-        especially for the case of ongoing attacks, where DOTS telemetry
-        provides data about the current attack status.  Even if some mitigation can be
-        automated, operational teams can use the DOTS telemetry information
-        to be prepared
-        for attack mitigation and to assign the correct resources (operation
-        staff, networking and mitigation) for the specific service. Similarly,
+        <t>In addition to the DOTS server directly using telemetry data as
+        operational hints, the DOTS server security operation team also
+        benefits from telemetry data. A basic requirement of security
+        operation teams is to be aware of and get visibility into the attacks
+        they need to handle. This holds especially for the case of ongoing
+        attacks, where DOTS telemetry provides data about the current attack
+        status. Even if some mitigation can be automated, operational teams
+        can use the DOTS telemetry information to be prepared for attack
+        mitigation and to assign the correct resources (operation staff,
+        networking and mitigation) for the specific service. Similarly,
         security operations personnel at the DOTS client side ask for feedback
         about their requests for protection. Therefore, it is valuable for
         DOTS servers to share DOTS telemetry with DOTS clients.</t>
@@ -317,13 +316,13 @@
         mitigation loop" between DOTS clients and servers. For the server side
         team, it is important to confirm that the same attacks that the DOTS
         server's mitigation resources are seeing are those that a DOTS client
-        is asking for mitigation of. For the DOTS client side team, it is important
-        to realize that the DOTS clients receive the required service. For
-        example, understanding that "I asked for mitigation of two attacks and
-        my DOTS server detects and mitigates only one of them". Cases of
-        inconsistency in attack classification between DOTS clients and
-        servers can be highlighted, and maybe handled, using the DOTS
-        telemetry attributes.</t>
+        is asking for mitigation of. For the DOTS client side team, it is
+        important to realize that the DOTS clients receive the required
+        service. For example, understanding that "I asked for mitigation of
+        two attacks and my DOTS server detects and mitigates only one of
+        them". Cases of inconsistency in attack classification between DOTS
+        clients and servers can be highlighted, and maybe handled, using the
+        DOTS telemetry attributes.</t>
 
         <t>In addition, management and orchestration systems, at both DOTS
         client and server sides, can use DOTS telemetry as a feedback to
@@ -344,15 +343,15 @@
         (that is, cases when all or specific parts of traffic cross a
         predefined threshold for a certain period of time is considered as an
         attack) to an "anomaly detection" approach. For the latter, it is
-        required to maintain rigorous learning of "normal" behavior, and
-        an "anomaly" (or an attack) is identified and categorized based on the
+        required to maintain rigorous learning of "normal" behavior, and an
+        "anomaly" (or an attack) is identified and categorized based on the
         knowledge about the normal behavior and a deviation from this normal
         behavior. Machine learning approaches are used such that the actual
         traffic thresholds are automatically calculated by learning the
-        protected entity's normal traffic behavior during idle time. The normal
-        traffic characterization learned is referred to as the "normal traffic
-        baseline". An attack is detected when the victim's actual traffic is
-        deviating from this normal baseline pattern.</t>
+        protected entity's normal traffic behavior during idle time. The
+        normal traffic characterization learned is referred to as the "normal
+        traffic baseline". An attack is detected when the victim's actual
+        traffic is deviating from this normal baseline pattern.</t>
 
         <t>In addition, subsequent activities toward mitigating an attack are
         much more challenging. The ability to distinguish legitimate traffic
@@ -375,14 +374,14 @@
 
         <t>If the DOTS client has calculated the normal baseline of its
         protected entities, signaling such information to the DOTS server
-        along with the attack traffic levels provides value. The
-        DOTS server benefits from this telemetry by tuning its mitigation
-        resources with the DOTS client's normal baseline. The DOTS server
-        mitigators use the baseline to familiarize themselves with the attack
-        victim's normal behavior and target the baseline as the level of
-        normality they need to achieve. Fed with this information, the overall
-        mitigation performances is expected to be improved in terms of time to
-        mitigate, accuracy, and false-negative and false-positive rates.</t>
+        along with the attack traffic levels provides value. The DOTS server
+        benefits from this telemetry by tuning its mitigation resources with
+        the DOTS client's normal baseline. The DOTS server mitigators use the
+        baseline to familiarize themselves with the attack victim's normal
+        behavior and target the baseline as the level of normality they need
+        to achieve. Fed with this information, the overall mitigation
+        performances is expected to be improved in terms of time to mitigate,
+        accuracy, and false-negative and false-positive rates.</t>
 
         <t>Mitigation of attacks without having certain knowledge of normal
         traffic can be inaccurate at best. This is especially true for
@@ -407,10 +406,9 @@
         <t>Of course, this information can provided using out-of-band
         mechanisms or manual configuration at the risk of unmaintained
         information becoming inaccurate as the network evolves and "normal"
-        patterns change. The use of a dynamic and collaborative means
-        between the DOTS client and server to identify and share key
-        parameters for the sake of efficient DDoS protection is
-        valuable.</t>
+        patterns change. The use of a dynamic and collaborative means between
+        the DOTS client and server to identify and share key parameters for
+        the sake of efficient DDoS protection is valuable.</t>
       </section>
 
       <section title="Efficient Mitigation">
@@ -419,10 +417,9 @@
         upstream so that DOTS client pipes return to a reasonable load level
         (normal pattern, ideally). At this point, it is essential to ensure
         that the mitigator does not overwhelm the DOTS client pipes by sending
-        back large volumes of
-        "clean traffic", or what it believes is "clean". This can happen
-        when the mitigator has not managed to detect and mitigate all the
-        attacks launched towards the DOTS client domain.</t>
+        back large volumes of "clean traffic", or what it believes is "clean".
+        This can happen when the mitigator has not managed to detect and
+        mitigate all the attacks launched towards the DOTS client domain.</t>
 
         <t>In this case, it can be valuable to DOTS clients to signal to DOTS
         servers the total pipe capacity, which is the level of traffic the
@@ -602,8 +599,8 @@
         can be used during idle time to share the attack mapping details
         (<xref target="attackdetails"></xref>). DOTS clients can use tools,
         e.g., YANG Library <xref target="RFC8525"></xref>, to retrieve the
-        list of features and deviations supported by the DOTS server over
-        the data channel.</t>
+        list of features and deviations supported by the DOTS server over the
+        data channel.</t>
       </section>
 
       <section title="A Note About Examples">
@@ -724,9 +721,8 @@
           <t>A GET request is used to obtain acceptable and current telemetry
           configuration parameters on the DOTS server. This request may
           include a 'cdid' Uri-Path when the request is relayed by a DOTS
-          gateway. An example of such a GET request (without gateway)
-          is depicted in <xref
-          target="GETa"></xref>.</t>
+          gateway. An example of such a GET request (without gateway) is
+          depicted in <xref target="GETa"></xref>.</t>
 
           <t><figure anchor="GETa"
               title="GET to Retrieve Current and Acceptable DOTS Telemetry Configuration ">
@@ -752,8 +748,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
           target="premStoC"></xref>) sets 'server-originated-telemetry' under
           'max-config-values' to 'true' ('false' is used otherwise). If
           'server-originated-telemetry' is not present in a response, this is
-          equivalent to receiving a response with 'server-originated-telemetry'
-          set to 'false'.</t>
+          equivalent to receiving a response with
+          'server-originated-telemetry' set to 'false'.</t>
 
           <t><figure anchor="tree-acceptable"
               title="Telemetry Configuration Tree Structure">
@@ -861,10 +857,9 @@ Content-Format: "application/dots+cbor"
               generated by a DOTS client to convey new configuration
               parameters for the telemetry). <vspace blankLines="1" />The
               procedure specified in Section 4.4.1 of <xref
-              target="RFC9132"></xref> for 'mid' rollover MUST also be followed
-              for 'tsid'
-              rollover.<vspace blankLines="1" />This is a mandatory attribute.
-              'tsid' MUST follow 'cuid'.</t>
+              target="RFC9132"></xref> for 'mid' rollover MUST also be
+              followed for 'tsid' rollover.<vspace blankLines="1" />This is a
+              mandatory attribute. 'tsid' MUST follow 'cuid'.</t>
             </list></t>
 
           <t>'cuid' and 'tsid' MUST NOT appear in the PUT request message
@@ -1081,8 +1076,8 @@ Uri-Path: "tsid=123"
         target="RFC8345"></xref>.</t>
 
         <t>The unit used by a DOTS client when conveying pipe information is
-        captured in the 'unit' attribute. The DOTS client MUST auto-scale so that
-        the appropriate unit is used.</t>
+        captured in the 'unit' attribute. The DOTS client MUST auto-scale so
+        that the appropriate unit is used.</t>
 
         <section title="Conveying DOTS Client Domain Pipe Capacity">
           <t>Similar considerations to those specified in <xref
@@ -1109,11 +1104,10 @@ Uri-Path: "tsid=123"
               single message.</t>
             </list></t>
 
-          <t>As an example of configuring pipe information,
-          a DOTS client managing a single homed domain (<xref
-          target="single"></xref>) can send a PUT request (shown in <xref
-          target="putp1"></xref>) to communicate the capacity of "link1" used
-          to connect to its ISP.</t>
+          <t>As an example of configuring pipe information, a DOTS client
+          managing a single homed domain (<xref target="single"></xref>) can
+          send a PUT request (shown in <xref target="putp1"></xref>) to
+          communicate the capacity of "link1" used to connect to its ISP.</t>
 
           <t><figure anchor="single" title="Single Homed DOTS Client Domain">
               <artwork><![CDATA[                      ,--,--,--.             ,--,--,--.
@@ -1668,13 +1662,12 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
     </section>
 
     <section anchor="pre-t" title="DOTS Pre-or-Ongoing Mitigation Telemetry">
-      <t>There are two broad types of DDoS attacks: one is a bandwidth consuming
-      attack, the other is a target-resource-consuming attack. This section
-      outlines the set of DOTS telemetry attributes (<xref
-      target="pre"></xref>) that covers both types of attack. The
-      objective of these attributes is to allow for the complete knowledge of
-      attacks and the various particulars that can best characterize
-      attacks.</t>
+      <t>There are two broad types of DDoS attacks: one is a bandwidth
+      consuming attack, the other is a target-resource-consuming attack. This
+      section outlines the set of DOTS telemetry attributes (<xref
+      target="pre"></xref>) that covers both types of attack. The objective of
+      these attributes is to allow for the complete knowledge of attacks and
+      the various particulars that can best characterize attacks.</t>
 
       <t>The "ietf-dots-telemetry" YANG module (<xref target="module"></xref>)
       defines the data structure of a new message type called 'telemetry'. The
@@ -1836,14 +1829,13 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           'target-uri', 'alias-name', or 'mid-list' MUST be present in the
           target definition.</t>
 
-          <t>If the target is susceptible to bandwidth-consuming
-          attacks, the
+          <t>If the target is susceptible to bandwidth-consuming attacks, the
           attributes representing the percentile values of the 'attack-id'
           attack traffic are included.</t>
 
           <t>If the target is susceptible to resource-consuming DDoS attacks,
-          the same attributes defined in <xref target="attackconn"></xref>
-          are applicable for representing the attack.</t>
+          the same attributes defined in <xref target="attackconn"></xref> are
+          applicable for representing the attack.</t>
 
           <t>This is an optional attribute.</t>
         </section>
@@ -1853,11 +1845,11 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           conveys the percentile values (including peak and current observed
           values) of total traffic observed during a DDoS attack. More
           fine-grained information about the total traffic can be conveyed in
-          the 'total-traffic-protocol'
-          and 'total-traffic-port' attributes.</t>
+          the 'total-traffic-protocol' and 'total-traffic-port'
+          attributes.</t>
 
-          <t>The 'total-traffic-protocol' attribute represents the total traffic for a
-          target and is transport-protocol specific.</t>
+          <t>The 'total-traffic-protocol' attribute represents the total
+          traffic for a target and is transport-protocol specific.</t>
 
           <t>The 'total-traffic-port' represents the total traffic for a
           target per port number.</t>
@@ -1914,16 +1906,16 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           <t>The 'total-attack-traffic' attribute (<xref
           target="tatt"></xref>) conveys the total attack traffic identified
           by the DOTS client domain's DDoS Mitigation System (or DDoS
-          Detector). More fine-grained information about the total attack traffic
-          can be conveyed in the
-          'total-attack-traffic-protocol' and 'total-attack-traffic-port'
-          attributes.</t>
+          Detector). More fine-grained information about the total attack
+          traffic can be conveyed in the 'total-attack-traffic-protocol' and
+          'total-attack-traffic-port' attributes.</t>
 
-          <t>The 'total-attack-traffic-protocol' attribute represents the total attack
-          traffic for a target and is transport-protocol specific.</t>
+          <t>The 'total-attack-traffic-protocol' attribute represents the
+          total attack traffic for a target and is transport-protocol
+          specific.</t>
 
-          <t>The 'total-attack-traffic-port' attribute represents the total attack
-          traffic for a target per port number.</t>
+          <t>The 'total-attack-traffic-port' attribute represents the total
+          attack traffic for a target per port number.</t>
 
           <t><figure anchor="tatt" title="Total Attack Traffic Tree Structure">
               <artwork><![CDATA[       +--:(telemetry)
@@ -1940,7 +1932,6 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              +-- total-traffic-port* [unit port]
              |  ...
              +-- total-attack-traffic* [unit]
-             |  +-- protocol?            uint8
              |  +-- unit                 unit
              |  +-- low-percentile-g?    yang:gauge64
              |  +-- mid-percentile-g?    yang:gauge64
@@ -1974,12 +1965,13 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         </section>
 
         <section anchor="attackconn" title="Total Attack Connections">
-          <t>If the target is susceptible to resource-consuming DDoS attacks, the
-          'total-attack-connection' attribute is used to convey the percentile
-          values (including peak and current observed values) of total attack
-          connections. The following optional subattributes for the target per
-          transport protocol are included to represent the attack
-          characteristics:<?rfc subcompact="yes" ?><list style="symbols">
+          <t>If the target is susceptible to resource-consuming DDoS attacks,
+          the 'total-attack-connection' attribute is used to convey the
+          percentile values (including peak and current observed values) of
+          total attack connections. The following optional subattributes for
+          the target per transport protocol are included to represent the
+          attack characteristics:<?rfc subcompact="yes" ?><list
+              style="symbols">
               <t>The number of simultaneous attack connections to the
               target.</t>
 
@@ -1991,8 +1983,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
               <t>The number of attack requests to the target.<?rfc subcompact="no" ?></t>
             </list>The total attack connections per port number is represented
-          using the 'total-attack-connection-port' attribute.<figure anchor="tact"
-              title="Total Attack Connections Tree Structure">
+          using the 'total-attack-connection-port' attribute.<figure
+              anchor="tact" title="Total Attack Connections Tree Structure">
               <artwork><![CDATA[       +--:(telemetry)
           +-- pre-or-ongoing-mitigation* []
              +-- (direction)?
@@ -2096,9 +2088,10 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         </section>
 
         <section anchor="attackdetails" title="Attack Details">
-          <t>This attribute (depicted in <xref target="adt"></xref>) is used to signal a
-          set of details characterizing an attack. The following subattributes
-          describing the ongoing attack can be signalled as attack details.</t>
+          <t>This attribute (depicted in <xref target="adt"></xref>) is used
+          to signal a set of details characterizing an attack. The following
+          subattributes describing the ongoing attack can be signalled as
+          attack details.</t>
 
           <t><list style="hanging">
               <t hangText="vendor-id:">Vendor ID is a security vendor's
@@ -2111,11 +2104,11 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
               <t hangText="attack-description:">Textual representation of the
               attack description. Natural Language Processing techniques
-              (e.g., word embedding) might provide some utility in mapping the attack
-              description to an attack type. Textual representation of attack
-              solves two problems: (a) avoids the need to create mapping
-              tables manually between vendors and (b) avoids the need to
-              standardize attack types which keep evolving.</t>
+              (e.g., word embedding) might provide some utility in mapping the
+              attack description to an attack type. Textual representation of
+              attack solves two problems: (a) avoids the need to create
+              mapping tables manually between vendors and (b) avoids the need
+              to standardize attack types which keep evolving.</t>
 
               <t hangText="attack-severity:">Attack severity level. This
               attribute takes one of the values defined in Section 3.12.2 of
@@ -2142,13 +2135,13 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               indicates whether a top talker is a spoofed IP address (e.g.,
               reflection attacks) or not. <vspace blankLines="1" />If the
               target is being subjected to a bandwidth-consuming attack, a
-              statistical profile of the attack
-              traffic from each of the top talkers is included
-              ('total-attack-traffic', <xref target="tat"></xref>). <vspace
-              blankLines="1" />If the target is being subjected to a
-              resource-consuming DDoS attack, the same attributes defined in <xref
-              target="attackconn"></xref> are applicable for characterizing the
-              attack on a per-talker basis.</t>
+              statistical profile of the attack traffic from each of the top
+              talkers is included ('total-attack-traffic', <xref
+              target="tat"></xref>). <vspace blankLines="1" />If the target is
+              being subjected to a resource-consuming DDoS attack, the same
+              attributes defined in <xref target="attackconn"></xref> are
+              applicable for characterizing the attack on a per-talker
+              basis.</t>
             </list></t>
 
           <t><figure anchor="adt" title="Attack Detail Tree Structure">
@@ -2444,7 +2437,8 @@ Accept: application/yang-data+json]]></artwork>
           format="counter" target="preStoC"></xref>, and <xref
           format="counter" target="status"></xref>), DOTS agents MUST NOT
           include the 'attack-description' attribute unless the corresponding
-          attack mapping details were not previously shared with the peer DOTS agent.</t>
+          attack mapping details were not previously shared with the peer DOTS
+          agent.</t>
         </section>
       </section>
 
@@ -2503,25 +2497,25 @@ Content-Format: "application/dots+cbor"
             values MUST increase monotonically (when a new PUT is generated by
             a DOTS client to convey pre-or-ongoing-mitigation telemetry).
             <vspace blankLines="1" />The procedure specified in Section 4.4.1
-            of <xref target="RFC9132"></xref> for 'mid' rollover
-            MUST be followed for 'tmid'
-            rollover.<vspace blankLines="1" />This is a mandatory attribute.
-            'tmid' MUST follow 'cuid'.</t>
+            of <xref target="RFC9132"></xref> for 'mid' rollover MUST be
+            followed for 'tmid' rollover.<vspace blankLines="1" />This is a
+            mandatory attribute. 'tmid' MUST follow 'cuid'.</t>
           </list></t>
 
         <t>'cuid' and 'tmid' MUST NOT appear in the PUT request message
         body.</t>
 
-        <t>At least the 'target' attribute and another pre-or-ongoing-mitigation
-        attribute (<xref target="pre"></xref>) MUST be present in the PUT
-        request. If only the 'target' attribute is present, this request is
-        handled as per <xref target="preStoC"></xref>.</t>
+        <t>At least the 'target' attribute and another
+        pre-or-ongoing-mitigation attribute (<xref target="pre"></xref>) MUST
+        be present in the PUT request. If only the 'target' attribute is
+        present, this request is handled as per <xref
+        target="preStoC"></xref>.</t>
 
         <t>The relative order of two PUT requests carrying DOTS
         pre-or-ongoing-mitigation telemetry from a DOTS client is determined
         by comparing their respective 'tmid' values. If two such requests have
-        an overlapping 'target', the PUT request with higher numeric 'tmid' value
-        will override the request with a lower numeric 'tmid' value. The
+        an overlapping 'target', the PUT request with higher numeric 'tmid'
+        value will override the request with a lower numeric 'tmid' value. The
         overlapped lower numeric 'tmid' MUST be automatically deleted and no
         longer be available.</t>
 
@@ -2541,10 +2535,10 @@ Content-Format: "application/dots+cbor"
 
         <t>A DOTS client that lost the state of its active 'tmids' or has to
         set 'tmid' back to zero (e.g., crash or restart) MUST send a GET
-        request to the DOTS server to retrieve the list of active 'tmid' values. The
-        DOTS client may then delete 'tmid's that should not be active anymore
-        (<xref target="spa"></xref>). Sending a DELETE with no 'tmid'
-        indicates that all 'tmids' must be deactivated (<xref
+        request to the DOTS server to retrieve the list of active 'tmid'
+        values. The DOTS client may then delete 'tmid's that should not be
+        active anymore (<xref target="spa"></xref>). Sending a DELETE with no
+        'tmid' indicates that all 'tmids' must be deactivated (<xref
         target="dpa"></xref>).</t>
 
         <t><figure anchor="spa"
@@ -2568,8 +2562,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       </section>
 
       <section anchor="preStoC" title="From DOTS Servers to DOTS Clients">
-        <t>The pre-or-ongoing-mitigation data (attack details, in particular) can
-        also be signaled from DOTS servers to DOTS clients. For example, a
+        <t>The pre-or-ongoing-mitigation data (attack details, in particular)
+        can also be signaled from DOTS servers to DOTS clients. For example, a
         DOTS server co-located with a DDoS detector can collect monitoring
         information from the target network, identify a DDoS attack using
         statistical analysis or deep learning techniques, and signal the
@@ -2588,9 +2582,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         maintaining a long list of such requests, it is RECOMMENDED that DOTS
         clients include all targets in the same request. DOTS servers may be
         instructed to restrict the number of pre-or-ongoing-mitigation
-        requests per DOTS client domain. This request MUST be maintained
-        in an active state by the DOTS server until a delete request is received from the
-        same DOTS client to clear this pre-or-ongoing-mitigation
+        requests per DOTS client domain. This request MUST be maintained in an
+        active state by the DOTS server until a delete request is received
+        from the same DOTS client to clear this pre-or-ongoing-mitigation
         telemetry.</t>
 
         <t>The relative order of two PUT requests carrying DOTS
@@ -2632,14 +2626,13 @@ Content-Format: "application/dots+cbor"
 
         <t>Once the PUT request to instantiate request state on the server has
         succeeded, the DOTS client issues a GET request to receive ongoing
-        telemtry updates.  The client uses the Observe Option, set to '0'
-        (register), in the GET
-        request to receive asynchronous notifications carrying
-        pre-or-ongoing-mitigation telemetry data from the DOTS server. The GET
-        request can specify a specific 'tmid' (<xref
-        target="gettmid"></xref>) or omit the 'tmid'
-        (<xref target="getall"></xref>) to receive updates on all active
-        requests from that client.</t>
+        telemtry updates. The client uses the Observe Option, set to '0'
+        (register), in the GET request to receive asynchronous notifications
+        carrying pre-or-ongoing-mitigation telemetry data from the DOTS
+        server. The GET request can specify a specific 'tmid' (<xref
+        target="gettmid"></xref>) or omit the 'tmid' (<xref
+        target="getall"></xref>) to receive updates on all active requests
+        from that client.</t>
 
         <t><figure anchor="gettmid"
             title="GET to Subscribe to Telemetry Asynchronous Notifications for a Specific 'tmid'">
@@ -2664,13 +2657,14 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 Observe: 0]]></artwork>
           </figure></t>
 
-        <t>The DOTS client can use a filter to request a subset of the asynchronous notifications from
-        the DOTS server by indicating one or more Uri-Query options in its GET
-        request. A Uri-Query option can include the following parameters to
-        restrict the notifications based on the attack target:
-        'target-prefix', 'target-port', 'target-protocol', 'target-fqdn',
-        'target-uri', 'alias-name', 'mid', and 'c' (content) (<xref
-        target="control"></xref>). Furthermore:<list style="empty">
+        <t>The DOTS client can use a filter to request a subset of the
+        asynchronous notifications from the DOTS server by indicating one or
+        more Uri-Query options in its GET request. A Uri-Query option can
+        include the following parameters to restrict the notifications based
+        on the attack target: 'target-prefix', 'target-port',
+        'target-protocol', 'target-fqdn', 'target-uri', 'alias-name', 'mid',
+        and 'c' (content) (<xref target="control"></xref>). Furthermore:<list
+            style="empty">
             <t>If more than one Uri-Query option is included in a request,
             these options are interpreted in the same way as when multiple
             target attributes are included in a message body.</t>
@@ -2679,9 +2673,10 @@ Observe: 0]]></artwork>
             request, these values MUST be included in the same Uri-Query
             option and separated by a "," character without any spaces.</t>
 
-            <t>Range values (i.e., a contiguous inclusive block) can be included
-            for the 'target-port', 'target-protocol', and 'mid' parameters by
-            indicating the two boundary values separated by a "-" character.</t>
+            <t>Range values (i.e., a contiguous inclusive block) can be
+            included for the 'target-port', 'target-protocol', and 'mid'
+            parameters by indicating the two boundary values separated by a
+            "-" character.</t>
 
             <t>Wildcard names (i.e., a name with the leftmost label is the "*"
             character) can be included in 'target-fqdn' or 'target-uri'
@@ -2693,24 +2688,23 @@ Observe: 0]]></artwork>
           </list></t>
 
         <t>DOTS clients may also filter out the asynchronous notifications
-        from the DOTS server by indicating information about a specific
-        attack source. To
-        that aim, a DOTS client may include 'source-prefix', 'source-port', or
-        'source-icmp-type' in a Uri-Query option. The same considerations
-        (ranges, multiple values) specified for target attributes apply for
-        source attributes. Special care SHOULD be taken when using these
-        filters as their use may cause some attacks may be hidden to the
-        requesting DOTS client
-        (e.g., if the attack changes its source information).</t>
+        from the DOTS server by indicating information about a specific attack
+        source. To that aim, a DOTS client may include 'source-prefix',
+        'source-port', or 'source-icmp-type' in a Uri-Query option. The same
+        considerations (ranges, multiple values) specified for target
+        attributes apply for source attributes. Special care SHOULD be taken
+        when using these filters as their use may cause some attacks may be
+        hidden to the requesting DOTS client (e.g., if the attack changes its
+        source information).</t>
 
         <t>Requests with invalid query types (e.g., not supported, malformed)
-        received by the DOTS server MUST be rejected with a 4.00 (Bad
-        Request) response code.</t>
+        received by the DOTS server MUST be rejected with a 4.00 (Bad Request)
+        response code.</t>
 
         <t>An example of a request to subscribe to asynchronous telemetry
-        notifications regarding UDP traffic
-        is shown in <xref target="notif_filter-tm"></xref>. This
-        filter will be applied for all 'tmids'.</t>
+        notifications regarding UDP traffic is shown in <xref
+        target="notif_filter-tm"></xref>. This filter will be applied for all
+        'tmids'.</t>
 
         <t><figure anchor="notif_filter-tm"
             title="GET Request to Receive Telemetry Asynchronous Notifications Filtered using Uri-Query">
@@ -2767,11 +2761,11 @@ Observe: 0]]></artwork>
         <t>A DOTS server sends the aggregate data for a target using
         'total-attack-traffic' attribute. The aggregate assumes that Uri-Query
         filters are applied on the target. The DOTS server MAY include more
-        fine-grained data when needed (that is, 'total-attack-traffic-protocol'
-        and 'total-attack-traffic-port'). If a port filter (or protocol
-        filter) is included in a request, 'total-attack-traffic-protocol' (or
-        'total-attack-traffic-port') conveys the data with the port (or
-        protocol) filter applied.</t>
+        fine-grained data when needed (that is,
+        'total-attack-traffic-protocol' and 'total-attack-traffic-port'). If a
+        port filter (or protocol filter) is included in a request,
+        'total-attack-traffic-protocol' (or 'total-attack-traffic-port')
+        conveys the data with the port (or protocol) filter applied.</t>
 
         <t>A DOTS server may aggregate pre-or-ongoing-mitigation data (e.g.,
         'top-talker') for all targets of a domain, or when justified, send
@@ -2811,10 +2805,10 @@ Observe: 0]]></artwork>
 
         <t>The "ietf-dots-telemetry" YANG module (<xref
         target="module"></xref>) augments the 'mitigation-scope' message type
-        defined in the "ietf-dots-signal" module
-        <xref target="RFC9132"></xref> so that
-        these attributes can be signalled by a DOTS client in a mitigation
-        efficacy update (<xref target="eff"></xref>).<figure anchor="eff"
+        defined in the "ietf-dots-signal" module <xref
+        target="RFC9132"></xref> so that these attributes can be signalled by
+        a DOTS client in a mitigation efficacy update (<xref
+        target="eff"></xref>).<figure anchor="eff"
             title="Telemetry Efficacy Update Tree Structure">
             <artwork><![CDATA[  augment-structure /dots-signal:dots-signal/dots-signal:message-type
                     /dots-signal:mitigation-scope/dots-signal:scope:
@@ -2924,8 +2918,8 @@ Content-Format: "application/dots+cbor"
         <xref target="RFC7641"></xref>.</t>
 
         <t>In order to make use of this feature, DOTS clients MUST establish a
-        telemetry session with the DOTS server in 'idle' time and MUST
-        set the 'server-originated-telemetry' attribute to 'true'.</t>
+        telemetry session with the DOTS server in 'idle' time and MUST set the
+        'server-originated-telemetry' attribute to 'true'.</t>
 
         <t>DOTS servers MUST NOT include telemetry attributes in mitigation
         status updates sent to DOTS clients for telemetry sessions in which
@@ -3028,8 +3022,8 @@ Content-Format: "application/dots+cbor"
         <t><xref target="upex"></xref> shows an example of an asynchronous
         notification of attack mitigation status from the DOTS server. This
         notification signals both the mid-percentile value of processed attack
-        traffic and the peak count of unique sources involved in
-        the attack.</t>
+        traffic and the peak count of unique sources involved in the
+        attack.</t>
 
         <t><figure anchor="upex"
             title="Response Body of a Mitigation Status With Telemetry Attributes">
@@ -4716,8 +4710,8 @@ module ietf-dots-mapping {
           description
             "Textual representation of attack description. Natural
              Language Processing techniques (e.g., word embedding)
-             might provide some utility in mapping the attack description to
-             an attack type.";
+             might provide some utility in mapping the attack 
+             description to an attack type.";
         }
       }
     }
@@ -4925,7 +4919,7 @@ module ietf-dots-mapping {
             <t>Note to the RFC Editor: CBOR keys are assigned from the
             "128-255" range. This specification meets the requirements listed
             in Section 3.1 <xref target="RFC9132"></xref> for assignments in
-            the "128-255" range. </t>
+            the "128-255" range.</t>
           </list><figure align="center">
             <artwork><![CDATA[   +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
@@ -5108,22 +5102,22 @@ module ietf-dots-mapping {
         information is sensitive; it MUST be protected at rest by the DOTS
         server domain to prevent data leakage.</t>
 
-        <t>DOTS clients are typically considered to be trusted devices by the DOTS client
-        domain. DOTS clients may be co-located on network security services
-        (e.g., firewall devices), and a compromised security service potentially can do
-        a lot more damage to the network than just the DOTS client component.
-        This assumption differs from the
-        often held view that devices are untrusted, often referred to as the
-        "zero-trust model". A compromised DOTS client can send fake DOTS
-        telemetry data to a DOTS server to mislead the DOTS server. This
-        attack can be prevented by monitoring and auditing DOTS clients to
-        detect misbehavior and to deter misuse, and by only authorizing the
-        DOTS client to convey DOTS telemetry information for specific target resources
-        (e.g., an application server is authorized to exchange DOTS telemetry
-        for its IP addresses but a DDoS mitigator can exchange DOTS telemetry
-        for any target resource in the network). As a reminder, this is a
-        variation of dealing with compromised DOTS clients as discussed in
-        Section 11 of <xref target="RFC9132"></xref>.</t>
+        <t>DOTS clients are typically considered to be trusted devices by the
+        DOTS client domain. DOTS clients may be co-located on network security
+        services (e.g., firewall devices), and a compromised security service
+        potentially can do a lot more damage to the network than just the DOTS
+        client component. This assumption differs from the often held view
+        that devices are untrusted, often referred to as the "zero-trust
+        model". A compromised DOTS client can send fake DOTS telemetry data to
+        a DOTS server to mislead the DOTS server. This attack can be prevented
+        by monitoring and auditing DOTS clients to detect misbehavior and to
+        deter misuse, and by only authorizing the DOTS client to convey DOTS
+        telemetry information for specific target resources (e.g., an
+        application server is authorized to exchange DOTS telemetry for its IP
+        addresses but a DDoS mitigator can exchange DOTS telemetry for any
+        target resource in the network). As a reminder, this is a variation of
+        dealing with compromised DOTS clients as discussed in Section 11 of
+        <xref target="RFC9132"></xref>.</t>
 
         <t>DOTS servers must be capable of defending themselves against DoS
         attacks from compromised DOTS clients. The following non-comprehensive
@@ -5140,7 +5134,8 @@ module ietf-dots-mapping {
             would result in varying the 'tmid' to exhaust DOTS server
             resources. Likewise, the DOTS server can enforce a quota and
             time-limit on the number of active pre-or-ongoing-mitigation
-            telemetry data items (identified by 'tmid') from the DOTS client.</t>
+            telemetry data items (identified by 'tmid') from the DOTS
+            client.</t>
           </list></t>
 
         <t>Note also that telemetry notification interval may be used to
@@ -5211,6 +5206,8 @@ module ietf-dots-mapping {
 
       <t>Many thanks to Jan Lindblad for the yangdoctors review and Nagendra
       Nainar for the opsdir review.</t>
+
+      <t>Thanks to Benjamin Kaduk for the detailed AD review. </t>
     </section>
   </middle>
 
