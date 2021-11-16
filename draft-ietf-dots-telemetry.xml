@@ -4383,7 +4383,7 @@ module ietf-dots-telemetry {
         "Can be a telemetry-setup or telemetry data.";
       case telemetry-setup {
         description
-          "Configuration information for telemetry messages.";
+          "Indicates the message is about telemetry steup.";
         choice direction {
           description
             "Indicates the communication direction in which the
