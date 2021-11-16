@@ -317,7 +317,7 @@
         mitigation loop" between DOTS clients and servers. For the server side
         team, it is important to confirm that the same attacks that the DOTS
         server's mitigation resources are seeing are those that a DOTS client
-        is asking for mitigatigation of. For the DOTS client side team, it is important
+        is asking for mitigation of. For the DOTS client side team, it is important
         to realize that the DOTS clients receive the required service. For
         example, understanding that "I asked for mitigation of two attacks and
         my DOTS server detects and mitigates only one of them". Cases of
