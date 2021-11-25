@@ -704,7 +704,12 @@
         include:</t>
 
         <t><list style="symbols">
-            <t>Percentile-related measurement parameters</t>
+            <t>Percentile-related measurement parameters. In particular,
+            'measurement-interval' defines the period on which percentiles are
+            computed, while 'measurement-sample' defines the time distribution
+            for measuring values that are used to compute percentiles. Section
+            11.3 of <xref target="RFC2330"></xref> includes more details about
+            computing percentiles.</t>
 
             <t>Measurement units</t>
 
@@ -715,8 +720,7 @@
             <t>Acceptable Server-originated telemetry</t>
           </list></t>
 
-        <t>Section 11.3 of <xref target="RFC2330"></xref> includes more
-        details about computing percentiles.</t>
+        <t></t>
 
         <section anchor="acc"
                  title="Retrieve Current DOTS Telemetry Configuration">
@@ -4784,7 +4788,7 @@ module ietf-dots-mapping {
 |                      |             |      | Information   |        |
 +======================+=============+======+===============+========+
 | tsid                 | uint32      |TBA1  | 0 unsigned    | Number |
-| telemetry            | container   |TBA2  | 5 map         | Object |
+| telemetry            | list        |TBA2  | 4 array       | Array  |
 | low-percentile       | decimal64   |TBA3  | 6 tag 4       |        |
 |                      |             |      |  [-2, integer]| String |
 | mid-percentile       | decimal64   |TBA4  | 6 tag 4       |        |
@@ -4840,7 +4844,7 @@ module ietf-dots-mapping {
 | mid-percentile-c     | container   |TBA46 | 5 map         | Object |
 | high-percentile-c    | container   |TBA47 | 5 map         | Object |
 | peak-c               | container   |TBA48 | 5 map         | Object |
-| baseline             | container   |TBA49 | 5 map         | Object |
+| baseline             | list        |TBA49 | 4 array       | Array  |
 | current-config       | container   |TBA50 | 5 map         | Object |
 | max-config-values    | container   |TBA51 | 5 map         | Object |
 | min-config-values    | container   |TBA52 | 5 map         | Object |
@@ -4929,7 +4933,7 @@ module ietf-dots-mapping {
    |                      | Value | Type  |            |               |
    +======================+=======+=======+============+===============+
    | tsid                 | TBA1  |   0   |    IESG    |   [RFCXXXX]   |
-   | telemetry            | TBA2  |   5   |    IESG    |   [RFCXXXX]   |
+   | telemetry            | TBA2  |   4   |    IESG    |   [RFCXXXX]   |
    | low-percentile       | TBA3  | 6tag4 |    IESG    |   [RFCXXXX]   |
    | mid-percentile       | TBA4  | 6tag4 |    IESG    |   [RFCXXXX]   |
    | high-percentile      | TBA5  | 6tag4 |    IESG    |   [RFCXXXX]   |
@@ -4980,7 +4984,7 @@ module ietf-dots-mapping {
    | mid-percentile-c     | TBA46 |   5   |    IESG    |   [RFCXXXX]   |
    | high-percentile-c    | TBA47 |   5   |    IESG    |   [RFCXXXX]   |
    | peak-c               | TBA48 |   5   |    IESG    |   [RFCXXXX]   |
-   | baseline             | TBA49 |   5   |    IESG    |   [RFCXXXX]   |
+   | baseline             | TBA49 |   4   |    IESG    |   [RFCXXXX]   |
    | current-config       | TBA50 |   5   |    IESG    |   [RFCXXXX]   |
    | max-config-value     | TBA51 |   5   |    IESG    |   [RFCXXXX]   |
    | min-config-values    | TBA52 |   5   |    IESG    |   [RFCXXXX]   |
