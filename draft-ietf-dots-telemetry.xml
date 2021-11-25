@@ -663,7 +663,8 @@
 ]]></artwork>
         </figure></t>
 
-      <t></t>
+      <t>DOTS implementations MUST support the Observe Option for 'tm' (<xref
+      target="pre-t"></xref>).</t>
     </section>
 
     <section anchor="conf" title="DOTS Telemetry Setup Configuration">
@@ -4694,7 +4695,7 @@ module ietf-dots-mapping {
         mandatory true;
         description
           "The time the mapping table was updated. It is represented
-            in seconds relative to 1970-01-01T00:00:00Z in UTC time.";
+           in seconds relative to 1970-01-01T00:00:00Z in UTC time.";
       }
       list attack-mapping {
         key "attack-id";
@@ -5101,7 +5102,12 @@ module ietf-dots-mapping {
         topology, DOTS client domain pipe capacity, normal traffic baseline
         and connections capacity, and threat and mitigation information. Such
         information is sensitive; it MUST be protected at rest by the DOTS
-        server domain to prevent data leakage.</t>
+        server domain to prevent data leakage. Note that sharing this
+        sensitive data with a trusted DOTS server does not introduce any new
+        significant considerations other that the need for the aforementioned
+        protection. Such a DOTS server is already trusted to have access to
+        that kind of information by being in the position to observe and
+        mitigate attacks. </t>
 
         <t>DOTS clients are typically considered to be trusted devices by the
         DOTS client domain. DOTS clients may be co-located on network security
@@ -5208,7 +5214,7 @@ module ietf-dots-mapping {
       <t>Many thanks to Jan Lindblad for the yangdoctors review and Nagendra
       Nainar for the opsdir review.</t>
 
-      <t>Thanks to Benjamin Kaduk for the detailed AD review. </t>
+      <t>Thanks to Benjamin Kaduk for the detailed AD review.</t>
     </section>
   </middle>
 
@@ -5248,8 +5254,6 @@ module ietf-dots-mapping {
 
       <?rfc include='reference.RFC.9132'?>
 
-      <?rfc include='reference.RFC.9133'?>
-
       <reference anchor="Enterprise-Numbers"
                  target="http://www.iana.org/assignments/enterprise-numbers.html">
         <front>
@@ -5265,6 +5269,8 @@ module ietf-dots-mapping {
     </references>
 
     <references title="Informative References">
+      <?rfc include='reference.RFC.9133'?>
+
       <?rfc include='reference.RFC.2330'?>
 
       <?rfc include='reference.RFC.8525'?>
