@@ -2112,7 +2112,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               value.</t>
 
               <t hangText="attack-id:">Unique identifier assigned for the
-              attack.</t>
+              attack by a vendor.</t>
 
               <t hangText="attack-description:">Textual representation of the
               attack description. Natural Language Processing techniques
@@ -2141,19 +2141,21 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               <t hangText="source-count:">A count of sources involved in the
               attack targeting the victim.</t>
 
-              <t hangText="top-talker:">A list of top talkers among attack
-              sources. The top talkers are represented using the
+              <t hangText="top-talker:">A list of attack sources that are
+              involved in an attack and which are generating an important part
+              of the attack traffic. The top talkers are represented using the
               'source-prefix'.<vspace blankLines="1" />'spoofed-status'
               indicates whether a top talker is a spoofed IP address (e.g.,
-              reflection attacks) or not. <vspace blankLines="1" />If the
-              target is being subjected to a bandwidth-consuming attack, a
-              statistical profile of the attack traffic from each of the top
-              talkers is included ('total-attack-traffic', <xref
-              target="tat"></xref>). <vspace blankLines="1" />If the target is
-              being subjected to a resource-consuming DDoS attack, the same
-              attributes defined in <xref target="attackconn"></xref> are
-              applicable for characterizing the attack on a per-talker
-              basis.</t>
+              reflection attacks) or not. If no 'spoofed-status' data node is
+              included, this means that the spoofing status is unknown.<vspace
+              blankLines="1" />If the target is being subjected to a
+              bandwidth-consuming attack, a statistical profile of the attack
+              traffic from each of the top talkers is included
+              ('total-attack-traffic', <xref target="tat"></xref>). <vspace
+              blankLines="1" />If the target is being subjected to a
+              resource-consuming DDoS attack, the same attributes defined in
+              <xref target="attackconn"></xref> are applicable for
+              characterizing the attack on a per-talker basis.</t>
             </list></t>
 
           <t><figure anchor="adt" title="Attack Detail Tree Structure">
@@ -2253,10 +2255,13 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           DOTS signal channel, DOTS agents MAY use the DOTS data channel <xref
           target="RFC8783"></xref> to exchange vendor specific attack mapping
           details (that is, {vendor identifier, attack identifier} ==&gt;
-          attack description). As such, DOTS agents do not have to convey
-          systematically an attack description in their telemetry messages
-          over the DOTS signal channel.</t>
+          attack description string). As such, DOTS agents do not have to
+          convey systematically an attack description in their telemetry
+          messages over the DOTS signal channel. Refer to <xref
+          target="vam"></xref>.</t>
+        </section>
 
+        <section anchor="vam" title="Vendor Attack Mapping">
           <t>Multiple mappings for different vendor identifiers may be used;
           the DOTS agent transmitting telemetry information can elect to use
           one or more vendor mappings even in the same telemetry message.<list
@@ -2275,9 +2280,10 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           transmit telemetry data. Furthermore, it is possible that the DOTS
           client and DOTS server are provided by the same vendor, but the
           vendor mapping tables are at different revisions. The DOTS client
-          SHOULD transmit telemetry information using the vendor mapping(s)
-          that it provided to the DOTS server and the DOTS server SHOULD use
-          the vendor mappings(s) provided to the DOTS client when transmitting
+          SHOULD transmit telemetry information using any vendor mapping(s)
+          that it provided to the DOTS server (e.g., using a POST as depicted
+          in <xref target="installmap"></xref>) and the DOTS server SHOULD use
+          any vendor mappings(s) provided to the DOTS client when transmitting
           telemetry data to the peer DOTS agent.</t>
 
           <t>The "ietf-dots-mapping" YANG module defined in <xref
@@ -2357,7 +2363,7 @@ Accept: application/yang-data+json
       {
         "vendor-id": 32473,
         "vendor-name": "mitigator-s",
-        "last-updated": "1576856561",
+        "last-updated": "1957899851",
         "attack-mapping": []
       }
     ]
@@ -2389,7 +2395,7 @@ Content-Type: application/yang-data+json
       {
         "vendor-id": 345,
         "vendor-name": "mitigator-c",
-        "last-updated": "1576812345",
+        "last-updated": "1957899956",
         "attack-mapping": [
           {
             "attack-id": 1,
@@ -4089,7 +4095,8 @@ module ietf-dots-telemetry {
       leaf spoofed-status {
         type boolean;
         description
-          "Indicates whether this address is spoofed.";
+          "When set to 'true', it indicates whether this address
+           is spoofed.";
       }
       leaf source-prefix {
         type inet:ip-prefix;

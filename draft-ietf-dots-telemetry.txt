@@ -124,6 +124,7 @@ Internet-Draft               DOTS Telemetry                November 2021
        7.1.3.  Total Attack Traffic  . . . . . . . . . . . . . . . .  42
        7.1.4.  Total Attack Connections  . . . . . . . . . . . . . .  44
        7.1.5.  Attack Details  . . . . . . . . . . . . . . . . . . .  46
+       7.1.6.  Vendor Attack Mapping . . . . . . . . . . . . . . . .  49
      7.2.  From DOTS Clients to DOTS Servers . . . . . . . . . . . .  53
      7.3.  From DOTS Servers to DOTS Clients . . . . . . . . . . . .  56
    8.  DOTS Telemetry Mitigation Status Update . . . . . . . . . . .  61
@@ -161,7 +162,6 @@ Internet-Draft               DOTS Telemetry                November 2021
        taking down the actual delivered services, but rather to prevent
        various network elements (routers, switches, firewalls, transit
        links, and so on) from serving legitimate users' traffic.
-
 
 
 
@@ -2554,7 +2554,7 @@ Internet-Draft               DOTS Telemetry                November 2021
       registered with IANA [Enterprise-Numbers].  It is a four-byte
       integer value.
 
-   attack-id:  Unique identifier assigned for the attack.
+   attack-id:  Unique identifier assigned for the attack by a vendor.
 
    attack-description:  Textual representation of the attack
       description.  Natural Language Processing techniques (e.g., word
@@ -2589,11 +2589,14 @@ Internet-Draft               DOTS Telemetry                November 2021
    source-count:  A count of sources involved in the attack targeting
       the victim.
 
-   top-talker:  A list of top talkers among attack sources.  The top
-      talkers are represented using the 'source-prefix'.
+   top-talker:  A list of attack sources that are involved in an attack
+      and which are generating an important part of the attack traffic.
+      The top talkers are represented using the 'source-prefix'.
 
       'spoofed-status' indicates whether a top talker is a spoofed IP
-      address (e.g., reflection attacks) or not.
+      address (e.g., reflection attacks) or not.  If no 'spoofed-status'
+      data node is included, this means that the spoofing status is
+      unknown.
 
       If the target is being subjected to a bandwidth-consuming attack,
       a statistical profile of the attack traffic from each of the top
@@ -2623,9 +2626,6 @@ Internet-Draft               DOTS Telemetry                November 2021
                 +-- total-attack-traffic-port* [unit port]
                 |  ...
                 +-- total-attack-connection
-                |  ...
-                +-- total-attack-connection-port
-                |  ...
 
 
 
@@ -2634,6 +2634,9 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 47]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+                |  ...
+                +-- total-attack-connection-port
+                |  ...
                 +-- attack-detail* [vendor-id attack-id]
                    +-- vendor-id             uint32
                    +-- attack-id             uint32
@@ -2679,9 +2682,6 @@ Internet-Draft               DOTS Telemetry                November 2021
                             |  +-- connection-ps?        yang:gauge64
                             |  +-- request-ps?           yang:gauge64
                             |  +-- partial-request-ps?   yang:gauge64
-                            +-- high-percentile-l* [protocol]
-                            |  +-- protocol              uint8
-                            |  +-- connection?           yang:gauge64
 
 
 
@@ -2690,6 +2690,9 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 48]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+                            +-- high-percentile-l* [protocol]
+                            |  +-- protocol              uint8
+                            |  +-- connection?           yang:gauge64
                             |  +-- embryonic?            yang:gauge64
                             |  +-- connection-ps?        yang:gauge64
                             |  +-- request-ps?           yang:gauge64
@@ -2714,9 +2717,12 @@ Internet-Draft               DOTS Telemetry                November 2021
    In order to optimize the size of telemetry data conveyed over the
    DOTS signal channel, DOTS agents MAY use the DOTS data channel
    [RFC8783] to exchange vendor specific attack mapping details (that
-   is, {vendor identifier, attack identifier} ==> attack description).
-   As such, DOTS agents do not have to convey systematically an attack
-   description in their telemetry messages over the DOTS signal channel.
+   is, {vendor identifier, attack identifier} ==> attack description
+   string).  As such, DOTS agents do not have to convey systematically
+   an attack description in their telemetry messages over the DOTS
+   signal channel.  Refer to Section 7.1.6.
+
+7.1.6.  Vendor Attack Mapping
 
    Multiple mappings for different vendor identifiers may be used; the
    DOTS agent transmitting telemetry information can elect to use one or
@@ -2732,12 +2738,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    mappings.  A DOTS agent MUST accept receipt of telemetry data with a
    vendor identifier that is different to the one it uses to transmit
    telemetry data.  Furthermore, it is possible that the DOTS client and
-   DOTS server are provided by the same vendor, but the vendor mapping
-   tables are at different revisions.  The DOTS client SHOULD transmit
-   telemetry information using the vendor mapping(s) that it provided to
-   the DOTS server and the DOTS server SHOULD use the vendor mappings(s)
-   provided to the DOTS client when transmitting telemetry data to the
-   peer DOTS agent.
 
 
 
@@ -2745,6 +2745,13 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 49]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   DOTS server are provided by the same vendor, but the vendor mapping
+   tables are at different revisions.  The DOTS client SHOULD transmit
+   telemetry information using any vendor mapping(s) that it provided to
+   the DOTS server (e.g., using a POST as depicted in Figure 34) and the
+   DOTS server SHOULD use any vendor mappings(s) provided to the DOTS
+   client when transmitting telemetry data to the peer DOTS agent.
 
    The "ietf-dots-mapping" YANG module defined in Section 10.2 augments
    the "ietf-dots-data-channel" [RFC8783] module.  The tree structure of
@@ -2784,6 +2791,17 @@ Internet-Draft               DOTS Telemetry                November 2021
    a GET request to retrieve the DOTS server's vendor attack mapping
    details.  An example of such GET request is shown in Figure 31.
 
+
+
+
+
+
+
+Boucadair, et al.         Expires May 29, 2022                 [Page 50]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
    GET /restconf/data/ietf-dots-data-channel:dots-data\
        /ietf-dots-mapping:vendor-mapping HTTP/1.1
    Host: example.com
@@ -2794,14 +2812,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    A DOTS client can retrieve only the list of vendors supported by the
    DOTS server.  It does so by setting the "depth" parameter
-
-
-
-Boucadair, et al.         Expires May 29, 2022                 [Page 50]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    (Section 4.8.2 of [RFC8040]) to "3" in the GET request as shown in
    Figure 32.  An example of a response body received from the DOTS
    server as a response to such request is illustrated in Figure 33.
@@ -2819,7 +2829,7 @@ Internet-Draft               DOTS Telemetry                November 2021
          {
            "vendor-id": 32473,
            "vendor-name": "mitigator-s",
-           "last-updated": "1576856561",
+           "last-updated": "1957899851",
            "attack-mapping": []
          }
        ]
@@ -2843,16 +2853,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
-
-
-
-
-
-
-
-
-
 Boucadair, et al.         Expires May 29, 2022                 [Page 51]
 
 Internet-Draft               DOTS Telemetry                November 2021
@@ -2869,7 +2869,7 @@ Internet-Draft               DOTS Telemetry                November 2021
          {
            "vendor-id": 345,
            "vendor-name": "mitigator-c",
-           "last-updated": "1576812345",
+           "last-updated": "1957899956",
            "attack-mapping": [
              {
                "attack-id": 1,
@@ -4856,7 +4856,8 @@ Internet-Draft               DOTS Telemetry                November 2021
       leaf spoofed-status {
         type boolean;
         description
-          "Indicates whether this address is spoofed.";
+          "When set to 'true', it indicates whether this address
+           is spoofed.";
       }
       leaf source-prefix {
         type inet:ip-prefix;
@@ -4865,7 +4866,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       }
       list source-port-range {
         key "lower-port";
-        description
 
 
 
@@ -4874,6 +4874,7 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 87]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+        description
           "Port range. When only lower-port is
            present, it represents a single port number.";
         leaf lower-port {
@@ -4921,7 +4922,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       }
   }
 
-  grouping top-talker-aggregate {
 
 
 
@@ -4930,6 +4930,7 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 88]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+  grouping top-talker-aggregate {
     description
       "An aggregate of top attack sources. This aggregate is
        typically used when included in a mitigation request.";
@@ -4977,7 +4978,6 @@ Internet-Draft               DOTS Telemetry                November 2021
     }
     list total-traffic-normal {
       key "unit";
-      description
 
 
 
@@ -4986,6 +4986,7 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 89]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+      description
         "Total traffic normal baselines.";
       uses traffic-unit;
     }
@@ -5033,7 +5034,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       key "unit protocol";
       description
         "Total traffic per protocol.";
-      uses traffic-unit-protocol-all;
 
 
 
@@ -5042,6 +5042,7 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 90]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+      uses traffic-unit-protocol-all;
     }
     list total-traffic-port {
       key "unit port";
@@ -5089,7 +5090,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       }
     }
   }
-
 
 
 
