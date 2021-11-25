@@ -452,14 +452,14 @@
         <t>Once the DOTS signal channel is established, DOTS clients that
         support the DOTS telemetry extension proceed with the telemetry setup
         configuration (e.g., measurement interval, telemetry notification
-        interface, pipe capacity, normal traffic baseline) as detailed in
-        <xref target="conf"></xref>. DOTS agents can then include DOTS
-        telemetry attributes using the DOTS signal channel (<xref
-        target="pre"></xref>). A DOTS client can use separate messages to
-        share with its DOTS server(s) a set of telemetry data bound to an
-        ongoing mitigation (<xref target="preCtoS"></xref>). Also, a DOTS
-        client that is interested in receiving telemetry notifications related
-        to some of its resources follows the procedure defined in <xref
+        interval, pipe capacity, normal traffic baseline) as detailed in <xref
+        target="conf"></xref>. DOTS agents can then include DOTS telemetry
+        attributes using the DOTS signal channel (<xref target="pre"></xref>).
+        A DOTS client can use separate messages to share with its DOTS
+        server(s) a set of telemetry data bound to an ongoing mitigation
+        (<xref target="preCtoS"></xref>). Also, a DOTS client that is
+        interested in receiving telemetry notifications related to some of its
+        resources follows the procedure defined in <xref
         target="preStoC"></xref>. The DOTS client can then decide to send a
         mitigation request if the notified attack cannot be mitigated locally
         within the DOTS client domain.</t>
@@ -771,14 +771,14 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
        |  |     |  +-- mid-percentile?                percentile
        |  |     |  +-- high-percentile?               percentile
        |  |     |  +-- server-originated-telemetry?   boolean
-       |  |     |  +-- telemetry-notify-interval?     uint32
+       |  |     |  +-- telemetry-notify-interval?     uint16
        |  |     +-- min-config-values
        |  |     |  +-- measurement-interval?        interval
        |  |     |  +-- measurement-sample?          sample
        |  |     |  +-- low-percentile?              percentile
        |  |     |  +-- mid-percentile?              percentile
        |  |     |  +-- high-percentile?             percentile
-       |  |     |  +-- telemetry-notify-interval?   uint32
+       |  |     |  +-- telemetry-notify-interval?   uint16
        |  |     +-- supported-unit-classes
        |  |     |  +-- unit-config* [unit]
        |  |     |     +-- unit           unit-class
@@ -800,7 +800,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
        |        |     |  +-- unit           unit-class
        |        |     |  +-- unit-status    boolean
        |        |     +-- server-originated-telemetry?   boolean
-       |        |     +-- telemetry-notify-interval?     uint32
+       |        |     +-- telemetry-notify-interval?     uint16
        |        +--:(pipe)
        |        |  ...
        |        +--:(baseline)
@@ -1491,7 +1491,10 @@ Content-Format: "application/dots+cbor"
 ]]></artwork>
           </figure></t>
 
-        <t></t>
+        <t>A DOTS client can share one or multiple normal traffic baselines
+        (e.g., aggregate or per-prefix baselines), each are uniquely within
+        the DOTS client domain with an identifier 'id'. This identifier can be
+        used to update a baseline entry, delete a specific entry, etc. </t>
 
         <section title="Conveying DOTS Client Domain Baseline Information">
           <t>Similar considerations to those specified in <xref
@@ -4029,6 +4032,8 @@ module ietf-dots-telemetry {
       type uint32;
       description
         "Vendor ID is a security vendor's Enterprise Number.";
+      reference
+        "Enterprise-Numbers: Private Enterprise Numbers";
     }
     leaf attack-id {
       type uint32;
@@ -4073,14 +4078,9 @@ module ietf-dots-telemetry {
     }
   }
 
-  grouping top-talker-aggregate {
+  grouping talker {
     description
-      "An aggregate of top attack sources. This aggregate is 
-       typically used when included in a mitigation request.";
-    list talker {
-      key "source-prefix";
-      description
-        "IPv4 or IPv6 prefix identifying the attacker(s).";
+      "Defines generic data related to top-talkers.";
       leaf spoofed-status {
         type boolean;
         description
@@ -4139,6 +4139,18 @@ module ietf-dots-telemetry {
           "Total attack traffic issued from this source.";
         uses traffic-unit-all;
       }
+  }
+
+  grouping top-talker-aggregate {
+    description
+      "An aggregate of top attack sources. This aggregate is 
+       typically used when included in a mitigation request.";
+    list talker {
+      key "source-prefix";
+      description
+        "Refers to a top-talker that is identified by an IPv4
+         or IPv6 prefix identifying the attacker(s).";
+      uses talker;
       container total-attack-connection {
         description
           "Total attack connections issued from this source.";
@@ -4153,65 +4165,9 @@ module ietf-dots-telemetry {
     list talker {
       key "source-prefix";
       description
-        "IPv4 or IPv6 prefix identifying the attacker(s).";
-      leaf spoofed-status {
-        type boolean;
-        description
-          "Indicates whether this address is spoofed.";
-      }
-      leaf source-prefix {
-        type inet:ip-prefix;
-        description
-          "IPv4 or IPv6 prefix identifying the attacker(s).";
-      }
-      list source-port-range {
-        key "lower-port";
-        description
-          "Port range. When only lower-port is
-           present, it represents a single port number.";
-        leaf lower-port {
-          type inet:port-number;
-          description
-            "Lower port number of the port range.";
-        }
-        leaf upper-port {
-          type inet:port-number;
-          must '. >= ../lower-port' {
-            error-message
-              "The upper port number must be greater than
-               or equal to lower port number.";
-          }
-          description
-            "Upper port number of the port range.";
-        }
-      }
-      list source-icmp-type-range {
-        key "lower-type";
-        description
-          "ICMP type range. When only lower-type is
-           present, it represents a single ICMP type.";
-        leaf lower-type {
-          type uint8;
-          description
-            "Lower ICMP type of the ICMP type range.";
-        }
-        leaf upper-type {
-          type uint8;
-          must '. >= ../lower-type' {
-            error-message
-              "The upper ICMP type must be greater than
-               or equal to lower ICMP type.";
-          }
-          description
-            "Upper type of the ICMP type range.";
-        }
-      }
-      list total-attack-traffic {
-        key "unit";
-        description
-          "Total attack traffic issued from this source.";
-        uses traffic-unit-all;
-      }
+        "Refers to a top-talker that is identified by an IPv4
+         or IPv6 prefix identifying the attacker(s).";
+      uses talker;
       container total-attack-connection {
         description
           "Total attack connections issued from this source.";
@@ -4402,12 +4358,12 @@ module ietf-dots-telemetry {
                 description
                   "Indicates whether the DOTS server can be instructed
                    to send pre-or-ongoing-mitigation telemetry. If set 
-                   to FALSE or the data node is not present, this is 
+                   to 'false' or the data node is not present, this is 
                    an indication that the server does not support this 
                    capability.";
               }
               leaf telemetry-notify-interval {
-                type uint32 {
+                type uint16 {
                   range "1 .. 3600";
                 }
                 units "seconds";
@@ -4428,7 +4384,7 @@ module ietf-dots-telemetry {
                 "Minimum acceptable configuration values.";
               uses telemetry-parameters;
               leaf telemetry-notify-interval {
-                type uint32 {
+                type uint16 {
                   range "1 .. 3600";
                 }
                 units "seconds";
@@ -4584,8 +4540,8 @@ module ietf-dots-telemetry {
               leaf tmid {
                 type uint32;
                 description
-                  "An identifier to uniquely demux telemetry data sent
-                   using the same message.";
+                  "A client-assigned identifier for the DOTS telemetry
+                   data.";
               }
             }
           }
@@ -4605,6 +4561,10 @@ module ietf-dots-telemetry {
               type uint32;
               description
                 "Reference a list of associated mitigation requests.";
+              reference
+                "RFC 9132: Distributed Denial-of-Service Open Threat 
+                           Signaling (DOTS) Signal Channel 
+                           Specification, Section 4.4.1";
             }
           }
           uses pre-or-ongoing-mitigation;

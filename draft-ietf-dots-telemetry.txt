@@ -134,21 +134,21 @@ Internet-Draft               DOTS Telemetry                November 2021
    9.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .  67
    10. YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  68
      10.1.  DOTS Signal Channel Telemetry YANG Module  . . . . . . .  68
-     10.2.  Vendor Attack Mapping Details YANG Module  . . . . . . .  99
-   11. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . . 102
-   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 105
-     12.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 105
-     12.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 107
-     12.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 108
-   13. Security Considerations . . . . . . . . . . . . . . . . . . . 108
-     13.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 108
-     13.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 109
-   14. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 110
-   15. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 110
-   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 111
-     16.1.  Normative References . . . . . . . . . . . . . . . . . . 111
-     16.2.  Informative References . . . . . . . . . . . . . . . . . 112
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 114
+     10.2.  Vendor Attack Mapping Details YANG Module  . . . . . . .  98
+   11. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . . 101
+   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 104
+     12.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 104
+     12.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 106
+     12.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 107
+   13. Security Considerations . . . . . . . . . . . . . . . . . . . 107
+     13.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 107
+     13.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 108
+   14. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 109
+   15. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 109
+   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 110
+     16.1.  Normative References . . . . . . . . . . . . . . . . . . 110
+     16.2.  Informative References . . . . . . . . . . . . . . . . . 111
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 113
 
 1.  Introduction
 
@@ -517,7 +517,7 @@ Internet-Draft               DOTS Telemetry                November 2021
    Once the DOTS signal channel is established, DOTS clients that
    support the DOTS telemetry extension proceed with the telemetry setup
    configuration (e.g., measurement interval, telemetry notification
-   interface, pipe capacity, normal traffic baseline) as detailed in
+   interval, pipe capacity, normal traffic baseline) as detailed in
    Section 6.  DOTS agents can then include DOTS telemetry attributes
    using the DOTS signal channel (Section 7.1).  A DOTS client can use
    separate messages to share with its DOTS server(s) a set of telemetry
@@ -862,14 +862,14 @@ Internet-Draft               DOTS Telemetry                November 2021
           |  |     |  +-- mid-percentile?                percentile
           |  |     |  +-- high-percentile?               percentile
           |  |     |  +-- server-originated-telemetry?   boolean
-          |  |     |  +-- telemetry-notify-interval?     uint32
+          |  |     |  +-- telemetry-notify-interval?     uint16
           |  |     +-- min-config-values
           |  |     |  +-- measurement-interval?        interval
           |  |     |  +-- measurement-sample?          sample
           |  |     |  +-- low-percentile?              percentile
           |  |     |  +-- mid-percentile?              percentile
           |  |     |  +-- high-percentile?             percentile
-          |  |     |  +-- telemetry-notify-interval?   uint32
+          |  |     |  +-- telemetry-notify-interval?   uint16
           |  |     +-- supported-unit-classes
           |  |     |  +-- unit-config* [unit]
           |  |     |     +-- unit           unit-class
@@ -899,7 +899,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
           |        |     +-- server-originated-telemetry?   boolean
-          |        |     +-- telemetry-notify-interval?     uint32
+          |        |     +-- telemetry-notify-interval?     uint16
           |        +--:(pipe)
           |        |  ...
           |        +--:(baseline)
@@ -1750,6 +1750,11 @@ Internet-Draft               DOTS Telemetry                November 2021
 
                Figure 18: Telemetry Baseline Tree Structure
 
+   A DOTS client can share one or multiple normal traffic baselines
+   (e.g., aggregate or per-prefix baselines), each are uniquely within
+   the DOTS client domain with an identifier 'id'.  This identifier can
+   be used to update a baseline entry, delete a specific entry, etc.
+
 6.3.1.  Conveying DOTS Client Domain Baseline Information
 
    Similar considerations to those specified in Section 6.1.2 are
@@ -1782,17 +1787,15 @@ Internet-Draft               DOTS Telemetry                November 2021
    indication that the baseline information applies for the DOTS client
    domain as a whole.
 
-   An example of a PUT request to convey the baseline information is
-   shown in Figure 19.
-
-
-
 
 
 Boucadair, et al.         Expires May 29, 2022                 [Page 32]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   An example of a PUT request to convey the baseline information is
+   shown in Figure 19.
 
    Header: PUT (Code=0.03)
    Uri-Path: ".well-known"
@@ -1830,9 +1833,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    The DOTS client may share protocol specific baseline information
    (e.g., TCP and UDP) as shown in Figure 19.
-
-
-
 
 
 
@@ -4796,6 +4796,8 @@ Internet-Draft               DOTS Telemetry                November 2021
       type uint32;
       description
         "Vendor ID is a security vendor's Enterprise Number.";
+      reference
+        "Enterprise-Numbers: Private Enterprise Numbers";
     }
     leaf attack-id {
       type uint32;
@@ -4808,8 +4810,6 @@ Internet-Draft               DOTS Telemetry                November 2021
         "Textual representation of attack description. Natural Language
          Processing techniques (e.g., word embedding) might provide some
          utility in mapping the attack description to an attack type.";
-    }
-    leaf attack-severity {
 
 
 
@@ -4818,6 +4818,8 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 86]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+    }
+    leaf attack-severity {
       type attack-severity;
       description
         "Severity level of an attack. How this level is determined
@@ -4848,14 +4850,9 @@ Internet-Draft               DOTS Telemetry                November 2021
     }
   }
 
-  grouping top-talker-aggregate {
+  grouping talker {
     description
-      "An aggregate of top attack sources. This aggregate is
-       typically used when included in a mitigation request.";
-    list talker {
-      key "source-prefix";
-      description
-        "IPv4 or IPv6 prefix identifying the attacker(s).";
+      "Defines generic data related to top-talkers.";
       leaf spoofed-status {
         type boolean;
         description
@@ -4866,6 +4863,9 @@ Internet-Draft               DOTS Telemetry                November 2021
         description
           "IPv4 or IPv6 prefix identifying the attacker(s).";
       }
+      list source-port-range {
+        key "lower-port";
+        description
 
 
 
@@ -4874,9 +4874,6 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 87]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-      list source-port-range {
-        key "lower-port";
-        description
           "Port range. When only lower-port is
            present, it represents a single port number.";
         leaf lower-port {
@@ -4922,6 +4919,9 @@ Internet-Draft               DOTS Telemetry                November 2021
           "Total attack traffic issued from this source.";
         uses traffic-unit-all;
       }
+  }
+
+  grouping top-talker-aggregate {
 
 
 
@@ -4930,6 +4930,15 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 88]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+    description
+      "An aggregate of top attack sources. This aggregate is
+       typically used when included in a mitigation request.";
+    list talker {
+      key "source-prefix";
+      description
+        "Refers to a top-talker that is identified by an IPv4
+         or IPv6 prefix identifying the attacker(s).";
+      uses talker;
       container total-attack-connection {
         description
           "Total attack connections issued from this source.";
@@ -4944,73 +4953,9 @@ Internet-Draft               DOTS Telemetry                November 2021
     list talker {
       key "source-prefix";
       description
-        "IPv4 or IPv6 prefix identifying the attacker(s).";
-      leaf spoofed-status {
-        type boolean;
-        description
-          "Indicates whether this address is spoofed.";
-      }
-      leaf source-prefix {
-        type inet:ip-prefix;
-        description
-          "IPv4 or IPv6 prefix identifying the attacker(s).";
-      }
-      list source-port-range {
-        key "lower-port";
-        description
-          "Port range. When only lower-port is
-           present, it represents a single port number.";
-        leaf lower-port {
-          type inet:port-number;
-          description
-            "Lower port number of the port range.";
-        }
-        leaf upper-port {
-          type inet:port-number;
-          must '. >= ../lower-port' {
-            error-message
-              "The upper port number must be greater than
-               or equal to lower port number.";
-          }
-          description
-            "Upper port number of the port range.";
-        }
-      }
-      list source-icmp-type-range {
-        key "lower-type";
-
-
-
-Boucadair, et al.         Expires May 29, 2022                 [Page 89]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
-        description
-          "ICMP type range. When only lower-type is
-           present, it represents a single ICMP type.";
-        leaf lower-type {
-          type uint8;
-          description
-            "Lower ICMP type of the ICMP type range.";
-        }
-        leaf upper-type {
-          type uint8;
-          must '. >= ../lower-type' {
-            error-message
-              "The upper ICMP type must be greater than
-               or equal to lower ICMP type.";
-          }
-          description
-            "Upper type of the ICMP type range.";
-        }
-      }
-      list total-attack-traffic {
-        key "unit";
-        description
-          "Total attack traffic issued from this source.";
-        uses traffic-unit-all;
-      }
+        "Refers to a top-talker that is identified by an IPv4
+         or IPv6 prefix identifying the attacker(s).";
+      uses talker;
       container total-attack-connection {
         description
           "Total attack connections issued from this source.";
@@ -5033,15 +4978,15 @@ Internet-Draft               DOTS Telemetry                November 2021
     list total-traffic-normal {
       key "unit";
       description
-        "Total traffic normal baselines.";
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 90]
+Boucadair, et al.         Expires May 29, 2022                 [Page 89]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+        "Total traffic normal baselines.";
       uses traffic-unit;
     }
     list total-traffic-normal-per-protocol {
@@ -5089,15 +5034,15 @@ Internet-Draft               DOTS Telemetry                November 2021
       description
         "Total traffic per protocol.";
       uses traffic-unit-protocol-all;
-    }
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 91]
+Boucadair, et al.         Expires May 29, 2022                 [Page 90]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+    }
     list total-traffic-port {
       key "unit port";
       description
@@ -5145,15 +5090,15 @@ Internet-Draft               DOTS Telemetry                November 2021
     }
   }
 
-  sx:augment-structure "/dots-signal:dots-signal"
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 92]
+Boucadair, et al.         Expires May 29, 2022                 [Page 91]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+  sx:augment-structure "/dots-signal:dots-signal"
                      + "/dots-signal:message-type"
                      + "/dots-signal:mitigation-scope"
                      + "/dots-signal:scope" {
@@ -5201,15 +5146,15 @@ Internet-Draft               DOTS Telemetry                November 2021
   sx:structure dots-telemetry {
     description
       "Main structure for DOTS telemetry messages.";
-    choice telemetry-message-type {
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 93]
+Boucadair, et al.         Expires May 29, 2022                 [Page 92]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+    choice telemetry-message-type {
       description
         "Can be a telemetry-setup or telemetry data.";
       case telemetry-setup {
@@ -5233,12 +5178,12 @@ Internet-Draft               DOTS Telemetry                November 2021
                 description
                   "Indicates whether the DOTS server can be instructed
                    to send pre-or-ongoing-mitigation telemetry. If set
-                   to FALSE or the data node is not present, this is
+                   to 'false' or the data node is not present, this is
                    an indication that the server does not support this
                    capability.";
               }
               leaf telemetry-notify-interval {
-                type uint32 {
+                type uint16 {
                   range "1 .. 3600";
                 }
                 units "seconds";
@@ -5257,17 +5202,17 @@ Internet-Draft               DOTS Telemetry                November 2021
             container min-config-values {
               description
                 "Minimum acceptable configuration values.";
-              uses telemetry-parameters;
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 94]
+Boucadair, et al.         Expires May 29, 2022                 [Page 93]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+              uses telemetry-parameters;
               leaf telemetry-notify-interval {
-                type uint32 {
+                type uint16 {
                   range "1 .. 3600";
                 }
                 units "seconds";
@@ -5313,15 +5258,15 @@ Internet-Draft               DOTS Telemetry                November 2021
                 type uint32;
                 description
                   "A client-assigned identifier for the DOTS telemetry
-                   setup data.";
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 95]
+Boucadair, et al.         Expires May 29, 2022                 [Page 94]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+                   setup data.";
               }
             }
           }
@@ -5369,15 +5314,15 @@ Internet-Draft               DOTS Telemetry                November 2021
                     "Identifier of an interconnection link of
                      the DOTS client domain.";
                 }
-                leaf capacity {
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 96]
+Boucadair, et al.         Expires May 29, 2022                 [Page 95]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+                leaf capacity {
                   type uint64;
                   mandatory true;
                   description
@@ -5425,15 +5370,15 @@ Internet-Draft               DOTS Telemetry                November 2021
           description
             "Pre-or-ongoing-mitigation telemetry per DOTS client.
              The keys of the list are 'cuid' and 'tmid', but these
-             keys are not represented here because these keys are
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 97]
+Boucadair, et al.         Expires May 29, 2022                 [Page 96]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+             keys are not represented here because these keys are
              conveyed as mandatory Uri-Paths in requests.
              Omitting keys is compliant with RFC8791.";
           choice direction {
@@ -5447,8 +5392,8 @@ Internet-Draft               DOTS Telemetry                November 2021
               leaf tmid {
                 type uint32;
                 description
-                  "An identifier to uniquely demux telemetry data sent
-                   using the same message.";
+                  "A client-assigned identifier for the DOTS telemetry
+                   data.";
               }
             }
           }
@@ -5468,6 +5413,10 @@ Internet-Draft               DOTS Telemetry                November 2021
               type uint32;
               description
                 "Reference a list of associated mitigation requests.";
+              reference
+                "RFC 9132: Distributed Denial-of-Service Open Threat
+                           Signaling (DOTS) Signal Channel
+                           Specification, Section 4.4.1";
             }
           }
           uses pre-or-ongoing-mitigation;
@@ -5480,12 +5429,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
-
-
-
-
-Boucadair, et al.         Expires May 29, 2022                 [Page 98]
+Boucadair, et al.         Expires May 29, 2022                 [Page 97]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5541,7 +5485,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                 [Page 99]
+Boucadair, et al.         Expires May 29, 2022                 [Page 98]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5597,7 +5541,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 100]
+Boucadair, et al.         Expires May 29, 2022                 [Page 99]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5653,7 +5597,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 101]
+Boucadair, et al.         Expires May 29, 2022                [Page 100]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5709,7 +5653,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 102]
+Boucadair, et al.         Expires May 29, 2022                [Page 101]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5765,7 +5709,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 103]
+Boucadair, et al.         Expires May 29, 2022                [Page 102]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5821,7 +5765,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 104]
+Boucadair, et al.         Expires May 29, 2022                [Page 103]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5877,7 +5821,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 105]
+Boucadair, et al.         Expires May 29, 2022                [Page 104]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5933,7 +5877,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 106]
+Boucadair, et al.         Expires May 29, 2022                [Page 105]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -5989,7 +5933,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 107]
+Boucadair, et al.         Expires May 29, 2022                [Page 106]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6045,7 +5989,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 108]
+Boucadair, et al.         Expires May 29, 2022                [Page 107]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6101,7 +6045,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 109]
+Boucadair, et al.         Expires May 29, 2022                [Page 108]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6157,7 +6101,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 110]
+Boucadair, et al.         Expires May 29, 2022                [Page 109]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6213,7 +6157,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 111]
+Boucadair, et al.         Expires May 29, 2022                [Page 110]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6269,7 +6213,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 112]
+Boucadair, et al.         Expires May 29, 2022                [Page 111]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6325,7 +6269,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 113]
+Boucadair, et al.         Expires May 29, 2022                [Page 112]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6381,7 +6325,7 @@ Authors' Addresses
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 114]
+Boucadair, et al.         Expires May 29, 2022                [Page 113]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -6437,4 +6381,4 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 29, 2022                [Page 115]
+Boucadair, et al.         Expires May 29, 2022                [Page 114]
