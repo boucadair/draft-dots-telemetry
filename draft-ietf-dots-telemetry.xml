@@ -616,6 +616,9 @@
         <xref target="map1"></xref>. The structure of telemetry message bodies
         is represented as a YANG data structure (<xref
         target="module"></xref>).</t>
+
+        <t>The examples use the Enterprise Number 32473 defined for
+        documentation use <xref target="RFC5612"></xref>.</t>
       </section>
     </section>
 
@@ -2352,7 +2355,7 @@ Accept: application/yang-data+json
   "ietf-dots-mapping:vendor-mapping": {
     "vendor": [
       {
-        "vendor-id": 1234,
+        "vendor-id": 32473,
         "vendor-name": "mitigator-s",
         "last-updated": "1576856561",
         "attack-mapping": []
@@ -2484,9 +2487,9 @@ Content-Format: "application/dots+cbor"
         ],
         "attack-detail": [
           {
-            "vendor-id": 1234,
+            "vendor-id": 32473,
             "attack-id": 77,
-            "start-time": "1957811234",
+            "start-time": "160833656",
             "attack-severity": "high"
           }
         ]
@@ -2594,7 +2597,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         requests per DOTS client domain. This request MUST be maintained in an
         active state by the DOTS server until a delete request is received
         from the same DOTS client to clear this pre-or-ongoing-mitigation
-        telemetry.</t>
+        telemetry or when the DOTS client is considered inactive (e.g.,
+        Section 3.5 of <xref target="RFC8783"></xref>).</t>
 
         <t>The relative order of two PUT requests carrying DOTS
         pre-or-ongoing-mitigation telemetry from a DOTS client is determined
@@ -2676,7 +2680,8 @@ Observe: 0]]></artwork>
             style="empty">
             <t>If more than one Uri-Query option is included in a request,
             these options are interpreted in the same way as when multiple
-            target attributes are included in a message body.</t>
+            target attributes are included in a message body (Section 4.4.1 of
+            <xref target="RFC9132"></xref>).</t>
 
             <t>If multiple values of a query parameter are to be included in a
             request, these values MUST be included in the same Uri-Query
@@ -2755,9 +2760,9 @@ Observe: 0]]></artwork>
         ],
         "attack-detail": [
           {
-            "vendor-id": 1234,
+            "vendor-id": 32473,
             "attack-id": 77,
-            "start-time": "1957818434",
+            "start-time": "16083123",
             "attack-severity": "high"
           }
         ]
@@ -2786,9 +2791,8 @@ Observe: 0]]></artwork>
         handled locally.</t>
 
         <t>A DOTS client that is not interested to receive
-        pre-or-ongoing-mitigation telemetry data for a target MUST send a
-        delete request similar to the one depicted in <xref
-        target="spa"></xref>.</t>
+        pre-or-ongoing-mitigation telemetry data for a target sends a delete
+        request similar to the one depicted in <xref target="spa"></xref>.</t>
       </section>
     </section>
 
@@ -3060,7 +3064,7 @@ Content-Format: "application/dots+cbor"
         ],
         "ietf-dots-telemetry:attack-detail": [
           {
-            "vendor-id": 1234,
+            "vendor-id": 32473,
             "attack-id": 77,
             "source-count": {
               "peak-g": "12683"
@@ -5255,6 +5259,8 @@ module ietf-dots-mapping {
       <?rfc include='reference.I-D.ietf-core-new-block'?>
 
       <?rfc include='reference.I-D.ietf-dots-robust-blocks'?>
+
+      <?rfc include='reference.RFC.5612'?>
 
       <reference anchor="Key-Map"
                  target="https://www.iana.org/assignments/dots/dots.xhtml#dots-signal-channel-cbor-key-values">

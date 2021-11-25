@@ -690,6 +690,9 @@ Internet-Draft               DOTS Telemetry                November 2021
    structure of telemetry message bodies is represented as a YANG data
    structure (Section 10.1).
 
+   The examples use the Enterprise Number 32473 defined for
+   documentation use [RFC5612].
+
 5.  Telemetry Operation Paths
 
    As discussed in Section 4.2 of [RFC9132], each DOTS operation is
@@ -713,9 +716,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    is shown in Figure 1.  More details are provided in Sections 6 and 7
    about the exact structure of 'telemetry-setup' and 'telemetry'
    message types.
-
-
-
 
 
 
@@ -2817,7 +2817,7 @@ Internet-Draft               DOTS Telemetry                November 2021
      "ietf-dots-mapping:vendor-mapping": {
        "vendor": [
          {
-           "vendor-id": 1234,
+           "vendor-id": 32473,
            "vendor-name": "mitigator-s",
            "last-updated": "1576856561",
            "attack-mapping": []
@@ -2996,9 +2996,9 @@ Internet-Draft               DOTS Telemetry                November 2021
            ],
            "attack-detail": [
              {
-               "vendor-id": 1234,
+               "vendor-id": 32473,
                "attack-id": 77,
-               "start-time": "1957811234",
+               "start-time": "160833656",
                "attack-severity": "high"
              }
            ]
@@ -3123,13 +3123,13 @@ Internet-Draft               DOTS Telemetry                November 2021
    number of pre-or-ongoing-mitigation requests per DOTS client domain.
    This request MUST be maintained in an active state by the DOTS server
    until a delete request is received from the same DOTS client to clear
-   this pre-or-ongoing-mitigation telemetry.
+   this pre-or-ongoing-mitigation telemetry or when the DOTS client is
+   considered inactive (e.g., Section 3.5 of [RFC8783]).
 
    The relative order of two PUT requests carrying DOTS pre-or-ongoing-
    mitigation telemetry from a DOTS client is determined by comparing
    their respective 'tmid' values.  If such two requests have
    overlapping 'target', the PUT request with higher numeric 'tmid'
-   value will override the request with a lower numeric 'tmid' value.
 
 
 
@@ -3138,6 +3138,7 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 56]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   value will override the request with a lower numeric 'tmid' value.
    The overlapped lower numeric 'tmid' MUST be automatically deleted and
    no longer be available.
 
@@ -3188,7 +3189,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
 Boucadair, et al.         Expires May 29, 2022                 [Page 57]
 
 Internet-Draft               DOTS Telemetry                November 2021
@@ -3225,7 +3225,8 @@ Internet-Draft               DOTS Telemetry                November 2021
 
       If more than one Uri-Query option is included in a request, these
       options are interpreted in the same way as when multiple target
-      attributes are included in a message body.
+      attributes are included in a message body (Section 4.4.1 of
+      [RFC9132]).
 
       If multiple values of a query parameter are to be included in a
       request, these values MUST be included in the same Uri-Query
@@ -3240,8 +3241,7 @@ Internet-Draft               DOTS Telemetry                November 2021
       parameters.  DOTS clients MUST NOT include a name in which the "*"
       character is included in a label other than the leftmost label.
       "*.example.com" is an example of a valid wildcard name that can be
-      included as a value of the 'target-fqdn' parameter in an Uri-Query
-      option.
+
 
 
 
@@ -3249,6 +3249,9 @@ Boucadair, et al.         Expires May 29, 2022                 [Page 58]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+      included as a value of the 'target-fqdn' parameter in an Uri-Query
+      option.
 
    DOTS clients may also filter out the asynchronous notifications from
    the DOTS server by indicating information about a specific attack
@@ -3298,9 +3301,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
-
-
 Boucadair, et al.         Expires May 29, 2022                 [Page 59]
 
 Internet-Draft               DOTS Telemetry                November 2021
@@ -3327,9 +3327,9 @@ Internet-Draft               DOTS Telemetry                November 2021
            ],
            "attack-detail": [
              {
-               "vendor-id": 1234,
+               "vendor-id": 32473,
                "attack-id": 77,
-               "start-time": "1957818434",
+               "start-time": "16083123",
                "attack-severity": "high"
              }
            ]
@@ -3368,8 +3368,8 @@ Internet-Draft               DOTS Telemetry                November 2021
    locally.
 
    A DOTS client that is not interested to receive pre-or-ongoing-
-   mitigation telemetry data for a target MUST send a delete request
-   similar to the one depicted in Figure 37.
+   mitigation telemetry data for a target sends a delete request similar
+   to the one depicted in Figure 37.
 
 8.  DOTS Telemetry Mitigation Status Update
 
@@ -3669,7 +3669,7 @@ Internet-Draft               DOTS Telemetry                November 2021
            ],
            "ietf-dots-telemetry:attack-detail": [
              {
-               "vendor-id": 1234,
+               "vendor-id": 32473,
                "attack-id": 77,
                "source-count": {
                  "peak-g": "12683"
@@ -6250,6 +6250,10 @@ Internet-Draft               DOTS Telemetry                November 2021
               RFC 4960, DOI 10.17487/RFC4960, September 2007,
               <https://www.rfc-editor.org/info/rfc4960>.
 
+   [RFC5612]  Eronen, P. and D. Harrington, "Enterprise Number for
+              Documentation Use", RFC 5612, DOI 10.17487/RFC5612, August
+              2009, <https://www.rfc-editor.org/info/rfc5612>.
+
    [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
               BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
               <https://www.rfc-editor.org/info/rfc8340>.
@@ -6259,10 +6263,6 @@ Internet-Draft               DOTS Telemetry                November 2021
               DOI 10.17487/RFC8525, March 2019,
               <https://www.rfc-editor.org/info/rfc8525>.
 
-   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
-              Threat Signaling (DOTS) Requirements", RFC 8612,
-              DOI 10.17487/RFC8612, May 2019,
-              <https://www.rfc-editor.org/info/rfc8612>.
 
 
 
@@ -6273,6 +6273,11 @@ Boucadair, et al.         Expires May 29, 2022                [Page 112]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
+              Threat Signaling (DOTS) Requirements", RFC 8612,
+              DOI 10.17487/RFC8612, May 2019,
+              <https://www.rfc-editor.org/info/rfc8612>.
 
    [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
               L., and K. Nishizuka, "Use Cases for DDoS Open Threat
@@ -6313,13 +6318,8 @@ Authors' Addresses
    Email: ehudd@radware.com
 
 
-   Meiling Chen
-   CMCC
-   32, Xuanwumen West
-   BeiJing, BeiJing  100053
-   China
 
-   Email: chenmeiling@chinamobile.com
+
 
 
 
@@ -6330,19 +6330,19 @@ Boucadair, et al.         Expires May 29, 2022                [Page 113]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   Meiling Chen
+   CMCC
+   32, Xuanwumen West
+   BeiJing, BeiJing  100053
+   China
+
+   Email: chenmeiling@chinamobile.com
+
+
    Jon Shallow
    United Kingdom
 
    Email: supjps-ietf@jpshallow.com
-
-
-
-
-
-
-
-
-
 
 
 
