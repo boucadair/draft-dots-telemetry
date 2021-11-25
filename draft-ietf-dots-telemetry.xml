@@ -386,7 +386,7 @@
         <t>Mitigation of attacks without having certain knowledge of normal
         traffic can be inaccurate at best. This is especially true for
         recursive signaling (see Section 3.2.3 of <xref
-        target="RFC8903"></xref>). In addition, the highly diverse types of
+        target="RFC8811"></xref>). In addition, the highly diverse types of
         use cases where DOTS clients are integrated also emphasize the need
         for knowledge of each DOTS client domain behavior. Consequently,
         common global thresholds for attack detection practically cannot be
@@ -1159,7 +1159,7 @@ Content-Format: "application/dots+cbor"
           client domain having two interconnection links with an upstream ISP
           (<xref target="singleagg"></xref>) can send a PUT request (shown in
           <xref target="putp1a"></xref>) to communicate the aggregate link
-          capacity with its ISP. Signalling individual or aggregate link
+          capacity with its ISP. Signaling individual or aggregate link
           capacity is deployment specific.</t>
 
           <t><figure anchor="singleagg"
@@ -5246,6 +5246,8 @@ module ietf-dots-mapping {
 
     <references title="Informative References">
       <?rfc include='reference.RFC.9133'?>
+
+      <?rfc include='reference.RFC.8811'?>
 
       <?rfc include='reference.RFC.2330'?>
 

@@ -431,7 +431,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    Mitigation of attacks without having certain knowledge of normal
    traffic can be inaccurate at best.  This is especially true for
-   recursive signaling (see Section 3.2.3 of [RFC8903]).  In addition,
+   recursive signaling (see Section 3.2.3 of [RFC8811]).  In addition,
    the highly diverse types of use cases where DOTS clients are
    integrated also emphasize the need for knowledge of each DOTS client
    domain behavior.  Consequently, common global thresholds for attack
@@ -1321,7 +1321,7 @@ Internet-Draft               DOTS Telemetry                November 2021
    individual links.  For example, a DOTS client that manages a DOTS
    client domain having two interconnection links with an upstream ISP
    (Figure 12) can send a PUT request (shown in Figure 13) to
-   communicate the aggregate link capacity with its ISP.  Signalling
+   communicate the aggregate link capacity with its ISP.  Signaling
    individual or aggregate link capacity is deployment specific.
 
                          ,--,--,--.             ,--,--,--.
@@ -6279,6 +6279,11 @@ Internet-Draft               DOTS Telemetry                November 2021
               DOI 10.17487/RFC8612, May 2019,
               <https://www.rfc-editor.org/info/rfc8612>.
 
+   [RFC8811]  Mortensen, A., Ed., Reddy.K, T., Ed., Andreasen, F.,
+              Teague, N., and R. Compton, "DDoS Open Threat Signaling
+              (DOTS) Architecture", RFC 8811, DOI 10.17487/RFC8811,
+              August 2020, <https://www.rfc-editor.org/info/rfc8811>.
+
    [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
               L., and K. Nishizuka, "Use Cases for DDoS Open Threat
               Signaling", RFC 8903, DOI 10.17487/RFC8903, May 2021,
@@ -6316,11 +6321,6 @@ Authors' Addresses
    Israel
 
    Email: ehudd@radware.com
-
-
-
-
-
 
 
 
