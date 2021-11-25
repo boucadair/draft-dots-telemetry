@@ -3533,7 +3533,7 @@ Internet-Draft               DOTS Telemetry                November 2021
    As defined in [RFC8612], the actual mitigation activities can include
    several countermeasure mechanisms.  The DOTS server signals the
    current operational status of relevant countermeasures.  A list of
-   attacks detected by each countermeasure MAY also be included.  The
+   attacks detected by these countermeasures MAY also be included.  The
    same attributes defined in Section 7.1.5 are applicable for
    describing the attacks detected and mitigated at the DOTS server
    domain.
@@ -3664,7 +3664,7 @@ Internet-Draft               DOTS Telemetry                November 2021
            "ietf-dots-telemetry:total-attack-traffic": [
              {
                "unit": "megabit-ps",
-               "mid-percentile-g": "900"
+               "mid-percentile-g": "752"
              }
            ],
            "ietf-dots-telemetry:attack-detail": [
@@ -3672,7 +3672,7 @@ Internet-Draft               DOTS Telemetry                November 2021
                "vendor-id": 1234,
                "attack-id": 77,
                "source-count": {
-                 "peak-g": "10000"
+                 "peak-g": "12683"
                }
              }
            ]
@@ -3719,7 +3719,8 @@ Internet-Draft               DOTS Telemetry                November 2021
    If the target query does not match the target of the enclosed 'mid'
    as maintained by the DOTS server, the latter MUST respond with a 4.04
    (Not Found) error Response Code.  The DOTS server MUST NOT add a new
-   observe entry if this query overlaps with an existing one.
+   observe entry if this query overlaps with an existing one.  In such a
+   case, the DOTS server replies with 4.09 (Conflict).
 
 9.  Error Handling
 
@@ -3741,7 +3742,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    o  4.04 (Not Found) is returned by the DOTS server when the DOTS
       client has sent a request with a target query that does not match
       the target of the enclosed 'mid' as maintained by the DOTS server.
-
 
 
 
@@ -3887,7 +3887,7 @@ Internet-Draft               DOTS Telemetry                November 2021
       "Enumeration for attack severity.";
     reference
       "RFC 7970: The Incident Object Description Exchange
-                 Format Version 2";
+                 Format Version 2, Section 3.12.2";
   }
 
   typedef unit-class {
@@ -4377,7 +4377,7 @@ Internet-Draft               DOTS Telemetry                November 2021
       }
       leaf unit-status {
         type boolean;
-        default true;
+        mandatory true;
         description
           "Enable/disable the use of the measurement unit class.";
       }

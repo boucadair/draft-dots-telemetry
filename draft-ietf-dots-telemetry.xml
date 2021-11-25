@@ -2937,8 +2937,8 @@ Content-Format: "application/dots+cbor"
         <t>As defined in <xref target="RFC8612"></xref>, the actual mitigation
         activities can include several countermeasure mechanisms. The DOTS
         server signals the current operational status of relevant
-        countermeasures. A list of attacks detected by each countermeasure MAY
-        also be included. The same attributes defined in <xref
+        countermeasures. A list of attacks detected by these countermeasures
+        MAY also be included. The same attributes defined in <xref
         target="attackdetails"></xref> are applicable for describing the
         attacks detected and mitigated at the DOTS server domain.</t>
 
@@ -3055,7 +3055,7 @@ Content-Format: "application/dots+cbor"
         "ietf-dots-telemetry:total-attack-traffic": [
           {
             "unit": "megabit-ps",
-            "mid-percentile-g": "900"
+            "mid-percentile-g": "752"
           }
         ],
         "ietf-dots-telemetry:attack-detail": [
@@ -3063,7 +3063,7 @@ Content-Format: "application/dots+cbor"
             "vendor-id": 1234,
             "attack-id": 77,
             "source-count": {
-              "peak-g": "10000"
+              "peak-g": "12683"
             }
           }
         ]
@@ -3102,7 +3102,8 @@ Observe: 0]]></artwork>
         <t>If the target query does not match the target of the enclosed 'mid'
         as maintained by the DOTS server, the latter MUST respond with a 4.04
         (Not Found) error Response Code. The DOTS server MUST NOT add a new
-        observe entry if this query overlaps with an existing one.</t>
+        observe entry if this query overlaps with an existing one. In such a
+        case, the DOTS server replies with 4.09 (Conflict). </t>
       </section>
     </section>
 
@@ -3251,7 +3252,7 @@ module ietf-dots-telemetry {
       "Enumeration for attack severity.";
     reference
       "RFC 7970: The Incident Object Description Exchange
-                 Format Version 2";
+                 Format Version 2, Section 3.12.2";
   }
 
   typedef unit-class {
@@ -3669,7 +3670,7 @@ module ietf-dots-telemetry {
       }
       leaf unit-status {
         type boolean;
-        default true;
+        mandatory true;
         description
           "Enable/disable the use of the measurement unit class.";
       }
