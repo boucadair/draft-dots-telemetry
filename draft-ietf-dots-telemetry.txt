@@ -2829,7 +2829,7 @@ Internet-Draft               DOTS Telemetry                November 2021
          {
            "vendor-id": 32473,
            "vendor-name": "mitigator-s",
-           "last-updated": "1957899851",
+           "last-updated": "1629898758",
            "attack-mapping": []
          }
        ]
@@ -2869,7 +2869,7 @@ Internet-Draft               DOTS Telemetry                November 2021
          {
            "vendor-id": 345,
            "vendor-name": "mitigator-c",
-           "last-updated": "1957899956",
+           "last-updated": "1629898958",
            "attack-mapping": [
              {
                "attack-id": 1,
@@ -2998,7 +2998,7 @@ Internet-Draft               DOTS Telemetry                November 2021
              {
                "vendor-id": 32473,
                "attack-id": 77,
-               "start-time": "160833656",
+               "start-time": "1608336568",
                "attack-severity": "high"
              }
            ]
@@ -3329,7 +3329,7 @@ Internet-Draft               DOTS Telemetry                November 2021
              {
                "vendor-id": 32473,
                "attack-id": 77,
-               "start-time": "16083123",
+               "start-time": "1618339785",
                "attack-severity": "high"
              }
            ]
