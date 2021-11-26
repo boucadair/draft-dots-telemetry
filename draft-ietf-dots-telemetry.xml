@@ -2261,10 +2261,10 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           DOTS signal channel, DOTS agents MAY use the DOTS data channel <xref
           target="RFC8783"></xref> to exchange vendor specific attack mapping
           details (that is, {vendor identifier, attack identifier} ==&gt;
-          attack description string). As such, DOTS agents do not have to
-          convey systematically an attack description in their telemetry
-          messages over the DOTS signal channel. Refer to <xref
-          target="vam"></xref>.</t>
+          textual representation of the attack description). As such, DOTS
+          agents do not have to convey systematically an attack description in
+          their telemetry messages over the DOTS signal channel. Refer to
+          <xref target="vam"></xref>.</t>
         </section>
 
         <section anchor="vam" title="Vendor Attack Mapping">
