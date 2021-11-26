@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-16" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-18" ipr="trust200902">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -592,6 +592,12 @@
         target="pre-t"></xref>). Otherwise, whenever a key statement is used
         in the module, the same definition as in Section 7.8.2 of <xref
         target="RFC7950"></xref> is assumed.</t>
+
+        <t>The full tree diagram of the DOTS telemetry module can be generated
+        using the "pyang" tool <xref target="PYANG"></xref>. That tree is not
+        included here because it is too long (Section 3.3 of <xref
+        target="RFC8340"></xref>). Instead, subtrees are provided for the
+        reader's convenience.</t>
 
         <t>In order to optimize the data exchanged over the DOTS signal
         channel, the document specifies a second YANG module
@@ -1497,7 +1503,7 @@ Content-Format: "application/dots+cbor"
         <t>A DOTS client can share one or multiple normal traffic baselines
         (e.g., aggregate or per-prefix baselines), each are uniquely within
         the DOTS client domain with an identifier 'id'. This identifier can be
-        used to update a baseline entry, delete a specific entry, etc. </t>
+        used to update a baseline entry, delete a specific entry, etc.</t>
 
         <section title="Conveying DOTS Client Domain Baseline Information">
           <t>Similar considerations to those specified in <xref
@@ -3113,7 +3119,7 @@ Observe: 0]]></artwork>
         as maintained by the DOTS server, the latter MUST respond with a 4.04
         (Not Found) error Response Code. The DOTS server MUST NOT add a new
         observe entry if this query overlaps with an existing one. In such a
-        case, the DOTS server replies with 4.09 (Conflict). </t>
+        case, the DOTS server replies with 4.09 (Conflict).</t>
       </section>
     </section>
 
@@ -4042,9 +4048,10 @@ module ietf-dots-telemetry {
     leaf vendor-id {
       type uint32;
       description
-        "Vendor ID is a security vendor's Enterprise Number.";
+        "Vendor ID is a security vendor's Enterprise Number as 
+         as registered with IANA.";
       reference
-        "Enterprise-Numbers: Private Enterprise Numbers";
+        "IANA: Private Enterprise Numbers";
     }
     leaf attack-id {
       type uint32;
@@ -4092,65 +4099,65 @@ module ietf-dots-telemetry {
   grouping talker {
     description
       "Defines generic data related to top-talkers.";
-      leaf spoofed-status {
-        type boolean;
+    leaf spoofed-status {
+      type boolean;
+      description
+        "When set to 'true', it indicates whether this address
+         is spoofed.";
+    }
+    leaf source-prefix {
+      type inet:ip-prefix;
+      description
+        "IPv4 or IPv6 prefix identifying the attacker(s).";
+    }
+    list source-port-range {
+      key "lower-port";
+      description
+        "Port range. When only lower-port is
+         present, it represents a single port number.";
+      leaf lower-port {
+        type inet:port-number;
         description
-          "When set to 'true', it indicates whether this address
-           is spoofed.";
+          "Lower port number of the port range.";
       }
-      leaf source-prefix {
-        type inet:ip-prefix;
-        description
-          "IPv4 or IPv6 prefix identifying the attacker(s).";
-      }
-      list source-port-range {
-        key "lower-port";
-        description
-          "Port range. When only lower-port is
-           present, it represents a single port number.";
-        leaf lower-port {
-          type inet:port-number;
-          description
-            "Lower port number of the port range.";
+      leaf upper-port {
+        type inet:port-number;
+        must '. >= ../lower-port' {
+          error-message
+            "The upper port number must be greater than
+             or equal to lower port number.";
         }
-        leaf upper-port {
-          type inet:port-number;
-          must '. >= ../lower-port' {
-            error-message
-              "The upper port number must be greater than
-               or equal to lower port number.";
-          }
-          description
-            "Upper port number of the port range.";
-        }
-      }
-      list source-icmp-type-range {
-        key "lower-type";
         description
-          "ICMP type range. When only lower-type is
-           present, it represents a single ICMP type.";
-        leaf lower-type {
-          type uint8;
-          description
-            "Lower ICMP type of the ICMP type range.";
-        }
-        leaf upper-type {
-          type uint8;
-          must '. >= ../lower-type' {
-            error-message
-              "The upper ICMP type must be greater than
-               or equal to lower ICMP type.";
-          }
-          description
-            "Upper type of the ICMP type range.";
-        }
+          "Upper port number of the port range.";
       }
-      list total-attack-traffic {
-        key "unit";
+    }
+    list source-icmp-type-range {
+      key "lower-type";
+      description
+        "ICMP type range. When only lower-type is
+         present, it represents a single ICMP type.";
+      leaf lower-type {
+        type uint8;
         description
-          "Total attack traffic issued from this source.";
-        uses traffic-unit-all;
+          "Lower ICMP type of the ICMP type range.";
       }
+      leaf upper-type {
+        type uint8;
+        must '. >= ../lower-type' {
+          error-message
+            "The upper ICMP type must be greater than
+             or equal to lower ICMP type.";
+        }
+        description
+          "Upper type of the ICMP type range.";
+      }
+      }
+    list total-attack-traffic {
+      key "unit";
+      description
+        "Total attack traffic issued from this source.";
+      uses traffic-unit-all;
+    }
   }
 
   grouping top-talker-aggregate {
@@ -4173,7 +4180,8 @@ module ietf-dots-telemetry {
 
   grouping top-talker {
     description
-      "Top attack sources.";
+      "Top attack sources with detailed per-protocol
+       structure.";
     list talker {
       key "source-prefix";
       description
@@ -4659,7 +4667,10 @@ module ietf-dots-mapping {
       leaf vendor-id {
         type uint32;
         description
-          "Vendor ID is a security vendor's Enterprise Number.";
+          "Vendor ID is a security vendor's Enterprise Number as 
+           registered with IANA.";
+        reference
+          "IANA: Private Enterprise Numbers";
       }
       leaf vendor-name {
         type string;
@@ -4718,7 +4729,7 @@ module ietf-dots-mapping {
       type boolean;
       config false;
       description
-        "Indicates that the server supports sharing
+        "Indicates that the DOTS server supports sharing
          attack vendor mapping details with DOTS clients.";
     }
   }
@@ -5083,7 +5094,7 @@ module ietf-dots-mapping {
         significant considerations other that the need for the aforementioned
         protection. Such a DOTS server is already trusted to have access to
         that kind of information by being in the position to observe and
-        mitigate attacks. </t>
+        mitigate attacks.</t>
 
         <t>DOTS clients are typically considered to be trusted devices by the
         DOTS client domain. DOTS clients may be co-located on network security
@@ -5294,6 +5305,18 @@ module ietf-dots-mapping {
           </author>
 
           <date />
+        </front>
+      </reference>
+
+      <reference anchor="PYANG" target="https://github.com/mbj4668/pyang">
+        <front>
+          <title>pyang</title>
+
+          <author>
+            <organization></organization>
+          </author>
+
+          <date month="November" year="2020" />
         </front>
       </reference>
     </references>
