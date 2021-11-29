@@ -333,25 +333,27 @@
         facilitate the DOTS telemetry, the DOTS server adapts its protection
         strategy and activates the required countermeasures immediately
         (automation enabled) for the sake of optimized attack mitigation
-        decisions and actions.</t>
+        decisions and actions. The interface from the DOTS server to the
+        mitigator to signal the telemetry data is out of scope.</t>
       </section>
 
       <section title="Enhanced Detection">
-        <t>DOTS telemetry can also be used to tune the DDoS mitigators with
-        the correct state of an attack. During the last few years, DDoS attack
-        detection technologies have evolved from threshold-based detection
-        (that is, cases when all or specific parts of traffic cross a
-        predefined threshold for a certain period of time is considered as an
-        attack) to an "anomaly detection" approach. For the latter, it is
-        required to maintain rigorous learning of "normal" behavior, and an
-        "anomaly" (or an attack) is identified and categorized based on the
-        knowledge about the normal behavior and a deviation from this normal
-        behavior. Machine learning approaches are used such that the actual
-        traffic thresholds are automatically calculated by learning the
-        protected entity's normal traffic behavior during idle time. The
-        normal traffic characterization learned is referred to as the "normal
-        traffic baseline". An attack is detected when the victim's actual
-        traffic is deviating from this normal baseline pattern.</t>
+        <t>DOTS telemetry can also be used as input for determining what
+        values to use for the tuning parameters available on the mitigation
+        resources. During the last few years, DDoS attack detection
+        technologies have evolved from threshold-based detection (that is,
+        cases when all or specific parts of traffic cross a predefined
+        threshold for a certain period of time is considered as an attack) to
+        an "anomaly detection" approach. For the latter, it is required to
+        maintain rigorous learning of "normal" behavior, and an "anomaly" (or
+        an attack) is identified and categorized based on the knowledge about
+        the normal behavior and a deviation from this normal behavior. Machine
+        learning approaches are used such that the actual traffic thresholds
+        are automatically calculated by learning the protected entity's normal
+        traffic behavior during 'idle' time (i.e., no mitigation is active).
+        The normal traffic characterization learned is referred to as the
+        "normal traffic baseline". An attack is detected when the victim's
+        actual traffic is deviating from this normal baseline pattern.</t>
 
         <t>In addition, subsequent activities toward mitigating an attack are
         much more challenging. The ability to distinguish legitimate traffic
@@ -603,7 +605,7 @@
         channel, the document specifies a second YANG module
         ("ietf-dots-mapping", <xref target="data"></xref>) that augments the
         DOTS data channel <xref target="RFC8783"></xref>. This augmentation
-        can be used during idle time to share the attack mapping details
+        can be used during 'idle' time to share the attack mapping details
         (<xref target="attackdetails"></xref>). DOTS clients can use tools,
         e.g., YANG Library <xref target="RFC8525"></xref>, to retrieve the
         list of features and deviations supported by the DOTS server over the
@@ -750,13 +752,12 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
 
           <t>Upon receipt of such a request, and assuming no error is
           encountered when processing the request, the DOTS server replies
-          with a 2.05 (Content) response that conveys the current and
-          telemetry parameters acceptable by the DOTS server. The tree
-          structure of the response message body is provided in <xref
-          target="tree-acceptable"></xref>. Note that the response also
-          includes any pipe (<xref target="tpipe"></xref>) and baseline
-          information (<xref target="tbl"></xref>) maintained by the DOTS
-          server for this DOTS client.</t>
+          with a 2.05 (Content) response that conveys the telemetry parameters
+          that are acceptable by the DOTS server, any pipe information (<xref
+          target="tpipe"></xref>), and the current baseline information (<xref
+          target="tbl"></xref>) maintained by the DOTS server for this DOTS
+          client. The tree structure of the response message body is provided
+          in <xref target="tree-acceptable"></xref>. </t>
 
           <t>DOTS servers that support the capability of sending telemetry
           information to DOTS clients prior to or during a mitigation (<xref
@@ -1390,8 +1391,8 @@ Content-Format: "application/dots+cbor"
                 <t>The maximum number of connections allowed per second to the
                 target per client.</t>
 
-                <t>The maximum number of requests allowed per second to the
-                target.</t>
+                <t>The maximum number of requests (e.g., HTTP/DNS/SIP
+                requests) allowed per second to the target.</t>
 
                 <t>The maximum number of requests allowed per second to the
                 target per client.</t>
@@ -1521,8 +1522,9 @@ Content-Format: "application/dots+cbor"
           <t>Two PUT requests from a DOTS client have overlapping targets if
           there is a common IP address, IP prefix, FQDN, URI, or alias-name.
           Also, two PUT requests from a DOTS client have overlapping targets
-          if the addresses associated with the FQDN, URI, or alias are
-          overlapping with each other or with 'target-prefix'.</t>
+          from the perspective of the DOTS server if the addresses associated
+          with the FQDN, URI, or alias are overlapping with each other or with
+          'target-prefix'.</t>
 
           <t>DOTS clients SHOULD minimize the number of active 'tsid's used
           for baseline information. In order to avoid maintaining a long list
@@ -1702,11 +1704,12 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       client or a DOTS server.</t>
 
       <t>DOTS agents SHOULD bind pre-or-ongoing-mitigation telemetry data to
-      mitigation requests relying upon the target attribute. In particular, a
-      telemetry PUT request sent after a mitigation request may include a
-      reference to that mitigation request ('mid-list') as shown in <xref
-      target="mid-co"></xref>. An example illustrating request correlation by
-      means of 'target-prefix' is shown in <xref target="mid-co2"></xref>.</t>
+      mitigation requests relying upon the resources under attack. In
+      particular, a telemetry PUT request sent after a mitigation request may
+      include a reference to that mitigation request ('mid-list') as shown in
+      <xref target="mid-co"></xref>. An example illustrating request
+      correlation by means of 'target-prefix' is shown in <xref
+      target="mid-co2"></xref>.</t>
 
       <t>When generating telemetry data to send to a peer, the DOTS agent MUST
       auto-scale so that appropriate unit(s) are used.</t>
@@ -1784,9 +1787,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  ...
              +-- total-attack-traffic-port* [unit port]
              |  ...
-             +-- total-attack-connection
+             +-- total-attack-connection-protocol* [protocol]
              |  ...
-             +-- total-attack-connection-port
+             +-- total-attack-connection-port* [protocol port]
              |  ...
              +-- attack-detail* [vendor-id attack-id]
                 ...
@@ -1834,9 +1837,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  ...
              +-- total-attack-traffic-port* [unit port]
              |  ...
-             +-- total-attack-connection
+             +-- total-attack-connection-protocol* [protocol]
              |  ...
-             +-- total-attack-connection-port
+             +-- total-attack-connection-port* [protocol port]
              |  ...
              +-- attack-detail* [vendor-id attack-id]
                 ...
@@ -1855,16 +1858,17 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           the same attributes defined in <xref target="attackconn"></xref> are
           applicable for representing the attack.</t>
 
-          <t>This is an optional attribute.</t>
+          <t>At least the 'target' attribute and another
+          pre-or-ongoing-mitigation attribute MUST be present in the DOTS
+          telemetry message.</t>
         </section>
 
         <section anchor="tot" title="Total Traffic">
           <t>The 'total-traffic' attribute (<xref target="ttt"></xref>)
           conveys the percentile values (including peak and current observed
-          values) of total traffic observed during a DDoS attack. More
-          fine-grained information about the total traffic can be conveyed in
-          the 'total-traffic-protocol' and 'total-traffic-port'
-          attributes.</t>
+          values) of total observed traffic. More fine-grained information
+          about the total traffic can be conveyed in the
+          'total-traffic-protocol' and 'total-traffic-port' attributes.</t>
 
           <t>The 'total-traffic-protocol' attribute represents the total
           traffic for a target and is transport-protocol specific.</t>
@@ -1909,9 +1913,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  ...
              +-- total-attack-traffic-port* [unit port]
              |  ...
-             +-- total-attack-connection
+             +-- total-attack-connection-protocol* [protocol]
              |  ...
-             +-- total-attack-connection-port
+             +-- total-attack-connection-port* [protocol port]
              |  ...
              +-- attack-detail* [vendor-id attack-id]
                 ...
@@ -1922,10 +1926,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
         <section anchor="tat" title="Total Attack Traffic ">
           <t>The 'total-attack-traffic' attribute (<xref
-          target="tatt"></xref>) conveys the total attack traffic identified
-          by the DOTS client domain's DDoS Mitigation System (or DDoS
-          Detector). More fine-grained information about the total attack
-          traffic can be conveyed in the 'total-attack-traffic-protocol' and
+          target="tatt"></xref>) conveys the total observed attack traffic.
+          More fine-grained information about the total attack traffic can be
+          conveyed in the 'total-attack-traffic-protocol' and
           'total-attack-traffic-port' attributes.</t>
 
           <t>The 'total-attack-traffic-protocol' attribute represents the
@@ -1972,9 +1975,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  +-- high-percentile-g?   yang:gauge64
              |  +-- peak-g?              yang:gauge64
              |  +-- current-g?           yang:gauge64
-             +-- total-attack-connection
+             +-- total-attack-connection-protocol* [protocol]
              |  ...
-             +-- total-attack-connection-port
+             +-- total-attack-connection-port* [protocol port]
              |  ...
              +-- attack-detail* [vendor-id attack-id]
                 ...
@@ -2022,83 +2025,71 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  ...
              +-- total-attack-traffic-port* [unit port]
              |  ...
-             +-- total-attack-connection
-             |  +-- low-percentile-l* [protocol]
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- mid-percentile-l* [protocol]
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- high-percentile-l* [protocol]
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- peak-l* [protocol]
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- current-l* [protocol]
-             |     +-- protocol              uint8
-             |     +-- connection?           yang:gauge64
-             |     +-- embryonic?            yang:gauge64
-             |     +-- connection-ps?        yang:gauge64
-             |     +-- request-ps?           yang:gauge64
-             |     +-- partial-request-ps?   yang:gauge64
-             +-- total-attack-connection-port
-             |  +-- low-percentile-l* [protocol port]
-             |  |  +-- port                  inet:port-number
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- mid-percentile-l* [protocol port]
-             |  |  +-- port                  inet:port-number
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- high-percentile-l* [protocol port]
-             |  |  +-- port                  inet:port-number
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- peak-l* [protocol port]
-             |  |  +-- port                  inet:port-number
-             |  |  +-- protocol              uint8
-             |  |  +-- connection?           yang:gauge64
-             |  |  +-- embryonic?            yang:gauge64
-             |  |  +-- connection-ps?        yang:gauge64
-             |  |  +-- request-ps?           yang:gauge64
-             |  |  +-- partial-request-ps?   yang:gauge64
-             |  +-- current-l* [protocol port]
-             |     +-- port                  inet:port-number
-             |     +-- protocol              uint8
-             |     +-- connection?           yang:gauge64
-             |     +-- embryonic?            yang:gauge64
-             |     +-- connection-ps?        yang:gauge64
-             |     +-- request-ps?           yang:gauge64
-             |     +-- partial-request-ps?   yang:gauge64
+             +-- total-attack-connection-protocol* [protocol]
+             |  +-- protocol              uint8
+             |  +-- connection-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- embryonic-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- connection-ps-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- request-ps-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- partial-request-ps-c
+             |     +-- low-percentile-g?    yang:gauge64
+             |     +-- mid-percentile-g?    yang:gauge64
+             |     +-- high-percentile-g?   yang:gauge64
+             |     +-- peak-g?              yang:gauge64
+             |     +-- current-g?           yang:gauge64
+             +-- total-attack-connection-port* [protocol port]
+             |  +-- protocol              uint8
+             |  +-- port                  inet:port-number
+             |  +-- connection-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- embryonic-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- connection-ps-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- request-ps-c
+             |  |  +-- low-percentile-g?    yang:gauge64
+             |  |  +-- mid-percentile-g?    yang:gauge64
+             |  |  +-- high-percentile-g?   yang:gauge64
+             |  |  +-- peak-g?              yang:gauge64
+             |  |  +-- current-g?           yang:gauge64
+             |  +-- partial-request-ps-c
+             |     +-- low-percentile-g?    yang:gauge64
+             |     +-- mid-percentile-g?    yang:gauge64
+             |     +-- high-percentile-g?   yang:gauge64
+             |     +-- peak-g?              yang:gauge64
+             |     +-- current-g?           yang:gauge64
              +-- attack-detail* [vendor-id attack-id]
                 ...
 ]]></artwork>
@@ -2184,9 +2175,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
              |  ...
              +-- total-attack-traffic-port* [unit port]
              |  ...
-             +-- total-attack-connection
+             +-- total-attack-connection-protocol* [protocol]
              |  ...
-             +-- total-attack-connection-port
+             +-- total-attack-connection-port* [protocol port]
              |  ...
              +-- attack-detail* [vendor-id attack-id]
                 +-- vendor-id             uint32
@@ -2218,42 +2209,39 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
                       |  +-- high-percentile-g?   yang:gauge64
                       |  +-- peak-g?              yang:gauge64
                       |  +-- current-g?           yang:gauge64
-                      +-- total-attack-connection
-                         +-- low-percentile-l* [protocol]
-                         |  +-- protocol              uint8
-                         |  +-- connection?           yang:gauge64
-                         |  +-- embryonic?            yang:gauge64
-                         |  +-- connection-ps?        yang:gauge64
-                         |  +-- request-ps?           yang:gauge64
-                         |  +-- partial-request-ps?   yang:gauge64
-                         +-- mid-percentile-l* [protocol]
-                         |  +-- protocol              uint8
-                         |  +-- connection?           yang:gauge64
-                         |  +-- embryonic?            yang:gauge64
-                         |  +-- connection-ps?        yang:gauge64
-                         |  +-- request-ps?           yang:gauge64
-                         |  +-- partial-request-ps?   yang:gauge64
-                         +-- high-percentile-l* [protocol]
-                         |  +-- protocol              uint8
-                         |  +-- connection?           yang:gauge64
-                         |  +-- embryonic?            yang:gauge64
-                         |  +-- connection-ps?        yang:gauge64
-                         |  +-- request-ps?           yang:gauge64
-                         |  +-- partial-request-ps?   yang:gauge64
-                         +-- peak-l* [protocol]
-                         |  +-- protocol              uint8
-                         |  +-- connection?           yang:gauge64
-                         |  +-- embryonic?            yang:gauge64
-                         |  +-- connection-ps?        yang:gauge64
-                         |  +-- request-ps?           yang:gauge64
-                         |  +-- partial-request-ps?   yang:gauge64
-                         +-- current-l* [protocol]
-                            +-- protocol              uint8
-                            +-- connection?           yang:gauge64
-                            +-- embryonic?            yang:gauge64
-                            +-- connection-ps?        yang:gauge64
-                            +-- request-ps?           yang:gauge64
-                            +-- partial-request-ps?   yang:gauge64
+                      +-- total-attack-connection-protocol*
+                              [protocol]
+                         +-- protocol              uint8
+                         +-- connection-c
+                         |  +-- low-percentile-g?    yang:gauge64
+                         |  +-- mid-percentile-g?    yang:gauge64
+                         |  +-- high-percentile-g?   yang:gauge64
+                         |  +-- peak-g?              yang:gauge64
+                         |  +-- current-g?           yang:gauge64
+                         +-- embryonic-c
+                         |  +-- low-percentile-g?    yang:gauge64
+                         |  +-- mid-percentile-g?    yang:gauge64
+                         |  +-- high-percentile-g?   yang:gauge64
+                         |  +-- peak-g?              yang:gauge64
+                         |  +-- current-g?           yang:gauge64
+                         +-- connection-ps-c
+                         |  +-- low-percentile-g?    yang:gauge64
+                         |  +-- mid-percentile-g?    yang:gauge64
+                         |  +-- high-percentile-g?   yang:gauge64
+                         |  +-- peak-g?              yang:gauge64
+                         |  +-- current-g?           yang:gauge64
+                         +-- request-ps-c
+                         |  +-- low-percentile-g?    yang:gauge64
+                         |  +-- mid-percentile-g?    yang:gauge64
+                         |  +-- high-percentile-g?   yang:gauge64
+                         |  +-- peak-g?              yang:gauge64
+                         |  +-- current-g?           yang:gauge64
+                         +-- partial-request-ps-c
+                            +-- low-percentile-g?    yang:gauge64
+                            +-- mid-percentile-g?    yang:gauge64
+                            +-- high-percentile-g?   yang:gauge64
+                            +-- peak-g?              yang:gauge64
+                            +-- current-g?           yang:gauge64
 ]]></artwork>
             </figure></t>
 
@@ -2875,21 +2863,20 @@ Observe: 0]]></artwork>
              |  +-- peak-g?              yang:gauge64
              |  +-- current-g?              yang:gauge64
              +-- total-attack-connection
-                +-- low-percentile-c
-                |  +-- connection?           yang:gauge64
-                |  +-- embryonic?            yang:gauge64
-                |  +-- connection-ps?        yang:gauge64
-                |  +-- request-ps?           yang:gauge64
-                |  +-- partial-request-ps?   yang:gauge64
-                +-- mid-percentile-c
+                +-- connection-c
+                |  +-- low-percentile-g?    yang:gauge64
+                |  +-- mid-percentile-g?    yang:gauge64
+                |  +-- high-percentile-g?   yang:gauge64
+                |  +-- peak-g?              yang:gauge64
+                |  +-- current-g?           yang:gauge64
+                +-- embryonic-c
                 |  ...
-                +-- high-percentile-c
+                +-- connection-ps-c
                 |  ...
-                +-- peak-c
+                +-- request-ps-c
                 |  ...
-                +-- current-c
+                +-- partial-request-ps-c
                    ...
-
 ]]></artwork>
           </figure></t>
 
@@ -2974,19 +2961,19 @@ Content-Format: "application/dots+cbor"
     |     |  +-- peak-g?              yang:gauge64
     |     |  +-- current-g?           yang:gauge64
     |     +-- total-attack-connection
-    |        +-- low-percentile-c
-    |        |  +-- connection?           yang:gauge64
-    |        |  +-- embryonic?            yang:gauge64
-    |        |  +-- connection-ps?        yang:gauge64
-    |        |  +-- request-ps?           yang:gauge64
-    |        |  +-- partial-request-ps?   yang:gauge64
-    |        +-- mid-percentile-c
+    |        +-- connection-c
+    |        |  +-- low-percentile-g?    yang:gauge64
+    |        |  +-- mid-percentile-g?    yang:gauge64
+    |        |  +-- high-percentile-g?   yang:gauge64
+    |        |  +-- peak-g?              yang:gauge64
+    |        |  +-- current-g?           yang:gauge64
+    |        +-- embryonic-c
     |        |  ...
-    |        +-- high-percentile-c
+    |        +-- connection-ps-c
     |        |  ...
-    |        +-- peak-c
+    |        +-- request-ps-c
     |        |  ...
-    |        +-- current-c
+    |        +-- partial-request-ps-c
     |           ...
     +-- total-attack-traffic* [unit]
     |  +-- unit                 unit
@@ -3026,19 +3013,19 @@ Content-Format: "application/dots+cbor"
              |  +-- peak-g?              yang:gauge64
              |  +-- current-g?           yang:gauge64
              +-- total-attack-connection
-                +-- low-percentile-c
-                |  +-- connection?           yang:gauge64
-                |  +-- embryonic?            yang:gauge64
-                |  +-- connection-ps?        yang:gauge64
-                |  +-- request-ps?           yang:gauge64
-                |  +-- partial-request-ps?   yang:gauge64
-                +-- mid-percentile-c
+                +-- connection-c
+                |  +-- low-percentile-g?    yang:gauge64
+                |  +-- mid-percentile-g?    yang:gauge64
+                |  +-- high-percentile-g?   yang:gauge64
+                |  +-- peak-g?              yang:gauge64
+                |  +-- current-g?           yang:gauge64
+                +-- embryonic-c
                 |  ...
-                +-- high-percentile-c
+                +-- connection-ps-c
                 |  ...
-                +-- peak-c
+                +-- request-ps-c
                 |  ...
-                +-- current-c
+                +-- partial-request-ps-c
                    ...
 
 ]]></artwork>
@@ -3157,7 +3144,7 @@ Observe: 0]]></artwork>
         and <xref target="RFC8345"></xref>.</t>
 
         <t><figure>
-            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2020-12-07.yang"
+            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2021-11-29.yang"
 module ietf-dots-telemetry {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-telemetry";
@@ -3166,7 +3153,7 @@ module ietf-dots-telemetry {
   import ietf-dots-signal-channel {
     prefix dots-signal;
     reference
-      "RFC 9132: Distributed Denial-of-Service Open Threat Signaling 
+      "RFC 9132: Distributed Denial-of-Service Open Threat Signaling
                  (DOTS) Signal Channel Specification";
   }
   import ietf-dots-data-channel {
@@ -3585,7 +3572,7 @@ module ietf-dots-telemetry {
     }
     description
       "Enumeration of support for query types that can be used
-       in a GET request to filter out data. Requests with 
+       in a GET request to filter out data. Requests with
        invalid query types (e.g., not supported, malformed)
        received by the DOTS server are rejected with
        a 4.00 (Bad Request) response code.";
@@ -3594,10 +3581,10 @@ module ietf-dots-telemetry {
   grouping telemetry-parameters {
     description
       "A grouping that includes a set of parameters that
-       are used to prepare the reported telemetry data. 
+       are used to prepare the reported telemetry data.
 
-       The grouping indicates a measurement interval, 
-       a measurement sample period, and low/mid/high 
+       The grouping indicates a measurement interval,
+       a measurement sample period, and low/mid/high
        percentile values.";
     leaf measurement-interval {
       type interval;
@@ -3668,6 +3655,17 @@ module ietf-dots-telemetry {
       type yang:gauge64;
       description
         "Peak value.";
+    }
+  }
+
+  grouping percentile-peak-and-current {
+    description
+      "Generic grouping for percentile and peak values.";
+    uses percentile-and-peak;
+    leaf current-g {
+      type yang:gauge64;
+      description
+        "Current value.";
     }
   }
 
@@ -3856,76 +3854,74 @@ module ietf-dots-telemetry {
     uses total-connection-capacity;
   }
 
-  grouping connection {
+  grouping connection-percentile-and-peak {
     description
       "A set of data nodes which represent the attack
        characteristics.";
-    leaf connection {
-      type yang:gauge64;
+    container connection-c {
+      uses percentile-and-peak;
       description
         "The number of simultaneous attack connections to
          the target server.";
     }
-    leaf embryonic {
-      type yang:gauge64;
+    container embryonic-c {
+      uses percentile-and-peak;
       description
         "The number of simultaneous embryonic connections to
          the target server.";
     }
-    leaf connection-ps {
-      type yang:gauge64;
+    container connection-ps-c {
+      uses percentile-and-peak;
       description
         "The number of attack connections per second to
          the target server.";
     }
-    leaf request-ps {
-      type yang:gauge64;
+    container request-ps-c {
+      uses percentile-and-peak;
       description
         "The number of attack requests per second to
          the target server.";
     }
-    leaf partial-request-ps {
-      type yang:gauge64;
+    container partial-request-ps-c {
+      uses percentile-and-peak;
       description
         "The number of attack partial requests to
          the target server.";
     }
   }
 
-  grouping connection-percentile-and-peak {
-    description
-      "Total attack connections. Low/mid/high percentile 
-       and peak values are included.";
-    container low-percentile-c {
-      description
-        "Low percentile of attack connections.";
-      uses connection;
-    }
-    container mid-percentile-c {
-      description
-        "Mid percentile of attack connections.";
-      uses connection;
-    }
-    container high-percentile-c {
-      description
-        "High percentile of attack connections.";
-      uses connection;
-    }
-    container peak-c {
-      description
-        "Peak attack connections.";
-      uses connection;
-    }
-  }
-
   grouping connection-all {
     description
       "Total attack connections including current values.";
-    uses connection-percentile-and-peak; 
-    container current-c {
+    container connection-c {
+      uses percentile-peak-and-current;
       description
-        "Current attack connections.";
-      uses connection;
+        "The number of simultaneous attack connections to
+         the target server.";
+    }
+    container embryonic-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of simultaneous embryonic connections to
+         the target server.";
+    }
+    container connection-ps-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of attack connections per second to
+         the target server.";
+    }
+    container request-ps-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of attack requests per second to
+         the target server.";
+    }
+    container partial-request-ps-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of attack partial requests to
+         the target server.";
     }
   }
 
@@ -3939,103 +3935,58 @@ module ietf-dots-telemetry {
          Values are taken from the IANA Protocol Numbers registry:
          <https://www.iana.org/assignments/protocol-numbers/>.";
     }
-    uses connection;
+    uses connection-percentile-and-peak;
   }
 
   grouping connection-port {
     description
       "Total attack connections per port number.";
+    leaf protocol {
+      type uint8;
+      description
+        "The transport protocol.
+         Values are taken from the IANA Protocol Numbers registry:
+         <https://www.iana.org/assignments/protocol-numbers/>.";
+    }
     leaf port {
       type inet:port-number;
       description
         "Port number.";
     }
-    uses connection-protocol;
-  }
-
-  grouping connection-protocol-percentile {
-    description
-      "Total attack connections per protocol.";
-    list low-percentile-l {
-      key "protocol";
-      description
-        "Low percentile of attack connections per protocol.";
-      uses connection-protocol;
-    }
-    list mid-percentile-l {
-      key "protocol";
-      description
-        "Mid percentile of attack connections per protocol.";
-      uses connection-protocol;
-    }
-    list high-percentile-l {
-      key "protocol";
-      description
-        "High percentile of attack connections per protocol.";
-      uses connection-protocol;
-    }
-    list peak-l {
-      key "protocol";
-      description
-        "Peak attack connections per protocol.";
-      uses connection-protocol;
-    }
+    uses connection-percentile-and-peak;
   }
 
   grouping connection-protocol-all {
     description
       "Total attack connections per protocol, including current
        values.";
-    uses connection-protocol-percentile; 
-    list current-l {
-      key "protocol";
+    leaf protocol {
+      type uint8;
       description
-        "Current attack connections per protocol.";
-      uses connection-protocol;
+        "The transport protocol.
+         Values are taken from the IANA Protocol Numbers registry:
+         <https://www.iana.org/assignments/protocol-numbers/>.";
     }
-  }
-
-  grouping connection-protocol-port-percentile {
-    description
-      "Total attack connections per port number experessed in 
-       low/mid/high percentile and peak values.";
-    list low-percentile-l {
-      key "protocol port";
-      description
-        "Low percentile of attack connections per port number.";
-      uses connection-port;
-    }
-    list mid-percentile-l {
-      key "protocol port";
-      description
-        "Mid percentile of attack connections per port number.";
-      uses connection-port;
-    }
-    list high-percentile-l {
-      key "protocol port";
-      description
-        "High percentile of attack connections per port number.";
-      uses connection-port;
-    }
-    list peak-l {
-      key "protocol port";
-      description
-        "Peak attack connections per port number.";
-      uses connection-port;
-    }
+    uses connection-all;
   }
 
   grouping connection-protocol-port-all {
     description
-      "Total attack connections per port number, including current 
+      "Total attack connections per port number, including current
        values.";
-    uses connection-protocol-port-percentile; 
-    list current-l {
-      key "protocol port";
+    leaf protocol {
+      type uint8;
       description
-        "Current attack connections per port number.";
-      uses connection-port;
+        "The transport protocol.
+         Values are taken from the IANA Protocol Numbers registry:
+         <https://www.iana.org/assignments/protocol-numbers/>.";
     }
+    leaf port {
+      type inet:port-number;
+      description
+        "Port number.";
+    }
+    uses connection-all;
   }
 
   grouping attack-detail {
@@ -4048,7 +3999,7 @@ module ietf-dots-telemetry {
     leaf vendor-id {
       type uint32;
       description
-        "Vendor ID is a security vendor's Enterprise Number as 
+        "Vendor ID is a security vendor's Enterprise Number as
          as registered with IANA.";
       reference
         "IANA: Private Enterprise Numbers";
@@ -4074,7 +4025,7 @@ module ietf-dots-telemetry {
     leaf start-time {
       type uint64;
       description
-        "The time the attack started. Start time is represented in 
+        "The time the attack started. Start time is represented in
          seconds relative to 1970-01-01T00:00:00Z in UTC time.";
     }
     leaf end-time {
@@ -4151,7 +4102,7 @@ module ietf-dots-telemetry {
         description
           "Upper type of the ICMP type range.";
       }
-      }
+    }
     list total-attack-traffic {
       key "unit";
       description
@@ -4162,7 +4113,7 @@ module ietf-dots-telemetry {
 
   grouping top-talker-aggregate {
     description
-      "An aggregate of top attack sources. This aggregate is 
+      "An aggregate of top attack sources. This aggregate is
        typically used when included in a mitigation request.";
     list talker {
       key "source-prefix";
@@ -4188,7 +4139,8 @@ module ietf-dots-telemetry {
         "Refers to a top-talker that is identified by an IPv4
          or IPv6 prefix identifying the attacker(s).";
       uses talker;
-      container total-attack-connection {
+      list total-attack-connection-protocol {
+        key "protocol";
         description
           "Total attack connections issued from this source.";
         uses connection-protocol-all;
@@ -4283,12 +4235,14 @@ module ietf-dots-telemetry {
         "Total attack traffic per port number.";
       uses traffic-unit-port-all;
     }
-    container total-attack-connection {
+    list total-attack-connection-protocol {
+      key "protocol";
       description
         "Total attack connections.";
       uses connection-protocol-all;
     }
-    container total-attack-connection-port {
+    list total-attack-connection-port {
+      key "protocol port";
       description
         "Total attack connections per target port number.";
       uses connection-protocol-port-all;
@@ -4374,12 +4328,12 @@ module ietf-dots-telemetry {
               uses telemetry-parameters;
               leaf server-originated-telemetry {
                 type boolean;
-                default false; 
+                default "false";
                 description
                   "Indicates whether the DOTS server can be instructed
-                   to send pre-or-ongoing-mitigation telemetry. If set 
-                   to 'false' or the data node is not present, this is 
-                   an indication that the server does not support this 
+                   to send pre-or-ongoing-mitigation telemetry. If set
+                   to 'false' or the data node is not present, this is
+                   an indication that the server does not support this
                    capability.";
               }
               leaf telemetry-notify-interval {
@@ -4387,11 +4341,11 @@ module ietf-dots-telemetry {
                   range "1 .. 3600";
                 }
                 units "seconds";
-                must ". >= ../../min-config-values" 
-                   + "/telemetry-notify-interval" {
+                must '. >= ../../min-config-values'
+                   + '/telemetry-notify-interval' {
                   error-message
                     "The value must be greater than or equal
-                     to the telemetry-notify-interval in the 
+                     to the telemetry-notify-interval in the
                      min-config-values";
                 }
                 description
@@ -4415,7 +4369,7 @@ module ietf-dots-telemetry {
             }
             container supported-unit-classes {
               description
-                "Supported unit classes and default activation 
+                "Supported unit classes and default activation
                  status.";
               uses unit-config;
             }
@@ -4423,10 +4377,10 @@ module ietf-dots-telemetry {
               type query-type;
               description
                 "Indicates which query types are supported by
-                 the server. If the server does not announce 
+                 the server. If the server does not announce
                  the query types it supports, the client will
-                 be unable to use any of the potential 
-                 query-type values to reduce the returned data 
+                 be unable to use any of the potential
+                 query-type values to reduce the returned data
                  content from the server.";
             }
           }
@@ -4435,7 +4389,7 @@ module ietf-dots-telemetry {
           description
             "The telemetry data per DOTS client.  The keys
              of the list are 'cuid' and 'tsid', but these keys are not
-             represented here because these keys are conveyed as 
+             represented here because these keys are conveyed as
              mandatory Uri-Paths in requests.  Omitting keys
              is compliant with RFC8791.";
           choice direction {
@@ -4460,7 +4414,7 @@ module ietf-dots-telemetry {
                or baseline message.";
             case telemetry-config {
               description
-                "Used to set telemetry parameters such as setting 
+                "Used to set telemetry parameters such as setting
                  low, mid, and high percentile values.";
               container current-config {
                 description
@@ -4475,7 +4429,7 @@ module ietf-dots-telemetry {
                      the DOTS server.";
                 }
                 leaf telemetry-notify-interval {
-                  type uint32 {
+                  type uint16 {
                     range "1 .. 3600";
                   }
                   units "seconds";
@@ -4495,7 +4449,7 @@ module ietf-dots-telemetry {
                 leaf link-id {
                   type nt:link-id;
                   description
-                    "Identifier of an interconnection link of 
+                    "Identifier of an interconnection link of
                      the DOTS client domain.";
                 }
                 leaf capacity {
@@ -4508,12 +4462,12 @@ module ietf-dots-telemetry {
                 leaf unit {
                   type unit;
                   description
-                    "The traffic can be measured using unit classes: 
-                     packets per second (pps), bits per second (bit/s), 
-                     and/or bytes per second (Byte/s). 
+                    "The traffic can be measured using unit classes:
+                     packets per second (pps), bits per second (bit/s),
+                     and/or bytes per second (Byte/s).
 
-                     For a given unit class, the DOTS agents auto-scales 
-                     to the appropriate units (e.g., megabit-ps, 
+                     For a given unit class, the DOTS agents auto-scales
+                     to the appropriate units (e.g., megabit-ps,
                      kilobit-ps).";
                 }
               }
@@ -4524,13 +4478,13 @@ module ietf-dots-telemetry {
               list baseline {
                 key "id";
                 description
-                  "Traffic baseline information of a DOTS client 
+                  "Traffic baseline information of a DOTS client
                    domain.";
                 leaf id {
                   type uint32;
                   must '. >= 1';
                   description
-                    "An identifier that uniquely identifies a baseline 
+                    "An identifier that uniquely identifies a baseline
                      entry communicated by a DOTS client.";
                 }
                 uses baseline;
@@ -4544,10 +4498,10 @@ module ietf-dots-telemetry {
           "Telemetry information.";
         list pre-or-ongoing-mitigation {
           description
-            "Pre-or-ongoing-mitigation telemetry per DOTS client.  
-             The keys of the list are 'cuid' and 'tmid', but these 
-             keys are not represented here because these keys are 
-             conveyed as mandatory Uri-Paths in requests.  
+            "Pre-or-ongoing-mitigation telemetry per DOTS client.
+             The keys of the list are 'cuid' and 'tmid', but these
+             keys are not represented here because these keys are
+             conveyed as mandatory Uri-Paths in requests.
              Omitting keys is compliant with RFC8791.";
           choice direction {
             description
@@ -4567,8 +4521,8 @@ module ietf-dots-telemetry {
           }
           container target {
             description
-              "Indicates the target. At least one of the attributes 
-               'target-prefix', 'target-fqdn', 'target-uri', 
+              "Indicates the target. At least one of the attributes
+               'target-prefix', 'target-fqdn', 'target-uri',
                'alias-name', or 'mid-list' must be present in the
                target definition.";
             uses data-channel:target;
@@ -4582,8 +4536,8 @@ module ietf-dots-telemetry {
               description
                 "Reference a list of associated mitigation requests.";
               reference
-                "RFC 9132: Distributed Denial-of-Service Open Threat 
-                           Signaling (DOTS) Signal Channel 
+                "RFC 9132: Distributed Denial-of-Service Open Threat
+                           Signaling (DOTS) Signal Channel
                            Specification, Section 4.4.1";
             }
           }
@@ -4808,10 +4762,10 @@ module ietf-dots-mapping {
 |        client-ps     | uint64      |TBA29 | 0 unsigned    | String |
 | total-attack-        |             |      |               |        |
 |        connection    | container   |TBA30 | 5 map         | Object |
-| low-percentile-l     | list        |TBA31 | 4 array       | Array  |
-| mid-percentile-l     | list        |TBA32 | 4 array       | Array  |
-| high-percentile-l    | list        |TBA33 | 4 array       | Array  |
-| peak-l               | list        |TBA34 | 4 array       | Array  |
+| connection-c         | container   |TBA31 | 5 map         | Object |
+| embryonic-c          | container   |TBA32 | 5 map         | Object |
+| connection-ps-c      | container   |TBA33 | 5 map         | Object |
+| request-ps-c         | container   |TBA34 | 5 map         | Object |
 | attack-detail        | list        |TBA35 | 4 array       | Array  |
 | id                   | uint32      |TBA36 | 0 unsigned    | Number |
 | attack-id            | uint32      |TBA37 | 0 unsigned    | Number |
@@ -4884,8 +4838,10 @@ module ietf-dots-mapping {
 | ietf-dots-telemetry: |             |      |               |        |
 |         telemetry    | container   |TBA83 | 5 map         | Object |
 | current-g            | yang:gauge64|TBA84 | 0 unsigned    | String |
-| current-l            | list        |TBA85 | 4 array       | Array  |
+| partial-request-ps-c | container   |TBA85 | 5 map         | Object |
 | current-c            | container   |TBA86 | 5 map         | Object |
+| total-attack-        |             |      |               |        |
+|  connection-protocol | list        |TBA87 | 4 array       | Array  |
 | lower-type           | uint8       |32771 | 0 unsigned    | Number |
 | upper-type           | uint8       |32772 | 0 unsigned    | Number |
 +----------------------+-------------+------+---------------+--------+ 
@@ -4949,10 +4905,10 @@ module ietf-dots-mapping {
    |        client-ps     |       |       |            |               |
    | total-attack-        | TBA30 |   5   |    IESG    |   [RFCXXXX]   |
    |        connection    |       |       |            |               |
-   | low-percentile-l     | TBA31 |   4   |    IESG    |   [RFCXXXX]   |
-   | mid-percentile-l     | TBA32 |   4   |    IESG    |   [RFCXXXX]   |
-   | high-percentile-l    | TBA33 |   4   |    IESG    |   [RFCXXXX]   |
-   | peak-l               | TBA34 |   4   |    IESG    |   [RFCXXXX]   |
+   | connection-c         | TBA31 |   5   |    IESG    |   [RFCXXXX]   |
+   | embryonic-c          | TBA32 |   5   |    IESG    |   [RFCXXXX]   |
+   | connection-ps-c      | TBA33 |   5   |    IESG    |   [RFCXXXX]   |
+   | request-ps-c         | TBA34 |   5   |    IESG    |   [RFCXXXX]   |
    | attack-detail        | TBA35 |   4   |    IESG    |   [RFCXXXX]   |
    | id                   | TBA36 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5020,8 +4976,10 @@ module ietf-dots-mapping {
    | ietf-dots-telemetry: | TBA83 |   5   |    IESG    |   [RFCXXXX]   |
    |        telemetry     |       |       |            |               |
    | current-g            | TBA84 |   0   |    IESG    |   [RFCXXXX]   |
-   | current-l            | TBA85 |   4   |    IESG    |   [RFCXXXX]   |
+   | partial-request-ps-c | TBA85 |   5   |    IESG    |   [RFCXXXX]   |
    | current-c            | TBA86 |   5   |    IESG    |   [RFCXXXX]   |
+   | total-attack-        | TBA87 |   4   |    IESG    |   [RFCXXXX]   |
+   |  connection-protocol |       |       |            |               |
    +----------------------+-------+-------+------------+---------------+
 
            Table 3: Registered DOTS Signal Channel CBOR Key Values

@@ -5,13 +5,13 @@
 DOTS                                                   M. Boucadair, Ed.
 Internet-Draft                                                    Orange
 Intended status: Standards Track                           T. Reddy, Ed.
-Expires: May 30, 2022                                             McAfee
+Expires: June 2, 2022                                             McAfee
                                                                 E. Doron
                                                             Radware Ltd.
                                                                  M. Chen
                                                                     CMCC
                                                               J. Shallow
-                                                       November 26, 2021
+                                                       November 29, 2021
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 30, 2022.
+   This Internet-Draft will expire on June 2, 2022.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Boucadair, et al.         Expires May 30, 2022                  [Page 1]
+Boucadair, et al.         Expires June 2, 2022                  [Page 1]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Boucadair, et al.         Expires May 30, 2022                  [Page 2]
+Boucadair, et al.         Expires June 2, 2022                  [Page 2]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -135,19 +135,19 @@ Internet-Draft               DOTS Telemetry                November 2021
    9.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .  67
    10. YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  68
      10.1.  DOTS Signal Channel Telemetry YANG Module  . . . . . . .  68
-     10.2.  Vendor Attack Mapping Details YANG Module  . . . . . . .  98
-   11. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . . 101
-   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 104
-     12.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 104
+     10.2.  Vendor Attack Mapping Details YANG Module  . . . . . . .  97
+   11. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . . 100
+   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 103
+     12.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 103
      12.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 106
-     12.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 107
+     12.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 106
    13. Security Considerations . . . . . . . . . . . . . . . . . . . 107
      13.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 107
      13.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 108
    14. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 109
    15. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 109
-   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 110
-     16.1.  Normative References . . . . . . . . . . . . . . . . . . 110
+   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 109
+     16.1.  Normative References . . . . . . . . . . . . . . . . . . 109
      16.2.  Informative References . . . . . . . . . . . . . . . . . 111
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 113
 
@@ -165,7 +165,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                  [Page 3]
+Boucadair, et al.         Expires June 2, 2022                  [Page 3]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -221,7 +221,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                  [Page 4]
+Boucadair, et al.         Expires June 2, 2022                  [Page 4]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -277,7 +277,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                  [Page 5]
+Boucadair, et al.         Expires June 2, 2022                  [Page 5]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -333,7 +333,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                  [Page 6]
+Boucadair, et al.         Expires June 2, 2022                  [Page 6]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -371,33 +371,36 @@ Internet-Draft               DOTS Telemetry                November 2021
    facilitate the DOTS telemetry, the DOTS server adapts its protection
    strategy and activates the required countermeasures immediately
    (automation enabled) for the sake of optimized attack mitigation
-   decisions and actions.
+   decisions and actions.  The interface from the DOTS server to the
+   mitigator to signal the telemetry data is out of scope.
 
 3.2.  Enhanced Detection
 
-   DOTS telemetry can also be used to tune the DDoS mitigators with the
-   correct state of an attack.  During the last few years, DDoS attack
-   detection technologies have evolved from threshold-based detection
-   (that is, cases when all or specific parts of traffic cross a
-   predefined threshold for a certain period of time is considered as an
-   attack) to an "anomaly detection" approach.  For the latter, it is
-   required to maintain rigorous learning of "normal" behavior, and an
-   "anomaly" (or an attack) is identified and categorized based on the
-   knowledge about the normal behavior and a deviation from this normal
-   behavior.  Machine learning approaches are used such that the actual
-   traffic thresholds are automatically calculated by learning the
+   DOTS telemetry can also be used as input for determining what values
+   to use for the tuning parameters available on the mitigation
+   resources.  During the last few years, DDoS attack detection
+   technologies have evolved from threshold-based detection (that is,
+   cases when all or specific parts of traffic cross a predefined
+   threshold for a certain period of time is considered as an attack) to
+   an "anomaly detection" approach.  For the latter, it is required to
+   maintain rigorous learning of "normal" behavior, and an "anomaly" (or
+   an attack) is identified and categorized based on the knowledge about
+   the normal behavior and a deviation from this normal behavior.
 
 
 
-Boucadair, et al.         Expires May 30, 2022                  [Page 7]
+Boucadair, et al.         Expires June 2, 2022                  [Page 7]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-   protected entity's normal traffic behavior during idle time.  The
-   normal traffic characterization learned is referred to as the "normal
-   traffic baseline".  An attack is detected when the victim's actual
-   traffic is deviating from this normal baseline pattern.
+   Machine learning approaches are used such that the actual traffic
+   thresholds are automatically calculated by learning the protected
+   entity's normal traffic behavior during 'idle' time (i.e., no
+   mitigation is active).  The normal traffic characterization learned
+   is referred to as the "normal traffic baseline".  An attack is
+   detected when the victim's actual traffic is deviating from this
+   normal baseline pattern.
 
    In addition, subsequent activities toward mitigating an attack are
    much more challenging.  The ability to distinguish legitimate traffic
@@ -438,17 +441,17 @@ Internet-Draft               DOTS Telemetry                November 2021
    detection practically cannot be realized.  Each DOTS client domain
    can have its own levels of traffic and normal behavior.  Without
    facilitating normal baseline signaling, it may be very difficult for
-   DOTS servers in some cases to detect and mitigate the attacks
-   accurately:
 
 
 
 
-
-Boucadair, et al.         Expires May 30, 2022                  [Page 8]
+Boucadair, et al.         Expires June 2, 2022                  [Page 8]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   DOTS servers in some cases to detect and mitigate the attacks
+   accurately:
 
       It is important to emphasize that it is practically impossible for
       the DOTS server's mitigators to calculate the normal baseline in
@@ -498,10 +501,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
-
-
-Boucadair, et al.         Expires May 30, 2022                  [Page 9]
+Boucadair, et al.         Expires June 2, 2022                  [Page 9]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -557,7 +557,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 10]
+Boucadair, et al.         Expires June 2, 2022                 [Page 10]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -613,7 +613,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 11]
+Boucadair, et al.         Expires June 2, 2022                 [Page 11]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -669,7 +669,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 12]
+Boucadair, et al.         Expires June 2, 2022                 [Page 12]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -680,10 +680,10 @@ Internet-Draft               DOTS Telemetry                November 2021
    In order to optimize the data exchanged over the DOTS signal channel,
    the document specifies a second YANG module ("ietf-dots-mapping",
    Section 10.2) that augments the DOTS data channel [RFC8783].  This
-   augmentation can be used during idle time to share the attack mapping
-   details (Section 7.1.5).  DOTS clients can use tools, e.g., YANG
-   Library [RFC8525], to retrieve the list of features and deviations
-   supported by the DOTS server over the data channel.
+   augmentation can be used during 'idle' time to share the attack
+   mapping details (Section 7.1.5).  DOTS clients can use tools, e.g.,
+   YANG Library [RFC8525], to retrieve the list of features and
+   deviations supported by the DOTS server over the data channel.
 
 4.6.  A Note About Examples
 
@@ -725,7 +725,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 13]
+Boucadair, et al.         Expires June 2, 2022                 [Page 13]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -781,7 +781,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 14]
+Boucadair, et al.         Expires June 2, 2022                 [Page 14]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -829,15 +829,15 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    Upon receipt of such a request, and assuming no error is encountered
    when processing the request, the DOTS server replies with a 2.05
-   (Content) response that conveys the current and telemetry parameters
-   acceptable by the DOTS server.  The tree structure of the response
-   message body is provided in Figure 3.  Note that the response also
-   includes any pipe (Section 6.2) and baseline information
-   (Section 6.3) maintained by the DOTS server for this DOTS client.
+   (Content) response that conveys the telemetry parameters that are
+   acceptable by the DOTS server, any pipe information (Section 6.2),
+   and the current baseline information (Section 6.3) maintained by the
+   DOTS server for this DOTS client.  The tree structure of the response
+   message body is provided in Figure 3.
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 15]
+Boucadair, et al.         Expires June 2, 2022                 [Page 15]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -893,7 +893,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 16]
+Boucadair, et al.         Expires June 2, 2022                 [Page 16]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -949,7 +949,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 17]
+Boucadair, et al.         Expires June 2, 2022                 [Page 17]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1005,7 +1005,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 18]
+Boucadair, et al.         Expires June 2, 2022                 [Page 18]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1061,7 +1061,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 19]
+Boucadair, et al.         Expires June 2, 2022                 [Page 19]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1117,7 +1117,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 20]
+Boucadair, et al.         Expires June 2, 2022                 [Page 20]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1173,7 +1173,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 21]
+Boucadair, et al.         Expires June 2, 2022                 [Page 21]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1229,7 +1229,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 22]
+Boucadair, et al.         Expires June 2, 2022                 [Page 22]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1285,7 +1285,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 23]
+Boucadair, et al.         Expires June 2, 2022                 [Page 23]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1341,7 +1341,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 24]
+Boucadair, et al.         Expires June 2, 2022                 [Page 24]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1397,7 +1397,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 25]
+Boucadair, et al.         Expires June 2, 2022                 [Page 25]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1453,7 +1453,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 26]
+Boucadair, et al.         Expires June 2, 2022                 [Page 26]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1509,7 +1509,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 27]
+Boucadair, et al.         Expires June 2, 2022                 [Page 27]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1565,7 +1565,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 28]
+Boucadair, et al.         Expires June 2, 2022                 [Page 28]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1621,13 +1621,13 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 29]
+Boucadair, et al.         Expires June 2, 2022                 [Page 29]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-      *  The maximum number of requests allowed per second to the
-         target.
+      *  The maximum number of requests (e.g., HTTP/DNS/SIP requests)
+         allowed per second to the target.
 
       *  The maximum number of requests allowed per second to the target
          per client.
@@ -1677,7 +1677,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 30]
+Boucadair, et al.         Expires June 2, 2022                 [Page 30]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1733,7 +1733,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 31]
+Boucadair, et al.         Expires June 2, 2022                 [Page 31]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1770,9 +1770,10 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    Two PUT requests from a DOTS client have overlapping targets if there
    is a common IP address, IP prefix, FQDN, URI, or alias-name.  Also,
-   two PUT requests from a DOTS client have overlapping targets if the
-   addresses associated with the FQDN, URI, or alias are overlapping
-   with each other or with 'target-prefix'.
+   two PUT requests from a DOTS client have overlapping targets from the
+   perspective of the DOTS server if the addresses associated with the
+   FQDN, URI, or alias are overlapping with each other or with 'target-
+   prefix'.
 
    DOTS clients SHOULD minimize the number of active 'tsid's used for
    baseline information.  In order to avoid maintaining a long list of
@@ -1783,16 +1784,19 @@ Internet-Draft               DOTS Telemetry                November 2021
    update request will override these existing requests and hence
    optimize the number of 'tsid' request per DOTS client.
 
-   If no target attribute is included in the request, this is an
-   indication that the baseline information applies for the DOTS client
-   domain as a whole.
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 32]
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 32]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   If no target attribute is included in the request, this is an
+   indication that the baseline information applies for the DOTS client
+   domain as a whole.
 
    An example of a PUT request to convey the baseline information is
    shown in Figure 19.
@@ -1841,11 +1845,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 33]
+Boucadair, et al.         Expires June 2, 2022                 [Page 33]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1901,7 +1901,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 34]
+Boucadair, et al.         Expires June 2, 2022                 [Page 34]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1957,7 +1957,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 35]
+Boucadair, et al.         Expires June 2, 2022                 [Page 35]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -1985,7 +1985,7 @@ Internet-Draft               DOTS Telemetry                November 2021
    client or a DOTS server.
 
    DOTS agents SHOULD bind pre-or-ongoing-mitigation telemetry data to
-   mitigation requests relying upon the target attribute.  In
+   mitigation requests relying upon the resources under attack.  In
    particular, a telemetry PUT request sent after a mitigation request
    may include a reference to that mitigation request ('mid-list') as
    shown in Figure 22.  An example illustrating request correlation by
@@ -2013,7 +2013,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 36]
+Boucadair, et al.         Expires June 2, 2022                 [Page 36]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2069,7 +2069,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 37]
+Boucadair, et al.         Expires June 2, 2022                 [Page 37]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2108,9 +2108,9 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  ...
                 +-- total-attack-traffic-port* [unit port]
                 |  ...
-                +-- total-attack-connection
+                +-- total-attack-connection-protocol* [protocol]
                 |  ...
-                +-- total-attack-connection-port
+                +-- total-attack-connection-port* [protocol port]
                 |  ...
                 +-- attack-detail* [vendor-id attack-id]
                    ...
@@ -2125,7 +2125,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 38]
+Boucadair, et al.         Expires June 2, 2022                 [Page 38]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2167,9 +2167,9 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  ...
                 +-- total-attack-traffic-port* [unit port]
                 |  ...
-                +-- total-attack-connection
+                +-- total-attack-connection-protocol* [protocol]
                 |  ...
-                +-- total-attack-connection-port
+                +-- total-attack-connection-port* [protocol port]
                 |  ...
                 +-- attack-detail* [vendor-id attack-id]
                    ...
@@ -2181,7 +2181,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 39]
+Boucadair, et al.         Expires June 2, 2022                 [Page 39]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2198,15 +2198,16 @@ Internet-Draft               DOTS Telemetry                November 2021
    same attributes defined in Section 7.1.4 are applicable for
    representing the attack.
 
-   This is an optional attribute.
+   At least the 'target' attribute and another pre-or-ongoing-mitigation
+   attribute MUST be present in the DOTS telemetry message.
 
 7.1.2.  Total Traffic
 
    The 'total-traffic' attribute (Figure 26) conveys the percentile
-   values (including peak and current observed values) of total traffic
-   observed during a DDoS attack.  More fine-grained information about
-   the total traffic can be conveyed in the 'total-traffic-protocol' and
-   'total-traffic-port' attributes.
+   values (including peak and current observed values) of total observed
+   traffic.  More fine-grained information about the total traffic can
+   be conveyed in the 'total-traffic-protocol' and 'total-traffic-port'
+   attributes.
 
    The 'total-traffic-protocol' attribute represents the total traffic
    for a target and is transport-protocol specific.
@@ -2236,8 +2237,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 40]
+Boucadair, et al.         Expires June 2, 2022                 [Page 40]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2278,9 +2278,9 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  ...
                 +-- total-attack-traffic-port* [unit port]
                 |  ...
-                +-- total-attack-connection
+                +-- total-attack-connection-protocol* [protocol]
                 |  ...
-                +-- total-attack-connection-port
+                +-- total-attack-connection-port* [protocol port]
                 |  ...
                 +-- attack-detail* [vendor-id attack-id]
                    ...
@@ -2293,7 +2293,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 41]
+Boucadair, et al.         Expires June 2, 2022                 [Page 41]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2301,8 +2301,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 7.1.3.  Total Attack Traffic
 
    The 'total-attack-traffic' attribute (Figure 27) conveys the total
-   attack traffic identified by the DOTS client domain's DDoS Mitigation
-   System (or DDoS Detector).  More fine-grained information about the
+   observed attack traffic.  More fine-grained information about the
    total attack traffic can be conveyed in the 'total-attack-traffic-
    protocol' and 'total-attack-traffic-port' attributes.
 
@@ -2349,7 +2348,8 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 42]
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 42]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2390,9 +2390,9 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  +-- high-percentile-g?   yang:gauge64
                 |  +-- peak-g?              yang:gauge64
                 |  +-- current-g?           yang:gauge64
-                +-- total-attack-connection
+                +-- total-attack-connection-protocol* [protocol]
                 |  ...
-                +-- total-attack-connection-port
+                +-- total-attack-connection-port* [protocol port]
                 |  ...
                 +-- attack-detail* [vendor-id attack-id]
                    ...
@@ -2405,7 +2405,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 43]
+Boucadair, et al.         Expires June 2, 2022                 [Page 43]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2446,99 +2446,87 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  ...
                 +-- total-attack-traffic-port* [unit port]
                 |  ...
-                +-- total-attack-connection
-                |  +-- low-percentile-l* [protocol]
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- mid-percentile-l* [protocol]
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
+                +-- total-attack-connection-protocol* [protocol]
+                |  +-- protocol              uint8
+                |  +-- connection-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- embryonic-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 44]
+Boucadair, et al.         Expires June 2, 2022                 [Page 44]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- high-percentile-l* [protocol]
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- peak-l* [protocol]
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- current-l* [protocol]
-                |     +-- protocol              uint8
-                |     +-- connection?           yang:gauge64
-                |     +-- embryonic?            yang:gauge64
-                |     +-- connection-ps?        yang:gauge64
-                |     +-- request-ps?           yang:gauge64
-                |     +-- partial-request-ps?   yang:gauge64
-                +-- total-attack-connection-port
-                |  +-- low-percentile-l* [protocol port]
-                |  |  +-- port                  inet:port-number
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- mid-percentile-l* [protocol port]
-                |  |  +-- port                  inet:port-number
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- high-percentile-l* [protocol port]
-                |  |  +-- port                  inet:port-number
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- connection-ps-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- request-ps-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- partial-request-ps-c
+                |     +-- low-percentile-g?    yang:gauge64
+                |     +-- mid-percentile-g?    yang:gauge64
+                |     +-- high-percentile-g?   yang:gauge64
+                |     +-- peak-g?              yang:gauge64
+                |     +-- current-g?           yang:gauge64
+                +-- total-attack-connection-port* [protocol port]
+                |  +-- protocol              uint8
+                |  +-- port                  inet:port-number
+                |  +-- connection-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- embryonic-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- connection-ps-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- request-ps-c
+                |  |  +-- low-percentile-g?    yang:gauge64
+                |  |  +-- mid-percentile-g?    yang:gauge64
+                |  |  +-- high-percentile-g?   yang:gauge64
+                |  |  +-- peak-g?              yang:gauge64
+                |  |  +-- current-g?           yang:gauge64
+                |  +-- partial-request-ps-c
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 45]
+Boucadair, et al.         Expires June 2, 2022                 [Page 45]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- peak-l* [protocol port]
-                |  |  +-- port                  inet:port-number
-                |  |  +-- protocol              uint8
-                |  |  +-- connection?           yang:gauge64
-                |  |  +-- embryonic?            yang:gauge64
-                |  |  +-- connection-ps?        yang:gauge64
-                |  |  +-- request-ps?           yang:gauge64
-                |  |  +-- partial-request-ps?   yang:gauge64
-                |  +-- current-l* [protocol port]
-                |     +-- port                  inet:port-number
-                |     +-- protocol              uint8
-                |     +-- connection?           yang:gauge64
-                |     +-- embryonic?            yang:gauge64
-                |     +-- connection-ps?        yang:gauge64
-                |     +-- request-ps?           yang:gauge64
-                |     +-- partial-request-ps?   yang:gauge64
+                |     +-- low-percentile-g?    yang:gauge64
+                |     +-- mid-percentile-g?    yang:gauge64
+                |     +-- high-percentile-g?   yang:gauge64
+                |     +-- peak-g?              yang:gauge64
+                |     +-- current-g?           yang:gauge64
                 +-- attack-detail* [vendor-id attack-id]
                    ...
 
@@ -2569,15 +2557,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    start-time:  The time the attack started.  The attack's start time is
       expressed in seconds relative to 1970-01-01T00:00Z in UTC time
-
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 46]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
       (Section 3.4.2 of [RFC8949]).  The CBOR encoding is modified so
       that the leading tag 1 (epoch-based date/time) MUST be omitted.
 
@@ -2588,6 +2567,16 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    source-count:  A count of sources involved in the attack targeting
       the victim.
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 46]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    top-talker:  A list of attack sources that are involved in an attack
       and which are generating an important part of the attack traffic.
@@ -2625,17 +2614,9 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  ...
                 +-- total-attack-traffic-port* [unit port]
                 |  ...
-                +-- total-attack-connection
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 47]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
+                +-- total-attack-connection-protocol* [protocol]
                 |  ...
-                +-- total-attack-connection-port
+                +-- total-attack-connection-port* [protocol port]
                 |  ...
                 +-- attack-detail* [vendor-id attack-id]
                    +-- vendor-id             uint32
@@ -2645,6 +2626,14 @@ Internet-Draft               DOTS Telemetry                November 2021
                    +-- start-time?           uint64
                    +-- end-time?             uint64
                    +-- source-count
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 47]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
                    |  +-- low-percentile-g?    yang:gauge64
                    |  +-- mid-percentile-g?    yang:gauge64
                    |  +-- high-percentile-g?   yang:gauge64
@@ -2667,50 +2656,47 @@ Internet-Draft               DOTS Telemetry                November 2021
                          |  +-- high-percentile-g?   yang:gauge64
                          |  +-- peak-g?              yang:gauge64
                          |  +-- current-g?           yang:gauge64
-                         +-- total-attack-connection
-                            +-- low-percentile-l* [protocol]
-                            |  +-- protocol              uint8
-                            |  +-- connection?           yang:gauge64
-                            |  +-- embryonic?            yang:gauge64
-                            |  +-- connection-ps?        yang:gauge64
-                            |  +-- request-ps?           yang:gauge64
-                            |  +-- partial-request-ps?   yang:gauge64
-                            +-- mid-percentile-l* [protocol]
-                            |  +-- protocol              uint8
-                            |  +-- connection?           yang:gauge64
-                            |  +-- embryonic?            yang:gauge64
-                            |  +-- connection-ps?        yang:gauge64
-                            |  +-- request-ps?           yang:gauge64
-                            |  +-- partial-request-ps?   yang:gauge64
+                         +-- total-attack-connection-protocol*
+                                 [protocol]
+                            +-- protocol              uint8
+                            +-- connection-c
+                            |  +-- low-percentile-g?    yang:gauge64
+                            |  +-- mid-percentile-g?    yang:gauge64
+                            |  +-- high-percentile-g?   yang:gauge64
+                            |  +-- peak-g?              yang:gauge64
+                            |  +-- current-g?           yang:gauge64
+                            +-- embryonic-c
+                            |  +-- low-percentile-g?    yang:gauge64
+                            |  +-- mid-percentile-g?    yang:gauge64
+                            |  +-- high-percentile-g?   yang:gauge64
+                            |  +-- peak-g?              yang:gauge64
+                            |  +-- current-g?           yang:gauge64
+                            +-- connection-ps-c
+                            |  +-- low-percentile-g?    yang:gauge64
+                            |  +-- mid-percentile-g?    yang:gauge64
+                            |  +-- high-percentile-g?   yang:gauge64
+                            |  +-- peak-g?              yang:gauge64
+                            |  +-- current-g?           yang:gauge64
+                            +-- request-ps-c
+                            |  +-- low-percentile-g?    yang:gauge64
+                            |  +-- mid-percentile-g?    yang:gauge64
+                            |  +-- high-percentile-g?   yang:gauge64
+                            |  +-- peak-g?              yang:gauge64
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 48]
+Boucadair, et al.         Expires June 2, 2022                 [Page 48]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-                            +-- high-percentile-l* [protocol]
-                            |  +-- protocol              uint8
-                            |  +-- connection?           yang:gauge64
-                            |  +-- embryonic?            yang:gauge64
-                            |  +-- connection-ps?        yang:gauge64
-                            |  +-- request-ps?           yang:gauge64
-                            |  +-- partial-request-ps?   yang:gauge64
-                            +-- peak-l* [protocol]
-                            |  +-- protocol              uint8
-                            |  +-- connection?           yang:gauge64
-                            |  +-- embryonic?            yang:gauge64
-                            |  +-- connection-ps?        yang:gauge64
-                            |  +-- request-ps?           yang:gauge64
-                            |  +-- partial-request-ps?   yang:gauge64
-                            +-- current-l* [protocol]
-                               +-- protocol              uint8
-                               +-- connection?           yang:gauge64
-                               +-- embryonic?            yang:gauge64
-                               +-- connection-ps?        yang:gauge64
-                               +-- request-ps?           yang:gauge64
-                               +-- partial-request-ps?   yang:gauge64
+                            |  +-- current-g?           yang:gauge64
+                            +-- partial-request-ps-c
+                               +-- low-percentile-g?    yang:gauge64
+                               +-- mid-percentile-g?    yang:gauge64
+                               +-- high-percentile-g?   yang:gauge64
+                               +-- peak-g?              yang:gauge64
+                               +-- current-g?           yang:gauge64
 
                   Figure 29: Attack Detail Tree Structure
 
@@ -2738,14 +2724,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    mappings.  A DOTS agent MUST accept receipt of telemetry data with a
    vendor identifier that is different to the one it uses to transmit
    telemetry data.  Furthermore, it is possible that the DOTS client and
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 49]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    DOTS server are provided by the same vendor, but the vendor mapping
    tables are at different revisions.  The DOTS client SHOULD transmit
    telemetry information using any vendor mapping(s) that it provided to
@@ -2756,6 +2734,17 @@ Internet-Draft               DOTS Telemetry                November 2021
    The "ietf-dots-mapping" YANG module defined in Section 10.2 augments
    the "ietf-dots-data-channel" [RFC8783] module.  The tree structure of
    the "ietf-dots-mapping" module is shown in Figure 30.
+
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 49]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    module: ietf-dots-mapping
      augment /data-channel:dots-data/data-channel:dots-client:
@@ -2791,17 +2780,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    a GET request to retrieve the DOTS server's vendor attack mapping
    details.  An example of such GET request is shown in Figure 31.
 
-
-
-
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 50]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    GET /restconf/data/ietf-dots-data-channel:dots-data\
        /ietf-dots-mapping:vendor-mapping HTTP/1.1
    Host: example.com
@@ -2815,6 +2793,14 @@ Internet-Draft               DOTS Telemetry                November 2021
    (Section 4.8.2 of [RFC8040]) to "3" in the GET request as shown in
    Figure 32.  An example of a response body received from the DOTS
    server as a response to such request is illustrated in Figure 33.
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 50]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    GET /restconf/data/ietf-dots-data-channel:dots-data\
        /ietf-dots-mapping:vendor-mapping?depth=3 HTTP/1.1
@@ -2853,7 +2839,21 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 51]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 51]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2909,7 +2909,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 52]
+Boucadair, et al.         Expires June 2, 2022                 [Page 52]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -2965,7 +2965,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 53]
+Boucadair, et al.         Expires June 2, 2022                 [Page 53]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3021,7 +3021,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 54]
+Boucadair, et al.         Expires June 2, 2022                 [Page 54]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3077,7 +3077,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 55]
+Boucadair, et al.         Expires June 2, 2022                 [Page 55]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3133,7 +3133,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 56]
+Boucadair, et al.         Expires June 2, 2022                 [Page 56]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3189,7 +3189,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 57]
+Boucadair, et al.         Expires June 2, 2022                 [Page 57]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3245,7 +3245,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 58]
+Boucadair, et al.         Expires June 2, 2022                 [Page 58]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3301,7 +3301,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 59]
+Boucadair, et al.         Expires June 2, 2022                 [Page 59]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3357,7 +3357,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 60]
+Boucadair, et al.         Expires June 2, 2022                 [Page 60]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3413,7 +3413,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 61]
+Boucadair, et al.         Expires June 2, 2022                 [Page 61]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3441,21 +3441,20 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  +-- peak-g?              yang:gauge64
                 |  +-- current-g?              yang:gauge64
                 +-- total-attack-connection
-                   +-- low-percentile-c
-                   |  +-- connection?           yang:gauge64
-                   |  +-- embryonic?            yang:gauge64
-                   |  +-- connection-ps?        yang:gauge64
-                   |  +-- request-ps?           yang:gauge64
-                   |  +-- partial-request-ps?   yang:gauge64
-                   +-- mid-percentile-c
+                   +-- connection-c
+                   |  +-- low-percentile-g?    yang:gauge64
+                   |  +-- mid-percentile-g?    yang:gauge64
+                   |  +-- high-percentile-g?   yang:gauge64
+                   |  +-- peak-g?              yang:gauge64
+                   |  +-- current-g?           yang:gauge64
+                   +-- embryonic-c
                    |  ...
-                   +-- high-percentile-c
+                   +-- connection-ps-c
                    |  ...
-                   +-- peak-c
+                   +-- request-ps-c
                    |  ...
-                   +-- current-c
+                   +-- partial-request-ps-c
                       ...
-
 
             Figure 44: Telemetry Efficacy Update Tree Structure
 
@@ -3469,7 +3468,8 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 62]
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 62]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3525,7 +3525,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 63]
+Boucadair, et al.         Expires June 2, 2022                 [Page 63]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3555,19 +3555,19 @@ Internet-Draft               DOTS Telemetry                November 2021
        |     |  +-- peak-g?              yang:gauge64
        |     |  +-- current-g?           yang:gauge64
        |     +-- total-attack-connection
-       |        +-- low-percentile-c
-       |        |  +-- connection?           yang:gauge64
-       |        |  +-- embryonic?            yang:gauge64
-       |        |  +-- connection-ps?        yang:gauge64
-       |        |  +-- request-ps?           yang:gauge64
-       |        |  +-- partial-request-ps?   yang:gauge64
-       |        +-- mid-percentile-c
+       |        +-- connection-c
+       |        |  +-- low-percentile-g?    yang:gauge64
+       |        |  +-- mid-percentile-g?    yang:gauge64
+       |        |  +-- high-percentile-g?   yang:gauge64
+       |        |  +-- peak-g?              yang:gauge64
+       |        |  +-- current-g?           yang:gauge64
+       |        +-- embryonic-c
        |        |  ...
-       |        +-- high-percentile-c
+       |        +-- connection-ps-c
        |        |  ...
-       |        +-- peak-c
+       |        +-- request-ps-c
        |        |  ...
-       |        +-- current-c
+       |        +-- partial-request-ps-c
        |           ...
        +-- total-attack-traffic* [unit]
        |  +-- unit                 unit
@@ -3581,7 +3581,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 64]
+Boucadair, et al.         Expires June 2, 2022                 [Page 64]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3615,19 +3615,19 @@ Internet-Draft               DOTS Telemetry                November 2021
                 |  +-- peak-g?              yang:gauge64
                 |  +-- current-g?           yang:gauge64
                 +-- total-attack-connection
-                   +-- low-percentile-c
-                   |  +-- connection?           yang:gauge64
-                   |  +-- embryonic?            yang:gauge64
-                   |  +-- connection-ps?        yang:gauge64
-                   |  +-- request-ps?           yang:gauge64
-                   |  +-- partial-request-ps?   yang:gauge64
-                   +-- mid-percentile-c
+                   +-- connection-c
+                   |  +-- low-percentile-g?    yang:gauge64
+                   |  +-- mid-percentile-g?    yang:gauge64
+                   |  +-- high-percentile-g?   yang:gauge64
+                   |  +-- peak-g?              yang:gauge64
+                   |  +-- current-g?           yang:gauge64
+                   +-- embryonic-c
                    |  ...
-                   +-- high-percentile-c
+                   +-- connection-ps-c
                    |  ...
-                   +-- peak-c
+                   +-- request-ps-c
                    |  ...
-                   +-- current-c
+                   +-- partial-request-ps-c
                       ...
 
 
@@ -3637,7 +3637,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 65]
+Boucadair, et al.         Expires June 2, 2022                 [Page 65]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3693,7 +3693,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 66]
+Boucadair, et al.         Expires June 2, 2022                 [Page 66]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3749,7 +3749,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 67]
+Boucadair, et al.         Expires June 2, 2022                 [Page 67]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3760,7 +3760,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    This module uses types defined in [RFC6991] and [RFC8345].
 
-<CODE BEGINS> file "ietf-dots-telemetry@2020-12-07.yang"
+<CODE BEGINS> file "ietf-dots-telemetry@2021-11-29.yang"
 module ietf-dots-telemetry {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-telemetry";
@@ -3805,7 +3805,7 @@ module ietf-dots-telemetry {
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 68]
+Boucadair, et al.         Expires June 2, 2022                 [Page 68]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3861,7 +3861,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 69]
+Boucadair, et al.         Expires June 2, 2022                 [Page 69]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3917,7 +3917,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 70]
+Boucadair, et al.         Expires June 2, 2022                 [Page 70]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -3973,7 +3973,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 71]
+Boucadair, et al.         Expires June 2, 2022                 [Page 71]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -4029,7 +4029,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 72]
+Boucadair, et al.         Expires June 2, 2022                 [Page 72]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -4085,7 +4085,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 73]
+Boucadair, et al.         Expires June 2, 2022                 [Page 73]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -4141,7 +4141,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 74]
+Boucadair, et al.         Expires June 2, 2022                 [Page 74]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -4197,7 +4197,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 75]
+Boucadair, et al.         Expires June 2, 2022                 [Page 75]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -4253,7 +4253,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 76]
+Boucadair, et al.         Expires June 2, 2022                 [Page 76]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -4309,7 +4309,7 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 77]
+Boucadair, et al.         Expires June 2, 2022                 [Page 77]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
@@ -4354,6 +4354,25 @@ Internet-Draft               DOTS Telemetry                November 2021
     }
   }
 
+  grouping percentile-peak-and-current {
+    description
+      "Generic grouping for percentile and peak values.";
+    uses percentile-and-peak;
+    leaf current-g {
+      type yang:gauge64;
+      description
+        "Current value.";
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 78]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
+    }
+  }
+
   grouping unit-config {
     description
       "Generic grouping for unit configuration.";
@@ -4362,14 +4381,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       description
         "Controls which unit classes are allowed when sharing
          telemetry data.";
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 78]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
       leaf unit {
         type unit-class;
         description
@@ -4407,6 +4418,14 @@ Internet-Draft               DOTS Telemetry                November 2021
       description
         "Current observed value.";
     }
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 79]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
   }
 
   grouping traffic-unit-protocol {
@@ -4418,14 +4437,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       description
         "The transport protocol.
          Values are taken from the IANA Protocol Numbers registry:
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 79]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
          <https://www.iana.org/assignments/protocol-numbers/>.
 
          For example, this parameter contains 6 for TCP,
@@ -4463,6 +4474,14 @@ Internet-Draft               DOTS Telemetry                November 2021
       "Grouping of traffic bound to a port number as
        a function of the measurement unit, including
        current values.";
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 80]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
     uses traffic-unit-port;
     leaf current-g {
       type yang:gauge64;
@@ -4474,14 +4493,6 @@ Internet-Draft               DOTS Telemetry                November 2021
   grouping total-connection-capacity {
     description
       "Total connection capacities for various types of
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 80]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
        connections, as well as overall capacity. These data nodes are
        useful to detect resource-consuming DDoS attacks.";
     leaf connection {
@@ -4519,6 +4530,14 @@ Internet-Draft               DOTS Telemetry                November 2021
     }
     leaf connection-client-ps {
       type uint64;
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 81]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
       description
         "The maximum number of new connections allowed per second
          to the target server per client.";
@@ -4530,14 +4549,6 @@ Internet-Draft               DOTS Telemetry                November 2021
          to the target server.";
     }
     leaf request-client-ps {
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 81]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
       type uint64;
       description
         "The maximum number of requests allowed per second
@@ -4571,92 +4582,90 @@ Internet-Draft               DOTS Telemetry                November 2021
     uses total-connection-capacity;
   }
 
-  grouping connection {
+  grouping connection-percentile-and-peak {
     description
       "A set of data nodes which represent the attack
        characteristics.";
-    leaf connection {
-      type yang:gauge64;
-      description
-        "The number of simultaneous attack connections to
-         the target server.";
-    }
-    leaf embryonic {
-      type yang:gauge64;
-      description
-        "The number of simultaneous embryonic connections to
-         the target server.";
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 82]
+Boucadair, et al.         Expires June 2, 2022                 [Page 82]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+    container connection-c {
+      uses percentile-and-peak;
+      description
+        "The number of simultaneous attack connections to
+         the target server.";
     }
-    leaf connection-ps {
-      type yang:gauge64;
+    container embryonic-c {
+      uses percentile-and-peak;
+      description
+        "The number of simultaneous embryonic connections to
+         the target server.";
+    }
+    container connection-ps-c {
+      uses percentile-and-peak;
       description
         "The number of attack connections per second to
          the target server.";
     }
-    leaf request-ps {
-      type yang:gauge64;
+    container request-ps-c {
+      uses percentile-and-peak;
       description
         "The number of attack requests per second to
          the target server.";
     }
-    leaf partial-request-ps {
-      type yang:gauge64;
+    container partial-request-ps-c {
+      uses percentile-and-peak;
       description
         "The number of attack partial requests to
          the target server.";
     }
   }
 
-  grouping connection-percentile-and-peak {
-    description
-      "Total attack connections. Low/mid/high percentile
-       and peak values are included.";
-    container low-percentile-c {
-      description
-        "Low percentile of attack connections.";
-      uses connection;
-    }
-    container mid-percentile-c {
-      description
-        "Mid percentile of attack connections.";
-      uses connection;
-    }
-    container high-percentile-c {
-      description
-        "High percentile of attack connections.";
-      uses connection;
-    }
-    container peak-c {
-      description
-        "Peak attack connections.";
-      uses connection;
-    }
-  }
-
   grouping connection-all {
+    description
+      "Total attack connections including current values.";
+    container connection-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of simultaneous attack connections to
+         the target server.";
+    }
+    container embryonic-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of simultaneous embryonic connections to
+         the target server.";
+    }
+    container connection-ps-c {
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 83]
+Boucadair, et al.         Expires June 2, 2022                 [Page 83]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-    description
-      "Total attack connections including current values.";
-    uses connection-percentile-and-peak;
-    container current-c {
+      uses percentile-peak-and-current;
       description
-        "Current attack connections.";
-      uses connection;
+        "The number of attack connections per second to
+         the target server.";
+    }
+    container request-ps-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of attack requests per second to
+         the target server.";
+    }
+    container partial-request-ps-c {
+      uses percentile-peak-and-current;
+      description
+        "The number of attack partial requests to
+         the target server.";
     }
   }
 
@@ -4670,119 +4679,66 @@ Internet-Draft               DOTS Telemetry                November 2021
          Values are taken from the IANA Protocol Numbers registry:
          <https://www.iana.org/assignments/protocol-numbers/>.";
     }
-    uses connection;
+    uses connection-percentile-and-peak;
   }
 
   grouping connection-port {
     description
       "Total attack connections per port number.";
+    leaf protocol {
+      type uint8;
+      description
+        "The transport protocol.
+         Values are taken from the IANA Protocol Numbers registry:
+         <https://www.iana.org/assignments/protocol-numbers/>.";
+    }
     leaf port {
       type inet:port-number;
       description
         "Port number.";
     }
-    uses connection-protocol;
-  }
-
-  grouping connection-protocol-percentile {
-    description
-      "Total attack connections per protocol.";
-    list low-percentile-l {
-      key "protocol";
-      description
-        "Low percentile of attack connections per protocol.";
-      uses connection-protocol;
-    }
-    list mid-percentile-l {
-      key "protocol";
-      description
-        "Mid percentile of attack connections per protocol.";
-      uses connection-protocol;
+    uses connection-percentile-and-peak;
 
 
 
-Boucadair, et al.         Expires May 30, 2022                 [Page 84]
+Boucadair, et al.         Expires June 2, 2022                 [Page 84]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-    }
-    list high-percentile-l {
-      key "protocol";
-      description
-        "High percentile of attack connections per protocol.";
-      uses connection-protocol;
-    }
-    list peak-l {
-      key "protocol";
-      description
-        "Peak attack connections per protocol.";
-      uses connection-protocol;
-    }
   }
 
   grouping connection-protocol-all {
     description
       "Total attack connections per protocol, including current
        values.";
-    uses connection-protocol-percentile;
-    list current-l {
-      key "protocol";
+    leaf protocol {
+      type uint8;
       description
-        "Current attack connections per protocol.";
-      uses connection-protocol;
+        "The transport protocol.
+         Values are taken from the IANA Protocol Numbers registry:
+         <https://www.iana.org/assignments/protocol-numbers/>.";
     }
-  }
-
-  grouping connection-protocol-port-percentile {
-    description
-      "Total attack connections per port number experessed in
-       low/mid/high percentile and peak values.";
-    list low-percentile-l {
-      key "protocol port";
-      description
-        "Low percentile of attack connections per port number.";
-      uses connection-port;
-    }
-    list mid-percentile-l {
-      key "protocol port";
-      description
-        "Mid percentile of attack connections per port number.";
-      uses connection-port;
-    }
-    list high-percentile-l {
-      key "protocol port";
-      description
-        "High percentile of attack connections per port number.";
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 85]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
-      uses connection-port;
-    }
-    list peak-l {
-      key "protocol port";
-      description
-        "Peak attack connections per port number.";
-      uses connection-port;
-    }
+    uses connection-all;
   }
 
   grouping connection-protocol-port-all {
     description
       "Total attack connections per port number, including current
        values.";
-    uses connection-protocol-port-percentile;
-    list current-l {
-      key "protocol port";
+    leaf protocol {
+      type uint8;
       description
-        "Current attack connections per port number.";
-      uses connection-port;
+        "The transport protocol.
+         Values are taken from the IANA Protocol Numbers registry:
+         <https://www.iana.org/assignments/protocol-numbers/>.";
     }
+    leaf port {
+      type inet:port-number;
+      description
+        "Port number.";
+    }
+    uses connection-all;
   }
 
   grouping attack-detail {
@@ -4798,6 +4754,14 @@ Internet-Draft               DOTS Telemetry                November 2021
         "Vendor ID is a security vendor's Enterprise Number as
          as registered with IANA.";
       reference
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 85]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
         "IANA: Private Enterprise Numbers";
     }
     leaf attack-id {
@@ -4810,14 +4774,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       description
         "Textual representation of attack description. Natural Language
          Processing techniques (e.g., word embedding) might provide some
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 86]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
          utility in mapping the attack description to an attack type.";
     }
     leaf attack-severity {
@@ -4854,6 +4810,14 @@ Internet-Draft               DOTS Telemetry                November 2021
   grouping talker {
     description
       "Defines generic data related to top-talkers.";
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 86]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
     leaf spoofed-status {
       type boolean;
       description
@@ -4866,14 +4830,6 @@ Internet-Draft               DOTS Telemetry                November 2021
         "IPv4 or IPv6 prefix identifying the attacker(s).";
     }
     list source-port-range {
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 87]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
       key "lower-port";
       description
         "Port range. When only lower-port is
@@ -4910,11 +4866,19 @@ Internet-Draft               DOTS Telemetry                November 2021
           error-message
             "The upper ICMP type must be greater than
              or equal to lower ICMP type.";
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 87]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
         }
         description
           "Upper type of the ICMP type range.";
       }
-      }
+    }
     list total-attack-traffic {
       key "unit";
       description
@@ -4922,13 +4886,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       uses traffic-unit-all;
     }
   }
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 88]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
 
   grouping top-talker-aggregate {
     description
@@ -4958,12 +4915,21 @@ Internet-Draft               DOTS Telemetry                November 2021
         "Refers to a top-talker that is identified by an IPv4
          or IPv6 prefix identifying the attacker(s).";
       uses talker;
-      container total-attack-connection {
+      list total-attack-connection-protocol {
+        key "protocol";
         description
           "Total attack connections issued from this source.";
         uses connection-protocol-all;
       }
     }
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 88]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
   }
 
   grouping baseline {
@@ -4978,14 +4944,6 @@ Internet-Draft               DOTS Telemetry                November 2021
          an IoT object, a server, etc.";
     }
     list total-traffic-normal {
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 89]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
       key "unit";
       description
         "Total traffic normal baselines.";
@@ -5020,6 +4978,14 @@ Internet-Draft               DOTS Telemetry                November 2021
       }
       uses total-connection-capacity-protocol;
     }
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 89]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
   }
 
   grouping pre-or-ongoing-mitigation {
@@ -5034,14 +5000,6 @@ Internet-Draft               DOTS Telemetry                November 2021
     list total-traffic-protocol {
       key "unit protocol";
       description
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 90]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
         "Total traffic per protocol.";
       uses traffic-unit-protocol-all;
     }
@@ -5069,12 +5027,22 @@ Internet-Draft               DOTS Telemetry                November 2021
         "Total attack traffic per port number.";
       uses traffic-unit-port-all;
     }
-    container total-attack-connection {
+    list total-attack-connection-protocol {
+      key "protocol";
       description
         "Total attack connections.";
       uses connection-protocol-all;
     }
-    container total-attack-connection-port {
+    list total-attack-connection-port {
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 90]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
+      key "protocol port";
       description
         "Total attack connections per target port number.";
       uses connection-protocol-port-all;
@@ -5090,14 +5058,6 @@ Internet-Draft               DOTS Telemetry                November 2021
         uses top-talker;
       }
     }
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 91]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
   }
 
   sx:augment-structure "/dots-signal:dots-signal"
@@ -5130,6 +5090,14 @@ Internet-Draft               DOTS Telemetry                November 2021
     list total-attack-traffic {
       key "unit";
       description
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 91]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
         "Total attack traffic.";
       uses traffic-unit-all;
     }
@@ -5146,14 +5114,6 @@ Internet-Draft               DOTS Telemetry                November 2021
     }
   }
   sx:structure dots-telemetry {
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 92]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
     description
       "Main structure for DOTS telemetry messages.";
     choice telemetry-message-type {
@@ -5176,7 +5136,7 @@ Internet-Draft               DOTS Telemetry                November 2021
               uses telemetry-parameters;
               leaf server-originated-telemetry {
                 type boolean;
-                default false;
+                default "false";
                 description
                   "Indicates whether the DOTS server can be instructed
                    to send pre-or-ongoing-mitigation telemetry. If set
@@ -5186,11 +5146,19 @@ Internet-Draft               DOTS Telemetry                November 2021
               }
               leaf telemetry-notify-interval {
                 type uint16 {
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 92]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
                   range "1 .. 3600";
                 }
                 units "seconds";
-                must ". >= ../../min-config-values"
-                   + "/telemetry-notify-interval" {
+                must '. >= ../../min-config-values'
+                   + '/telemetry-notify-interval' {
                   error-message
                     "The value must be greater than or equal
                      to the telemetry-notify-interval in the
@@ -5202,14 +5170,6 @@ Internet-Draft               DOTS Telemetry                November 2021
               }
             }
             container min-config-values {
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 93]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
               description
                 "Minimum acceptable configuration values.";
               uses telemetry-parameters;
@@ -5242,6 +5202,14 @@ Internet-Draft               DOTS Telemetry                November 2021
           }
         }
         list telemetry {
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 93]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
           description
             "The telemetry data per DOTS client.  The keys
              of the list are 'cuid' and 'tsid', but these keys are not
@@ -5258,14 +5226,6 @@ Internet-Draft               DOTS Telemetry                November 2021
                  sent from the server to the client.";
               leaf tsid {
                 type uint32;
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 94]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
                 description
                   "A client-assigned identifier for the DOTS telemetry
                    setup data.";
@@ -5293,11 +5253,19 @@ Internet-Draft               DOTS Telemetry                November 2021
                      the DOTS server.";
                 }
                 leaf telemetry-notify-interval {
-                  type uint32 {
+                  type uint16 {
                     range "1 .. 3600";
                   }
                   units "seconds";
                   description
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 94]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
                     "Minimum number of seconds between successive
                      telemetry notifications.";
                 }
@@ -5314,14 +5282,6 @@ Internet-Draft               DOTS Telemetry                November 2021
                   type nt:link-id;
                   description
                     "Identifier of an interconnection link of
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 95]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
                      the DOTS client domain.";
                 }
                 leaf capacity {
@@ -5354,6 +5314,14 @@ Internet-Draft               DOTS Telemetry                November 2021
                    domain.";
                 leaf id {
                   type uint32;
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 95]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
                   must '. >= 1';
                   description
                     "An identifier that uniquely identifies a baseline
@@ -5370,14 +5338,6 @@ Internet-Draft               DOTS Telemetry                November 2021
           "Telemetry information.";
         list pre-or-ongoing-mitigation {
           description
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 96]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
             "Pre-or-ongoing-mitigation telemetry per DOTS client.
              The keys of the list are 'cuid' and 'tmid', but these
              keys are not represented here because these keys are
@@ -5410,6 +5370,14 @@ Internet-Draft               DOTS Telemetry                November 2021
               type string;
               description
                 "An alias name that points to a resource.";
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 96]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
             }
             leaf-list mid-list {
               type uint32;
@@ -5426,14 +5394,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       }
     }
   }
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 97]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
 }
 <CODE ENDS>
 
@@ -5466,6 +5426,14 @@ Internet-Draft               DOTS Telemetry                November 2021
    description
      "This module contains YANG definitions for the sharing
       DDoS attack mapping details between a DOTS client and
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 97]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
       a DOTS server, by means of the DOTS data channel.
 
       Copyright (c) 2021 IETF Trust and the persons identified as
@@ -5482,14 +5450,6 @@ Internet-Draft               DOTS Telemetry                November 2021
       the RFC itself for full legal notices.";
 
    revision 2020-06-26 {
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 98]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
      description
        "Initial revision.";
      reference
@@ -5522,6 +5482,14 @@ Internet-Draft               DOTS Telemetry                November 2021
        leaf vendor-name {
          type string;
          description
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 98]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
            "The name of the vendor (e.g., company A).";
        }
        leaf last-updated {
@@ -5538,14 +5506,6 @@ Internet-Draft               DOTS Telemetry                November 2021
          leaf attack-id {
            type uint32;
            description
-
-
-
-Boucadair, et al.         Expires May 30, 2022                 [Page 99]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
              "Unique identifier assigned by the vendor for the attack.";
          }
          leaf attack-description {
@@ -5578,6 +5538,14 @@ Internet-Draft               DOTS Telemetry                November 2021
      if-feature "dots-telemetry";
      description
        "Augments the DOTS server capabilities with a
+
+
+
+Boucadair, et al.         Expires June 2, 2022                 [Page 99]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
         parameter to indicate whether they can share
         attack mapping details.";
      leaf vendor-mapping-enabled {
@@ -5594,14 +5562,6 @@ Internet-Draft               DOTS Telemetry                November 2021
      description
        "Augments the data channel with a vendor attack
         mapping table of the DOTS server.";
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 100]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
      container vendor-mapping {
        config false;
        description
@@ -5634,6 +5594,14 @@ Internet-Draft               DOTS Telemetry                November 2021
   | mid-percentile       | decimal64   |TBA4  | 6 tag 4       |        |
   |                      |             |      |  [-2, integer]| String |
   | high-percentile      | decimal64   |TBA5  | 6 tag 4       |        |
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 100]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
   |                      |             |      |  [-2, integer]| String |
   | unit-config          | list        |TBA6  | 4 array       | Array  |
   | unit                 | enumeration |TBA7  | 0 unsigned    | String |
@@ -5650,14 +5618,6 @@ Internet-Draft               DOTS Telemetry                November 2021
   | peak-g               | yang:gauge64|TBA16 | 0 unsigned    | String |
   | total-attack-traffic | list        |TBA17 | 4 array       | Array  |
   | total-traffic        | list        |TBA18 | 4 array       | Array  |
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 101]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
   | total-connection-    |             |      |               |        |
   |        capacity      | list        |TBA19 | 4 array       | Array  |
   | connection           | uint64      |TBA20 | 0 unsigned    | String |
@@ -5673,10 +5633,10 @@ Internet-Draft               DOTS Telemetry                November 2021
   |        client-ps     | uint64      |TBA29 | 0 unsigned    | String |
   | total-attack-        |             |      |               |        |
   |        connection    | container   |TBA30 | 5 map         | Object |
-  | low-percentile-l     | list        |TBA31 | 4 array       | Array  |
-  | mid-percentile-l     | list        |TBA32 | 4 array       | Array  |
-  | high-percentile-l    | list        |TBA33 | 4 array       | Array  |
-  | peak-l               | list        |TBA34 | 4 array       | Array  |
+  | connection-c         | container   |TBA31 | 5 map         | Object |
+  | embryonic-c          | container   |TBA32 | 5 map         | Object |
+  | connection-ps-c      | container   |TBA33 | 5 map         | Object |
+  | request-ps-c         | container   |TBA34 | 5 map         | Object |
   | attack-detail        | list        |TBA35 | 4 array       | Array  |
   | id                   | uint32      |TBA36 | 0 unsigned    | Number |
   | attack-id            | uint32      |TBA37 | 0 unsigned    | Number |
@@ -5690,6 +5650,14 @@ Internet-Draft               DOTS Telemetry                November 2021
   |                      |             |      | 7 bits 21     | True   |
   | low-percentile-c     | container   |TBA45 | 5 map         | Object |
   | mid-percentile-c     | container   |TBA46 | 5 map         | Object |
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 101]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
   | high-percentile-c    | container   |TBA47 | 5 map         | Object |
   | peak-c               | container   |TBA48 | 5 map         | Object |
   | baseline             | list        |TBA49 | 4 array       | Array  |
@@ -5706,14 +5674,6 @@ Internet-Draft               DOTS Telemetry                November 2021
   | measurement-sample   | enumeration |TBA58 | 0 unsigned    | String |
   | talker               | list        |TBA59 | 4 array       | Array  |
   | source-prefix        | inet:       |TBA60 | 3 text string | String |
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 102]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
   |                      |   ip-prefix |      |               |        |
   | mid-list             | leaf-list   |TBA61 | 4 array       | Array  |
   |                      | uint32      |      | 0 unsigned    | Number |
@@ -5746,6 +5706,14 @@ Internet-Draft               DOTS Telemetry                November 2021
   | ietf-dots-telemetry: |             |      |               |        |
   |      telemetry-setup | container   |TBA78 | 5 map         | Object |
   | ietf-dots-telemetry: |             |      |               |        |
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 102]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
   |   total-traffic      | list        |TBA79 | 4 array       | Array  |
   | ietf-dots-telemetry: |             |      |               |        |
   | total-attack-traffic | list        |TBA80 | 4 array       | Array  |
@@ -5757,18 +5725,13 @@ Internet-Draft               DOTS Telemetry                November 2021
   | ietf-dots-telemetry: |             |      |               |        |
   |         telemetry    | container   |TBA83 | 5 map         | Object |
   | current-g            | yang:gauge64|TBA84 | 0 unsigned    | String |
-  | current-l            | list        |TBA85 | 4 array       | Array  |
+  | partial-request-ps-c | container   |TBA85 | 5 map         | Object |
   | current-c            | container   |TBA86 | 5 map         | Object |
+  | total-attack-        |             |      |               |        |
+  |  connection-protocol | list        |TBA87 | 4 array       | Array  |
   | lower-type           | uint8       |32771 | 0 unsigned    | Number |
   | upper-type           | uint8       |32772 | 0 unsigned    | Number |
   +----------------------+-------------+------+---------------+--------+
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 103]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
 
                  Table 2: YANG/JSON Mapping Parameters to CBOR
 
@@ -5799,6 +5762,14 @@ Internet-Draft               DOTS Telemetry                November 2021
    | unit-config          | TBA6  |   4   |    IESG    |   [RFCXXXX]   |
    | unit                 | TBA7  |   0   |    IESG    |   [RFCXXXX]   |
    | unit-status          | TBA8  |   7   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 103]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
    | total-pipe-capacity  | TBA9  |   4   |    IESG    |   [RFCXXXX]   |
    | link-id              | TBA10 |   3   |    IESG    |   [RFCXXXX]   |
    | pre-or-ongoing-      | TBA11 |   4   |    IESG    |   [RFCXXXX]   |
@@ -5818,14 +5789,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    | embryonic-client     | TBA23 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-ps        | TBA24 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-client-ps | TBA25 |   0   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 104]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    | request-ps           | TBA26 |   0   |    IESG    |   [RFCXXXX]   |
    | request-client-ps    | TBA27 |   0   |    IESG    |   [RFCXXXX]   |
    | partial-request-ps   | TBA28 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5833,10 +5796,10 @@ Internet-Draft               DOTS Telemetry                November 2021
    |        client-ps     |       |       |            |               |
    | total-attack-        | TBA30 |   5   |    IESG    |   [RFCXXXX]   |
    |        connection    |       |       |            |               |
-   | low-percentile-l     | TBA31 |   4   |    IESG    |   [RFCXXXX]   |
-   | mid-percentile-l     | TBA32 |   4   |    IESG    |   [RFCXXXX]   |
-   | high-percentile-l    | TBA33 |   4   |    IESG    |   [RFCXXXX]   |
-   | peak-l               | TBA34 |   4   |    IESG    |   [RFCXXXX]   |
+   | connection-c         | TBA31 |   5   |    IESG    |   [RFCXXXX]   |
+   | embryonic-c          | TBA32 |   5   |    IESG    |   [RFCXXXX]   |
+   | connection-ps-c      | TBA33 |   5   |    IESG    |   [RFCXXXX]   |
+   | request-ps-c         | TBA34 |   5   |    IESG    |   [RFCXXXX]   |
    | attack-detail        | TBA35 |   4   |    IESG    |   [RFCXXXX]   |
    | id                   | TBA36 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
@@ -5855,6 +5818,14 @@ Internet-Draft               DOTS Telemetry                November 2021
    | current-config       | TBA50 |   5   |    IESG    |   [RFCXXXX]   |
    | max-config-value     | TBA51 |   5   |    IESG    |   [RFCXXXX]   |
    | min-config-values    | TBA52 |   5   |    IESG    |   [RFCXXXX]   |
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 104]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
    |supported-unit-classes| TBA53 |   5   |    IESG    |   [RFCXXXX]   |
    | server-originated-   | TBA54 |   7   |    IESG    |   [RFCXXXX]   |
    |          telemetry   |       |       |            |               |
@@ -5874,14 +5845,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    | protocol             | TBA66 |   0   |    IESG    |   [RFCXXXX]   |
    | total-traffic-       | TBA67 |   4   |    IESG    |   [RFCXXXX]   |
    |  normal-per-protocol |       |       |            |               |
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 105]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    | total-traffic-       | TBA68 |   4   |    IESG    |   [RFCXXXX]   |
    |  normal-per-port     |       |       |            |               |
    | total-connection-    | TBA69 |   4   |    IESG    |   [RFCXXXX]   |
@@ -5911,9 +5874,19 @@ Internet-Draft               DOTS Telemetry                November 2021
    |     attack-detail    |       |       |            |               |
    | ietf-dots-telemetry: | TBA83 |   5   |    IESG    |   [RFCXXXX]   |
    |        telemetry     |       |       |            |               |
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 105]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
+
    | current-g            | TBA84 |   0   |    IESG    |   [RFCXXXX]   |
-   | current-l            | TBA85 |   4   |    IESG    |   [RFCXXXX]   |
+   | partial-request-ps-c | TBA85 |   5   |    IESG    |   [RFCXXXX]   |
    | current-c            | TBA86 |   5   |    IESG    |   [RFCXXXX]   |
+   | total-attack-        | TBA87 |   4   |    IESG    |   [RFCXXXX]   |
+   |  connection-protocol |       |       |            |               |
    +----------------------+-------+-------+------------+---------------+
 
            Table 3: Registered DOTS Signal Channel CBOR Key Values
@@ -5931,13 +5904,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
        Table 4: Registered DOTS Signal Channel Conflict Cause Code
 
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 106]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
 12.3.  DOTS Signal Telemetry YANG Module
 
    This document requests IANA to register the following URIs in the
@@ -5954,6 +5920,23 @@ Internet-Draft               DOTS Telemetry                November 2021
    This document requests IANA to register the following YANG modules in
    the "YANG Module Names" subregistry [RFC6020] within the "YANG
    Parameters" registry.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 106]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
             name: ietf-dots-telemetry
             namespace: urn:ietf:params:xml:ns:yang:ietf-dots-telemetry
@@ -5987,13 +5970,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    that kind of information by being in the position to observe and
    mitigate attacks.
 
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 107]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    DOTS clients are typically considered to be trusted devices by the
    DOTS client domain.  DOTS clients may be co-located on network
    security services (e.g., firewall devices), and a compromised
@@ -6010,6 +5986,13 @@ Internet-Draft               DOTS Telemetry                November 2021
    telemetry for any target resource in the network).  As a reminder,
    this is a variation of dealing with compromised DOTS clients as
    discussed in Section 11 of [RFC9132].
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 107]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    DOTS servers must be capable of defending themselves against DoS
    attacks from compromised DOTS clients.  The following non-
@@ -6042,14 +6025,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    is the default) are considered sensitive.  Write operations to these
    data nodes without proper protection can have a negative effect on
    network operations.  Appropriate security measures are recommended to
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 108]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    prevent illegitimate users from invoking DOTS data channel primitives
    as discussed in [RFC8783].  Nevertheless, an attacker who can access
    a DOTS client is technically capable of undertaking various attacks,
@@ -6064,6 +6039,16 @@ Internet-Draft               DOTS Telemetry                November 2021
    Section 10.2 may be considered sensitive.  It is thus important to
    control read access to these data nodes.  These are the data nodes
    and their sensitivity:
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 108]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    o  '/data-channel:dots-data/data-channel:dots-client/dots-
       telemetry:vendor-mapping' can be misused to infer the DDoS
@@ -6099,13 +6084,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    Thanks to Benjamin Kaduk for the detailed AD review.
 
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 109]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
 16.  References
 
 16.1.  Normative References
@@ -6118,6 +6096,15 @@ Internet-Draft               DOTS Telemetry                November 2021
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 109]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
@@ -6155,13 +6142,6 @@ Internet-Draft               DOTS Telemetry                November 2021
               Format Version 2", RFC 7970, DOI 10.17487/RFC7970,
               November 2016, <https://www.rfc-editor.org/info/rfc7970>.
 
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 110]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
@@ -6174,6 +6154,13 @@ Internet-Draft               DOTS Telemetry                November 2021
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
               Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
               2018, <https://www.rfc-editor.org/info/rfc8345>.
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 110]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    [RFC8783]  Boucadair, M., Ed. and T. Reddy.K, Ed., "Distributed
               Denial-of-Service Open Threat Signaling (DOTS) Data
@@ -6207,17 +6194,6 @@ Internet-Draft               DOTS Telemetry                November 2021
               Signaling (DOTS) Telemetry Specifications", draft-doron-
               dots-telemetry-00 (work in progress), October 2016.
 
-
-
-
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 111]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    [I-D.ietf-core-new-block]
               Boucadair, M. and J. Shallow, "Constrained Application
               Protocol (CoAP) Block-Wise Transfer Options Supporting
@@ -6229,6 +6205,18 @@ Internet-Draft               DOTS Telemetry                November 2021
               Deployment Considerations for Distributed-Denial-of-
               Service Open Threat Signaling (DOTS)", draft-ietf-dots-
               multihoming-08 (work in progress), October 2021.
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 111]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    [I-D.ietf-dots-robust-blocks]
               Boucadair, M. and J. Shallow, "Distributed Denial-of-
@@ -6266,14 +6254,6 @@ Internet-Draft               DOTS Telemetry                November 2021
               DOI 10.17487/RFC8525, March 2019,
               <https://www.rfc-editor.org/info/rfc8525>.
 
-
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 112]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
               Threat Signaling (DOTS) Requirements", RFC 8612,
               DOI 10.17487/RFC8612, May 2019,
@@ -6283,6 +6263,16 @@ Internet-Draft               DOTS Telemetry                November 2021
               Teague, N., and R. Compton, "DDoS Open Threat Signaling
               (DOTS) Architecture", RFC 8811, DOI 10.17487/RFC8811,
               August 2020, <https://www.rfc-editor.org/info/rfc8811>.
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 112]
+
+Internet-Draft               DOTS Telemetry                November 2021
+
 
    [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
               L., and K. Nishizuka, "Use Cases for DDoS Open Threat
@@ -6323,13 +6313,6 @@ Authors' Addresses
    Email: ehudd@radware.com
 
 
-
-
-Boucadair, et al.         Expires May 30, 2022                [Page 113]
-
-Internet-Draft               DOTS Telemetry                November 2021
-
-
    Meiling Chen
    CMCC
    32, Xuanwumen West
@@ -6337,6 +6320,14 @@ Internet-Draft               DOTS Telemetry                November 2021
    China
 
    Email: chenmeiling@chinamobile.com
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 113]
+
+Internet-Draft               DOTS Telemetry                November 2021
 
 
    Jon Shallow
@@ -6381,4 +6372,13 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-Boucadair, et al.         Expires May 30, 2022                [Page 114]
+
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires June 2, 2022                [Page 114]
