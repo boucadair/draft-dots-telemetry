@@ -1751,9 +1751,10 @@ Internet-Draft               DOTS Telemetry                November 2021
                Figure 18: Telemetry Baseline Tree Structure
 
    A DOTS client can share one or multiple normal traffic baselines
-   (e.g., aggregate or per-prefix baselines), each are uniquely within
-   the DOTS client domain with an identifier 'id'.  This identifier can
-   be used to update a baseline entry, delete a specific entry, etc.
+   (e.g., aggregate or per-prefix baselines), each are uniquely
+   identified within the DOTS client domain with an identifier 'id'.
+   This identifier can be used to update a baseline entry, delete a
+   specific entry, etc.
 
 6.3.1.  Conveying DOTS Client Domain Baseline Information
 
@@ -1783,7 +1784,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    'tsid' value) (assuming this fits within one single datagram).  This
    update request will override these existing requests and hence
    optimize the number of 'tsid' request per DOTS client.
-
 
 
 

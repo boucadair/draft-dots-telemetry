@@ -1502,9 +1502,10 @@ Content-Format: "application/dots+cbor"
           </figure></t>
 
         <t>A DOTS client can share one or multiple normal traffic baselines
-        (e.g., aggregate or per-prefix baselines), each are uniquely within
-        the DOTS client domain with an identifier 'id'. This identifier can be
-        used to update a baseline entry, delete a specific entry, etc.</t>
+        (e.g., aggregate or per-prefix baselines), each are uniquely
+        identified within the DOTS client domain with an identifier 'id'. This
+        identifier can be used to update a baseline entry, delete a specific
+        entry, etc.</t>
 
         <section title="Conveying DOTS Client Domain Baseline Information">
           <t>Similar considerations to those specified in <xref
