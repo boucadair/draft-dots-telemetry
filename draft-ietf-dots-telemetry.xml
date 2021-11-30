@@ -36,7 +36,7 @@
 
     <author fullname="Tirumaleswar Reddy" initials="T." role="editor"
             surname="Reddy">
-      <organization abbrev="McAfee">McAfee, Inc.</organization>
+      <organization>Akamai</organization>
 
       <address>
         <postal>
@@ -136,9 +136,9 @@
     <abstract>
       <t>This document aims to enrich the DOTS signal channel protocol with
       various telemetry attributes, allowing for optimal Distributed
-      Denial-of-Service attack mitigation. It specifies the normal traffic
-      baseline and attack traffic telemetry attributes a DOTS client can
-      convey to its DOTS server in the mitigation request, the mitigation
+      Denial-of-Service (DDoS) attack mitigation. It specifies the normal
+      traffic baseline and attack traffic telemetry attributes a DOTS client
+      can convey to its DOTS server in the mitigation request, the mitigation
       status telemetry attributes a DOTS server can communicate to a DOTS
       client, and the mitigation efficacy telemetry attributes a DOTS client
       can communicate to a DOTS server. The telemetry attributes can assist
@@ -446,6 +446,46 @@
       <t></t>
 
       <section title="Overview of Telemetry Operations">
+        <t>The DOTS protocol suite is divided into two logical channels: the
+        signal channel <xref target="RFC9132"></xref> and data channel <xref
+        target="RFC8783"></xref>. This division is due to the vastly different
+        requirements placed upon the traffic they carry. The DOTS signal
+        channel must remain available and usable even in the face of attack
+        traffic that might, e.g., saturate one direction of the links
+        involved, rendering acknowledgment-based mechanisms unreliable and
+        strongly incentivizing messages to be small enough to be contained in
+        a single IP packet (Section 2.2 of <xref target="RFC8612"></xref>). In
+        contrast, the DOTS data channel is available for high-bandwidth data
+        transfer before or after an attack, using more conventional transport
+        protocol techniques (Section 2.3 of <xref target="RFC8612"></xref>).
+        It is generally preferable to perform advance configuration over the
+        DOTS data channel, including configuring aliases for static or nearly
+        static data sets such as sets of network addresses/prefixes that might
+        be subject to related attacks. This design helps to optimize the use
+        of the DOTS signal channel for the small messages that truly require
+        reliable delivery during an attack. </t>
+
+        <t>Telemetry information has aspects that correspond to both
+        operational modes: there is certainly a need to convey updated
+        information about ongoing attack traffic and targets during an attack,
+        so as to convey detailed information about mitigation status and
+        inform updates to mitigation strategy in the face of adaptive attacks,
+        but it is also useful to provide mitigation services with a picture of
+        normal or "baseline" traffic towards potential targets, to aid in
+        detecting when incoming traffic deviates from normal into being an
+        attack. Also, one might populate a "database" of classifications of
+        known types of attack so that a short attack identifier can be used
+        during attack time to describe an observed attack. This specification
+        does make provision for use of the DOTS data channel for the latter
+        function (<xref target="vam"></xref>), but otherwise retains most
+        telemetry functionality in the DOTS signal channel. Note that it is a
+        functional requirement to convey information about ongoing attack
+        traffic during an attack, and information about baseline traffic uses
+        an essentially identical data structure that is naturally defined to
+        sit next to the description of attack traffic. The related telemetry
+        setup information used to parametrize actual traffic data is also sent
+        over the signal channel, out of expediency. </t>
+
         <t>This document specifies an extension to the DOTS signal channel
         protocol. Considerations about how to establish, maintain, and make
         use of the DOTS signal channel are specified in <xref
@@ -710,6 +750,28 @@
       target="RFC7252"></xref>).</t>
 
       <section anchor="tconfig" title="Telemetry Configuration">
+        <t>DOTS telemetry uses several percentile values to provide a picture
+        of a traffic distribution overall, as opposed to just a single
+        snapshot of observed traffic at a single point in time. Modeling raw
+        traffic flow data as a distribution and describing that distribution
+        entails choosing a measurement period that the distribution will
+        describe, and a number of sampling intervals, or "buckets", within
+        that measurement period. Traffic within each bucket is treated as a
+        single event (i.e., averaged), and then the distribution of buckets is
+        used to describe the distribution of traffic over the measurement
+        period. A distribution can be characterized by statistical measures
+        such as mean, median, and standard deviation, and also by reporting
+        the value of the distribution at various percentile levels of the data
+        set in question, such as "quartiles" that correspond to 25th, 50th,
+        and 75th percentile. More details about percentile values and their
+        computation are found in Section 11.3 of <xref
+        target="RFC2330"></xref>. </t>
+
+        <t>DOTS telemetry uses up to three percentile values, plus the overall
+        peak, to characterize traffic distributions. Which percentile
+        thresholds are used for these "low", "medium", and "high" percentile
+        values is configurable (with suitable defaults). </t>
+
         <t>A DOTS client can negotiate with its server(s) a set of telemetry
         configuration parameters to be used for telemetry. Such parameters
         include:</t>
@@ -718,9 +780,7 @@
             <t>Percentile-related measurement parameters. In particular,
             'measurement-interval' defines the period on which percentiles are
             computed, while 'measurement-sample' defines the time distribution
-            for measuring values that are used to compute percentiles. Section
-            11.3 of <xref target="RFC2330"></xref> includes more details about
-            computing percentiles.</t>
+            for measuring values that are used to compute percentiles. </t>
 
             <t>Measurement units</t>
 
@@ -757,7 +817,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
           target="tpipe"></xref>), and the current baseline information (<xref
           target="tbl"></xref>) maintained by the DOTS server for this DOTS
           client. The tree structure of the response message body is provided
-          in <xref target="tree-acceptable"></xref>. </t>
+          in <xref target="tree-acceptable"></xref>.</t>
 
           <t>DOTS servers that support the capability of sending telemetry
           information to DOTS clients prior to or during a mitigation (<xref
