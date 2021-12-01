@@ -471,25 +471,28 @@
         reliable delivery during an attack.</t>
 
         <t>Telemetry information has aspects that correspond to both
-        operational modes: there is certainly a need to convey updated
-        information about ongoing attack traffic and targets during an attack,
-        so as to convey detailed information about mitigation status and
-        inform updates to mitigation strategy in the face of adaptive attacks,
-        but it is also useful to provide mitigation services with a picture of
-        normal or "baseline" traffic towards potential targets, to aid in
-        detecting when incoming traffic deviates from normal into being an
-        attack. Also, one might populate a "database" of classifications of
-        known types of attack so that a short attack identifier can be used
-        during attack time to describe an observed attack. This specification
-        does make provision for use of the DOTS data channel for the latter
-        function (<xref target="vam"></xref>), but otherwise retains most
-        telemetry functionality in the DOTS signal channel. Note that it is a
-        functional requirement to convey information about ongoing attack
-        traffic during an attack, and information about baseline traffic uses
-        an essentially identical data structure that is naturally defined to
-        sit next to the description of attack traffic. The related telemetry
-        setup information used to parametrize actual traffic data is also sent
-        over the signal channel, out of expediency.</t>
+        operational modes (i.e., signal and data channels): there is certainly
+        a need to convey updated information about ongoing attack traffic and
+        targets during an attack, so as to convey detailed information about
+        mitigation status and inform updates to mitigation strategy in the
+        face of adaptive attacks, but it is also useful to provide mitigation
+        services with a picture of normal or "baseline" traffic towards
+        potential targets, to aid in detecting when incoming traffic deviates
+        from normal into being an attack. Also, one might populate a
+        "database" of classifications of known types of attack so that a short
+        attack identifier can be used during attack time to describe an
+        observed attack. This specification does make provision for use of the
+        DOTS data channel for the latter function (<xref
+        target="vam"></xref>), but otherwise retains most telemetry
+        functionality in the DOTS signal channel. </t>
+
+        <t>Note that it is a functional requirement to convey information
+        about ongoing attack traffic during an attack, and information about
+        baseline traffic uses an essentially identical data structure that is
+        naturally defined to sit next to the description of attack traffic.
+        The related telemetry setup information used to parameterize actual
+        traffic data is also sent over the signal channel, out of
+        expediency.</t>
 
         <t>This document specifies an extension to the DOTS signal channel
         protocol. Considerations about how to establish, maintain, and make
@@ -1551,8 +1554,8 @@ Content-Format: "application/dots+cbor"
        |              |  +-- connection-client-ps?        uint64
        |              |  +-- request-ps?                  uint64
        |              |  +-- request-client-ps?           uint64
-       |              |  +-- partial-request-ps?          uint64
-       |              |  +-- partial-request-client-ps?   uint64
+       |              |  +-- partial-request-mas?         uint64
+       |              |  +-- partial-request-client-max?  uint64
        |              +-- total-connection-capacity-per-port*
        |                      [protocol port]
        |                 +-- port
@@ -1566,8 +1569,8 @@ Content-Format: "application/dots+cbor"
        |                 +-- connection-client-ps?        uint64
        |                 +-- request-ps?                  uint64
        |                 +-- request-client-ps?           uint64
-       |                 +-- partial-request-ps?          uint64
-       |                 +-- partial-request-client-ps?   uint64
+       |                 +-- partial-request-max?         uint64
+       |                 +-- partial-request-client-max?  uint64
        +--:(telemetry)
           ...
 ]]></artwork>
@@ -1777,7 +1780,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       client or a DOTS server.</t>
 
       <t>DOTS agents SHOULD bind pre-or-ongoing-mitigation telemetry data to
-      mitigation requests relying upon the resources under attack. In
+      mitigation requests associated with the resources under attack. In
       particular, a telemetry PUT request sent after a mitigation request may
       include a reference to that mitigation request ('mid-list') as shown in
       <xref target="mid-co"></xref>. An example illustrating request
@@ -1934,7 +1937,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           the same attributes defined in <xref target="attackconn"></xref> are
           applicable for representing the attack.</t>
 
-          <t>At least the 'target' attribute and another
+          <t>At least the 'target' attribute and one other
           pre-or-ongoing-mitigation attribute MUST be present in the DOTS
           telemetry message.</t>
         </section>
@@ -3903,13 +3906,13 @@ module ietf-dots-telemetry {
         "The maximum number of requests allowed per second
          to the target server per client.";
     }
-    leaf partial-request-ps {
+    leaf partial-request-max {
       type uint64;
       description
         "The maximum number of outstanding partial requests
          that are allowed to the target server.";
     }
-    leaf partial-request-client-ps {
+    leaf partial-request-client-max {
       type uint64;
       description
         "The maximum number of outstanding partial requests
@@ -4834,9 +4837,9 @@ module ietf-dots-mapping {
 | connection-client-ps | uint64      |TBA25 | 0 unsigned    | String |
 | request-ps           | uint64      |TBA26 | 0 unsigned    | String |
 | request-client-ps    | uint64      |TBA27 | 0 unsigned    | String |
-| partial-request-ps   | uint64      |TBA28 | 0 unsigned    | String |
+| partial-request-max  | uint64      |TBA28 | 0 unsigned    | String |
 | partial-request-     |             |      |               |        |
-|        client-ps     | uint64      |TBA29 | 0 unsigned    | String |
+|        client-max    | uint64      |TBA29 | 0 unsigned    | String |
 | total-attack-        |             |      |               |        |
 |        connection    | container   |TBA30 | 5 map         | Object |
 | connection-c         | container   |TBA31 | 5 map         | Object |
@@ -4972,9 +4975,9 @@ module ietf-dots-mapping {
    | connection-client-ps | TBA25 |   0   |    IESG    |   [RFCXXXX]   |
    | request-ps           | TBA26 |   0   |    IESG    |   [RFCXXXX]   |
    | request-client-ps    | TBA27 |   0   |    IESG    |   [RFCXXXX]   |
-   | partial-request-ps   | TBA28 |   0   |    IESG    |   [RFCXXXX]   |
+   | partial-request-max  | TBA28 |   0   |    IESG    |   [RFCXXXX]   |
    | partial-request-     | TBA29 |   0   |    IESG    |   [RFCXXXX]   |
-   |        client-ps     |       |       |            |               |
+   |        client-max    |       |       |            |               |
    | total-attack-        | TBA30 |   5   |    IESG    |   [RFCXXXX]   |
    |        connection    |       |       |            |               |
    | connection-c         | TBA31 |   5   |    IESG    |   [RFCXXXX]   |

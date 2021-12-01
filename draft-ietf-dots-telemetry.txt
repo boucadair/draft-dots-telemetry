@@ -86,7 +86,7 @@ Table of Contents
      4.2.  Generic Considerations  . . . . . . . . . . . . . . . . .  11
        4.2.1.  DOTS Client Identification  . . . . . . . . . . . . .  11
        4.2.2.  DOTS Gateways . . . . . . . . . . . . . . . . . . . .  11
-       4.2.3.  Empty URI Paths . . . . . . . . . . . . . . . . . . .  11
+       4.2.3.  Empty URI Paths . . . . . . . . . . . . . . . . . . .  12
        4.2.4.  Controlling Configuration Data  . . . . . . . . . . .  12
      4.3.  Block-wise Transfer . . . . . . . . . . . . . . . . . . .  12
      4.4.  DOTS Multi-homing Considerations  . . . . . . . . . . . .  12
@@ -95,7 +95,7 @@ Table of Contents
    5.  Telemetry Operation Paths . . . . . . . . . . . . . . . . . .  14
    6.  DOTS Telemetry Setup Configuration  . . . . . . . . . . . . .  15
      6.1.  Telemetry Configuration . . . . . . . . . . . . . . . . .  16
-       6.1.1.  Retrieve Current DOTS Telemetry Configuration . . . .  16
+       6.1.1.  Retrieve Current DOTS Telemetry Configuration . . . .  17
        6.1.2.  Conveying DOTS Telemetry Configuration  . . . . . . .  18
        6.1.3.  Retrieve Installed DOTS Telemetry Configuration . . .  22
        6.1.4.  Delete DOTS Telemetry Configuration . . . . . . . . .  22
@@ -534,25 +534,25 @@ Internet-Draft               DOTS Telemetry                December 2021
    small messages that truly require reliable delivery during an attack.
 
    Telemetry information has aspects that correspond to both operational
-   modes: there is certainly a need to convey updated information about
-   ongoing attack traffic and targets during an attack, so as to convey
-   detailed information about mitigation status and inform updates to
-   mitigation strategy in the face of adaptive attacks, but it is also
-   useful to provide mitigation services with a picture of normal or
-   "baseline" traffic towards potential targets, to aid in detecting
-   when incoming traffic deviates from normal into being an attack.
-   Also, one might populate a "database" of classifications of known
-   types of attack so that a short attack identifier can be used during
-   attack time to describe an observed attack.  This specification does
-   make provision for use of the DOTS data channel for the latter
-   function (Section 7.1.6), but otherwise retains most telemetry
-   functionality in the DOTS signal channel.  Note that it is a
-   functional requirement to convey information about ongoing attack
-   traffic during an attack, and information about baseline traffic uses
-   an essentially identical data structure that is naturally defined to
-   sit next to the description of attack traffic.  The related telemetry
-   setup information used to parametrize actual traffic data is also
-   sent over the signal channel, out of expediency.
+   modes (i.e., signal and data channels): there is certainly a need to
+   convey updated information about ongoing attack traffic and targets
+   during an attack, so as to convey detailed information about
+   mitigation status and inform updates to mitigation strategy in the
+   face of adaptive attacks, but it is also useful to provide mitigation
+   services with a picture of normal or "baseline" traffic towards
+   potential targets, to aid in detecting when incoming traffic deviates
+   from normal into being an attack.  Also, one might populate a
+   "database" of classifications of known types of attack so that a
+   short attack identifier can be used during attack time to describe an
+   observed attack.  This specification does make provision for use of
+   the DOTS data channel for the latter function (Section 7.1.6), but
+   otherwise retains most telemetry functionality in the DOTS signal
+   channel.
+
+   Note that it is a functional requirement to convey information about
+   ongoing attack traffic during an attack, and information about
+   baseline traffic uses an essentially identical data structure that is
+   naturally defined to sit next to the description of attack traffic.
 
 
 
@@ -561,6 +561,9 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 10]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
+
+   The related telemetry setup information used to parameterize actual
+   traffic data is also sent over the signal channel, out of expediency.
 
    This document specifies an extension to the DOTS signal channel
    protocol.  Considerations about how to establish, maintain, and make
@@ -604,11 +607,8 @@ Internet-Draft               DOTS Telemetry                December 2021
    As a reminder, Section 4.4.1.3 of [RFC9132] forbids 'cdid' (if
    present) to be returned in a response message body.
 
-4.2.3.  Empty URI Paths
 
-   Uri-Path parameters and attributes with empty values MUST NOT be
-   present in a request.  The presence of such an empty value renders
-   the entire containing message invalid.
+
 
 
 
@@ -617,6 +617,12 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 11]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
+
+4.2.3.  Empty URI Paths
+
+   Uri-Path parameters and attributes with empty values MUST NOT be
+   present in a request.  The presence of such an empty value renders
+   the entire containing message invalid.
 
 4.2.4.  Controlling Configuration Data
 
@@ -660,12 +666,6 @@ Internet-Draft               DOTS Telemetry                December 2021
    peer DOTS server.  For example, if each upstream network exposes a
    DOTS server and the DOTS client maintains DOTS channels with all of
    them, only the information related to prefixes assigned by an
-   upstream network to the DOTS client domain will be signaled via the
-   DOTS channel established with the DOTS server of that upstream
-   network.
-
-   Considerations related to whether (and how) a DOTS client gleans some
-   telemetry information (e.g., attack details) it receives from a first
 
 
 
@@ -674,6 +674,12 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 12]
 Internet-Draft               DOTS Telemetry                December 2021
 
 
+   upstream network to the DOTS client domain will be signaled via the
+   DOTS channel established with the DOTS server of that upstream
+   network.
+
+   Considerations related to whether (and how) a DOTS client gleans some
+   telemetry information (e.g., attack details) it receives from a first
    DOTS server and share it with a second DOTS server are implementation
    and deployment specific.
 
@@ -716,12 +722,6 @@ Internet-Draft               DOTS Telemetry                December 2021
 
    The full tree diagram of the DOTS telemetry module can be generated
    using the "pyang" tool [PYANG].  That tree is not included here
-   because it is too long (Section 3.3 of [RFC8340]).  Instead, subtrees
-   are provided for the reader's convenience.
-
-   In order to optimize the data exchanged over the DOTS signal channel,
-   the document specifies a second YANG module ("ietf-dots-mapping",
-   Section 10.2) that augments the DOTS data channel [RFC8783].  This
 
 
 
@@ -730,6 +730,12 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 13]
 Internet-Draft               DOTS Telemetry                December 2021
 
 
+   because it is too long (Section 3.3 of [RFC8340]).  Instead, subtrees
+   are provided for the reader's convenience.
+
+   In order to optimize the data exchanged over the DOTS signal channel,
+   the document specifies a second YANG module ("ietf-dots-mapping",
+   Section 10.2) that augments the DOTS data channel [RFC8783].  This
    augmentation can be used during 'idle' time to share the attack
    mapping details (Section 7.1.5).  DOTS clients can use tools, e.g.,
    YANG Library [RFC8525], to retrieve the list of features and
@@ -772,12 +778,6 @@ Internet-Draft               DOTS Telemetry                December 2021
    Consequently, the "ietf-dots-telemetry" YANG module defined in
    Section 10.1 defines data structure to represent new DOTS message
    types called 'telemetry-setup' and 'telemetry'.  The tree structure
-   is shown in Figure 1.  More details are provided in Sections 6 and 7
-   about the exact structure of 'telemetry-setup' and 'telemetry'
-   message types.
-
-
-
 
 
 
@@ -785,6 +785,10 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 14]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
+
+   is shown in Figure 1.  More details are provided in Sections 6 and 7
+   about the exact structure of 'telemetry-setup' and 'telemetry'
+   message types.
 
      structure dots-telemetry:
        +-- (telemetry-message-type)?
@@ -830,10 +834,6 @@ Internet-Draft               DOTS Telemetry                December 2021
    refresh the telemetry setup configuration.  Any available telemetry
    setup configuration has a validity timeout of the DOTS association
    with a DOTS client domain.  DOTS servers MUST NOT reset 'tsid'
-   because a session failed with a DOTS client.  DOTS clients update
-   their telemetry setup configuration upon change of a parameter that
-   may impact attack mitigation.
-
 
 
 
@@ -841,6 +841,10 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 15]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
+
+   because a session failed with a DOTS client.  DOTS clients update
+   their telemetry setup configuration upon change of a parameter that
+   may impact attack mitigation.
 
    DOTS telemetry setup configuration request and response messages are
    marked as Confirmable messages (Section 2.1 of [RFC7252]).
@@ -885,11 +889,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
    o  Acceptable Server-originated telemetry
 
-6.1.1.  Retrieve Current DOTS Telemetry Configuration
 
-   A GET request is used to obtain acceptable and current telemetry
-   configuration parameters on the DOTS server.  This request may
-   include a 'cdid' Uri-Path when the request is relayed by a DOTS
 
 
 
@@ -898,6 +898,11 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 16]
 Internet-Draft               DOTS Telemetry                December 2021
 
 
+6.1.1.  Retrieve Current DOTS Telemetry Configuration
+
+   A GET request is used to obtain acceptable and current telemetry
+   configuration parameters on the DOTS server.  This request may
+   include a 'cdid' Uri-Path when the request is relayed by a DOTS
    gateway.  An example of such a GET request (without gateway) is
    depicted in Figure 2.
 
@@ -941,11 +946,6 @@ Internet-Draft               DOTS Telemetry                December 2021
           |  |     |  +-- telemetry-notify-interval?     uint16
           |  |     +-- min-config-values
           |  |     |  +-- measurement-interval?        interval
-          |  |     |  +-- measurement-sample?          sample
-          |  |     |  +-- low-percentile?              percentile
-          |  |     |  +-- mid-percentile?              percentile
-          |  |     |  +-- high-percentile?             percentile
-          |  |     |  +-- telemetry-notify-interval?   uint16
 
 
 
@@ -954,6 +954,11 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 17]
 Internet-Draft               DOTS Telemetry                December 2021
 
 
+          |  |     |  +-- measurement-sample?          sample
+          |  |     |  +-- low-percentile?              percentile
+          |  |     |  +-- mid-percentile?              percentile
+          |  |     |  +-- high-percentile?             percentile
+          |  |     |  +-- telemetry-notify-interval?   uint16
           |  |     +-- supported-unit-classes
           |  |     |  +-- unit-config* [unit]
           |  |     |     +-- unit           unit-class
@@ -997,11 +1002,6 @@ Internet-Draft               DOTS Telemetry                December 2021
    example, a DOTS client may contact its DOTS server to change the
    default percentile values used as baseline for telemetry data.
    Figure 3 lists the attributes that can be set by a DOTS client in
-   such a PUT request.  An example of a DOTS client that modifies all
-   percentile reference values is shown in Figure 4.
-
-
-
 
 
 
@@ -1009,6 +1009,9 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 18]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
+
+   such a PUT request.  An example of a DOTS client that modifies all
+   percentile reference values is shown in Figure 4.
 
    Header: PUT (Code=0.03)
    Uri-Path: ".well-known"
@@ -1055,9 +1058,6 @@ Internet-Draft               DOTS Telemetry                December 2021
    At least one configurable attribute MUST be present in the PUT
    request.
 
-   A PUT request with a higher numeric 'tsid' value overrides the DOTS
-   telemetry configuration data installed by a PUT request with a lower
-   numeric 'tsid' value.  To avoid maintaining a long list of 'tsid'
 
 
 
@@ -1066,6 +1066,9 @@ Boucadair, et al.         Expires June 4, 2022                 [Page 19]
 Internet-Draft               DOTS Telemetry                December 2021
 
 
+   A PUT request with a higher numeric 'tsid' value overrides the DOTS
+   telemetry configuration data installed by a PUT request with a lower
+   numeric 'tsid' value.  To avoid maintaining a long list of 'tsid'
    requests for requests carrying telemetry configuration data from a
    DOTS client, the lower numeric 'tsid' MUST be automatically deleted
    and no longer be available at the DOTS server.
@@ -1109,9 +1112,6 @@ Internet-Draft               DOTS Telemetry                December 2021
    that it is interested in receiving only high-percentiles.  This
    assumes that the client will only use that percentile type when
    sharing telemetry data with the server.
-
-
-
 
 
 
@@ -1776,8 +1776,8 @@ Internet-Draft               DOTS Telemetry                December 2021
           |              |  +-- connection-client-ps?        uint64
           |              |  +-- request-ps?                  uint64
           |              |  +-- request-client-ps?           uint64
-          |              |  +-- partial-request-ps?          uint64
-          |              |  +-- partial-request-client-ps?   uint64
+          |              |  +-- partial-request-mas?         uint64
+          |              |  +-- partial-request-client-max?  uint64
           |              +-- total-connection-capacity-per-port*
           |                      [protocol port]
           |                 +-- port
@@ -1799,8 +1799,8 @@ Internet-Draft               DOTS Telemetry                December 2021
           |                 +-- connection-client-ps?        uint64
           |                 +-- request-ps?                  uint64
           |                 +-- request-client-ps?           uint64
-          |                 +-- partial-request-ps?          uint64
-          |                 +-- partial-request-client-ps?   uint64
+          |                 +-- partial-request-max?         uint64
+          |                 +-- partial-request-client-max?  uint64
           +--:(telemetry)
              ...
 
@@ -2041,7 +2041,7 @@ Internet-Draft               DOTS Telemetry                December 2021
    client or a DOTS server.
 
    DOTS agents SHOULD bind pre-or-ongoing-mitigation telemetry data to
-   mitigation requests relying upon the resources under attack.  In
+   mitigation requests associated with the resources under attack.  In
    particular, a telemetry PUT request sent after a mitigation request
    may include a reference to that mitigation request ('mid-list') as
    shown in Figure 22.  An example illustrating request correlation by
@@ -2254,8 +2254,8 @@ Internet-Draft               DOTS Telemetry                December 2021
    same attributes defined in Section 7.1.4 are applicable for
    representing the attack.
 
-   At least the 'target' attribute and another pre-or-ongoing-mitigation
-   attribute MUST be present in the DOTS telemetry message.
+   At least the 'target' attribute and one other pre-or-ongoing-
+   mitigation attribute MUST be present in the DOTS telemetry message.
 
 7.1.2.  Total Traffic
 
@@ -4610,13 +4610,13 @@ Internet-Draft               DOTS Telemetry                December 2021
         "The maximum number of requests allowed per second
          to the target server per client.";
     }
-    leaf partial-request-ps {
+    leaf partial-request-max {
       type uint64;
       description
         "The maximum number of outstanding partial requests
          that are allowed to the target server.";
     }
-    leaf partial-request-client-ps {
+    leaf partial-request-client-max {
       type uint64;
       description
         "The maximum number of outstanding partial requests
@@ -5684,9 +5684,9 @@ Internet-Draft               DOTS Telemetry                December 2021
   | connection-client-ps | uint64      |TBA25 | 0 unsigned    | String |
   | request-ps           | uint64      |TBA26 | 0 unsigned    | String |
   | request-client-ps    | uint64      |TBA27 | 0 unsigned    | String |
-  | partial-request-ps   | uint64      |TBA28 | 0 unsigned    | String |
+  | partial-request-max  | uint64      |TBA28 | 0 unsigned    | String |
   | partial-request-     |             |      |               |        |
-  |        client-ps     | uint64      |TBA29 | 0 unsigned    | String |
+  |        client-max    | uint64      |TBA29 | 0 unsigned    | String |
   | total-attack-        |             |      |               |        |
   |        connection    | container   |TBA30 | 5 map         | Object |
   | connection-c         | container   |TBA31 | 5 map         | Object |
@@ -5842,9 +5842,9 @@ Internet-Draft               DOTS Telemetry                December 2021
    | connection-client-ps | TBA25 |   0   |    IESG    |   [RFCXXXX]   |
    | request-ps           | TBA26 |   0   |    IESG    |   [RFCXXXX]   |
    | request-client-ps    | TBA27 |   0   |    IESG    |   [RFCXXXX]   |
-   | partial-request-ps   | TBA28 |   0   |    IESG    |   [RFCXXXX]   |
+   | partial-request-max  | TBA28 |   0   |    IESG    |   [RFCXXXX]   |
    | partial-request-     | TBA29 |   0   |    IESG    |   [RFCXXXX]   |
-   |        client-ps     |       |       |            |               |
+   |        client-max    |       |       |            |               |
    | total-attack-        | TBA30 |   5   |    IESG    |   [RFCXXXX]   |
    |        connection    |       |       |            |               |
    | connection-c         | TBA31 |   5   |    IESG    |   [RFCXXXX]   |
