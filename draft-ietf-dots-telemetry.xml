@@ -149,9 +149,9 @@
 
   <middle>
     <section anchor="introduction" title="Introduction">
-      <t>Distributed Denial of Service (DDoS) attacks have become more
-      sophisticated. IT organizations and service providers are facing DDoS
-      attacks that fall into two broad categories:<list style="numbers">
+      <t>IT organizations and service providers are facing Distributed Denial
+      of Service (DDoS) attacks that fall into two broad categories:<list
+          style="numbers">
           <t>Network/Transport layer attacks target the victim's
           infrastructure. These attacks are not necessarily aimed at taking
           down the actual delivered services, but rather to prevent various
@@ -162,7 +162,8 @@
           victim's infrastructure. Typically, attack volumes may vary from a
           few 100 Mbps to 100s of Gbps or even Tbps. Attacks are commonly
           carried out leveraging botnets and attack reflectors for
-          amplification attacks such as NTP (Network Time Protocol), DNS
+          amplification attacks (Section 3.1 of <xref
+          target="RFC4732"></xref>) such as NTP (Network Time Protocol), DNS
           (Domain Name System), SNMP (Simple Network Management Protocol), or
           SSDP (Simple Service Discovery Protocol).</t>
 
@@ -237,7 +238,10 @@
       protocol <xref target="RFC9132"></xref>. Nevertheless, when DOTS
       telemetry attributes are available to a DOTS agent, and absent any
       limitation by policy, it can signal the attributes in order to optimize
-      the overall mitigation service provisioned using DOTS.</t>
+      the overall mitigation service provisioned using DOTS. The
+      aforementioned policy can be, for example, agreed during a service
+      subscription (that is out of scope) to identify a subset of DOTS clients
+      that are allowed to send or receive telemetry data. </t>
     </section>
 
     <section anchor="notation" title="Terminology">
@@ -388,14 +392,14 @@
         <t>Mitigation of attacks without having certain knowledge of normal
         traffic can be inaccurate at best. This is especially true for
         recursive signaling (see Section 3.2.3 of <xref
-        target="RFC8811"></xref>). In addition, the highly diverse types of
-        use cases where DOTS clients are integrated also emphasize the need
-        for knowledge of each DOTS client domain behavior. Consequently,
-        common global thresholds for attack detection practically cannot be
-        realized. Each DOTS client domain can have its own levels of traffic
-        and normal behavior. Without facilitating normal baseline signaling,
-        it may be very difficult for DOTS servers in some cases to detect and
-        mitigate the attacks accurately: <list style="empty">
+        target="RFC8811"></xref>). Given that DOTS clients can be integrated
+        in a highly diverse set of scenarios and use cases, this emphasizes
+        the need for knowledge of each DOTS client domain behavior especially
+        that common global thresholds for attack detection practically cannot
+        be realized. Each DOTS client domain can have its own levels of
+        traffic and normal behavior. Without facilitating normal baseline
+        signaling, it may be very difficult for DOTS servers in some cases to
+        detect and mitigate the attacks accurately: <list style="empty">
             <t>It is important to emphasize that it is practically impossible
             for the DOTS server's mitigators to calculate the normal baseline
             in cases where they do not have any knowledge of the traffic
@@ -463,7 +467,7 @@
         static data sets such as sets of network addresses/prefixes that might
         be subject to related attacks. This design helps to optimize the use
         of the DOTS signal channel for the small messages that truly require
-        reliable delivery during an attack. </t>
+        reliable delivery during an attack.</t>
 
         <t>Telemetry information has aspects that correspond to both
         operational modes: there is certainly a need to convey updated
@@ -484,7 +488,7 @@
         an essentially identical data structure that is naturally defined to
         sit next to the description of attack traffic. The related telemetry
         setup information used to parametrize actual traffic data is also sent
-        over the signal channel, out of expediency. </t>
+        over the signal channel, out of expediency.</t>
 
         <t>This document specifies an extension to the DOTS signal channel
         protocol. Considerations about how to establish, maintain, and make
@@ -562,12 +566,14 @@
         response when the data to be returned does not fit within a single
         datagram.</t>
 
-        <t>DOTS clients can also use CoAP Block1 Option in a PUT request (see
-        Section 2.5 of <xref target="RFC7959"></xref>) to initiate large
-        transfers, but these Block1 transfers will fail if the inbound "pipe"
-        is running full, so consideration needs to be made to try to fit this
-        PUT into a single transfer, or to separate out the PUT into several
-        discrete PUTs where each of them fits into a single packet.</t>
+        <t>DOTS clients can also use CoAP Block1 Option in a PUT request
+        (Section 2.5 of <xref target="RFC7959"></xref>) to initiate large
+        transfers, but these Block1 transfers is likely to fail if the inbound
+        "pipe" is running full because the transfer requires a message from
+        the server for each block, which would likely be lost in the incoming
+        flood. Consideration needs to be made to try to fit this PUT into a
+        single transfer or to separate out the PUT into several discrete PUTs
+        where each of them fits into a single packet.</t>
 
         <t>Q-Block1 and Q-Block2 Options that are similar to the CoAP Block1
         and Block2 Options, but enable robust transmissions of big blocks of
@@ -664,6 +670,9 @@
         <xref target="map1"></xref>. The structure of telemetry message bodies
         is represented as a YANG data structure (<xref
         target="module"></xref>).</t>
+
+        <t>JSON encoding of YANG-modeled data is used to illustrate the
+        various telemetry operations.</t>
 
         <t>The examples use the Enterprise Number 32473 defined for
         documentation use <xref target="RFC5612"></xref>.</t>
@@ -765,12 +774,12 @@
         set in question, such as "quartiles" that correspond to 25th, 50th,
         and 75th percentile. More details about percentile values and their
         computation are found in Section 11.3 of <xref
-        target="RFC2330"></xref>. </t>
+        target="RFC2330"></xref>.</t>
 
         <t>DOTS telemetry uses up to three percentile values, plus the overall
         peak, to characterize traffic distributions. Which percentile
         thresholds are used for these "low", "medium", and "high" percentile
-        values is configurable (with suitable defaults). </t>
+        values is configurable (with suitable defaults).</t>
 
         <t>A DOTS client can negotiate with its server(s) a set of telemetry
         configuration parameters to be used for telemetry. Such parameters
@@ -780,7 +789,7 @@
             <t>Percentile-related measurement parameters. In particular,
             'measurement-interval' defines the period on which percentiles are
             computed, while 'measurement-sample' defines the time distribution
-            for measuring values that are used to compute percentiles. </t>
+            for measuring values that are used to compute percentiles.</t>
 
             <t>Measurement units</t>
 
@@ -1153,7 +1162,9 @@ Uri-Path: "tsid=123"
 
         <t>The unit used by a DOTS client when conveying pipe information is
         captured in the 'unit' attribute. The DOTS client MUST auto-scale so
-        that the appropriate unit is used.</t>
+        that the appropriate unit is used. That is, for a given unit class,
+        the DOTS client uses the largest unit that gives a value greater than
+        one. </t>
 
         <section title="Conveying DOTS Client Domain Pipe Capacity">
           <t>Similar considerations to those specified in <xref
@@ -1457,12 +1468,12 @@ Content-Format: "application/dots+cbor"
                 <t>The maximum number of requests allowed per second to the
                 target per client.</t>
 
-                <t>The maximum number of partial requests allowed per second
+                <t>The maximum number of outstanding partial requests allowed
                 to the target. Attacks relying upon partial requests create a
                 connection with a target but do not send a complete request
                 (e.g., HTTP request).</t>
 
-                <t>The maximum number of partial requests allowed per second
+                <t>The maximum number of outstanding partial requests allowed
                 to the target per client.</t>
               </list><vspace blankLines="1" />The aggregate per transport
             protocol is captured in 'total-connection-capacity', while
@@ -1772,8 +1783,11 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       correlation by means of 'target-prefix' is shown in <xref
       target="mid-co2"></xref>.</t>
 
-      <t>When generating telemetry data to send to a peer, the DOTS agent MUST
-      auto-scale so that appropriate unit(s) are used.</t>
+      <t>Many of the pre-or-ongoing-mitigation telemetry data use a unit that
+      falls under the unit class that is configured following the procedure
+      described in <xref target="PUT"></xref>. When generating telemetry data
+      to send to a peer, the DOTS agent MUST auto-scale so that appropriate
+      unit(s) are used.</t>
 
       <t><figure anchor="mid-co"
           title="Example of Request Correlation using 'mid'">
@@ -3890,14 +3904,14 @@ module ietf-dots-telemetry {
     leaf partial-request-ps {
       type uint64;
       description
-        "The maximum number of partial requests allowed per
-         second to the target server.";
+        "The maximum number of outstanding partial requests
+         that are allowed to the target server.";
     }
     leaf partial-request-client-ps {
       type uint64;
       description
-        "The maximum number of partial requests allowed per
-         second to the target server per client.";
+        "The maximum number of outstanding partial requests
+         that are allowed to the target server per client.";
     }
   }
 
@@ -5266,6 +5280,8 @@ module ietf-dots-mapping {
 
     <references title="Informative References">
       <?rfc include='reference.RFC.9133'?>
+
+      <?rfc include='reference.RFC.4732'?>
 
       <?rfc include='reference.RFC.8811'?>
 

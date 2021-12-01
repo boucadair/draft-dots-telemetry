@@ -149,19 +149,19 @@ Internet-Draft               DOTS Telemetry                November 2021
    16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 110
      16.1.  Normative References . . . . . . . . . . . . . . . . . . 110
      16.2.  Informative References . . . . . . . . . . . . . . . . . 112
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 113
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 114
 
 1.  Introduction
 
-   Distributed Denial of Service (DDoS) attacks have become more
-   sophisticated.  IT organizations and service providers are facing
-   DDoS attacks that fall into two broad categories:
+   IT organizations and service providers are facing Distributed Denial
+   of Service (DDoS) attacks that fall into two broad categories:
 
    1.  Network/Transport layer attacks target the victim's
        infrastructure.  These attacks are not necessarily aimed at
        taking down the actual delivered services, but rather to prevent
        various network elements (routers, switches, firewalls, transit
        links, and so on) from serving legitimate users' traffic.
+
 
 
 
@@ -175,9 +175,10 @@ Internet-Draft               DOTS Telemetry                November 2021
        infrastructure.  Typically, attack volumes may vary from a few
        100 Mbps to 100s of Gbps or even Tbps.  Attacks are commonly
        carried out leveraging botnets and attack reflectors for
-       amplification attacks such as NTP (Network Time Protocol), DNS
-       (Domain Name System), SNMP (Simple Network Management Protocol),
-       or SSDP (Simple Service Discovery Protocol).
+       amplification attacks (Section 3.1 of [RFC4732]) such as NTP
+       (Network Time Protocol), DNS (Domain Name System), SNMP (Simple
+       Network Management Protocol), or SSDP (Simple Service Discovery
+       Protocol).
 
    2.  Application layer attacks target various applications.  Typical
        examples include attacks against HTTP/HTTPS, DNS, SIP (Session
@@ -216,8 +217,7 @@ Internet-Draft               DOTS Telemetry                November 2021
    actions are undertaken on traffic deemed suspicious.  Various use
    cases are discussed in [RFC8903].
 
-   DOTS clients can be integrated within a DDoS attack detector, or
-   network and security elements that have been actively engaged with
+
 
 
 
@@ -226,6 +226,8 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 4]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   DOTS clients can be integrated within a DDoS attack detector, or
+   network and security elements that have been actively engaged with
    ongoing attacks.  The DOTS client mitigation environment determines
    that it is no longer possible or practical for it to handle these
    attacks itself.  This can be due to a lack of resources or security
@@ -260,7 +262,10 @@ Internet-Draft               DOTS Telemetry                November 2021
    protocol [RFC9132].  Nevertheless, when DOTS telemetry attributes are
    available to a DOTS agent, and absent any limitation by policy, it
    can signal the attributes in order to optimize the overall mitigation
-   service provisioned using DOTS.
+   service provisioned using DOTS.  The aforementioned policy can be,
+   for example, agreed during a service subscription (that is out of
+   scope) to identify a subset of DOTS clients that are allowed to send
+   or receive telemetry data.
 
 2.  Terminology
 
@@ -270,11 +275,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    14 [RFC2119][RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   The reader should be familiar with the terms defined in [RFC8612].
-
-   "DOTS Telemetry" is defined as the collection of attributes that are
-   used to characterize the normal traffic baseline, attacks and their
-
 
 
 Boucadair, et al.         Expires June 3, 2022                  [Page 5]
@@ -282,6 +282,10 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 5]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   The reader should be familiar with the terms defined in [RFC8612].
+
+   "DOTS Telemetry" is defined as the collection of attributes that are
+   used to characterize the normal traffic baseline, attacks and their
    mitigation measures, and any related information that may help in
    enforcing countermeasures.  DOTS Telemetry is an optional set of
    attributes that can be signaled in the DOTS signal channel protocol.
@@ -325,11 +329,7 @@ Internet-Draft               DOTS Telemetry                November 2021
    and DOTS server domains' detection and mitigation approaches can be
    different, and can potentially result in different results and attack
    classifications.  The DDoS mitigation service treats the ongoing
-   attack details received from DOTS clients as hints and cannot
-   completely rely or trust the attack details conveyed by DOTS clients.
 
-   In addition to the DOTS server directly using telemetry data as
-   operational hints, the DOTS server security operation team also
 
 
 
@@ -338,6 +338,11 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 6]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   attack details received from DOTS clients as hints and cannot
+   completely rely or trust the attack details conveyed by DOTS clients.
+
+   In addition to the DOTS server directly using telemetry data as
+   operational hints, the DOTS server security operation team also
    benefits from telemetry data.  A basic requirement of security
    operation teams is to be aware of and get visibility into the attacks
    they need to handle.  This holds especially for the case of ongoing
@@ -381,11 +386,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    resources.  During the last few years, DDoS attack detection
    technologies have evolved from threshold-based detection (that is,
    cases when all or specific parts of traffic cross a predefined
-   threshold for a certain period of time is considered as an attack) to
-   an "anomaly detection" approach.  For the latter, it is required to
-   maintain rigorous learning of "normal" behavior, and an "anomaly" (or
-   an attack) is identified and categorized based on the knowledge about
-   the normal behavior and a deviation from this normal behavior.
 
 
 
@@ -394,6 +394,11 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 7]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   threshold for a certain period of time is considered as an attack) to
+   an "anomaly detection" approach.  For the latter, it is required to
+   maintain rigorous learning of "normal" behavior, and an "anomaly" (or
+   an attack) is identified and categorized based on the knowledge about
+   the normal behavior and a deviation from this normal behavior.
    Machine learning approaches are used such that the actual traffic
    thresholds are automatically calculated by learning the protected
    entity's normal traffic behavior during 'idle' time (i.e., no
@@ -434,14 +439,9 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    Mitigation of attacks without having certain knowledge of normal
    traffic can be inaccurate at best.  This is especially true for
-   recursive signaling (see Section 3.2.3 of [RFC8811]).  In addition,
-   the highly diverse types of use cases where DOTS clients are
-   integrated also emphasize the need for knowledge of each DOTS client
-   domain behavior.  Consequently, common global thresholds for attack
-   detection practically cannot be realized.  Each DOTS client domain
-   can have its own levels of traffic and normal behavior.  Without
-   facilitating normal baseline signaling, it may be very difficult for
-
+   recursive signaling (see Section 3.2.3 of [RFC8811]).  Given that
+   DOTS clients can be integrated in a highly diverse set of scenarios
+   and use cases, this emphasizes the need for knowledge of each DOTS
 
 
 
@@ -450,8 +450,12 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 8]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
-   DOTS servers in some cases to detect and mitigate the attacks
-   accurately:
+   client domain behavior especially that common global thresholds for
+   attack detection practically cannot be realized.  Each DOTS client
+   domain can have its own levels of traffic and normal behavior.
+   Without facilitating normal baseline signaling, it may be very
+   difficult for DOTS servers in some cases to detect and mitigate the
+   attacks accurately:
 
       It is important to emphasize that it is practically impossible for
       the DOTS server's mitigators to calculate the normal baseline in
@@ -494,10 +498,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    in [RFC8783] is a reasonable candidate to achieve this objective; the
    DOTS client can indicate the type(s) of traffic (such as ICMP, UDP,
    TCP port number 80) it prefers to limit.  The rate-limit action can
-   be controlled via the signal channel [RFC9133] even when the pipe is
-   overwhelmed.
-
-
 
 
 
@@ -505,6 +505,9 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 9]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   be controlled via the signal channel [RFC9133] even when the pipe is
+   overwhelmed.
 
 4.  Design Overview
 
@@ -549,9 +552,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    setup information used to parametrize actual traffic data is also
    sent over the signal channel, out of expediency.
 
-   This document specifies an extension to the DOTS signal channel
-   protocol.  Considerations about how to establish, maintain, and make
-   use of the DOTS signal channel are specified in [RFC9132].
 
 
 
@@ -561,6 +561,10 @@ Boucadair, et al.         Expires June 3, 2022                 [Page 10]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   This document specifies an extension to the DOTS signal channel
+   protocol.  Considerations about how to establish, maintain, and make
+   use of the DOTS signal channel are specified in [RFC9132].
 
    Once the DOTS signal channel is established, DOTS clients that
    support the DOTS telemetry extension proceed with the telemetry setup
@@ -609,10 +613,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
 
 
-
-
-
-
 Boucadair, et al.         Expires June 3, 2022                 [Page 11]
 
 Internet-Draft               DOTS Telemetry                November 2021
@@ -637,11 +637,13 @@ Internet-Draft               DOTS Telemetry                November 2021
    size of a response when the data to be returned does not fit within a
    single datagram.
 
-   DOTS clients can also use CoAP Block1 Option in a PUT request (see
-   Section 2.5 of [RFC7959]) to initiate large transfers, but these
-   Block1 transfers will fail if the inbound "pipe" is running full, so
-   consideration needs to be made to try to fit this PUT into a single
-   transfer, or to separate out the PUT into several discrete PUTs where
+   DOTS clients can also use CoAP Block1 Option in a PUT request
+   (Section 2.5 of [RFC7959]) to initiate large transfers, but these
+   Block1 transfers is likely to fail if the inbound "pipe" is running
+   full because the transfer requires a message from the server for each
+   block, which would likely be lost in the incoming flood.
+   Consideration needs to be made to try to fit this PUT into a single
+   transfer or to separate out the PUT into several discrete PUTs where
    each of them fits into a single packet.
 
    Q-Block1 and Q-Block2 Options that are similar to the CoAP Block1 and
@@ -664,8 +666,6 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    Considerations related to whether (and how) a DOTS client gleans some
    telemetry information (e.g., attack details) it receives from a first
-   DOTS server and share it with a second DOTS server are implementation
-   and deployment specific.
 
 
 
@@ -673,6 +673,9 @@ Boucadair, et al.         Expires June 3, 2022                 [Page 12]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   DOTS server and share it with a second DOTS server are implementation
+   and deployment specific.
 
 4.5.  YANG Considerations
 
@@ -719,9 +722,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    In order to optimize the data exchanged over the DOTS signal channel,
    the document specifies a second YANG module ("ietf-dots-mapping",
    Section 10.2) that augments the DOTS data channel [RFC8783].  This
-   augmentation can be used during 'idle' time to share the attack
-   mapping details (Section 7.1.5).  DOTS clients can use tools, e.g.,
-
 
 
 
@@ -730,6 +730,8 @@ Boucadair, et al.         Expires June 3, 2022                 [Page 13]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   augmentation can be used during 'idle' time to share the attack
+   mapping details (Section 7.1.5).  DOTS clients can use tools, e.g.,
    YANG Library [RFC8525], to retrieve the list of features and
    deviations supported by the DOTS server over the data channel.
 
@@ -743,6 +745,9 @@ Internet-Draft               DOTS Telemetry                November 2021
    together with the mapping table established in Section 11.  The
    structure of telemetry message bodies is represented as a YANG data
    structure (Section 10.1).
+
+   JSON encoding of YANG-modeled data is used to illustrate the various
+   telemetry operations.
 
    The examples use the Enterprise Number 32473 defined for
    documentation use [RFC5612].
@@ -770,11 +775,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    is shown in Figure 1.  More details are provided in Sections 6 and 7
    about the exact structure of 'telemetry-setup' and 'telemetry'
    message types.
-
-
-
-
-
 
 
 
@@ -1297,7 +1297,9 @@ Internet-Draft               DOTS Telemetry                November 2021
 
    The unit used by a DOTS client when conveying pipe information is
    captured in the 'unit' attribute.  The DOTS client MUST auto-scale so
-   that the appropriate unit is used.
+   that the appropriate unit is used.  That is, for a given unit class,
+   the DOTS client uses the largest unit that gives a value greater than
+   one.
 
 6.2.1.  Conveying DOTS Client Domain Pipe Capacity
 
@@ -1336,8 +1338,6 @@ Internet-Draft               DOTS Telemetry                November 2021
                          `--'--'--'             `--'--'--'
 
                 Figure 10: Single Homed DOTS Client Domain
-
-
 
 
 
@@ -1688,12 +1688,12 @@ Internet-Draft               DOTS Telemetry                November 2021
       *  The maximum number of requests allowed per second to the target
          per client.
 
-      *  The maximum number of partial requests allowed per second to
+      *  The maximum number of outstanding partial requests allowed to
          the target.  Attacks relying upon partial requests create a
          connection with a target but do not send a complete request
          (e.g., HTTP request).
 
-      *  The maximum number of partial requests allowed per second to
+      *  The maximum number of outstanding partial requests allowed to
          the target per client.
 
       The aggregate per transport protocol is captured in 'total-
@@ -2047,8 +2047,11 @@ Internet-Draft               DOTS Telemetry                November 2021
    shown in Figure 22.  An example illustrating request correlation by
    means of 'target-prefix' is shown in Figure 23.
 
-   When generating telemetry data to send to a peer, the DOTS agent MUST
-   auto-scale so that appropriate unit(s) are used.
+   Many of the pre-or-ongoing-mitigation telemetry data use a unit that
+   falls under the unit class that is configured following the procedure
+   described in Section 6.1.2.  When generating telemetry data to send
+   to a peer, the DOTS agent MUST auto-scale so that appropriate unit(s)
+   are used.
 
    +-----------+                                           +-----------+
    |DOTS client|                                           |DOTS server|
@@ -2060,9 +2063,6 @@ Internet-Draft               DOTS Telemetry                November 2021
          |                                                       |
 
            Figure 22: Example of Request Correlation using 'mid'
-
-
-
 
 
 
@@ -4613,14 +4613,14 @@ Internet-Draft               DOTS Telemetry                November 2021
     leaf partial-request-ps {
       type uint64;
       description
-        "The maximum number of partial requests allowed per
-         second to the target server.";
+        "The maximum number of outstanding partial requests
+         that are allowed to the target server.";
     }
     leaf partial-request-client-ps {
       type uint64;
       description
-        "The maximum number of partial requests allowed per
-         second to the target server per client.";
+        "The maximum number of outstanding partial requests
+         that are allowed to the target server per client.";
     }
   }
 
@@ -6279,6 +6279,11 @@ Internet-Draft               DOTS Telemetry                November 2021
               DOI 10.17487/RFC2330, May 1998,
               <https://www.rfc-editor.org/info/rfc2330>.
 
+   [RFC4732]  Handley, M., Ed., Rescorla, E., Ed., and IAB, "Internet
+              Denial-of-Service Considerations", RFC 4732,
+              DOI 10.17487/RFC4732, December 2006,
+              <https://www.rfc-editor.org/info/rfc4732>.
+
    [RFC4960]  Stewart, R., Ed., "Stream Control Transmission Protocol",
               RFC 4960, DOI 10.17487/RFC4960, September 2007,
               <https://www.rfc-editor.org/info/rfc4960>.
@@ -6317,11 +6322,6 @@ Internet-Draft               DOTS Telemetry                November 2021
               RFC 9133, DOI 10.17487/RFC9133, September 2021,
               <https://www.rfc-editor.org/info/rfc9133>.
 
-Authors' Addresses
-
-
-
-
 
 
 
@@ -6329,6 +6329,8 @@ Boucadair, et al.         Expires June 3, 2022                [Page 113]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+Authors' Addresses
 
    Mohamed Boucadair (editor)
    Orange
@@ -6369,8 +6371,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    United Kingdom
 
    Email: supjps-ietf@jpshallow.com
-
-
 
 
 
