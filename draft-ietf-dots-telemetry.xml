@@ -241,7 +241,8 @@
       the overall mitigation service provisioned using DOTS. The
       aforementioned policy can be, for example, agreed during a service
       subscription (that is out of scope) to identify a subset of DOTS clients
-      that are allowed to send or receive telemetry data. </t>
+      among those deployed in a DOTS client domain that are allowed to send or
+      receive telemetry data. </t>
     </section>
 
     <section anchor="notation" title="Terminology">

@@ -264,16 +264,16 @@ Internet-Draft               DOTS Telemetry                November 2021
    can signal the attributes in order to optimize the overall mitigation
    service provisioned using DOTS.  The aforementioned policy can be,
    for example, agreed during a service subscription (that is out of
-   scope) to identify a subset of DOTS clients that are allowed to send
-   or receive telemetry data.
+   scope) to identify a subset of DOTS clients among those deployed in a
+   DOTS client domain that are allowed to send or receive telemetry
+   data.
 
 2.  Terminology
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in BCP
-   14 [RFC2119][RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
+
 
 
 
@@ -281,6 +281,9 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 5]
 
 Internet-Draft               DOTS Telemetry                November 2021
 
+
+   14 [RFC2119][RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
    The reader should be familiar with the terms defined in [RFC8612].
 
@@ -327,9 +330,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    proactively benefit from this information and optimize the overall
    service delivery.  It is important to note that DOTS client domains'
    and DOTS server domains' detection and mitigation approaches can be
-   different, and can potentially result in different results and attack
-   classifications.  The DDoS mitigation service treats the ongoing
-
 
 
 
@@ -338,6 +338,8 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 6]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   different, and can potentially result in different results and attack
+   classifications.  The DDoS mitigation service treats the ongoing
    attack details received from DOTS clients as hints and cannot
    completely rely or trust the attack details conveyed by DOTS clients.
 
@@ -384,8 +386,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    DOTS telemetry can also be used as input for determining what values
    to use for the tuning parameters available on the mitigation
    resources.  During the last few years, DDoS attack detection
-   technologies have evolved from threshold-based detection (that is,
-   cases when all or specific parts of traffic cross a predefined
 
 
 
@@ -394,6 +394,8 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 7]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   technologies have evolved from threshold-based detection (that is,
+   cases when all or specific parts of traffic cross a predefined
    threshold for a certain period of time is considered as an attack) to
    an "anomaly detection" approach.  For the latter, it is required to
    maintain rigorous learning of "normal" behavior, and an "anomaly" (or
@@ -440,8 +442,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    Mitigation of attacks without having certain knowledge of normal
    traffic can be inaccurate at best.  This is especially true for
    recursive signaling (see Section 3.2.3 of [RFC8811]).  Given that
-   DOTS clients can be integrated in a highly diverse set of scenarios
-   and use cases, this emphasizes the need for knowledge of each DOTS
 
 
 
@@ -450,6 +450,8 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 8]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   DOTS clients can be integrated in a highly diverse set of scenarios
+   and use cases, this emphasizes the need for knowledge of each DOTS
    client domain behavior especially that common global thresholds for
    attack detection practically cannot be realized.  Each DOTS client
    domain can have its own levels of traffic and normal behavior.
@@ -496,8 +498,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    other mechanisms to ensure it does not allow the DOTS client domain's
    pipes to be saturated unintentionally.  The rate-limit action defined
    in [RFC8783] is a reasonable candidate to achieve this objective; the
-   DOTS client can indicate the type(s) of traffic (such as ICMP, UDP,
-   TCP port number 80) it prefers to limit.  The rate-limit action can
 
 
 
@@ -506,6 +506,8 @@ Boucadair, et al.         Expires June 3, 2022                  [Page 9]
 Internet-Draft               DOTS Telemetry                November 2021
 
 
+   DOTS client can indicate the type(s) of traffic (such as ICMP, UDP,
+   TCP port number 80) it prefers to limit.  The rate-limit action can
    be controlled via the signal channel [RFC9133] even when the pipe is
    overwhelmed.
 
@@ -551,8 +553,6 @@ Internet-Draft               DOTS Telemetry                November 2021
    sit next to the description of attack traffic.  The related telemetry
    setup information used to parametrize actual traffic data is also
    sent over the signal channel, out of expediency.
-
-
 
 
 
