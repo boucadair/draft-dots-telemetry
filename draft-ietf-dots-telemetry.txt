@@ -1776,7 +1776,7 @@ Internet-Draft               DOTS Telemetry                December 2021
           |              |  +-- connection-client-ps?        uint64
           |              |  +-- request-ps?                  uint64
           |              |  +-- request-client-ps?           uint64
-          |              |  +-- partial-request-mas?         uint64
+          |              |  +-- partial-request-max?         uint64
           |              |  +-- partial-request-client-max?  uint64
           |              +-- total-connection-capacity-per-port*
           |                      [protocol port]
