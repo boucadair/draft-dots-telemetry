@@ -958,7 +958,7 @@ Internet-Draft               DOTS Telemetry                December 2021
           |  |     |  +-- unit-config* [unit]
           |  |     |     +-- unit           unit-class
           |  |     |     +-- unit-status    boolean
-          |  |     +-- query-type*            query-type
+          |  |     +-- supported-query-type*  query-type
           |  +-- telemetry* []
           |     +-- (direction)?
           |     |  +--:(server-to-client-only)
@@ -5245,7 +5245,7 @@ Internet-Draft               DOTS Telemetry                December 2021
                  status.";
               uses unit-config;
             }
-            leaf-list query-type {
+            leaf-list supported-query-type {
               type query-type;
               description
                 "Indicates which query types are supported by
@@ -5755,7 +5755,7 @@ Internet-Draft               DOTS Telemetry                December 2021
   |  connection-port     | list        |TBA74 | 4 array       | Array  |
   | port                 | inet:       |      |               |        |
   |                      |  port-number|TBA75 | 0 unsigned    | Number |
-  | query-type           | leaf-list   |TBA76 | 4 array       | Array  |
+  | supported-query-type | leaf-list   |TBA76 | 4 array       | Array  |
   |                      |             |      | 0 unsigned    | String |
   | vendor-id            | uint32      |TBA77 | 0 unsigned    | Number |
   | ietf-dots-telemetry: |             |      |               |        |
@@ -5909,7 +5909,7 @@ Internet-Draft               DOTS Telemetry                December 2021
    | total-attack-        | TBA74 |   4   |    IESG    |   [RFCXXXX]   |
    |  connection-port     |       |       |            |               |
    | port                 | TBA75 |   0   |    IESG    |   [RFCXXXX]   |
-   | query-type           | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
+   | supported-query-type | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
    | vendor-id            | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-telemetry: | TBA78 |   5   |    IESG    |   [RFCXXXX]   |
    |   telemetry-setup    |       |       |            |               |
