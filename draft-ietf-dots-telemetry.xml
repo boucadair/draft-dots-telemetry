@@ -2668,13 +2668,14 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         (followed by a GET) with the target filter. An example of such a PUT
         request is shown in <xref target="put-tmid"></xref>. In order to avoid
         maintaining a long list of such requests, it is RECOMMENDED that DOTS
-        clients include all targets in the same request. DOTS servers may be
-        instructed to restrict the number of pre-or-ongoing-mitigation
-        requests per DOTS client domain. This request MUST be maintained in an
-        active state by the DOTS server until a delete request is received
-        from the same DOTS client to clear this pre-or-ongoing-mitigation
-        telemetry or when the DOTS client is considered inactive (e.g.,
-        Section 3.5 of <xref target="RFC8783"></xref>).</t>
+        clients include all targets in the same request (assuming this fits
+        within one single datagram). DOTS servers may be instructed to
+        restrict the number of pre-or-ongoing-mitigation requests per DOTS
+        client domain. The PUT request MUST be maintained in an active state
+        by the DOTS server until a delete request is received from the same
+        DOTS client to clear this pre-or-ongoing-mitigation telemetry or when
+        the DOTS client is considered inactive (e.g., Section 3.5 of <xref
+        target="RFC8783"></xref>).</t>
 
         <t>The relative order of two PUT requests carrying DOTS
         pre-or-ongoing-mitigation telemetry from a DOTS client is determined
