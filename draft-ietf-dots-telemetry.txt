@@ -2536,7 +2536,7 @@ Internet-Draft               DOTS Telemetry                December 2021
                 |  |  +-- high-percentile-g?   yang:gauge64
                 |  |  +-- peak-g?              yang:gauge64
                 |  |  +-- current-g?           yang:gauge64
-                |  +-- partial-request-ps-c
+                |  +-- partial-request-c
                 |     +-- low-percentile-g?    yang:gauge64
                 |     +-- mid-percentile-g?    yang:gauge64
                 |     +-- high-percentile-g?   yang:gauge64
@@ -2569,7 +2569,7 @@ Internet-Draft               DOTS Telemetry                December 2021
                 |  |  +-- high-percentile-g?   yang:gauge64
                 |  |  +-- peak-g?              yang:gauge64
                 |  |  +-- current-g?           yang:gauge64
-                |  +-- partial-request-ps-c
+                |  +-- partial-request-c
 
 
 
@@ -2747,7 +2747,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
                             |  +-- current-g?           yang:gauge64
-                            +-- partial-request-ps-c
+                            +-- partial-request-c
                                +-- low-percentile-g?    yang:gauge64
                                +-- mid-percentile-g?    yang:gauge64
                                +-- high-percentile-g?   yang:gauge64
@@ -3509,7 +3509,7 @@ Internet-Draft               DOTS Telemetry                December 2021
                    |  ...
                    +-- request-ps-c
                    |  ...
-                   +-- partial-request-ps-c
+                   +-- partial-request-c
                       ...
 
             Figure 44: Telemetry Efficacy Update Tree Structure
@@ -3623,7 +3623,7 @@ Internet-Draft               DOTS Telemetry                December 2021
        |        |  ...
        |        +-- request-ps-c
        |        |  ...
-       |        +-- partial-request-ps-c
+       |        +-- partial-request-c
        |           ...
        +-- total-attack-traffic* [unit]
        |  +-- unit                 unit
@@ -3683,7 +3683,7 @@ Internet-Draft               DOTS Telemetry                December 2021
                    |  ...
                    +-- request-ps-c
                    |  ...
-                   +-- partial-request-ps-c
+                   +-- partial-request-c
                       ...
 
 
@@ -4674,7 +4674,7 @@ Internet-Draft               DOTS Telemetry                December 2021
         "The number of attack requests per second to
          the target server.";
     }
-    container partial-request-ps-c {
+    container partial-request-c {
       uses percentile-and-peak;
       description
         "The number of attack partial requests to
@@ -4717,7 +4717,7 @@ Internet-Draft               DOTS Telemetry                December 2021
         "The number of attack requests per second to
          the target server.";
     }
-    container partial-request-ps-c {
+    container partial-request-c {
       uses percentile-peak-and-current;
       description
         "The number of attack partial requests to
@@ -5704,7 +5704,7 @@ Internet-Draft               DOTS Telemetry                December 2021
   | top-talker           | container   |TBA43 | 5 map         | Object |
   | spoofed-status       | boolean     |TBA44 | 7 bits 20     | False  |
   |                      |             |      | 7 bits 21     | True   |
-  | partial-request-ps-c | container   |TBA45 | 5 map         | Object |
+  | partial-request-c    | container   |TBA45 | 5 map         | Object |
   | total-attack-        |             |      |               |        |
 
 
@@ -5861,7 +5861,7 @@ Internet-Draft               DOTS Telemetry                December 2021
    | source-count         | TBA42 |   5   |    IESG    |   [RFCXXXX]   |
    | top-talker           | TBA43 |   5   |    IESG    |   [RFCXXXX]   |
    | spoofed-status       | TBA44 |   7   |    IESG    |   [RFCXXXX]   |
-   | partial-request-ps-c | TBA45 |   5   |    IESG    |   [RFCXXXX]   |
+   | partial-request-c    | TBA45 |   5   |    IESG    |   [RFCXXXX]   |
    | total-attack-        | TBA46 |   4   |    IESG    |   [RFCXXXX]   |
    |  connection-protocol |       |       |            |               |
    | baseline             | TBA49 |   4   |    IESG    |   [RFCXXXX]   |
