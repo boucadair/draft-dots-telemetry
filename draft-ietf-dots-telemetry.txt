@@ -1299,7 +1299,7 @@ Internet-Draft               DOTS Telemetry                December 2021
    captured in the 'unit' attribute.  The DOTS client MUST auto-scale so
    that the appropriate unit is used.  That is, for a given unit class,
    the DOTS client uses the largest unit that gives a value greater than
-   one.
+   one.  As such, only one unit per unit class is allowed.
 
 6.2.1.  Conveying DOTS Client Domain Pipe Capacity
 
