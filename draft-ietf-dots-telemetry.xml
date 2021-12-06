@@ -773,10 +773,10 @@
         single event (i.e., averaged), and then the distribution of buckets is
         used to describe the distribution of traffic over the measurement
         period. A distribution can be characterized by statistical measures
-        such as mean, median, and standard deviation, and also by reporting
+        (e.g., mean, median, and standard deviation), and also by reporting
         the value of the distribution at various percentile levels of the data
-        set in question, such as "quartiles" that correspond to 25th, 50th,
-        and 75th percentile. More details about percentile values and their
+        set in question (e.g., "quartiles" that correspond to 25th, 50th, and
+        75th percentile). More details about percentile values and their
         computation are found in Section 11.3 of <xref
         target="RFC2330"></xref>.</t>
 
@@ -1080,7 +1080,7 @@ Content-Format: "application/dots+cbor"
                  title="Retrieve Installed DOTS Telemetry Configuration">
           <t>A DOTS client may issue a GET message with 'tsid' Uri-Path
           parameter to retrieve the current DOTS telemetry configuration. An
-          example of such request is depicted in <xref
+          example of such a request is depicted in <xref
           target="GETs"></xref>.</t>
 
           <t><figure anchor="GETs"
@@ -1725,7 +1725,7 @@ Content-Format: "application/dots+cbor"
         <t>Upon bootstrapping (or reboot or any other event that may alter the
         DOTS client setup), a DOTS client MAY send a DELETE request to set the
         telemetry parameters to default values. Such a request does not
-        include any 'tsid'. An example of such request is depicted in <xref
+        include any 'tsid'. An example of such a request is depicted in <xref
         target="bdel"></xref>.</t>
 
         <t><figure anchor="bdel" title="Delete Telemetry Configuration">
@@ -1945,7 +1945,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         <section anchor="tot" title="Total Traffic">
           <t>The 'total-traffic' attribute (<xref target="ttt"></xref>)
           conveys the percentile values (including peak and current observed
-          values) of total observed traffic. More fine-grained information
+          values) of the total observed traffic. More fine-grained information
           about the total traffic can be conveyed in the
           'total-traffic-protocol' and 'total-traffic-port' attributes.</t>
 
@@ -2068,9 +2068,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           <t>If the target is susceptible to resource-consuming DDoS attacks,
           the 'total-attack-connection-protocol' attribute is used to convey
           the percentile values (including peak and current observed values)
-          of total attack connections. The following optional subattributes
-          for the target per transport protocol are included to represent the
-          attack characteristics:<?rfc subcompact="yes" ?><list
+          of various attributes related to the total attack connections. The
+          following optional subattributes for the target per transport
+          protocol are included to represent the attack characteristics:<?rfc subcompact="yes" ?><list
               style="symbols">
               <t>The number of simultaneous attack connections to the
               target.</t>
@@ -2081,7 +2081,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               <t>The number of attack connections per second to the
               target.</t>
 
-              <t>The number of attack requests to the target.<?rfc subcompact="no" ?></t>
+              <t>The number of attack requests per second to the target.</t>
+
+              <t>The number of partial attack requests to the target.<?rfc subcompact="no" ?></t>
             </list>The total attack connections per port number is represented
           using the 'total-attack-connection-port' attribute.<figure
               anchor="tact" title="Total Attack Connections Tree Structure">
@@ -2179,7 +2181,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           <t>This attribute (depicted in <xref target="adt"></xref>) is used
           to signal a set of details characterizing an attack. The following
           subattributes describing the ongoing attack can be signalled as
-          attack details.</t>
+          attack details:</t>
 
           <t><list style="hanging">
               <t hangText="vendor-id:">Vendor ID is a security vendor's
@@ -2400,7 +2402,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
           <t>If 'vendor-mapping-enabled' is set to 'true', A DOTS client MAY
           send a GET request to retrieve the DOTS server's vendor attack
-          mapping details. An example of such GET request is shown in <xref
+          mapping details. An example of such a GET request is shown in <xref
           target="MfS"></xref>.</t>
 
           <t><figure anchor="MfS"
@@ -2416,7 +2418,7 @@ Accept: application/yang-data+json
           the DOTS server. It does so by setting the "depth" parameter
           (Section 4.8.2 of <xref target="RFC8040"></xref>) to "3" in the GET
           request as shown in <xref target="MfSd"></xref>. An example of a
-          response body received from the DOTS server as a response to such
+          response body received from the DOTS server as a response to such a
           request is illustrated in <xref target="MfSdr"></xref>.</t>
 
           <t><figure anchor="MfSd"
@@ -2452,7 +2454,7 @@ Accept: application/yang-data+json
           <t>If the DOTS client concludes that the DOTS server does not have
           any reference to the specific vendor attack mapping details, the
           DOTS client uses a POST request to install its vendor attack mapping
-          details. An example of such POST request is depicted in <xref
+          details. An example of such a POST request is depicted in <xref
           target="installmap"></xref>.</t>
 
           <t><figure anchor="installmap"

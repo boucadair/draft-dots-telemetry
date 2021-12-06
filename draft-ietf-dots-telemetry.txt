@@ -5,13 +5,13 @@
 DOTS                                                   M. Boucadair, Ed.
 Internet-Draft                                                    Orange
 Intended status: Standards Track                           T. Reddy, Ed.
-Expires: June 4, 2022                                             Akamai
+Expires: June 9, 2022                                             Akamai
                                                                 E. Doron
                                                             Radware Ltd.
                                                                  M. Chen
                                                                     CMCC
                                                               J. Shallow
-                                                        December 1, 2021
+                                                        December 6, 2021
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 4, 2022.
+   This Internet-Draft will expire on June 9, 2022.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 1]
+Boucadair, et al.         Expires June 9, 2022                  [Page 1]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 2]
+Boucadair, et al.         Expires June 9, 2022                  [Page 2]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -165,7 +165,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 3]
+Boucadair, et al.         Expires June 9, 2022                  [Page 3]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -221,7 +221,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 4]
+Boucadair, et al.         Expires June 9, 2022                  [Page 4]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -277,7 +277,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 5]
+Boucadair, et al.         Expires June 9, 2022                  [Page 5]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -333,7 +333,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 6]
+Boucadair, et al.         Expires June 9, 2022                  [Page 6]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -389,7 +389,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 7]
+Boucadair, et al.         Expires June 9, 2022                  [Page 7]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -445,7 +445,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 8]
+Boucadair, et al.         Expires June 9, 2022                  [Page 8]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -501,7 +501,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                  [Page 9]
+Boucadair, et al.         Expires June 9, 2022                  [Page 9]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -557,7 +557,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 10]
+Boucadair, et al.         Expires June 9, 2022                 [Page 10]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -613,7 +613,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 11]
+Boucadair, et al.         Expires June 9, 2022                 [Page 11]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -669,7 +669,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 12]
+Boucadair, et al.         Expires June 9, 2022                 [Page 12]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -725,7 +725,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 13]
+Boucadair, et al.         Expires June 9, 2022                 [Page 13]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -781,7 +781,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 14]
+Boucadair, et al.         Expires June 9, 2022                 [Page 14]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -837,7 +837,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 15]
+Boucadair, et al.         Expires June 9, 2022                 [Page 15]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -861,10 +861,10 @@ Internet-Draft               DOTS Telemetry                December 2021
    single event (i.e., averaged), and then the distribution of buckets
    is used to describe the distribution of traffic over the measurement
    period.  A distribution can be characterized by statistical measures
-   such as mean, median, and standard deviation, and also by reporting
+   (e.g., mean, median, and standard deviation), and also by reporting
    the value of the distribution at various percentile levels of the
-   data set in question, such as "quartiles" that correspond to 25th,
-   50th, and 75th percentile.  More details about percentile values and
+   data set in question (e.g., "quartiles" that correspond to 25th,
+   50th, and 75th percentile).  More details about percentile values and
    their computation are found in Section 11.3 of [RFC2330].
 
    DOTS telemetry uses up to three percentile values, plus the overall
@@ -893,7 +893,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 16]
+Boucadair, et al.         Expires June 9, 2022                 [Page 16]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -949,7 +949,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 17]
+Boucadair, et al.         Expires June 9, 2022                 [Page 17]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1005,7 +1005,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 18]
+Boucadair, et al.         Expires June 9, 2022                 [Page 18]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1061,7 +1061,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 19]
+Boucadair, et al.         Expires June 9, 2022                 [Page 19]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1117,7 +1117,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 20]
+Boucadair, et al.         Expires June 9, 2022                 [Page 20]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1173,7 +1173,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 21]
+Boucadair, et al.         Expires June 9, 2022                 [Page 21]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1205,7 +1205,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
    A DOTS client may issue a GET message with 'tsid' Uri-Path parameter
    to retrieve the current DOTS telemetry configuration.  An example of
-   such request is depicted in Figure 7.
+   such a request is depicted in Figure 7.
 
    Header: GET (Code=0.01)
    Uri-Path: ".well-known"
@@ -1229,7 +1229,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 22]
+Boucadair, et al.         Expires June 9, 2022                 [Page 22]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1285,7 +1285,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 23]
+Boucadair, et al.         Expires June 9, 2022                 [Page 23]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1341,7 +1341,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 24]
+Boucadair, et al.         Expires June 9, 2022                 [Page 24]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1397,7 +1397,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 25]
+Boucadair, et al.         Expires June 9, 2022                 [Page 25]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1453,7 +1453,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 26]
+Boucadair, et al.         Expires June 9, 2022                 [Page 26]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1509,7 +1509,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 27]
+Boucadair, et al.         Expires June 9, 2022                 [Page 27]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1565,7 +1565,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 28]
+Boucadair, et al.         Expires June 9, 2022                 [Page 28]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1621,7 +1621,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 29]
+Boucadair, et al.         Expires June 9, 2022                 [Page 29]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1677,7 +1677,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 30]
+Boucadair, et al.         Expires June 9, 2022                 [Page 30]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1733,7 +1733,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 31]
+Boucadair, et al.         Expires June 9, 2022                 [Page 31]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1789,7 +1789,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 32]
+Boucadair, et al.         Expires June 9, 2022                 [Page 32]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1845,7 +1845,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 33]
+Boucadair, et al.         Expires June 9, 2022                 [Page 33]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1901,7 +1901,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 34]
+Boucadair, et al.         Expires June 9, 2022                 [Page 34]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1957,7 +1957,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 35]
+Boucadair, et al.         Expires June 9, 2022                 [Page 35]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -1982,7 +1982,7 @@ Internet-Draft               DOTS Telemetry                December 2021
    Upon bootstrapping (or reboot or any other event that may alter the
    DOTS client setup), a DOTS client MAY send a DELETE request to set
    the telemetry parameters to default values.  Such a request does not
-   include any 'tsid'.  An example of such request is depicted in
+   include any 'tsid'.  An example of such a request is depicted in
    Figure 21.
 
    Header: DELETE (Code=0.04)
@@ -2013,7 +2013,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 36]
+Boucadair, et al.         Expires June 9, 2022                 [Page 36]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2069,7 +2069,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 37]
+Boucadair, et al.         Expires June 9, 2022                 [Page 37]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2125,7 +2125,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 38]
+Boucadair, et al.         Expires June 9, 2022                 [Page 38]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2181,7 +2181,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 39]
+Boucadair, et al.         Expires June 9, 2022                 [Page 39]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2237,7 +2237,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 40]
+Boucadair, et al.         Expires June 9, 2022                 [Page 40]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2260,10 +2260,10 @@ Internet-Draft               DOTS Telemetry                December 2021
 7.1.2.  Total Traffic
 
    The 'total-traffic' attribute (Figure 26) conveys the percentile
-   values (including peak and current observed values) of total observed
-   traffic.  More fine-grained information about the total traffic can
-   be conveyed in the 'total-traffic-protocol' and 'total-traffic-port'
-   attributes.
+   values (including peak and current observed values) of the total
+   observed traffic.  More fine-grained information about the total
+   traffic can be conveyed in the 'total-traffic-protocol' and 'total-
+   traffic-port' attributes.
 
    The 'total-traffic-protocol' attribute represents the total traffic
    for a target and is transport-protocol specific.
@@ -2293,7 +2293,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 41]
+Boucadair, et al.         Expires June 9, 2022                 [Page 41]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2349,7 +2349,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 42]
+Boucadair, et al.         Expires June 9, 2022                 [Page 42]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2405,7 +2405,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 43]
+Boucadair, et al.         Expires June 9, 2022                 [Page 43]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2461,7 +2461,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 44]
+Boucadair, et al.         Expires June 9, 2022                 [Page 44]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2471,14 +2471,15 @@ Internet-Draft               DOTS Telemetry                December 2021
    If the target is susceptible to resource-consuming DDoS attacks, the
    'total-attack-connection-protocol' attribute is used to convey the
    percentile values (including peak and current observed values) of
-   total attack connections.  The following optional subattributes for
-   the target per transport protocol are included to represent the
-   attack characteristics:
+   various attributes related to the total attack connections.  The
+   following optional subattributes for the target per transport
+   protocol are included to represent the attack characteristics:
 
    o  The number of simultaneous attack connections to the target.
    o  The number of simultaneous embryonic connections to the target.
    o  The number of attack connections per second to the target.
-   o  The number of attack requests to the target.
+   o  The number of attack requests per second to the target.
+   o  The number of partial attack requests to the target.
 
    The total attack connections per port number is represented using the
    'total-attack-connection-port' attribute.
@@ -2513,15 +2514,15 @@ Internet-Draft               DOTS Telemetry                December 2021
                 |  +-- embryonic-c
                 |  |  +-- low-percentile-g?    yang:gauge64
                 |  |  +-- mid-percentile-g?    yang:gauge64
-                |  |  +-- high-percentile-g?   yang:gauge64
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 45]
+Boucadair, et al.         Expires June 9, 2022                 [Page 45]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
 
+                |  |  +-- high-percentile-g?   yang:gauge64
                 |  |  +-- peak-g?              yang:gauge64
                 |  |  +-- current-g?           yang:gauge64
                 |  +-- connection-ps-c
@@ -2569,15 +2570,15 @@ Internet-Draft               DOTS Telemetry                December 2021
                 |  |  +-- high-percentile-g?   yang:gauge64
                 |  |  +-- peak-g?              yang:gauge64
                 |  |  +-- current-g?           yang:gauge64
-                |  +-- partial-request-c
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 46]
+Boucadair, et al.         Expires June 9, 2022                 [Page 46]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
 
+                |  +-- partial-request-c
                 |     +-- low-percentile-g?    yang:gauge64
                 |     +-- mid-percentile-g?    yang:gauge64
                 |     +-- high-percentile-g?   yang:gauge64
@@ -2592,7 +2593,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
    This attribute (depicted in Figure 29) is used to signal a set of
    details characterizing an attack.  The following subattributes
-   describing the ongoing attack can be signalled as attack details.
+   describing the ongoing attack can be signalled as attack details:
 
    vendor-id:  Vendor ID is a security vendor's Enterprise Number as
       registered with IANA [Enterprise-Numbers].  It is a four-byte
@@ -2628,8 +2629,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-
-Boucadair, et al.         Expires June 4, 2022                 [Page 47]
+Boucadair, et al.         Expires June 9, 2022                 [Page 47]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2685,7 +2685,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 48]
+Boucadair, et al.         Expires June 9, 2022                 [Page 48]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2741,7 +2741,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 49]
+Boucadair, et al.         Expires June 9, 2022                 [Page 49]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2797,7 +2797,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 50]
+Boucadair, et al.         Expires June 9, 2022                 [Page 50]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2834,7 +2834,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
    If 'vendor-mapping-enabled' is set to 'true', A DOTS client MAY send
    a GET request to retrieve the DOTS server's vendor attack mapping
-   details.  An example of such GET request is shown in Figure 31.
+   details.  An example of such a GET request is shown in Figure 31.
 
    GET /restconf/data/ietf-dots-data-channel:dots-data\
        /ietf-dots-mapping:vendor-mapping HTTP/1.1
@@ -2848,12 +2848,12 @@ Internet-Draft               DOTS Telemetry                December 2021
    DOTS server.  It does so by setting the "depth" parameter
    (Section 4.8.2 of [RFC8040]) to "3" in the GET request as shown in
    Figure 32.  An example of a response body received from the DOTS
-   server as a response to such request is illustrated in Figure 33.
+   server as a response to such a request is illustrated in Figure 33.
 
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 51]
+Boucadair, et al.         Expires June 9, 2022                 [Page 51]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2887,7 +2887,7 @@ Internet-Draft               DOTS Telemetry                December 2021
    If the DOTS client concludes that the DOTS server does not have any
    reference to the specific vendor attack mapping details, the DOTS
    client uses a POST request to install its vendor attack mapping
-   details.  An example of such POST request is depicted in Figure 34.
+   details.  An example of such a POST request is depicted in Figure 34.
 
 
 
@@ -2909,7 +2909,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 52]
+Boucadair, et al.         Expires June 9, 2022                 [Page 52]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -2965,7 +2965,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 53]
+Boucadair, et al.         Expires June 9, 2022                 [Page 53]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3021,7 +3021,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 54]
+Boucadair, et al.         Expires June 9, 2022                 [Page 54]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3077,7 +3077,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 55]
+Boucadair, et al.         Expires June 9, 2022                 [Page 55]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3133,7 +3133,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 56]
+Boucadair, et al.         Expires June 9, 2022                 [Page 56]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3189,7 +3189,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 57]
+Boucadair, et al.         Expires June 9, 2022                 [Page 57]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3245,7 +3245,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 58]
+Boucadair, et al.         Expires June 9, 2022                 [Page 58]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3301,7 +3301,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 59]
+Boucadair, et al.         Expires June 9, 2022                 [Page 59]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3357,7 +3357,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 60]
+Boucadair, et al.         Expires June 9, 2022                 [Page 60]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3413,7 +3413,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 61]
+Boucadair, et al.         Expires June 9, 2022                 [Page 61]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3469,7 +3469,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 62]
+Boucadair, et al.         Expires June 9, 2022                 [Page 62]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3525,7 +3525,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 63]
+Boucadair, et al.         Expires June 9, 2022                 [Page 63]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3581,7 +3581,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 64]
+Boucadair, et al.         Expires June 9, 2022                 [Page 64]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3637,7 +3637,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 65]
+Boucadair, et al.         Expires June 9, 2022                 [Page 65]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3693,7 +3693,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 66]
+Boucadair, et al.         Expires June 9, 2022                 [Page 66]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3749,7 +3749,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 67]
+Boucadair, et al.         Expires June 9, 2022                 [Page 67]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3805,7 +3805,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 68]
+Boucadair, et al.         Expires June 9, 2022                 [Page 68]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3861,7 +3861,7 @@ module ietf-dots-telemetry {
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 69]
+Boucadair, et al.         Expires June 9, 2022                 [Page 69]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3917,7 +3917,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 70]
+Boucadair, et al.         Expires June 9, 2022                 [Page 70]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -3973,7 +3973,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 71]
+Boucadair, et al.         Expires June 9, 2022                 [Page 71]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4029,7 +4029,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 72]
+Boucadair, et al.         Expires June 9, 2022                 [Page 72]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4085,7 +4085,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 73]
+Boucadair, et al.         Expires June 9, 2022                 [Page 73]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4141,7 +4141,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 74]
+Boucadair, et al.         Expires June 9, 2022                 [Page 74]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4197,7 +4197,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 75]
+Boucadair, et al.         Expires June 9, 2022                 [Page 75]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4253,7 +4253,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 76]
+Boucadair, et al.         Expires June 9, 2022                 [Page 76]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4309,7 +4309,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 77]
+Boucadair, et al.         Expires June 9, 2022                 [Page 77]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4365,7 +4365,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 78]
+Boucadair, et al.         Expires June 9, 2022                 [Page 78]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4421,7 +4421,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 79]
+Boucadair, et al.         Expires June 9, 2022                 [Page 79]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4477,7 +4477,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 80]
+Boucadair, et al.         Expires June 9, 2022                 [Page 80]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4533,7 +4533,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 81]
+Boucadair, et al.         Expires June 9, 2022                 [Page 81]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4589,7 +4589,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 82]
+Boucadair, et al.         Expires June 9, 2022                 [Page 82]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4645,7 +4645,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 83]
+Boucadair, et al.         Expires June 9, 2022                 [Page 83]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4701,7 +4701,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 84]
+Boucadair, et al.         Expires June 9, 2022                 [Page 84]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4757,7 +4757,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 85]
+Boucadair, et al.         Expires June 9, 2022                 [Page 85]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4813,7 +4813,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 86]
+Boucadair, et al.         Expires June 9, 2022                 [Page 86]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4869,7 +4869,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 87]
+Boucadair, et al.         Expires June 9, 2022                 [Page 87]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4925,7 +4925,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 88]
+Boucadair, et al.         Expires June 9, 2022                 [Page 88]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -4981,7 +4981,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 89]
+Boucadair, et al.         Expires June 9, 2022                 [Page 89]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5037,7 +5037,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 90]
+Boucadair, et al.         Expires June 9, 2022                 [Page 90]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5093,7 +5093,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 91]
+Boucadair, et al.         Expires June 9, 2022                 [Page 91]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5149,7 +5149,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 92]
+Boucadair, et al.         Expires June 9, 2022                 [Page 92]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5205,7 +5205,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 93]
+Boucadair, et al.         Expires June 9, 2022                 [Page 93]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5261,7 +5261,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 94]
+Boucadair, et al.         Expires June 9, 2022                 [Page 94]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5317,7 +5317,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 95]
+Boucadair, et al.         Expires June 9, 2022                 [Page 95]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5373,7 +5373,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 96]
+Boucadair, et al.         Expires June 9, 2022                 [Page 96]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5429,7 +5429,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 97]
+Boucadair, et al.         Expires June 9, 2022                 [Page 97]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5485,7 +5485,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 98]
+Boucadair, et al.         Expires June 9, 2022                 [Page 98]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5541,7 +5541,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                 [Page 99]
+Boucadair, et al.         Expires June 9, 2022                 [Page 99]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5597,7 +5597,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 100]
+Boucadair, et al.         Expires June 9, 2022                [Page 100]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5653,7 +5653,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 101]
+Boucadair, et al.         Expires June 9, 2022                [Page 101]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5709,7 +5709,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 102]
+Boucadair, et al.         Expires June 9, 2022                [Page 102]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5765,7 +5765,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 103]
+Boucadair, et al.         Expires June 9, 2022                [Page 103]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5821,7 +5821,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 104]
+Boucadair, et al.         Expires June 9, 2022                [Page 104]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5877,7 +5877,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 105]
+Boucadair, et al.         Expires June 9, 2022                [Page 105]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5933,7 +5933,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 106]
+Boucadair, et al.         Expires June 9, 2022                [Page 106]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -5989,7 +5989,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 107]
+Boucadair, et al.         Expires June 9, 2022                [Page 107]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -6045,7 +6045,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 108]
+Boucadair, et al.         Expires June 9, 2022                [Page 108]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -6101,7 +6101,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 109]
+Boucadair, et al.         Expires June 9, 2022                [Page 109]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -6157,7 +6157,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 110]
+Boucadair, et al.         Expires June 9, 2022                [Page 110]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -6213,7 +6213,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 111]
+Boucadair, et al.         Expires June 9, 2022                [Page 111]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -6251,7 +6251,7 @@ Internet-Draft               DOTS Telemetry                December 2021
               Boucadair, M., Reddy, T., and W. Pan, "Multi-homing
               Deployment Considerations for Distributed-Denial-of-
               Service Open Threat Signaling (DOTS)", draft-ietf-dots-
-              multihoming-08 (work in progress), October 2021.
+              multihoming-09 (work in progress), December 2021.
 
    [I-D.ietf-dots-robust-blocks]
               Boucadair, M. and J. Shallow, "Distributed Denial-of-
@@ -6269,7 +6269,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 112]
+Boucadair, et al.         Expires June 9, 2022                [Page 112]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -6325,7 +6325,7 @@ Internet-Draft               DOTS Telemetry                December 2021
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 113]
+Boucadair, et al.         Expires June 9, 2022                [Page 113]
 
 Internet-Draft               DOTS Telemetry                December 2021
 
@@ -6381,4 +6381,4 @@ Authors' Addresses
 
 
 
-Boucadair, et al.         Expires June 4, 2022                [Page 114]
+Boucadair, et al.         Expires June 9, 2022                [Page 114]
