@@ -2479,7 +2479,7 @@ Internet-Draft               DOTS Telemetry                December 2021
    o  The number of simultaneous embryonic connections to the target.
    o  The number of attack connections per second to the target.
    o  The number of attack requests per second to the target.
-   o  The number of partial attack requests to the target.
+   o  The number of attack partial requests to the target.
 
    The total attack connections per port number is represented using the
    'total-attack-connection-port' attribute.

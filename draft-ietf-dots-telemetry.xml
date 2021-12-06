@@ -2083,7 +2083,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
               <t>The number of attack requests per second to the target.</t>
 
-              <t>The number of partial attack requests to the target.<?rfc subcompact="no" ?></t>
+              <t>The number of attack partial requests to the target.<?rfc subcompact="no" ?></t>
             </list>The total attack connections per port number is represented
           using the 'total-attack-connection-port' attribute.<figure
               anchor="tact" title="Total Attack Connections Tree Structure">
