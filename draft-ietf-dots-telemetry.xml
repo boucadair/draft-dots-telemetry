@@ -275,6 +275,15 @@
 
       <t>The meaning of the symbols in YANG tree diagrams are defined in <xref
       target="RFC8340"></xref> and <xref target="RFC8791"></xref>.</t>
+
+      <t>Consistent with the convention set in Section 2 of <xref
+      target="RFC8783"></xref>, the examples in <xref target="vam"></xref> use
+      "/restconf" as the discovered RESTCONF API root path. Within these
+      examples, some protocol header lines are split into multiple lines for
+      display purposes only. When a line ends with backslash ('\') as the last
+      character, the line is wrapped for display purposes. It is to be
+      considered to be joined to the next line by deleting the backslash, the
+      following line break, and the leading whitespace of the next line.</t>
     </section>
 
     <section anchor="overview" title="DOTS Telemetry: Overview and Purpose">
@@ -2206,15 +2215,15 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
               <t hangText="start-time:">The time the attack started. The
               attack's start time is expressed in seconds relative to
-              1970-01-01T00:00Z in UTC time (Section 3.4.2 of <xref
+              1970-01-01T00:00Z (Section 3.4.2 of <xref
               target="RFC8949"></xref>). The CBOR encoding is modified so that
               the leading tag 1 (epoch-based date/time) MUST be omitted.</t>
 
               <t hangText="end-time:">The time the attack ended. The attack
               end time is expressed in seconds relative to 1970-01-01T00:00Z
-              in UTC time (Section 3.4.2 of <xref target="RFC8949"></xref>).
-              The CBOR encoding is modified so that the leading tag 1
-              (epoch-based date/time) MUST be omitted.</t>
+              (Section 3.4.2 of <xref target="RFC8949"></xref>). The CBOR
+              encoding is modified so that the leading tag 1 (epoch-based
+              date/time) MUST be omitted.</t>
 
               <t hangText="source-count:">A count of sources involved in the
               attack targeting the victim.</t>
@@ -3780,8 +3789,8 @@ module ietf-dots-telemetry {
       type unit;
       description
         "The traffic can be measured using unit classes: packet-ps,
-         bit-ps, or byte-ps. DOTS agents auto-scale to the appropriate
-         units (e.g., megabit-ps, kilobit-ps).";
+         bit-ps, or byte-ps. DOTS agents auto-scale to the 
+         appropriate units (e.g., megabit-ps, kilobit-ps).";
     }
     uses percentile-and-peak;
   }
@@ -3818,7 +3827,8 @@ module ietf-dots-telemetry {
   grouping traffic-unit-protocol-all {
     description
       "Grouping of traffic of a given transport protocol as
-       a function of the measurement unit, including current values.";
+       a function of the measurement unit, including current 
+       values.";
     uses traffic-unit-protocol;
     leaf current-g {
       type yang:gauge64;
@@ -3874,9 +3884,10 @@ module ietf-dots-telemetry {
       description
         "The maximum number of simultaneous embryonic connections
          that are allowed to the target server. The term 'embryonic
-         connection' refers to a connection whose connection handshake
-         is not finished. Embryonic connections are only possible in
-         connection-oriented transport protocols like TCP or SCTP.";
+         connection' refers to a connection whose connection
+         handshake is not finished. Embryonic connections are only 
+         possible in connection-oriented transport protocols like 
+         TCP or SCTP.";
     }
     leaf embryonic-client {
       type uint64;
@@ -4076,8 +4087,8 @@ module ietf-dots-telemetry {
       "Various details that describe the on-going
        attacks that need to be mitigated by the DOTS server.
        The attack details need to cover well-known and common attacks
-       (such as a SYN Flood) along with new emerging or vendor-specific
-       attacks.";
+       (such as a SYN Flood) along with new emerging or 
+       vendor-specific attacks.";
     leaf vendor-id {
       type uint32;
       description
@@ -4094,9 +4105,10 @@ module ietf-dots-telemetry {
     leaf attack-description {
       type string;
       description
-        "Textual representation of attack description. Natural Language
-         Processing techniques (e.g., word embedding) might provide some
-         utility in mapping the attack description to an attack type.";
+        "Textual representation of attack description. Natural 
+         Language Processing techniques (e.g., word embedding) 
+         might provide some utility in mapping the attack 
+         description to an attack type.";
     }
     leaf attack-severity {
       type attack-severity;
@@ -4108,13 +4120,13 @@ module ietf-dots-telemetry {
       type uint64;
       description
         "The time the attack started. Start time is represented in
-         seconds relative to 1970-01-01T00:00:00Z in UTC time.";
+         seconds relative to 1970-01-01T00:00:00Z.";
     }
     leaf end-time {
       type uint64;
       description
-        "The time the attack ended. End time is represented in seconds
-         relative to 1970-01-01T00:00:00Z in UTC time.";
+        "The time the attack ended. End time is represented in 
+         seconds relative to 1970-01-01T00:00:00Z.";
     }
     container source-count {
       description
@@ -4412,11 +4424,11 @@ module ietf-dots-telemetry {
                 type boolean;
                 default "false";
                 description
-                  "Indicates whether the DOTS server can be instructed
-                   to send pre-or-ongoing-mitigation telemetry. If set
-                   to 'false' or the data node is not present, this is
-                   an indication that the server does not support this
-                   capability.";
+                  "Indicates whether the DOTS server can be 
+                   instructed to send pre-or-ongoing-mitigation 
+                   telemetry. If set to 'false' or the data node 
+                   is not present, this is an indication that 
+                   the server does not support this capability.";
               }
               leaf telemetry-notify-interval {
                 type uint16 {
@@ -4470,9 +4482,9 @@ module ietf-dots-telemetry {
         list telemetry {
           description
             "The telemetry data per DOTS client.  The keys
-             of the list are 'cuid' and 'tsid', but these keys are not
-             represented here because these keys are conveyed as
-             mandatory Uri-Paths in requests.  Omitting keys
+             of the list are 'cuid' and 'tsid', but these keys are 
+             not represented here because these keys are conveyed
+             as mandatory Uri-Paths in requests.  Omitting keys
              is compliant with RFC8791.";
           choice direction {
             description
@@ -4485,8 +4497,8 @@ module ietf-dots-telemetry {
               leaf tsid {
                 type uint32;
                 description
-                  "A client-assigned identifier for the DOTS telemetry
-                   setup data.";
+                  "A client-assigned identifier for the DOTS 
+                   telemetry setup data.";
               }
             }
           }
@@ -4506,9 +4518,9 @@ module ietf-dots-telemetry {
                 leaf server-originated-telemetry {
                   type boolean;
                   description
-                    "Used by a DOTS client to enable/disable whether it
-                     requests pre-or-ongoing-mitigation telemetry from
-                     the DOTS server.";
+                    "Used by a DOTS client to enable/disable whether
+                     it requests pre-or-ongoing-mitigation telemetry 
+                     from the DOTS server.";
                 }
                 leaf telemetry-notify-interval {
                   type uint16 {
@@ -4545,18 +4557,19 @@ module ietf-dots-telemetry {
                   type unit;
                   description
                     "The traffic can be measured using unit classes:
-                     packets per second (pps), bits per second (bit/s),
-                     and/or bytes per second (Byte/s).
+                     packets per second (pps), bits per second 
+                     (bit/s), and/or bytes per second (Byte/s).
 
-                     For a given unit class, the DOTS agents auto-scales
-                     to the appropriate units (e.g., megabit-ps,
-                     kilobit-ps).";
+                     For a given unit class, the DOTS agents
+                     auto-scales to the appropriate units (e.g., 
+                     megabit-ps, kilobit-ps).";
                 }
               }
             }
             case baseline {
               description
-                "Traffic baseline information of a DOTS client domain.";
+                "Traffic baseline information of a DOTS client 
+                 domain.";
               list baseline {
                 key "id";
                 description
@@ -4566,8 +4579,8 @@ module ietf-dots-telemetry {
                   type uint32;
                   must '. >= 1';
                   description
-                    "An identifier that uniquely identifies a baseline
-                     entry communicated by a DOTS client.";
+                    "An identifier that uniquely identifies a
+                     baseline entry communicated by a DOTS client.";
                 }
                 uses baseline;
               }
@@ -4596,8 +4609,8 @@ module ietf-dots-telemetry {
               leaf tmid {
                 type uint32;
                 description
-                  "A client-assigned identifier for the DOTS telemetry
-                   data.";
+                  "A client-assigned identifier for the DOTS 
+                   telemetry data.";
               }
             }
           }
@@ -4616,7 +4629,8 @@ module ietf-dots-telemetry {
             leaf-list mid-list {
               type uint32;
               description
-                "Reference a list of associated mitigation requests.";
+                "Reference a list of associated mitigation 
+                 requests.";
               reference
                 "RFC 9132: Distributed Denial-of-Service Open Threat
                            Signaling (DOTS) Signal Channel
@@ -4718,7 +4732,7 @@ module ietf-dots-mapping {
         mandatory true;
         description
           "The time the mapping table was updated. It is represented
-           in seconds relative to 1970-01-01T00:00:00Z in UTC time.";
+           in seconds relative to 1970-01-01T00:00:00Z.";
       }
       list attack-mapping {
         key "attack-id";
@@ -4727,7 +4741,8 @@ module ietf-dots-mapping {
         leaf attack-id {
           type uint32;
           description
-            "Unique identifier assigned by the vendor for the attack.";
+            "Unique identifier assigned by the vendor for the 
+             attack.";
         }
         leaf attack-description {
           type string;
@@ -5265,11 +5280,11 @@ module ietf-dots-mapping {
 
       <?rfc ?>
 
-      <?rfc include='reference.RFC.8791'?>
-
       <?rfc include='reference.RFC.6020'?>
 
       <?rfc include='reference.RFC.9132'?>
+
+      <?rfc include='reference.RFC.8791'?>
 
       <reference anchor="Enterprise-Numbers"
                  target="http://www.iana.org/assignments/enterprise-numbers.html">
