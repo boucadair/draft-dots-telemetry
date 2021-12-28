@@ -404,8 +404,8 @@
         recursive signaling (see Section 3.2.3 of <xref
         target="RFC8811"></xref>). Given that DOTS clients can be integrated
         in a highly diverse set of scenarios and use cases, this emphasizes
-        the need for knowledge of each DOTS client domain behavior especially
-        that common global thresholds for attack detection practically cannot
+        the need for knowledge of each DOTS client domain behavior, especially
+        given that common global thresholds for attack detection practically cannot
         be realized. Each DOTS client domain can have its own levels of
         traffic and normal behavior. Without facilitating normal baseline
         signaling, it may be very difficult for DOTS servers in some cases to
@@ -581,7 +581,7 @@
 
         <t>DOTS clients can also use CoAP Block1 Option in a PUT request
         (Section 2.5 of <xref target="RFC7959"></xref>) to initiate large
-        transfers, but these Block1 transfers is likely to fail if the inbound
+        transfers, but these Block1 transfers are likely to fail if the inbound
         "pipe" is running full because the transfer requires a message from
         the server for each block, which would likely be lost in the incoming
         flood. Consideration needs to be made to try to fit this PUT into a
@@ -736,8 +736,8 @@
 ]]></artwork>
         </figure></t>
 
-      <t>DOTS implementations MUST support the Observe Option for 'tm' (<xref
-      target="pre-t"></xref>).</t>
+      <t>DOTS implementations MUST support the Observe Option <xref
+      target="RFC7641" /> for 'tm' (<xref target="pre-t"></xref>).</t>
     </section>
 
     <section anchor="conf" title="DOTS Telemetry Setup Configuration">
@@ -4884,7 +4884,7 @@ module ietf-dots-mapping {
 |supported-unit-classes| container   |TBA53 | 5 map         | Object |
 | server-originated-   | boolean     |TBA54 | 7 bits 20     | False  |
 |          telemetry   |             |      | 7 bits 21     | True   |
-| telemetry-notify-    | uint32      |TBA55 | 0 unsigned    | Number |
+| telemetry-notify-    | uint16      |TBA55 | 0 unsigned    | Number |
 |           interval   |             |      |               |        |
 | tmid                 | uint32      |TBA56 | 0 unsigned    | Number |
 | measurement-interval | enumeration |TBA57 | 0 unsigned    | String |
