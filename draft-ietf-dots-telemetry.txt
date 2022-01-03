@@ -3652,8 +3652,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
    The "ietf-dots-telemetry" YANG module (Section 10.1) augments the
    'mitigation-scope' message type defined in "ietf-dots-signal"
-   [RFC9132] with telemetry data as depicted in the following tree
-   structure:
+   [RFC9132] with telemetry data as depicted in Figure 46.
 
      augment-structure /dots-signal:dots-signal/dots-signal:message-type
                        /dots-signal:mitigation-scope/dots-signal:scope:
@@ -3690,6 +3689,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
        |  +-- current-g?           yang:gauge64
        +-- attack-detail* [vendor-id attack-id]
           +-- vendor-id             uint32
+          +-- attack-id             uint32
 
 
 
@@ -3698,7 +3698,6 @@ Boucadair, et al.          Expires 7 July 2022                 [Page 66]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
-          +-- attack-id             uint32
           +-- attack-description?   string
           +-- attack-severity?      attack-severity
           +-- start-time?           uint64
@@ -3742,10 +3741,11 @@ Internet-Draft               DOTS Telemetry                 January 2022
                    +-- partial-request-c
                       ...
 
-   Figure 46 shows an example of an asynchronous notification of attack
-   mitigation status from the DOTS server.  This notification signals
-   both the mid-percentile value of processed attack traffic and the
-   peak count of unique sources involved in the attack.
+       Figure 46: DOTS Servers to Clients Mitigation Status Telemetry
+                               Tree Structure
+
+
+
 
 
 
@@ -3753,6 +3753,11 @@ Boucadair, et al.          Expires 7 July 2022                 [Page 67]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   Figure 47 shows an example of an asynchronous notification of attack
+   mitigation status from the DOTS server.  This notification signals
+   both the mid-percentile value of processed attack traffic and the
+   peak count of unique sources involved in the attack.
 
    {
      "ietf-dots-signal-channel:mitigation-scope": {
@@ -3790,18 +3795,13 @@ Internet-Draft               DOTS Telemetry                 January 2022
      }
    }
 
-       Figure 46: Response Body of a Mitigation Status With Telemetry
+       Figure 47: Response Body of a Mitigation Status With Telemetry
                                  Attributes
 
    DOTS clients can filter out the asynchronous notifications from the
    DOTS server by indicating one or more Uri-Query options in its GET
    request.  A Uri-Query option can include the following parameters:
    'target-prefix', 'target-port', 'target-protocol', 'target-fqdn',
-   'target-uri', 'alias-name', and 'c' (content) (Section 4.2.4).  The
-   considerations discussed in Section 7.3 MUST be followed to include
-   multiple query values, ranges ('target-port', 'target-protocol'), and
-   wildcard names ('target-fqdn', 'target-uri').
-
 
 
 
@@ -3810,8 +3810,13 @@ Boucadair, et al.          Expires 7 July 2022                 [Page 68]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
+   'target-uri', 'alias-name', and 'c' (content) (Section 4.2.4).  The
+   considerations discussed in Section 7.3 MUST be followed to include
+   multiple query values, ranges ('target-port', 'target-protocol'), and
+   wildcard names ('target-fqdn', 'target-uri').
+
    An example of request to subscribe to asynchronous notifications
-   bound to the "http1" alias is shown in Figure 47.
+   bound to the "http1" alias is shown in Figure 48.
 
    Header: GET (Code=0.01)
    Uri-Path: ".well-known"
@@ -3822,7 +3827,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Query: "target-alias=https1"
    Observe: 0
 
-        Figure 47: GET Request to Receive Asynchronous Notifications
+        Figure 48: GET Request to Receive Asynchronous Notifications
                          Filtered using Uri- Query
 
    If the target query does not match the target of the enclosed 'mid'
@@ -3851,11 +3856,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    *  4.04 (Not Found) is returned by the DOTS server when the DOTS
       client has sent a request with a target query that does not match
       the target of the enclosed 'mid' as maintained by the DOTS server.
-
-
-
-
-
 
 
 

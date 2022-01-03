@@ -405,8 +405,8 @@
         target="RFC8811"></xref>). Given that DOTS clients can be integrated
         in a highly diverse set of scenarios and use cases, this emphasizes
         the need for knowledge of each DOTS client domain behavior, especially
-        given that common global thresholds for attack detection practically cannot
-        be realized. Each DOTS client domain can have its own levels of
+        given that common global thresholds for attack detection practically
+        cannot be realized. Each DOTS client domain can have its own levels of
         traffic and normal behavior. Without facilitating normal baseline
         signaling, it may be very difficult for DOTS servers in some cases to
         detect and mitigate the attacks accurately: <list style="empty">
@@ -581,12 +581,12 @@
 
         <t>DOTS clients can also use CoAP Block1 Option in a PUT request
         (Section 2.5 of <xref target="RFC7959"></xref>) to initiate large
-        transfers, but these Block1 transfers are likely to fail if the inbound
-        "pipe" is running full because the transfer requires a message from
-        the server for each block, which would likely be lost in the incoming
-        flood. Consideration needs to be made to try to fit this PUT into a
-        single transfer or to separate out the PUT into several discrete PUTs
-        where each of them fits into a single packet.</t>
+        transfers, but these Block1 transfers are likely to fail if the
+        inbound "pipe" is running full because the transfer requires a message
+        from the server for each block, which would likely be lost in the
+        incoming flood. Consideration needs to be made to try to fit this PUT
+        into a single transfer or to separate out the PUT into several
+        discrete PUTs where each of them fits into a single packet.</t>
 
         <t>Q-Block1 and Q-Block2 Options that are similar to the CoAP Block1
         and Block2 Options, but enable robust transmissions of big blocks of
@@ -737,7 +737,7 @@
         </figure></t>
 
       <t>DOTS implementations MUST support the Observe Option <xref
-      target="RFC7641" /> for 'tm' (<xref target="pre-t"></xref>).</t>
+      target="RFC7641"></xref> for 'tm' (<xref target="pre-t"></xref>).</t>
     </section>
 
     <section anchor="conf" title="DOTS Telemetry Setup Configuration">
@@ -3039,7 +3039,9 @@ Content-Format: "application/dots+cbor"
         <t>The "ietf-dots-telemetry" YANG module (<xref
         target="module"></xref>) augments the 'mitigation-scope' message type
         defined in "ietf-dots-signal" <xref target="RFC9132"></xref> with
-        telemetry data as depicted in the following tree structure:<figure>
+        telemetry data as depicted in <xref target="miscope"></xref>.<figure
+            anchor="miscope"
+            title="DOTS Servers to Clients Mitigation Status Telemetry Tree Structure">
             <artwork><![CDATA[  augment-structure /dots-signal:dots-signal/dots-signal:message-type
                     /dots-signal:mitigation-scope/dots-signal:scope:
     +-- (direction)?
