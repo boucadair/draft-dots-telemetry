@@ -863,11 +863,11 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Telemetry setup configuration is bound to a DOTS client domain.  DOTS
    servers MUST NOT expect DOTS clients to send regular requests to
    refresh the telemetry setup configuration.  Any available telemetry
-   setup configuration has a validity timeout of the DOTS association
-   with a DOTS client domain.  DOTS servers MUST NOT reset 'tsid'
-   because a session failed with a DOTS client.  DOTS clients update
-   their telemetry setup configuration upon change of a parameter that
-   may impact attack mitigation.
+   setup configuration is valid till the DOTS server ceases to service a
+   DOTS client domain.  DOTS servers MUST NOT reset 'tsid' because a
+   session failed with a DOTS client.  DOTS clients update their
+   telemetry setup configuration upon change of a parameter that may
+   impact attack mitigation.
 
    DOTS telemetry setup configuration request and response messages are
    marked as Confirmable messages (Section 2.1 of [RFC7252]).
@@ -1149,7 +1149,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tsid=569"
+   Uri-Path: "tsid=124"
    Content-Format: "application/dots+cbor"
 
    {
@@ -1181,6 +1181,10 @@ Internet-Draft               DOTS Telemetry                 January 2022
    DOTS clients can also configure the unit class(es) to be used for
    traffic-related telemetry data among the following supported unit
    classes: packets per second, bits per second, and bytes per second.
+   Supplying both bits per second and bytes per second unit-classes is
+   allowed for a given telemetry data.  However, receipt of conflicting
+   values is treated as invalid parameters and rejected with 4.00 (Bad
+   Request).
 
    DOTS clients that are interested to receive pre or ongoing mitigation
    telemetry (pre-or-ongoing-mitigation) information from a DOTS server
@@ -1195,7 +1199,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tsid=569"
+   Uri-Path: "tsid=125"
    Content-Format: "application/dots+cbor"
 
    {
@@ -1220,10 +1224,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    A DOTS client may issue a GET message with 'tsid' Uri-Path parameter
    to retrieve the current DOTS telemetry configuration.  An example of
    such a request is depicted in Figure 7.
-
-
-
-
 
 
 
@@ -1376,7 +1376,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tsid=457"
+   Uri-Path: "tsid=126"
    Content-Format: "application/dots+cbor"
 
    {
@@ -1424,7 +1424,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: ".well-known"
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
-   Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
+   Uri-Path: "cuid=hmcpH87lmPGsSTjkhXCbin"
    Uri-Path: "tsid=896"
    Content-Format: "application/dots+cbor"
 
@@ -1461,7 +1461,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    ISP#B domains) about this update by sending the PUT request depicted
    in Figure 15.  This request also includes information related to
    "link1" even if that link is not upgraded.  Upon receipt of this
-   request, the DOTS server removes the request with 'tsid=457' and
+   request, the DOTS server removes the request with 'tsid=126' and
    updates its configuration base to maintain two links (link#1 and
    link#2).
 
@@ -1519,7 +1519,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tsid=458"
+   Uri-Path: "tsid=127"
    Content-Format: "application/dots+cbor"
 
    {
@@ -1590,7 +1590,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tsid=459"
+   Uri-Path: "tsid=128"
    Content-Format: "application/dots+cbor"
 
    {
@@ -1911,7 +1911,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tsid=126"
+   Uri-Path: "tsid=129"
    Content-Format: "application/dots+cbor"
 
    {
@@ -1967,7 +1967,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Uri-Path: "dots"
    Uri-Path: "tm-setup"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-   Uri-Path: "tsid=128"
+   Uri-Path: "tsid=130"
    Content-Format: "application/dots+cbor"
 
    {

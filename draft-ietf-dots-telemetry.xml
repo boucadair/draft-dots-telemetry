@@ -761,7 +761,7 @@
       <t>Telemetry setup configuration is bound to a DOTS client domain. DOTS
       servers MUST NOT expect DOTS clients to send regular requests to refresh
       the telemetry setup configuration. Any available telemetry setup
-      configuration has a validity timeout of the DOTS association with a DOTS
+      configuration is valid till the DOTS server ceases to service a DOTS
       client domain. DOTS servers MUST NOT reset 'tsid' because a session
       failed with a DOTS client. DOTS clients update their telemetry setup
       configuration upon change of a parameter that may impact attack
@@ -1022,7 +1022,7 @@ Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-Uri-Path: "tsid=569"
+Uri-Path: "tsid=124"
 Content-Format: "application/dots+cbor"
 
 {
@@ -1043,8 +1043,11 @@ Content-Format: "application/dots+cbor"
 
           <t>DOTS clients can also configure the unit class(es) to be used for
           traffic-related telemetry data among the following supported unit
-          classes: packets per second, bits per second, and bytes per
-          second.</t>
+          classes: packets per second, bits per second, and bytes per second.
+          Supplying both bits per second and bytes per second unit-classes is
+          allowed for a given telemetry data. However, receipt of conflicting
+          values is treated as invalid parameters and rejected with 4.00 (Bad
+          Request). </t>
 
           <t>DOTS clients that are interested to receive pre or ongoing
           mitigation telemetry (pre-or-ongoing-mitigation) information from a
@@ -1063,7 +1066,7 @@ Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-Uri-Path: "tsid=569"
+Uri-Path: "tsid=125"
 Content-Format: "application/dots+cbor"
 
 {
@@ -1224,7 +1227,7 @@ Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-Uri-Path: "tsid=457"
+Uri-Path: "tsid=126"
 Content-Format: "application/dots+cbor"
 
 {
@@ -1268,7 +1271,7 @@ Content-Format: "application/dots+cbor"
 Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
-Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
+Uri-Path: "cuid=hmcpH87lmPGsSTjkhXCbin"
 Uri-Path: "tsid=896"
 Content-Format: "application/dots+cbor"
 
@@ -1297,7 +1300,7 @@ Content-Format: "application/dots+cbor"
           the PUT request depicted in <xref target="putp2"></xref>. This
           request also includes information related to "link1" even if that
           link is not upgraded. Upon receipt of this request, the DOTS server
-          removes the request with 'tsid=457' and updates its configuration
+          removes the request with 'tsid=126' and updates its configuration
           base to maintain two links (link#1 and link#2).</t>
 
           <t><figure anchor="multi" title="Multi-Homed DOTS Client Domain">
@@ -1323,7 +1326,7 @@ Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-Uri-Path: "tsid=458"
+Uri-Path: "tsid=127"
 Content-Format: "application/dots+cbor"
 
 {
@@ -1384,7 +1387,7 @@ Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-Uri-Path: "tsid=459"
+Uri-Path: "tsid=128"
 Content-Format: "application/dots+cbor"
 
 {
@@ -1634,7 +1637,7 @@ Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-Uri-Path: "tsid=126"
+Uri-Path: "tsid=129"
 Content-Format: "application/dots+cbor"
 
 {
@@ -1672,7 +1675,7 @@ Uri-Path: ".well-known"
 Uri-Path: "dots"
 Uri-Path: "tm-setup"
 Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
-Uri-Path: "tsid=128"
+Uri-Path: "tsid=130"
 Content-Format: "application/dots+cbor"
 
 {
@@ -1800,7 +1803,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
       falls under the unit class that is configured following the procedure
       described in <xref target="PUT"></xref>. When generating telemetry data
       to send to a peer, the DOTS agent MUST auto-scale so that appropriate
-      unit(s) are used.</t>
+      unit(s) are used. </t>
 
       <t><figure anchor="mid-co"
           title="Example of Request Correlation using 'mid'">
