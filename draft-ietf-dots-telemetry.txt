@@ -2656,6 +2656,8 @@ Internet-Draft               DOTS Telemetry                 January 2022
       integer value.
 
    attack-id:  Unique identifier assigned for the attack by a vendor.
+      This parameter MUST be present independently whether 'attack-
+      description' is included or not.
 
    attack-description:  Textual representation of the attack
       description.  Natural Language Processing techniques (e.g., word
@@ -2681,8 +2683,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    source-count:  A count of sources involved in the attack targeting
       the victim.
 
-   top-talker:  A list of attack sources that are involved in an attack
-
 
 
 Boucadair, et al.          Expires 7 July 2022                 [Page 48]
@@ -2690,6 +2690,7 @@ Boucadair, et al.          Expires 7 July 2022                 [Page 48]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
+   top-talker:  A list of attack sources that are involved in an attack
       and which are generating an important part of the attack traffic.
       The top talkers are represented using the 'source-prefix'.
 
@@ -2737,7 +2738,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
                    +-- start-time?           uint64
                    +-- end-time?             uint64
                    +-- source-count
-                   |  +-- low-percentile-g?    yang:gauge64
 
 
 
@@ -2746,6 +2746,7 @@ Boucadair, et al.          Expires 7 July 2022                 [Page 49]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
+                   |  +-- low-percentile-g?    yang:gauge64
                    |  +-- mid-percentile-g?    yang:gauge64
                    |  +-- high-percentile-g?   yang:gauge64
                    |  +-- peak-g?              yang:gauge64
@@ -2793,7 +2794,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
                             |  +-- mid-percentile-g?    yang:gauge64
                             |  +-- high-percentile-g?   yang:gauge64
                             |  +-- peak-g?              yang:gauge64
-                            |  +-- current-g?           yang:gauge64
 
 
 
@@ -2802,6 +2802,7 @@ Boucadair, et al.          Expires 7 July 2022                 [Page 50]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
+                            |  +-- current-g?           yang:gauge64
                             +-- partial-request-c
                                +-- low-percentile-g?    yang:gauge64
                                +-- mid-percentile-g?    yang:gauge64
@@ -2845,7 +2846,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    The "ietf-dots-mapping" YANG module defined in Section 10.2 augments
    the "ietf-dots-data-channel" [RFC8783] module.  The tree structure of
    the "ietf-dots-mapping" module is shown in Figure 30.
-
 
 
 

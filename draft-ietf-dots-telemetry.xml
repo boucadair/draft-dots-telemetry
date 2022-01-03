@@ -2202,7 +2202,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               value.</t>
 
               <t hangText="attack-id:">Unique identifier assigned for the
-              attack by a vendor.</t>
+              attack by a vendor. This parameter MUST be present independently
+              whether 'attack-description' is included or not. </t>
 
               <t hangText="attack-description:">Textual representation of the
               attack description. Natural Language Processing techniques
@@ -2543,7 +2544,7 @@ Accept: application/yang-data+json]]></artwork>
           format="counter" target="status"></xref>), DOTS agents MUST NOT
           include the 'attack-description' attribute unless the corresponding
           attack mapping details were not previously shared with the peer DOTS
-          agent.</t>
+          agent. </t>
         </section>
       </section>
 
