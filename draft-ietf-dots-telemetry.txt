@@ -5247,7 +5247,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
                 data nodes can be included.";
              case server-to-client-only {
                description
-                 "These data nodes appear only in a mitigation message
+                 "These data nodes appear only in a telemetry message
                   sent from the server to the client.";
                container max-config-values {
                  description
@@ -5341,7 +5341,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
                   data nodes can be included.";
                case server-to-client-only {
                  description
-                   "These data nodes appear only in a mitigation message
+                   "These data nodes appear only in a telemetry message
                     sent from the server to the client.";
                  leaf tsid {
                    type uint32;
@@ -5469,7 +5469,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
                   data nodes can be included.";
                case server-to-client-only {
                  description
-                   "These data nodes appear only in a mitigation message
+                   "These data nodes appear only in a telemetry message
                     sent from the server to the client.";
                  leaf tmid {
                    type uint32;
