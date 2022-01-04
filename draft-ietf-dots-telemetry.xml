@@ -2413,7 +2413,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           by the server (i.e., check the value of
           'vendor-mapping-enabled').</t>
 
-          <t>If 'vendor-mapping-enabled' is set to 'true', A DOTS client MAY
+          <t>If 'vendor-mapping-enabled' is set to 'true', a DOTS client MAY
           send a GET request to retrieve the DOTS server's vendor attack
           mapping details. An example of such a GET request is shown in <xref
           target="MfS"></xref>.</t>
@@ -2522,7 +2522,7 @@ Content-Type: application/yang-data+json
 
           <t>The DOTS client uses the PUT request to modify its vendor attack
           mapping details maintained by the DOTS server (e.g., add a new
-          mapping).</t>
+          mapping entry, update an existing mapping).</t>
 
           <t>A DOTS client uses a GET request to retrieve its vendor attack
           mapping details as maintained by the DOTS server (<xref

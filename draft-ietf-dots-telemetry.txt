@@ -2888,7 +2888,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    attack mapping details is supported by the server (i.e., check the
    value of 'vendor-mapping-enabled').
 
-   If 'vendor-mapping-enabled' is set to 'true', A DOTS client MAY send
+   If 'vendor-mapping-enabled' is set to 'true', a DOTS client MAY send
    a GET request to retrieve the DOTS server's vendor attack mapping
    details.  An example of such a GET request is shown in Figure 31.
 
@@ -3028,7 +3028,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
    The DOTS client uses the PUT request to modify its vendor attack
    mapping details maintained by the DOTS server (e.g., add a new
-   mapping).
+   mapping entry, update an existing mapping).
 
    A DOTS client uses a GET request to retrieve its vendor attack
    mapping details as maintained by the DOTS server (Figure 35).
