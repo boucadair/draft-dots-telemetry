@@ -15,7 +15,7 @@ Expires: 8 July 2022                                              Akamai
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
-                      draft-ietf-dots-telemetry-18
+                      draft-ietf-dots-telemetry-19
 
 Abstract
 
@@ -3574,7 +3574,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    In order to signal telemetry data in a mitigation efficacy update, it
    is RECOMMENDED that the DOTS client has already established a DOTS
    telemetry setup session with the server in 'idle' time.  Such a
-   session is primary meant to assess whether the peer DOTS server
+   session is primarily meant to assess whether the peer DOTS server
    supports telemetry extensions and, thus, prevent message processing
    failure (Section 3.1 of [RFC9132]).
 

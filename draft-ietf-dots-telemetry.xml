@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-18" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-19" ipr="trust200902">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -2978,7 +2978,7 @@ Observe: 0]]></artwork>
         <t>In order to signal telemetry data in a mitigation efficacy update,
         it is RECOMMENDED that the DOTS client has already established a DOTS
         telemetry setup session with the server in 'idle' time. Such a session
-        is primary meant to assess whether the peer DOTS server supports
+        is primarily meant to assess whether the peer DOTS server supports
         telemetry extensions and, thus, prevent message processing failure
         (Section 3.1 of <xref target="RFC9132"></xref>). </t>
 
