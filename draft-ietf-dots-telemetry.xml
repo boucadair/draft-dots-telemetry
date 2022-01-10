@@ -2202,8 +2202,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               value.</t>
 
               <t hangText="attack-id:">Unique identifier assigned for the
-              attack by a vendor. This parameter MUST be present independently
-              whether 'attack-description' is included or not.</t>
+              attack by a vendor. This parameter MUST be present independent
+              of whether 'attack-description' is included or not.</t>
 
               <t hangText="attack-description:">Textual representation of the
               attack description. Natural Language Processing techniques
@@ -2980,7 +2980,7 @@ Observe: 0]]></artwork>
         telemetry setup session with the server in 'idle' time. Such a session
         is primarily meant to assess whether the peer DOTS server supports
         telemetry extensions and, thus, prevent message processing failure
-        (Section 3.1 of <xref target="RFC9132"></xref>). </t>
+        (Section 3.1 of <xref target="RFC9132"></xref>).</t>
 
         <t>An example of an efficacy update with telemetry attributes is
         depicted in <xref target="effu"></xref>.</t>
