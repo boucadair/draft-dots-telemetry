@@ -279,7 +279,7 @@
       of all links to connect to upstream network providers can be considered
       by a DOTS client domain as a single pipe when communicating with a
       third-party DOTS server, while each interconnection link may be
-      considered as a single pipe if the DOTS server is hosted by each of
+      considered as a specific pipe if the DOTS server is hosted by each of
       these upstream providers.</t>
 
       <t>The meaning of the symbols in YANG tree diagrams are defined in <xref
