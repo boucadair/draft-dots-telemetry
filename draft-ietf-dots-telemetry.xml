@@ -273,6 +273,15 @@
       'tsid' (or 'tmid') refers to the lower 'tsid' (or 'tmid') value of these
       overlapping requests.</t>
 
+      <t>The term "pipe" represents the maximum level of traffic that the DOTS
+      client domain can receive. Whether a "pipe" is mapped to one or a group
+      of network interfaces is deployment-specific. For example, the aggregate
+      of all links to connect to upstream network providers can be considered
+      by a DOTS client domain as a single pipe when communicating with a
+      third-party DOTS server, while each interconnection link may be
+      considered as a single pipe if the DOTS server is hosted by each of
+      these upstream providers. </t>
+
       <t>The meaning of the symbols in YANG tree diagrams are defined in <xref
       target="RFC8340"></xref> and <xref target="RFC8791"></xref>.</t>
 
@@ -414,12 +423,9 @@
             for the DOTS server's mitigators to calculate the normal baseline
             in cases where they do not have any knowledge of the traffic
             beforehand.</t>
-
-            <t>In addition, baseline learning requires a period of time that
-            cannot be afforded during active attack.</t>
           </list></t>
 
-        <t>Of course, this information can provided using out-of-band
+        <t>Of course, this information can be provided using out-of-band
         mechanisms or manual configuration at the risk of unmaintained
         information becoming inaccurate as the network evolves and "normal"
         patterns change. The use of a dynamic and collaborative means between
@@ -442,16 +448,13 @@
         DOTS client domain can absorb from its upstream network. Dynamic
         updates of the condition of pipes between DOTS agents while they are
         under a DDoS attack is essential (e.g., where multiple DOTS clients
-        share the same physical connectivity pipes). It is important to note
-        that the term "pipe" noted here does not necessary represent physical
-        pipe, but rather represents the maximum level of traffic that the DOTS
-        client domain can receive. The DOTS server should activate other
-        mechanisms to ensure it does not allow the DOTS client domain's pipes
-        to be saturated unintentionally. The rate-limit action defined in
-        <xref target="RFC8783"></xref> is a reasonable candidate to achieve
-        this objective; the DOTS client can indicate the type(s) of traffic
-        (such as ICMP, UDP, TCP port number 80) it prefers to limit. The
-        rate-limit action can be controlled via the signal channel <xref
+        share the same physical connectivity pipes). The DOTS server should
+        activate other mechanisms to ensure it does not allow the DOTS client
+        domain's pipes to be saturated unintentionally. The rate-limit action
+        defined in <xref target="RFC8783"></xref> is a reasonable candidate to
+        achieve this objective; the DOTS client can indicate the type(s) of
+        traffic (such as ICMP, UDP, TCP port number 80) it prefers to limit.
+        The rate-limit action can be controlled via the signal channel <xref
         target="RFC9133"></xref> even when the pipe is overwhelmed.</t>
       </section>
     </section>
@@ -3187,7 +3190,7 @@ Content-Format: "application/dots+cbor"
         ('target-fqdn', 'target-uri').</t>
 
         <t>An example of request to subscribe to asynchronous notifications
-        bound to the "http1" alias is shown in <xref
+        bound to the "https1" alias is shown in <xref
         target="notif_filter"></xref>.</t>
 
         <t><figure anchor="notif_filter"
@@ -3216,23 +3219,28 @@ Observe: 0]]></artwork>
       additional error cases apply for the telemetry extension:</t>
 
       <t><list style="symbols">
-          <t>4.00 (Bad Request) is returned by the DOTS server when the DOTS
-          client has sent a request that violates the DOTS telemetry
-          extension.</t>
+          <t hangText="4.00 (Bad Request)">4.00 (Bad Request) is returned by
+          the DOTS server when the DOTS client has sent a request that
+          violates the DOTS telemetry extension.</t>
 
-          <t>4.04 (Not Found) is returned by the DOTS server when the DOTS
-          client is requesting a &lsquo;tsid&rsquo; or &lsquo;tmid&rsquo; that
-          is not valid.</t>
+          <t hangText="4.00 (Bad Request)">4.04 (Not Found) is returned by the
+          DOTS server when the DOTS client is requesting a 'tsid' or 'tmid'
+          that is not valid.</t>
 
-          <t>4.00 (Bad Request) is returned by the DOTS server when the DOTS
-          client has sent a request with invalid query types (e.g., not
-          supported, malformed).</t>
+          <t hangText="4.00 (Bad Request)">4.00 (Bad Request) is returned by
+          the DOTS server when the DOTS client has sent a request with invalid
+          query types (e.g., not supported, malformed).</t>
 
-          <t>4.04 (Not Found) is returned by the DOTS server when the DOTS
-          client has sent a request with a target query that does not match
-          the target of the enclosed 'mid' as maintained by the DOTS
-          server.</t>
+          <t hangText="4.00 (Bad Request)">4.04 (Not Found) is returned by the
+          DOTS server when the DOTS client has sent a request with a target
+          query that does not match the target of the enclosed 'mid' as
+          maintained by the DOTS server.</t>
         </list></t>
+
+      <t>As indicated in Section 9 of <xref target="RFC9132"></xref>, an
+      additional plain text diagnostic payload (Section 5.5.2 of <xref
+      target="RFC7252"></xref>) to help troubleshooting is returned in the
+      body of the response, </t>
     </section>
 
     <section title="YANG Modules">
@@ -5252,8 +5260,9 @@ module ietf-dots-mapping {
       <t>Special thanks to Jon Shallow and Kaname Nishizuka for their
       implementation and interoperability work.</t>
 
-      <t>Many thanks to Jan Lindblad for the yangdoctors review and Nagendra
-      Nainar for the opsdir review.</t>
+      <t>Many thanks to Jan Lindblad for the yangdoctors review, Nagendra
+      Nainar for the opsdir review, and James Gruessing for the artart
+      review.</t>
 
       <t>Thanks to Benjamin Kaduk for the detailed AD review.</t>
     </section>
