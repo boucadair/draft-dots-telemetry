@@ -6247,8 +6247,8 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Kaname Nishizuka, co-authors of [I-D.doron-dots-telemetry], and
    everyone who had contributed to that document.
 
-   Thanks to Kaname Nishizuka, Wei Pan, Yuuhei Hayashi, and for comments
-   and review.
+   Thanks to Kaname Nishizuka, Wei Pan, Yuuhei Hayashi, and Tom Petch
+   for comments and review.
 
    Special thanks to Jon Shallow and Kaname Nishizuka for their
    implementation and interoperability work.

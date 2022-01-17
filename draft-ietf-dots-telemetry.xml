@@ -5258,8 +5258,8 @@ module ietf-dots-mapping {
       target="I-D.doron-dots-telemetry"></xref>, and everyone who had
       contributed to that document.</t>
 
-      <t>Thanks to Kaname Nishizuka, Wei Pan, Yuuhei Hayashi, and for comments
-      and review.</t>
+      <t>Thanks to Kaname Nishizuka, Wei Pan, Yuuhei Hayashi, and Tom Petch
+      for comments and review.</t>
 
       <t>Special thanks to Jon Shallow and Kaname Nishizuka for their
       implementation and interoperability work.</t>
