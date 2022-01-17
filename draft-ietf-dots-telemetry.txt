@@ -146,8 +146,8 @@ Internet-Draft               DOTS Telemetry                 January 2022
      13.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 111
    14. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 112
    15. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 112
-   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 113
-     16.1.  Normative References . . . . . . . . . . . . . . . . . . 113
+   16. References  . . . . . . . . . . . . . . . . . . . . . . . . . 112
+     16.1.  Normative References . . . . . . . . . . . . . . . . . . 112
      16.2.  Informative References . . . . . . . . . . . . . . . . . 114
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 116
 
@@ -2708,8 +2708,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    describing the ongoing attack can be signalled as attack details:
 
    vendor-id:  Vendor ID is a security vendor's Enterprise Number as
-      registered with IANA [Enterprise-Numbers].  It is a four-byte
-      integer value.
+      registered with IANA [Enterprise-Numbers].
 
    attack-id:  Unique identifier assigned for the attack by a vendor.
       This parameter MUST be present independent of whether 'attack-
@@ -2738,6 +2737,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
    source-count:  A count of sources involved in the attack targeting
       the victim.
+
 
 
 
@@ -3995,13 +3995,13 @@ Internet-Draft               DOTS Telemetry                 January 2022
                  <mailto:mohamed.boucadair@orange.com>
 
         Author:  Konda, Tirumaleswar Reddy
-                 <mailto:TirumaleswarReddy_Konda@McAfee.com>";
+                 <mailto:kondtir@gmail.com>";
      description
        "This module contains YANG definitions for the signaling
         of DOTS telemetry data exchanged between a DOTS client and
         a DOTS server by means of the DOTS signal channel.
 
-        Copyright (c) 2021 IETF Trust and the persons identified as
+        Copyright (c) 2022 IETF Trust and the persons identified as
         authors of the code.  All rights reserved.
 
         Redistribution and use in source and binary forms, with or
@@ -4009,7 +4009,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
         to the license terms contained in, the Simplified BSD License
         set forth in Section 4.c of the IETF Trust's Legal Provisions
         Relating to IETF Documents
-        (http://trustee.ietf.org/license-info).
+        (https://trustee.ietf.org/license-info).
 
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
@@ -4432,7 +4432,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
               to control the selection of configuration
                and non-configuration data nodes.";
            reference
-             "Section 4.4.2 of RFC UUUU.";
+             "Section 4.4.2 of RFC 9132.";
          }
        }
        description
@@ -5617,7 +5617,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
         DDoS attack mapping details between a DOTS client and
         a DOTS server, by means of the DOTS data channel.
 
-        Copyright (c) 2021 IETF Trust and the persons identified as
+        Copyright (c) 2022 IETF Trust and the persons identified as
         authors of the code.  All rights reserved.
 
         Redistribution and use in source and binary forms, with or
@@ -5625,7 +5625,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
         to the license terms contained in, the Simplified BSD License
         set forth in Section 4.c of the IETF Trust's Legal Provisions
         Relating to IETF Documents
-        (http://trustee.ietf.org/license-info).
+        (https://trustee.ietf.org/license-info).
 
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
@@ -5924,12 +5924,12 @@ Internet-Draft               DOTS Telemetry                 January 2022
    The DOTS telemetry attributes defined in this specification are
    comprehension-optional parameters.
 
-   *  Note to the RFC Editor: CBOR keys are assigned from the "128-255"
-      range.  This specification meets the requirements listed in
-      Section 3.1 [RFC9132] for assignments in the "128-255" range.
+   *  Note to IANA: CBOR keys are assigned from the "128-255" range.
+      This specification meets the requirements listed in Section 3.1
+      [RFC9132] for assignments in the "128-255" range.
 
-
-
+   *  Note to the RFC Editor: Please replace all occurrences of
+      "TBA1-TBA84" with the assigned values.
 
 
 
@@ -6080,6 +6080,9 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
        Table 4: Registered DOTS Signal Channel Conflict Cause Code
 
+   *  Note to the RFC Editor: Please replace all occurrences of "TBA"
+      with the assigned value.
+
 12.3.  DOTS Signal Telemetry YANG Module
 
    This document requests IANA to register the following URIs in the
@@ -6093,9 +6096,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
             Registrant Contact: The IESG.
             XML: N/A; the requested URI is an XML namespace.
 
-   This document requests IANA to register the following YANG modules in
-   the "YANG Module Names" subregistry [RFC6020] within the "YANG
-   Parameters" registry.
 
 
 
@@ -6105,6 +6105,10 @@ Boucadair, et al.         Expires 21 July 2022                [Page 109]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   This document requests IANA to register the following YANG modules in
+   the "YANG Module Names" subregistry [RFC6020] within the "YANG
+   Parameters" registry.
 
             name: ietf-dots-telemetry
             namespace: urn:ietf:params:xml:ns:yang:ietf-dots-telemetry
@@ -6139,29 +6143,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    that kind of information by being in the position to observe and
    mitigate attacks.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Boucadair, et al.         Expires 21 July 2022                [Page 110]
-
-Internet-Draft               DOTS Telemetry                 January 2022
-
-
    DOTS clients are typically considered to be trusted devices by the
    DOTS client domain.  DOTS clients may be co-located on network
    security services (e.g., firewall devices), and a compromised
@@ -6173,6 +6154,14 @@ Internet-Draft               DOTS Telemetry                 January 2022
    attack can be prevented by monitoring and auditing DOTS clients to
    detect misbehavior and to deter misuse, and by only authorizing the
    DOTS client to convey DOTS telemetry information for specific target
+
+
+
+Boucadair, et al.         Expires 21 July 2022                [Page 110]
+
+Internet-Draft               DOTS Telemetry                 January 2022
+
+
    resources (e.g., an application server is authorized to exchange DOTS
    telemetry for its IP addresses but a DDoS mitigator can exchange DOTS
    telemetry for any target resource in the network).  As a reminder,
@@ -6210,14 +6199,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    is the default) are considered sensitive.  Write operations to these
    data nodes without proper protection can have a negative effect on
    network operations.  Appropriate security measures are recommended to
-
-
-
-Boucadair, et al.         Expires 21 July 2022                [Page 111]
-
-Internet-Draft               DOTS Telemetry                 January 2022
-
-
    prevent illegitimate users from invoking DOTS data channel primitives
    as discussed in [RFC8783].  Nevertheless, an attacker who can access
    a DOTS client is technically capable of undertaking various attacks,
@@ -6227,6 +6208,15 @@ Internet-Draft               DOTS Telemetry                 January 2022
       ('/data-channel:dots-data/data-channel:dots-client/dots-
       telemetry:vendor-mapping'), which will mislead the server when
       correlating attack details.
+
+
+
+
+
+Boucadair, et al.         Expires 21 July 2022                [Page 111]
+
+Internet-Draft               DOTS Telemetry                 January 2022
+
 
    Some of the readable data nodes in the YANG module specified in
    Section 10.2 may be considered sensitive.  It is thus important to
@@ -6254,11 +6244,11 @@ Internet-Draft               DOTS Telemetry                 January 2022
 15.  Acknowledgements
 
    The authors would like to thank Flemming Andreasen, Liang Xia, and
-   Kaname Nishizuka co-authors of [I-D.doron-dots-telemetry] and
+   Kaname Nishizuka, co-authors of [I-D.doron-dots-telemetry], and
    everyone who had contributed to that document.
 
-   The authors would like to thank Kaname Nishizuka, Wei Pan, and Yuuhei
-   Hayashi for comments and review.
+   Thanks to Kaname Nishizuka, Wei Pan, Yuuhei Hayashi, and for comments
+   and review.
 
    Special thanks to Jon Shallow and Kaname Nishizuka for their
    implementation and interoperability work.
@@ -6267,6 +6257,16 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Nainar for the opsdir review, and James Gruessing for the artart
    review.
 
+   Thanks to Benjamin Kaduk for the detailed AD review.
+
+16.  References
+
+16.1.  Normative References
+
+
+
+
+
 
 
 Boucadair, et al.         Expires 21 July 2022                [Page 112]
@@ -6274,15 +6274,10 @@ Boucadair, et al.         Expires 21 July 2022                [Page 112]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
-   Thanks to Benjamin Kaduk for the detailed AD review.
-
-16.  References
-
-16.1.  Normative References
-
    [Enterprise-Numbers]
               "Private Enterprise Numbers", 4 May 2020,
-              <http://www.iana.org/assignments/enterprise-numbers.html>.
+              <https://www.iana.org/assignments/enterprise-
+              numbers.html>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -6321,6 +6316,11 @@ Internet-Draft               DOTS Telemetry                 January 2022
               DOI 10.17487/RFC7959, August 2016,
               <https://www.rfc-editor.org/info/rfc7959>.
 
+   [RFC7970]  Danyliw, R., "The Incident Object Description Exchange
+              Format Version 2", RFC 7970, DOI 10.17487/RFC7970,
+              November 2016, <https://www.rfc-editor.org/info/rfc7970>.
+
+
 
 
 
@@ -6329,10 +6329,6 @@ Boucadair, et al.         Expires 21 July 2022                [Page 113]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
-
-   [RFC7970]  Danyliw, R., "The Incident Object Description Exchange
-              Format Version 2", RFC 7970, DOI 10.17487/RFC7970,
-              November 2016, <https://www.rfc-editor.org/info/rfc7970>.
 
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
@@ -6373,9 +6369,13 @@ Internet-Draft               DOTS Telemetry                 January 2022
               <https://www.iana.org/assignments/dots/dots.xhtml#dots-
               signal-channel-conflict-cause-codes>.
 
-
-
-
+   [I-D.doron-dots-telemetry]
+              Doron, E., Reddy, T., Andreasen, F., (Frank), L. X., and
+              K. Nishizuka, "Distributed Denial-of-Service Open Threat
+              Signaling (DOTS) Telemetry Specifications", Work in
+              Progress, Internet-Draft, draft-doron-dots-telemetry-00,
+              30 October 2016, <https://www.ietf.org/archive/id/draft-
+              doron-dots-telemetry-00.txt>.
 
 
 
@@ -6385,14 +6385,6 @@ Boucadair, et al.         Expires 21 July 2022                [Page 114]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
-
-   [I-D.doron-dots-telemetry]
-              Doron, E., Reddy, T., Andreasen, F., (Frank), L. X., and
-              K. Nishizuka, "Distributed Denial-of-Service Open Threat
-              Signaling (DOTS) Telemetry Specifications", Work in
-              Progress, Internet-Draft, draft-doron-dots-telemetry-00,
-              30 October 2016, <https://www.ietf.org/archive/id/draft-
-              doron-dots-telemetry-00.txt>.
 
    [I-D.ietf-core-new-block]
               Boucadair, M. and J. Shallow, "Constrained Application
@@ -6431,6 +6423,14 @@ Internet-Draft               DOTS Telemetry                 January 2022
               DOI 10.17487/RFC2330, May 1998,
               <https://www.rfc-editor.org/info/rfc2330>.
 
+   [RFC4732]  Handley, M., Ed., Rescorla, E., Ed., and IAB, "Internet
+              Denial-of-Service Considerations", RFC 4732,
+              DOI 10.17487/RFC4732, December 2006,
+              <https://www.rfc-editor.org/info/rfc4732>.
+
+   [RFC4960]  Stewart, R., Ed., "Stream Control Transmission Protocol",
+              RFC 4960, DOI 10.17487/RFC4960, September 2007,
+              <https://www.rfc-editor.org/info/rfc4960>.
 
 
 
@@ -6441,15 +6441,6 @@ Boucadair, et al.         Expires 21 July 2022                [Page 115]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
-
-   [RFC4732]  Handley, M., Ed., Rescorla, E., Ed., and IAB, "Internet
-              Denial-of-Service Considerations", RFC 4732,
-              DOI 10.17487/RFC4732, December 2006,
-              <https://www.rfc-editor.org/info/rfc4732>.
-
-   [RFC4960]  Stewart, R., Ed., "Stream Control Transmission Protocol",
-              RFC 4960, DOI 10.17487/RFC4960, September 2007,
-              <https://www.rfc-editor.org/info/rfc4960>.
 
    [RFC5612]  Eronen, P. and D. Harrington, "Enterprise Number for
               Documentation Use", RFC 5612, DOI 10.17487/RFC5612, August
@@ -6487,17 +6478,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 Authors' Addresses
 
-
-
-
-
-
-
-Boucadair, et al.         Expires 21 July 2022                [Page 116]
-
-Internet-Draft               DOTS Telemetry                 January 2022
-
-
    Mohamed Boucadair (editor)
    Orange
    35000 Rennes
@@ -6510,6 +6490,14 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Akamai
    Embassy Golf Link Business Park
    Bangalore 560071
+
+
+
+Boucadair, et al.         Expires 21 July 2022                [Page 116]
+
+Internet-Draft               DOTS Telemetry                 January 2022
+
+
    Karnataka
    India
 
@@ -6539,6 +6527,18 @@ Internet-Draft               DOTS Telemetry                 January 2022
    United Kingdom
 
    Email: supjps-ietf@jpshallow.com
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
