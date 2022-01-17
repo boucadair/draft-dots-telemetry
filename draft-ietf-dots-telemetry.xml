@@ -280,7 +280,7 @@
       by a DOTS client domain as a single pipe when communicating with a
       third-party DOTS server, while each interconnection link may be
       considered as a single pipe if the DOTS server is hosted by each of
-      these upstream providers. </t>
+      these upstream providers.</t>
 
       <t>The meaning of the symbols in YANG tree diagrams are defined in <xref
       target="RFC8340"></xref> and <xref target="RFC8791"></xref>.</t>
@@ -3219,28 +3219,27 @@ Observe: 0]]></artwork>
       additional error cases apply for the telemetry extension:</t>
 
       <t><list style="symbols">
-          <t hangText="4.00 (Bad Request)">4.00 (Bad Request) is returned by
-          the DOTS server when the DOTS client has sent a request that
-          violates the DOTS telemetry extension.</t>
+          <t>4.00 (Bad Request) is returned by the DOTS server when the DOTS
+          client has sent a request that violates the DOTS telemetry
+          extension.</t>
 
-          <t hangText="4.00 (Bad Request)">4.04 (Not Found) is returned by the
-          DOTS server when the DOTS client is requesting a 'tsid' or 'tmid'
-          that is not valid.</t>
+          <t>4.04 (Not Found) is returned by the DOTS server when the DOTS
+          client is requesting a 'tsid' or 'tmid' that is not valid.</t>
 
-          <t hangText="4.00 (Bad Request)">4.00 (Bad Request) is returned by
-          the DOTS server when the DOTS client has sent a request with invalid
-          query types (e.g., not supported, malformed).</t>
+          <t>4.00 (Bad Request) is returned by the DOTS server when the DOTS
+          client has sent a request with invalid query types (e.g., not
+          supported, malformed).</t>
 
-          <t hangText="4.00 (Bad Request)">4.04 (Not Found) is returned by the
-          DOTS server when the DOTS client has sent a request with a target
-          query that does not match the target of the enclosed 'mid' as
-          maintained by the DOTS server.</t>
+          <t>4.04 (Not Found) is returned by the DOTS server when the DOTS
+          client has sent a request with a target query that does not match
+          the target of the enclosed 'mid' as maintained by the DOTS
+          server.</t>
         </list></t>
 
       <t>As indicated in Section 9 of <xref target="RFC9132"></xref>, an
       additional plain text diagnostic payload (Section 5.5.2 of <xref
       target="RFC7252"></xref>) to help troubleshooting is returned in the
-      body of the response, </t>
+      body of the response.</t>
     </section>
 
     <section title="YANG Modules">
