@@ -34,8 +34,8 @@
       </address>
     </author>
 
-    <author fullname="Tirumaleswar Reddy" initials="T." role="editor"
-            surname="Reddy">
+    <author fullname="Tirumaleswar Reddy.K" initials="T." role="editor"
+            surname="Reddy.K">
       <organization>Akamai</organization>
 
       <address>
@@ -656,6 +656,37 @@
         target="pre-t"></xref>). Otherwise, whenever a key statement is used
         in the module, the same definition as in Section 7.8.2 of <xref
         target="RFC7950"></xref> is assumed.</t>
+
+        <t>Some parameters (e.g., low percentile values) may be associated
+        with different YANG types (e.g., decimal64 and yang:gauge64). To
+        easily distinguish the types of these parameters while using
+        meaningful names, the following suffixes are used: </t>
+
+        <texttable>
+          <ttcol>Suffix</ttcol>
+
+          <ttcol>YANG Type</ttcol>
+
+          <ttcol>Example</ttcol>
+
+          <c>-g</c>
+
+          <c>yang:gauge64</c>
+
+          <c>low-percentile-g</c>
+
+          <c>-c</c>
+
+          <c>container</c>
+
+          <c>connection-c</c>
+
+          <c>-ps</c>
+
+          <c>per second</c>
+
+          <c>connection-ps</c>
+        </texttable>
 
         <t>The full tree diagram of the DOTS telemetry module can be generated
         using the "pyang" tool <xref target="PYANG"></xref>. That tree is not
@@ -2200,7 +2231,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 
           <t><list style="hanging">
               <t hangText="vendor-id:">Vendor ID is a security vendor's
-              Enterprise Number as registered with IANA <xref
+              enterprise number as registered in the IANA's "Private
+              Enterprise Numbers" registry <xref
               target="Enterprise-Numbers"></xref>.</t>
 
               <t hangText="attack-id:">Unique identifier assigned for the
@@ -3299,7 +3331,7 @@ module ietf-dots-telemetry {
      Author:  Mohamed Boucadair
               <mailto:mohamed.boucadair@orange.com>
 
-     Author:  Konda, Tirumaleswar Reddy
+     Author:  Konda, Tirumaleswar Reddy.K
               <mailto:kondtir@gmail.com>";
   description
     "This module contains YANG definitions for the signaling
@@ -4968,13 +5000,13 @@ module ietf-dots-mapping {
         comprehension-optional parameters.</t>
 
         <t><list style="symbols">
-            <t>Note to IANA: CBOR keys are assigned from the "128-255" range.
-            This specification meets the requirements listed in Section 3.1
-            <xref target="RFC9132"></xref> for assignments in the "128-255"
-            range.</t>
+            <t>Note to the IANA: CBOR keys are assigned from the "128-255"
+            range. This specification meets the requirements listed in Section
+            3.1 <xref target="RFC9132"></xref> for assignments in the
+            "128-255" range.</t>
 
             <t>Note to the RFC Editor: Please replace all occurrences of
-            "TBA1-TBA84" with the assigned values. </t>
+            "TBA1-TBA84" with the assigned values.</t>
           </list><figure align="center">
             <artwork><![CDATA[   +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
@@ -5108,7 +5140,7 @@ module ietf-dots-mapping {
 ]]></artwork>
           </figure><list style="symbols">
             <t>Note to the RFC Editor: Please replace all occurrences of "TBA"
-            with the assigned value. </t>
+            with the assigned value.</t>
           </list></t>
       </section>
 
