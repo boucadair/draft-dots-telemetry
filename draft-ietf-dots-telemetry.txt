@@ -814,7 +814,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    indicated by a path suffix that indicates the intended operation.
    The operation path is appended to the path prefix to form the URI
    used with a CoAP request to perform the desired DOTS operation.  The
-   following telemetry path suffixes are defined (Table 1):
+   following telemetry path suffixes are defined (Table 2):
 
               +-----------------+----------------+-----------+
               | Operation       | Operation Path | Details   |
@@ -823,7 +823,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
               | Telemetry       | /tm            | Section 7 |
               +-----------------+----------------+-----------+
 
-                     Table 1: DOTS Telemetry Operations
+                     Table 2: DOTS Telemetry Operations
 
    Consequently, the "ietf-dots-telemetry" YANG module defined in
    Section 10.1 defines data structure to represent new DOTS message
@@ -5758,7 +5758,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 11.  YANG/JSON Mapping Parameters to CBOR
 
    All DOTS telemetry parameters in the payload of the DOTS signal
-   channel MUST be mapped to CBOR types as shown in Table 2:
+   channel MUST be mapped to CBOR types as shown in Table 3:
 
 
 
@@ -5912,7 +5912,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
   | upper-type           | uint8       |32772 | 0 unsigned    | Number |
   +----------------------+-------------+------+---------------+--------+
 
-                 Table 2: YANG/JSON Mapping Parameters to CBOR
+                 Table 3: YANG/JSON Mapping Parameters to CBOR
 
 12.  IANA Considerations
 
@@ -6065,7 +6065,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    | current-g            | TBA84 |   0   |    IESG    |   [RFCXXXX]   |
    +----------------------+-------+-------+------------+---------------+
 
-           Table 3: Registered DOTS Signal Channel CBOR Key Values
+           Table 4: Registered DOTS Signal Channel CBOR Key Values
 
 12.2.  DOTS Signal Channel Conflict Cause Codes
 
@@ -6078,7 +6078,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
     | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
     +------+-------------------+------------------------+-------------+
 
-       Table 4: Registered DOTS Signal Channel Conflict Cause Code
+       Table 5: Registered DOTS Signal Channel Conflict Cause Code
 
    *  Note to the RFC Editor: Please replace all occurrences of "TBA"
       with the assigned value.

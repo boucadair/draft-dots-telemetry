@@ -731,7 +731,7 @@
       DOTS operation is indicated by a path suffix that indicates the intended
       operation. The operation path is appended to the path prefix to form the
       URI used with a CoAP request to perform the desired DOTS operation. The
-      following telemetry path suffixes are defined (Table 1):<figure>
+      following telemetry path suffixes are defined (Table 2):<figure>
           <artwork><![CDATA[           +-----------------+----------------+-----------+
            | Operation       | Operation Path | Details   |
            +=================+================+===========+
@@ -739,7 +739,7 @@
            | Telemetry       | /tm            | Section 7 |
            +-----------------+----------------+-----------+
 
-                  Table 1: DOTS Telemetry Operations]]></artwork>
+                  Table 2: DOTS Telemetry Operations]]></artwork>
         </figure></t>
 
       <t>Consequently, the "ietf-dots-telemetry" YANG module defined in <xref
@@ -4854,7 +4854,7 @@ module ietf-dots-mapping {
 
     <section anchor="map1" title="YANG/JSON Mapping Parameters to CBOR">
       <t>All DOTS telemetry parameters in the payload of the DOTS signal
-      channel MUST be mapped to CBOR types as shown in Table 2:</t>
+      channel MUST be mapped to CBOR types as shown in Table 3:</t>
 
       <t><list style="symbols">
           <t>Note: Implementers must check that the mapping output provided by
@@ -4985,7 +4985,7 @@ module ietf-dots-mapping {
 | upper-type           | uint8       |32772 | 0 unsigned    | Number |
 +----------------------+-------------+------+---------------+--------+ 
 
-               Table 2: YANG/JSON Mapping Parameters to CBOR 
+               Table 3: YANG/JSON Mapping Parameters to CBOR 
 ]]></artwork>
         </figure></t>
     </section>
@@ -5119,7 +5119,7 @@ module ietf-dots-mapping {
    | current-g            | TBA84 |   0   |    IESG    |   [RFCXXXX]   |
    +----------------------+-------+-------+------------+---------------+
 
-           Table 3: Registered DOTS Signal Channel CBOR Key Values
+           Table 4: Registered DOTS Signal Channel CBOR Key Values
 ]]></artwork>
           </figure></t>
       </section>
@@ -5136,7 +5136,7 @@ module ietf-dots-mapping {
 | TBA  | overlapping-pipes | Overlapping pipe scope |  [RFCXXXX]  |
 +------+-------------------+------------------------+-------------+
 
-   Table 4: Registered DOTS Signal Channel Conflict Cause Code
+   Table 5: Registered DOTS Signal Channel Conflict Cause Code
 ]]></artwork>
           </figure><list style="symbols">
             <t>Note to the RFC Editor: Please replace all occurrences of "TBA"
