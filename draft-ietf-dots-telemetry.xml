@@ -660,7 +660,7 @@
         <t>Some parameters (e.g., low percentile values) may be associated
         with different YANG types (e.g., decimal64 and yang:gauge64). To
         easily distinguish the types of these parameters while using
-        meaningful names, the following suffixes are used: </t>
+        meaningful names, the following suffixes are used:</t>
 
         <texttable>
           <ttcol>Suffix</ttcol>
@@ -5341,7 +5341,7 @@ module ietf-dots-mapping {
       <?rfc include='reference.RFC.8791'?>
 
       <reference anchor="Enterprise-Numbers"
-                 target="https://www.iana.org/assignments/enterprise-numbers.html">
+                 target="https://www.iana.org/assignments/enterprise-numbers">
         <front>
           <title>Private Enterprise Numbers</title>
 
