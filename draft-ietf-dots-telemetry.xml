@@ -282,6 +282,11 @@
       considered as a specific pipe if the DOTS server is hosted by each of
       these upstream providers.</t>
 
+      <t>The document uses IANA-assigned Enterprise Numbers. These numbers are
+      also known as "Private Enterprise Numbers" and "SMI (Structure of
+      Management Information) Network Management Private Enterprise Codes"
+      <xref target="Enterprise-Numbers"></xref>.</t>
+
       <t>The meaning of the symbols in YANG tree diagrams are defined in <xref
       target="RFC8340"></xref> and <xref target="RFC8791"></xref>.</t>
 

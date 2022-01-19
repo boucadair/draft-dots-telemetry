@@ -87,7 +87,7 @@ Table of Contents
        4.2.2.  DOTS Gateways . . . . . . . . . . . . . . . . . . . .  12
        4.2.3.  Empty URI Paths . . . . . . . . . . . . . . . . . . .  12
        4.2.4.  Controlling Configuration Data  . . . . . . . . . . .  12
-     4.3.  Block-wise Transfer . . . . . . . . . . . . . . . . . . .  12
+     4.3.  Block-wise Transfer . . . . . . . . . . . . . . . . . . .  13
      4.4.  DOTS Multi-homing Considerations  . . . . . . . . . . . .  13
      4.5.  YANG Considerations . . . . . . . . . . . . . . . . . . .  13
      4.6.  A Note About Examples . . . . . . . . . . . . . . . . . .  15
@@ -319,17 +319,17 @@ Internet-Draft               DOTS Telemetry                 January 2022
    interconnection link may be considered as a specific pipe if the DOTS
    server is hosted by each of these upstream providers.
 
+   The document uses IANA-assigned Enterprise Numbers.  These numbers
+   are also known as "Private Enterprise Numbers" and "SMI (Structure of
+   Management Information) Network Management Private Enterprise Codes"
+   [Enterprise-Numbers].
+
    The meaning of the symbols in YANG tree diagrams are defined in
    [RFC8340] and [RFC8791].
 
    Consistent with the convention set in Section 2 of [RFC8783], the
    examples in Section 7.1.6 use "/restconf" as the discovered RESTCONF
    API root path.  Within these examples, some protocol header lines are
-   split into multiple lines for display purposes only.  When a line
-   ends with backslash ('\') as the last character, the line is wrapped
-   for display purposes.  It is to be considered to be joined to the
-   next line by deleting the backslash, the following line break, and
-   the leading whitespace of the next line.
 
 
 
@@ -337,6 +337,12 @@ Boucadair, et al.         Expires 23 July 2022                  [Page 6]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   split into multiple lines for display purposes only.  When a line
+   ends with backslash ('\') as the last character, the line is wrapped
+   for display purposes.  It is to be considered to be joined to the
+   next line by deleting the backslash, the following line break, and
+   the leading whitespace of the next line.
 
 3.  DOTS Telemetry: Overview and Purpose
 
@@ -379,13 +385,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    feedback about their requests for protection.  Therefore, it is
    valuable for DOTS servers to share DOTS telemetry with DOTS clients.
 
-   Mutual sharing of information is thus crucial for "closing the
-   mitigation loop" between DOTS clients and servers.  For the server
-   side team, it is important to confirm that the same attacks that the
-   DOTS server's mitigation resources are seeing are those that a DOTS
-   client is asking for mitigation of.  For the DOTS client side team,
-   it is important to realize that the DOTS clients receive the required
-   service.  For example, understanding that "I asked for mitigation of
+
 
 
 
@@ -394,6 +394,13 @@ Boucadair, et al.         Expires 23 July 2022                  [Page 7]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
+   Mutual sharing of information is thus crucial for "closing the
+   mitigation loop" between DOTS clients and servers.  For the server
+   side team, it is important to confirm that the same attacks that the
+   DOTS server's mitigation resources are seeing are those that a DOTS
+   client is asking for mitigation of.  For the DOTS client side team,
+   it is important to realize that the DOTS clients receive the required
+   service.  For example, understanding that "I asked for mitigation of
    two attacks and my DOTS server detects and mitigates only one of
    them".  Cases of inconsistency in attack classification between DOTS
    clients and servers can be highlighted, and maybe handled, using the
@@ -435,13 +442,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    much more challenging.  The ability to distinguish legitimate traffic
    from attacker traffic on a per packet basis is complex.  For example,
    a packet may look "legitimate" and no attack signature can be
-   identified.  The anomaly can be identified only after detailed
-   statistical analysis.  DDoS attack mitigators use the normal baseline
-   during the mitigation of an attack to identify and categorize the
-   expected appearance of a specific traffic pattern.  Particularly, the
-   mitigators use the normal baseline to recognize the "level of
-   normality" that needs to be achieved during the various mitigation
-   process.
 
 
 
@@ -449,6 +449,14 @@ Boucadair, et al.         Expires 23 July 2022                  [Page 8]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   identified.  The anomaly can be identified only after detailed
+   statistical analysis.  DDoS attack mitigators use the normal baseline
+   during the mitigation of an attack to identify and categorize the
+   expected appearance of a specific traffic pattern.  Particularly, the
+   mitigators use the normal baseline to recognize the "level of
+   normality" that needs to be achieved during the various mitigation
+   process.
 
    Normal baseline calculation is performed based on continuous learning
    of the normal behavior of the protected entities.  The minimum
@@ -485,14 +493,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
       cases where they do not have any knowledge of the traffic
       beforehand.
 
-   Of course, this information can be provided using out-of-band
-   mechanisms or manual configuration at the risk of unmaintained
-   information becoming inaccurate as the network evolves and "normal"
-   patterns change.  The use of a dynamic and collaborative means
-   between the DOTS client and server to identify and share key
-   parameters for the sake of efficient DDoS protection is valuable.
-
-
 
 
 
@@ -505,6 +505,13 @@ Boucadair, et al.         Expires 23 July 2022                  [Page 9]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   Of course, this information can be provided using out-of-band
+   mechanisms or manual configuration at the risk of unmaintained
+   information becoming inaccurate as the network evolves and "normal"
+   patterns change.  The use of a dynamic and collaborative means
+   between the DOTS client and server to identify and share key
+   parameters for the sake of efficient DDoS protection is valuable.
 
 3.3.  Efficient Mitigation
 
@@ -547,13 +554,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    enough to be contained in a single IP packet (Section 2.2 of
    [RFC8612]).  In contrast, the DOTS data channel is available for
    high-bandwidth data transfer before or after an attack, using more
-   conventional transport protocol techniques (Section 2.3 of
-   [RFC8612]).  It is generally preferable to perform advance
-   configuration over the DOTS data channel, including configuring
-   aliases for static or nearly static data sets such as sets of network
-   addresses/prefixes that might be subject to related attacks.  This
-   design helps to optimize the use of the DOTS signal channel for the
-   small messages that truly require reliable delivery during an attack.
 
 
 
@@ -561,6 +561,14 @@ Boucadair, et al.         Expires 23 July 2022                 [Page 10]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   conventional transport protocol techniques (Section 2.3 of
+   [RFC8612]).  It is generally preferable to perform advance
+   configuration over the DOTS data channel, including configuring
+   aliases for static or nearly static data sets such as sets of network
+   addresses/prefixes that might be subject to related attacks.  This
+   design helps to optimize the use of the DOTS signal channel for the
+   small messages that truly require reliable delivery during an attack.
 
    Telemetry information has aspects that correspond to both operational
    modes (i.e., signal and data channels): there is certainly a need to
@@ -603,20 +611,15 @@ Internet-Draft               DOTS Telemetry                 January 2022
    request if the notified attack cannot be mitigated locally within the
    DOTS client domain.
 
-   Aggregate DOTS telemetry data can also be included in efficacy update
-   (Section 8.1) or mitigation update (Section 8.2) messages.
-
-
-
-
-
-
 
 
 Boucadair, et al.         Expires 23 July 2022                 [Page 11]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   Aggregate DOTS telemetry data can also be included in efficacy update
+   (Section 8.1) or mitigation update (Section 8.2) messages.
 
 4.2.  Generic Considerations
 
@@ -658,12 +661,9 @@ Internet-Draft               DOTS Telemetry                 January 2022
    Section of 4.4.2 of [RFC9132].  These considerations are not
    reiterated in the following sections.
 
-4.3.  Block-wise Transfer
 
-   DOTS clients can use block wise transfer [RFC7959] with the
-   recommendation detailed in Section 4.4.2 of [RFC9132] to control the
-   size of a response when the data to be returned does not fit within a
-   single datagram.
+
+
 
 
 
@@ -673,6 +673,13 @@ Boucadair, et al.         Expires 23 July 2022                 [Page 12]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+4.3.  Block-wise Transfer
+
+   DOTS clients can use block wise transfer [RFC7959] with the
+   recommendation detailed in Section 4.4.2 of [RFC9132] to control the
+   size of a response when the data to be returned does not fit within a
+   single datagram.
 
    DOTS clients can also use CoAP Block1 Option in a PUT request
    (Section 2.5 of [RFC7959]) to initiate large transfers, but these
@@ -714,13 +721,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    which convey request parameters and response information such as
    errors.
 
-   This document specifies a YANG module [RFC7950] for representing DOTS
-   telemetry message types (Section 10.1).  All parameters in the
-   payload of the DOTS signal channel are mapped to CBOR types as
-   specified in Section 11.  As a reminder, Section 3 of [RFC9132]
-   defines the rules for mapping YANG-modeled data to CBOR.
-
-
 
 
 
@@ -729,6 +729,12 @@ Boucadair, et al.         Expires 23 July 2022                 [Page 13]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   This document specifies a YANG module [RFC7950] for representing DOTS
+   telemetry message types (Section 10.1).  All parameters in the
+   payload of the DOTS signal channel are mapped to CBOR types as
+   specified in Section 11.  As a reminder, Section 3 of [RFC9132]
+   defines the rules for mapping YANG-modeled data to CBOR.
 
    The DOTS telemetry module (Section 10.1) is not intended to be used
    via NETCONF/RESTCONF for DOTS server management purposes.  It serves
@@ -770,14 +776,8 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
                                  Table 1
 
-   The full tree diagram of the DOTS telemetry module can be generated
-   using the "pyang" tool [PYANG].  That tree is not included here
-   because it is too long (Section 3.3 of [RFC8340]).  Instead, subtrees
-   are provided for the reader's convenience.
 
-   In order to optimize the data exchanged over the DOTS signal channel,
-   the document specifies a second YANG module ("ietf-dots-mapping",
-   Section 10.2) that augments the DOTS data channel [RFC8783].  This
+
 
 
 
@@ -786,6 +786,14 @@ Boucadair, et al.         Expires 23 July 2022                 [Page 14]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
+   The full tree diagram of the DOTS telemetry module can be generated
+   using the "pyang" tool [PYANG].  That tree is not included here
+   because it is too long (Section 3.3 of [RFC8340]).  Instead, subtrees
+   are provided for the reader's convenience.
+
+   In order to optimize the data exchanged over the DOTS signal channel,
+   the document specifies a second YANG module ("ietf-dots-mapping",
+   Section 10.2) that augments the DOTS data channel [RFC8783].  This
    augmentation can be used during 'idle' time to share the attack
    mapping details (Section 7.1.5).  DOTS clients can use tools, e.g.,
    YANG Library [RFC8525], to retrieve the list of features and
@@ -825,14 +833,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
                      Table 2: DOTS Telemetry Operations
 
-   Consequently, the "ietf-dots-telemetry" YANG module defined in
-   Section 10.1 defines data structure to represent new DOTS message
-   types called 'telemetry-setup' and 'telemetry'.  The tree structure
-   is shown in Figure 1.  More details are provided in Sections 6 and 7
-   about the exact structure of 'telemetry-setup' and 'telemetry'
-   message types.
-
-
 
 
 
@@ -841,6 +841,13 @@ Boucadair, et al.         Expires 23 July 2022                 [Page 15]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   Consequently, the "ietf-dots-telemetry" YANG module defined in
+   Section 10.1 defines data structure to represent new DOTS message
+   types called 'telemetry-setup' and 'telemetry'.  The tree structure
+   is shown in Figure 1.  More details are provided in Sections 6 and 7
+   about the exact structure of 'telemetry-setup' and 'telemetry'
+   message types.
 
      structure dots-telemetry:
        +-- (telemetry-message-type)?
@@ -881,14 +888,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
    with requests from other DOTS clients of the same DOTS client domain.
    More details are included in Section 6.5.
 
-   Telemetry setup configuration is bound to a DOTS client domain.  DOTS
-   servers MUST NOT expect DOTS clients to send regular requests to
-   refresh the telemetry setup configuration.  Any available telemetry
-   setup configuration is valid till the DOTS server ceases to service a
-   DOTS client domain.  DOTS servers MUST NOT reset 'tsid' because a
-   session failed with a DOTS client.  DOTS clients update their
-   telemetry setup configuration upon change of a parameter that may
-   impact attack mitigation.
+
 
 
 
@@ -897,6 +897,15 @@ Boucadair, et al.         Expires 23 July 2022                 [Page 16]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
+
+   Telemetry setup configuration is bound to a DOTS client domain.  DOTS
+   servers MUST NOT expect DOTS clients to send regular requests to
+   refresh the telemetry setup configuration.  Any available telemetry
+   setup configuration is valid till the DOTS server ceases to service a
+   DOTS client domain.  DOTS servers MUST NOT reset 'tsid' because a
+   session failed with a DOTS client.  DOTS clients update their
+   telemetry setup configuration upon change of a parameter that may
+   impact attack mitigation.
 
    DOTS telemetry setup configuration request and response messages are
    marked as Confirmable messages (Section 2.1 of [RFC7252]).
@@ -937,21 +946,17 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
    *  Acceptable percentile values
 
-   *  Telemetry notification interval
-
-   *  Acceptable Server-originated telemetry
-
-
-
-
-
-
 
 
 
 Boucadair, et al.         Expires 23 July 2022                 [Page 17]
 
 Internet-Draft               DOTS Telemetry                 January 2022
+
+
+   *  Telemetry notification interval
+
+   *  Acceptable Server-originated telemetry
 
 
 6.1.1.  Retrieve Current DOTS Telemetry Configuration
@@ -997,11 +1002,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
           |  |     |  +-- measurement-sample?            sample
           |  |     |  +-- low-percentile?                percentile
           |  |     |  +-- mid-percentile?                percentile
-          |  |     |  +-- high-percentile?               percentile
-          |  |     |  +-- server-originated-telemetry?   boolean
-          |  |     |  +-- telemetry-notify-interval?     uint16
-          |  |     +-- min-config-values
-          |  |     |  +-- measurement-interval?        interval
 
 
 
@@ -1010,6 +1010,11 @@ Boucadair, et al.         Expires 23 July 2022                 [Page 18]
 Internet-Draft               DOTS Telemetry                 January 2022
 
 
+          |  |     |  +-- high-percentile?               percentile
+          |  |     |  +-- server-originated-telemetry?   boolean
+          |  |     |  +-- telemetry-notify-interval?     uint16
+          |  |     +-- min-config-values
+          |  |     |  +-- measurement-interval?        interval
           |  |     |  +-- measurement-sample?          sample
           |  |     |  +-- low-percentile?              percentile
           |  |     |  +-- mid-percentile?              percentile
@@ -1050,11 +1055,6 @@ Internet-Draft               DOTS Telemetry                 January 2022
    present, the values carried in 'max-config-values' attributes MUST be
    greater or equal to their counterpart in 'min-config-values'
    attributes.
-
-
-
-
-
 
 
 
