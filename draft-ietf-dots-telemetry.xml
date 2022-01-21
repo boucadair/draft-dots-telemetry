@@ -4769,8 +4769,8 @@ module ietf-dots-mapping {
       leaf vendor-id {
         type uint32;
         description
-          "Vendor ID is a security vendor's Enterprise Number as 
-           registered with IANA.";
+          "Vendor ID is a security vendor's Private Enterprise Number 
+           as registered with IANA.";
         reference
           "IANA: Private Enterprise Numbers";
       }
