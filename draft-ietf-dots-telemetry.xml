@@ -285,7 +285,7 @@
       <t>The document uses IANA-assigned Enterprise Numbers. These numbers are
       also known as "Private Enterprise Numbers" and "SMI (Structure of
       Management Information) Network Management Private Enterprise Codes"
-      <xref target="Enterprise-Numbers"></xref>.</t>
+      <xref target="Private-Enterprise-Numbers"></xref>.</t>
 
       <t>The meaning of the symbols in YANG tree diagrams are defined in <xref
       target="RFC8340"></xref> and <xref target="RFC8791"></xref>.</t>
@@ -2238,7 +2238,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               <t hangText="vendor-id:">Vendor ID is a security vendor's
               enterprise number as registered in the IANA's "Private
               Enterprise Numbers" registry <xref
-              target="Enterprise-Numbers"></xref>.</t>
+              target="Private-Enterprise-Numbers"></xref>.</t>
 
               <t hangText="attack-id:">Unique identifier assigned for the
               attack by a vendor. This parameter MUST be present independent
@@ -4144,7 +4144,7 @@ module ietf-dots-telemetry {
     leaf vendor-id {
       type uint32;
       description
-        "Vendor ID is a security vendor's Enterprise Number as
+        "Vendor ID is a security vendor's Private Enterprise Number
          as registered with IANA.";
       reference
         "IANA: Private Enterprise Numbers";
@@ -5345,7 +5345,7 @@ module ietf-dots-mapping {
 
       <?rfc include='reference.RFC.8791'?>
 
-      <reference anchor="Enterprise-Numbers"
+      <reference anchor="Private-Enterprise-Numbers"
                  target="https://www.iana.org/assignments/enterprise-numbers">
         <front>
           <title>Private Enterprise Numbers</title>
