@@ -5302,7 +5302,8 @@ module ietf-dots-mapping {
       implementation and interoperability work.</t>
 
       <t>Many thanks to Jan Lindblad for the yangdoctors review, Nagendra
-      Nainar for the opsdir review, and James Gruessing for the artart
+      Nainar for the opsdir review, James Gruessing for the artart review,
+      Michael Scharf for the tsv-art review, and Ted Lemon for the int-dir
       review.</t>
 
       <t>Thanks to Benjamin Kaduk for the detailed AD review.</t>
