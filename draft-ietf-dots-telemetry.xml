@@ -485,7 +485,9 @@
         be subject to related attacks. This design helps to optimize the use
         of the DOTS signal channel for the small messages that are important
         to deliver during an attack. As a reminder, both DOTS signal and data
-        channels require secure communication channels.</t>
+        channels require secure communication channels (Section 11 of <xref
+        target="RFC9132"></xref> and Section 10 of <xref
+        target="RFC8783"></xref>).</t>
 
         <t>Telemetry information has aspects that correspond to both
         operational modes (i.e., signal and data channels): there is certainly
@@ -665,17 +667,6 @@
         list of features and deviations supported by the DOTS server over the
         data channel.</t>
       </section>
-
-      <section title="A Note About Examples">
-        <t>Examples are provided for illustration purposes. The document does
-        not aim to provide a comprehensive list of message examples.</t>
-
-        <t>JSON encoding of YANG-modeled data is used to illustrate the
-        various telemetry operations.</t>
-
-        <t>The examples use the Enterprise Number 32473 defined for
-        documentation use <xref target="RFC5612"></xref>.</t>
-      </section>
     </section>
 
     <section title="Generic Considerations">
@@ -728,6 +719,17 @@
         <xref target="map1"></xref>. The structure of telemetry message bodies
         is represented as a YANG data structure (<xref
         target="module"></xref>).</t>
+      </section>
+
+      <section title="A Note About Examples">
+        <t>Examples are provided for illustration purposes. The document does
+        not aim to provide a comprehensive list of message examples.</t>
+
+        <t>JSON encoding of YANG-modeled data is used to illustrate the
+        various telemetry operations.</t>
+
+        <t>The examples use the Enterprise Number 32473 defined for
+        documentation use <xref target="RFC5612"></xref>.</t>
       </section>
     </section>
 
