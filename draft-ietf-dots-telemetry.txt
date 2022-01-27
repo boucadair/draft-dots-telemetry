@@ -5,17 +5,17 @@
 DOTS                                                   M. Boucadair, Ed.
 Internet-Draft                                                    Orange
 Intended status: Standards Track                         T. Reddy.K, Ed.
-Expires: 28 July 2022                                             Akamai
+Expires: 31 July 2022                                             Akamai
                                                                 E. Doron
                                                             Radware Ltd.
                                                                  M. Chen
                                                                     CMCC
                                                               J. Shallow
-                                                         24 January 2022
+                                                         27 January 2022
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
-                      draft-ietf-dots-telemetry-19
+                      draft-ietf-dots-telemetry-21
 
 Abstract
 
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 July 2022.
+   This Internet-Draft will expire on 31 July 2022.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 1]
+Boucadair, et al.         Expires 31 July 2022                  [Page 1]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 2]
+Boucadair, et al.         Expires 31 July 2022                  [Page 2]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -165,7 +165,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 3]
+Boucadair, et al.         Expires 31 July 2022                  [Page 3]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -221,7 +221,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 4]
+Boucadair, et al.         Expires 31 July 2022                  [Page 4]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -277,7 +277,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 5]
+Boucadair, et al.         Expires 31 July 2022                  [Page 5]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -333,7 +333,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 6]
+Boucadair, et al.         Expires 31 July 2022                  [Page 6]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -389,7 +389,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 7]
+Boucadair, et al.         Expires 31 July 2022                  [Page 7]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -445,7 +445,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 8]
+Boucadair, et al.         Expires 31 July 2022                  [Page 8]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -501,7 +501,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                  [Page 9]
+Boucadair, et al.         Expires 31 July 2022                  [Page 9]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -557,7 +557,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 10]
+Boucadair, et al.         Expires 31 July 2022                 [Page 10]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -613,7 +613,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 11]
+Boucadair, et al.         Expires 31 July 2022                 [Page 11]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -669,7 +669,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 12]
+Boucadair, et al.         Expires 31 July 2022                 [Page 12]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -725,7 +725,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 13]
+Boucadair, et al.         Expires 31 July 2022                 [Page 13]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -781,7 +781,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 14]
+Boucadair, et al.         Expires 31 July 2022                 [Page 14]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -837,7 +837,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 15]
+Boucadair, et al.         Expires 31 July 2022                 [Page 15]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -893,7 +893,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 16]
+Boucadair, et al.         Expires 31 July 2022                 [Page 16]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -949,7 +949,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 17]
+Boucadair, et al.         Expires 31 July 2022                 [Page 17]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1005,7 +1005,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 18]
+Boucadair, et al.         Expires 31 July 2022                 [Page 18]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1061,7 +1061,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 19]
+Boucadair, et al.         Expires 31 July 2022                 [Page 19]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1107,9 +1107,9 @@ Internet-Draft               DOTS Telemetry                 January 2022
    tsid:  Telemetry Setup Identifier is an identifier for the DOTS
         telemetry setup configuration data represented as an integer.
         This identifier MUST be generated by DOTS clients.  'tsid'
-        values MUST increase monotonically (when a new PUT is generated
-        by a DOTS client to convey new configuration parameters for the
-        telemetry).
+        values MUST increase monotonically whenever new configuration
+        parameters (not just for changed values) need to be conveyed by
+        the DOTS client.
 
         The procedure specified in Section 4.4.1 of [RFC9132] for 'mid'
         rollover MUST also be followed for 'tsid' rollover.
@@ -1117,7 +1117,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 20]
+Boucadair, et al.         Expires 31 July 2022                 [Page 20]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1173,7 +1173,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 21]
+Boucadair, et al.         Expires 31 July 2022                 [Page 21]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1229,7 +1229,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 22]
+Boucadair, et al.         Expires 31 July 2022                 [Page 22]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1285,7 +1285,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 23]
+Boucadair, et al.         Expires 31 July 2022                 [Page 23]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1341,7 +1341,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 24]
+Boucadair, et al.         Expires 31 July 2022                 [Page 24]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1397,7 +1397,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 25]
+Boucadair, et al.         Expires 31 July 2022                 [Page 25]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1453,7 +1453,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 26]
+Boucadair, et al.         Expires 31 July 2022                 [Page 26]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1509,7 +1509,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 27]
+Boucadair, et al.         Expires 31 July 2022                 [Page 27]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1565,7 +1565,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 28]
+Boucadair, et al.         Expires 31 July 2022                 [Page 28]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1621,7 +1621,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 29]
+Boucadair, et al.         Expires 31 July 2022                 [Page 29]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1677,7 +1677,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 30]
+Boucadair, et al.         Expires 31 July 2022                 [Page 30]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1733,7 +1733,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 31]
+Boucadair, et al.         Expires 31 July 2022                 [Page 31]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1789,7 +1789,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 32]
+Boucadair, et al.         Expires 31 July 2022                 [Page 32]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1845,7 +1845,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 33]
+Boucadair, et al.         Expires 31 July 2022                 [Page 33]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1901,7 +1901,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 34]
+Boucadair, et al.         Expires 31 July 2022                 [Page 34]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -1957,7 +1957,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 35]
+Boucadair, et al.         Expires 31 July 2022                 [Page 35]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2013,7 +2013,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 36]
+Boucadair, et al.         Expires 31 July 2022                 [Page 36]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2069,7 +2069,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 37]
+Boucadair, et al.         Expires 31 July 2022                 [Page 37]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2125,7 +2125,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 38]
+Boucadair, et al.         Expires 31 July 2022                 [Page 38]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2181,7 +2181,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 39]
+Boucadair, et al.         Expires 31 July 2022                 [Page 39]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2237,7 +2237,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 40]
+Boucadair, et al.         Expires 31 July 2022                 [Page 40]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2293,7 +2293,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 41]
+Boucadair, et al.         Expires 31 July 2022                 [Page 41]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2349,7 +2349,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 42]
+Boucadair, et al.         Expires 31 July 2022                 [Page 42]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2405,7 +2405,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 43]
+Boucadair, et al.         Expires 31 July 2022                 [Page 43]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2461,7 +2461,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 44]
+Boucadair, et al.         Expires 31 July 2022                 [Page 44]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2517,7 +2517,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 45]
+Boucadair, et al.         Expires 31 July 2022                 [Page 45]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2573,7 +2573,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 46]
+Boucadair, et al.         Expires 31 July 2022                 [Page 46]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2629,7 +2629,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 47]
+Boucadair, et al.         Expires 31 July 2022                 [Page 47]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2685,7 +2685,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 48]
+Boucadair, et al.         Expires 31 July 2022                 [Page 48]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2741,7 +2741,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 49]
+Boucadair, et al.         Expires 31 July 2022                 [Page 49]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2797,7 +2797,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 50]
+Boucadair, et al.         Expires 31 July 2022                 [Page 50]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2853,7 +2853,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 51]
+Boucadair, et al.         Expires 31 July 2022                 [Page 51]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2909,7 +2909,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 52]
+Boucadair, et al.         Expires 31 July 2022                 [Page 52]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -2965,7 +2965,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 53]
+Boucadair, et al.         Expires 31 July 2022                 [Page 53]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3021,7 +3021,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 54]
+Boucadair, et al.         Expires 31 July 2022                 [Page 54]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3077,7 +3077,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 55]
+Boucadair, et al.         Expires 31 July 2022                 [Page 55]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3133,7 +3133,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 56]
+Boucadair, et al.         Expires 31 July 2022                 [Page 56]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3184,12 +3184,12 @@ Internet-Draft               DOTS Telemetry                 January 2022
    tmid:  Telemetry Identifier is an identifier for the DOTS pre-or-
         ongoing-mitigation telemetry data represented as an integer.
         This identifier MUST be generated by DOTS clients. 'tmid' values
-        MUST increase monotonically (when a new PUT is generated by a
-        DOTS client to convey pre-or-ongoing-mitigation telemetry).
+        MUST increase monotonically whenever a DOTS client needs to
+        convey new set of pre-or-ongoing-mitigation telemetry.
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 57]
+Boucadair, et al.         Expires 31 July 2022                 [Page 57]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3245,7 +3245,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 58]
+Boucadair, et al.         Expires 31 July 2022                 [Page 58]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3301,7 +3301,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 59]
+Boucadair, et al.         Expires 31 July 2022                 [Page 59]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3357,7 +3357,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 60]
+Boucadair, et al.         Expires 31 July 2022                 [Page 60]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3413,7 +3413,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 61]
+Boucadair, et al.         Expires 31 July 2022                 [Page 61]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3469,7 +3469,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 62]
+Boucadair, et al.         Expires 31 July 2022                 [Page 62]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3525,7 +3525,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 63]
+Boucadair, et al.         Expires 31 July 2022                 [Page 63]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3581,7 +3581,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 64]
+Boucadair, et al.         Expires 31 July 2022                 [Page 64]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3637,7 +3637,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 65]
+Boucadair, et al.         Expires 31 July 2022                 [Page 65]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3693,7 +3693,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 66]
+Boucadair, et al.         Expires 31 July 2022                 [Page 66]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3749,7 +3749,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 67]
+Boucadair, et al.         Expires 31 July 2022                 [Page 67]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3805,7 +3805,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 68]
+Boucadair, et al.         Expires 31 July 2022                 [Page 68]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3861,7 +3861,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 69]
+Boucadair, et al.         Expires 31 July 2022                 [Page 69]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3917,7 +3917,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 70]
+Boucadair, et al.         Expires 31 July 2022                 [Page 70]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -3973,7 +3973,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 71]
+Boucadair, et al.         Expires 31 July 2022                 [Page 71]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4029,7 +4029,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 72]
+Boucadair, et al.         Expires 31 July 2022                 [Page 72]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4085,7 +4085,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 73]
+Boucadair, et al.         Expires 31 July 2022                 [Page 73]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4141,7 +4141,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 74]
+Boucadair, et al.         Expires 31 July 2022                 [Page 74]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4197,7 +4197,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 75]
+Boucadair, et al.         Expires 31 July 2022                 [Page 75]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4253,7 +4253,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 76]
+Boucadair, et al.         Expires 31 July 2022                 [Page 76]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4309,7 +4309,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 77]
+Boucadair, et al.         Expires 31 July 2022                 [Page 77]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4365,7 +4365,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 78]
+Boucadair, et al.         Expires 31 July 2022                 [Page 78]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4421,7 +4421,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 79]
+Boucadair, et al.         Expires 31 July 2022                 [Page 79]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4477,7 +4477,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 80]
+Boucadair, et al.         Expires 31 July 2022                 [Page 80]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4533,7 +4533,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 81]
+Boucadair, et al.         Expires 31 July 2022                 [Page 81]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4589,7 +4589,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 82]
+Boucadair, et al.         Expires 31 July 2022                 [Page 82]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4645,7 +4645,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 83]
+Boucadair, et al.         Expires 31 July 2022                 [Page 83]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4701,7 +4701,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 84]
+Boucadair, et al.         Expires 31 July 2022                 [Page 84]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4757,7 +4757,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 85]
+Boucadair, et al.         Expires 31 July 2022                 [Page 85]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4813,7 +4813,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 86]
+Boucadair, et al.         Expires 31 July 2022                 [Page 86]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4869,7 +4869,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 87]
+Boucadair, et al.         Expires 31 July 2022                 [Page 87]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4925,7 +4925,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 88]
+Boucadair, et al.         Expires 31 July 2022                 [Page 88]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -4981,7 +4981,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 89]
+Boucadair, et al.         Expires 31 July 2022                 [Page 89]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5037,7 +5037,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 90]
+Boucadair, et al.         Expires 31 July 2022                 [Page 90]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5093,7 +5093,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 91]
+Boucadair, et al.         Expires 31 July 2022                 [Page 91]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5149,7 +5149,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 92]
+Boucadair, et al.         Expires 31 July 2022                 [Page 92]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5205,7 +5205,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 93]
+Boucadair, et al.         Expires 31 July 2022                 [Page 93]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5261,7 +5261,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 94]
+Boucadair, et al.         Expires 31 July 2022                 [Page 94]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5317,7 +5317,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 95]
+Boucadair, et al.         Expires 31 July 2022                 [Page 95]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5373,7 +5373,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 96]
+Boucadair, et al.         Expires 31 July 2022                 [Page 96]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5429,7 +5429,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 97]
+Boucadair, et al.         Expires 31 July 2022                 [Page 97]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5485,7 +5485,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 98]
+Boucadair, et al.         Expires 31 July 2022                 [Page 98]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5541,7 +5541,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                 [Page 99]
+Boucadair, et al.         Expires 31 July 2022                 [Page 99]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5597,7 +5597,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 100]
+Boucadair, et al.         Expires 31 July 2022                [Page 100]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5653,7 +5653,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 101]
+Boucadair, et al.         Expires 31 July 2022                [Page 101]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5709,7 +5709,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 102]
+Boucadair, et al.         Expires 31 July 2022                [Page 102]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5765,7 +5765,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 103]
+Boucadair, et al.         Expires 31 July 2022                [Page 103]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5821,7 +5821,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 104]
+Boucadair, et al.         Expires 31 July 2022                [Page 104]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5877,7 +5877,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 105]
+Boucadair, et al.         Expires 31 July 2022                [Page 105]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5933,7 +5933,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 106]
+Boucadair, et al.         Expires 31 July 2022                [Page 106]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -5989,7 +5989,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 107]
+Boucadair, et al.         Expires 31 July 2022                [Page 107]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6045,7 +6045,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 108]
+Boucadair, et al.         Expires 31 July 2022                [Page 108]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6101,7 +6101,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 109]
+Boucadair, et al.         Expires 31 July 2022                [Page 109]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6157,7 +6157,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 110]
+Boucadair, et al.         Expires 31 July 2022                [Page 110]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6213,7 +6213,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 111]
+Boucadair, et al.         Expires 31 July 2022                [Page 111]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6269,7 +6269,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 112]
+Boucadair, et al.         Expires 31 July 2022                [Page 112]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6325,7 +6325,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 113]
+Boucadair, et al.         Expires 31 July 2022                [Page 113]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6381,7 +6381,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 114]
+Boucadair, et al.         Expires 31 July 2022                [Page 114]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6437,7 +6437,7 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 115]
+Boucadair, et al.         Expires 31 July 2022                [Page 115]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6493,7 +6493,7 @@ Authors' Addresses
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 116]
+Boucadair, et al.         Expires 31 July 2022                [Page 116]
 
 Internet-Draft               DOTS Telemetry                 January 2022
 
@@ -6549,4 +6549,4 @@ Internet-Draft               DOTS Telemetry                 January 2022
 
 
 
-Boucadair, et al.         Expires 28 July 2022                [Page 117]
+Boucadair, et al.         Expires 31 July 2022                [Page 117]
