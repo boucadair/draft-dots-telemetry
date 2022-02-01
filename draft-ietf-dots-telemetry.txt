@@ -806,7 +806,8 @@ Internet-Draft               DOTS Telemetry                February 2022
    not aim to provide a comprehensive list of message examples.
 
    JSON encoding of YANG-modeled data is used to illustrate the various
-   telemetry operations.
+   telemetry operations.  Parameters names are, thus, used rather than
+   their CBOR key values.
 
    The examples use the Enterprise Number 32473 defined for
    documentation use [RFC5612].
@@ -828,12 +829,11 @@ Internet-Draft               DOTS Telemetry                February 2022
 
                      Table 2: DOTS Telemetry Operations
 
-   Consequently, the "ietf-dots-telemetry" YANG module defined in
-   Section 11.1 defines data structure to represent new DOTS message
-   types called 'telemetry-setup' and 'telemetry'.  The tree structure
-   is shown in Figure 1.  More details are provided in Sections 7 and 8
-   about the exact structure of 'telemetry-setup' and 'telemetry'
-   message types.
+
+
+
+
+
 
 
 
@@ -841,6 +841,13 @@ Boucadair, et al.         Expires 5 August 2022                [Page 15]
 
 Internet-Draft               DOTS Telemetry                February 2022
 
+
+   Consequently, the "ietf-dots-telemetry" YANG module defined in
+   Section 11.1 defines data structure to represent new DOTS message
+   types called 'telemetry-setup' and 'telemetry'.  The tree structure
+   is shown in Figure 1.  More details are provided in Sections 7 and 8
+   about the exact structure of 'telemetry-setup' and 'telemetry'
+   message types.
 
      structure dots-telemetry:
        +-- (telemetry-message-type)?
@@ -881,14 +888,7 @@ Internet-Draft               DOTS Telemetry                February 2022
    with requests from other DOTS clients of the same DOTS client domain.
    More details are included in Section 7.5.
 
-   Telemetry setup configuration is bound to a DOTS client domain.  DOTS
-   servers MUST NOT expect DOTS clients to send regular requests to
-   refresh the telemetry setup configuration.  Any available telemetry
-   setup configuration is valid till the DOTS server ceases to service a
-   DOTS client domain.  DOTS servers MUST NOT reset 'tsid' because a
-   session failed with a DOTS client.  DOTS clients update their
-   telemetry setup configuration upon change of a parameter that may
-   impact attack mitigation.
+
 
 
 
@@ -897,6 +897,15 @@ Boucadair, et al.         Expires 5 August 2022                [Page 16]
 
 Internet-Draft               DOTS Telemetry                February 2022
 
+
+   Telemetry setup configuration is bound to a DOTS client domain.  DOTS
+   servers MUST NOT expect DOTS clients to send regular requests to
+   refresh the telemetry setup configuration.  Any available telemetry
+   setup configuration is valid till the DOTS server ceases to service a
+   DOTS client domain.  DOTS servers MUST NOT reset 'tsid' because a
+   session failed with a DOTS client.  DOTS clients update their
+   telemetry setup configuration upon change of a parameter that may
+   impact attack mitigation.
 
    DOTS telemetry setup configuration request and response messages are
    marked as Confirmable messages (Section 2.1 of [RFC7252]).
@@ -937,21 +946,17 @@ Internet-Draft               DOTS Telemetry                February 2022
 
    *  Acceptable percentile values
 
-   *  Telemetry notification interval
-
-   *  Acceptable Server-originated telemetry
-
-
-
-
-
-
 
 
 
 Boucadair, et al.         Expires 5 August 2022                [Page 17]
 
 Internet-Draft               DOTS Telemetry                February 2022
+
+
+   *  Telemetry notification interval
+
+   *  Acceptable Server-originated telemetry
 
 
 7.1.1.  Retrieve Current DOTS Telemetry Configuration
@@ -997,11 +1002,6 @@ Internet-Draft               DOTS Telemetry                February 2022
           |  |     |  +-- measurement-sample?            sample
           |  |     |  +-- low-percentile?                percentile
           |  |     |  +-- mid-percentile?                percentile
-          |  |     |  +-- high-percentile?               percentile
-          |  |     |  +-- server-originated-telemetry?   boolean
-          |  |     |  +-- telemetry-notify-interval?     uint16
-          |  |     +-- min-config-values
-          |  |     |  +-- measurement-interval?        interval
 
 
 
@@ -1010,6 +1010,11 @@ Boucadair, et al.         Expires 5 August 2022                [Page 18]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
+          |  |     |  +-- high-percentile?               percentile
+          |  |     |  +-- server-originated-telemetry?   boolean
+          |  |     |  +-- telemetry-notify-interval?     uint16
+          |  |     +-- min-config-values
+          |  |     |  +-- measurement-interval?        interval
           |  |     |  +-- measurement-sample?          sample
           |  |     |  +-- low-percentile?              percentile
           |  |     |  +-- mid-percentile?              percentile
@@ -1050,11 +1055,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    present, the values carried in 'max-config-values' attributes MUST be
    greater or equal to their counterpart in 'min-config-values'
    attributes.
-
-
-
-
-
 
 
 
@@ -1122,7 +1122,7 @@ Boucadair, et al.         Expires 5 August 2022                [Page 20]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-        This is a mandatory attribute. 'tsid' MUST follow 'cuid'.
+        This is a mandatory attribute. 'tsid' MUST appear after 'cuid'.
 
    'cuid' and 'tsid' MUST NOT appear in the PUT request message body.
 
@@ -2938,11 +2938,11 @@ Internet-Draft               DOTS Telemetry                February 2022
 
               Figure 30: Vendor Attack Mapping Tree Structure
 
-   A DOTS client sends a GET request to retrieve the capabilities
-   supported by a DOTS server as per Section 7.1 of [RFC8783].  This
-   request is meant to assess whether the capability of sharing vendor
-   attack mapping details is supported by the server (i.e., check the
-   value of 'vendor-mapping-enabled').
+   A DOTS client sends a GET request over the DOTS data channel to
+   retrieve the capabilities supported by a DOTS server as per
+   Section 7.1 of [RFC8783].  This request is meant to assess whether
+   the capability of sharing vendor attack mapping details is supported
+   by the server (i.e., check the value of 'vendor-mapping-enabled').
 
    If 'vendor-mapping-enabled' is set to 'true', a DOTS client MAY send
    a GET request to retrieve the DOTS server's vendor attack mapping
@@ -2990,8 +2990,8 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
    }
 
-     Figure 33: Response to a GET to Retrieve the Vendors List used by
-                               a DOTS Server
+     Figure 33: Response Message Body to a GET to Retrieve the Vendors
+                         List used by a DOTS Server
 
    The DOTS client repeats the above procedure regularly (e.g., once a
    week) to update the DOTS server's vendor attack mapping details.
@@ -3197,7 +3197,8 @@ Internet-Draft               DOTS Telemetry                February 2022
         The procedure specified in Section 4.4.1 of [RFC9132] for 'mid'
         rollover MUST be followed for 'tmid' rollover.
 
-        This is a mandatory attribute. 'tmid' MUST follow 'cuid'.
+        This is a mandatory attribute. 'tmid' MUST appear in the message
+        after 'cuid'.
 
    'cuid' and 'tmid' MUST NOT appear in the PUT request message body.
 
@@ -3241,7 +3242,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    Uri-Path: "tm"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
    Uri-Path: "tmid=123"
-
 
 
 
@@ -6260,12 +6260,12 @@ Internet-Draft               DOTS Telemetry                February 2022
 
    Thanks to Benjamin Kaduk for the detailed AD review.
 
-   Thanks to Roman Danyliw and Eric Vyncke for the IESG review.
+   Thanks to Roman Danyliw, Eric Vyncke, and Francesca Palombini for the
+   IESG review.
 
 17.  References
 
 17.1.  Normative References
-
 
 
 

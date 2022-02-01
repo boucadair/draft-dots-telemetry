@@ -729,7 +729,8 @@
         not aim to provide a comprehensive list of message examples.</t>
 
         <t>JSON encoding of YANG-modeled data is used to illustrate the
-        various telemetry operations.</t>
+        various telemetry operations. Parameters names are, thus, used rather
+        than their CBOR key values.</t>
 
         <t>The examples use the Enterprise Number 32473 defined for
         documentation use <xref target="RFC5612"></xref>.</t>
@@ -1002,7 +1003,7 @@ Content-Format: "application/dots+cbor"
               procedure specified in Section 4.4.1 of <xref
               target="RFC9132"></xref> for 'mid' rollover MUST also be
               followed for 'tsid' rollover.<vspace blankLines="1" />This is a
-              mandatory attribute. 'tsid' MUST follow 'cuid'.</t>
+              mandatory attribute. 'tsid' MUST appear after 'cuid'.</t>
             </list></t>
 
           <t>'cuid' and 'tsid' MUST NOT appear in the PUT request message
@@ -2453,11 +2454,11 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
 ]]></artwork>
             </figure></t>
 
-          <t>A DOTS client sends a GET request to retrieve the capabilities
-          supported by a DOTS server as per Section 7.1 of <xref
-          target="RFC8783"></xref>. This request is meant to assess whether
-          the capability of sharing vendor attack mapping details is supported
-          by the server (i.e., check the value of
+          <t>A DOTS client sends a GET request over the DOTS data channel to
+          retrieve the capabilities supported by a DOTS server as per Section
+          7.1 of <xref target="RFC8783"></xref>. This request is meant to
+          assess whether the capability of sharing vendor attack mapping
+          details is supported by the server (i.e., check the value of
           'vendor-mapping-enabled').</t>
 
           <t>If 'vendor-mapping-enabled' is set to 'true', a DOTS client MAY
@@ -2491,7 +2492,7 @@ Accept: application/yang-data+json
             </figure></t>
 
           <t><figure anchor="MfSdr"
-              title="Response to a GET to Retrieve the Vendors List used by a DOTS Server">
+              title="Response Message Body to a GET to Retrieve the Vendors List used by a DOTS Server">
               <artwork><![CDATA[{
   "ietf-dots-mapping:vendor-mapping": {
     "vendor": [
@@ -2652,7 +2653,7 @@ Content-Format: "application/dots+cbor"
             blankLines="1" />The procedure specified in Section 4.4.1 of <xref
             target="RFC9132"></xref> for 'mid' rollover MUST be followed for
             'tmid' rollover.<vspace blankLines="1" />This is a mandatory
-            attribute. 'tmid' MUST follow 'cuid'.</t>
+            attribute. 'tmid' MUST appear in the message after 'cuid'.</t>
           </list></t>
 
         <t>'cuid' and 'tmid' MUST NOT appear in the PUT request message
@@ -5317,8 +5318,8 @@ module ietf-dots-mapping {
 
       <t>Thanks to Benjamin Kaduk for the detailed AD review.</t>
 
-      <t>Thanks to Roman Danyliw and &Eacute;ric Vyncke for the IESG review.
-      </t>
+      <t>Thanks to Roman Danyliw, &Eacute;ric Vyncke, and Francesca Palombini
+      for the IESG review. </t>
     </section>
   </middle>
 
