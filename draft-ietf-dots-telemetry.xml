@@ -729,7 +729,7 @@
         not aim to provide a comprehensive list of message examples.</t>
 
         <t>JSON encoding of YANG-modeled data is used to illustrate the
-        various telemetry operations. Parameters names are, thus, used rather
+        various telemetry operations. Parameter names are, thus, used rather
         than their CBOR key values.</t>
 
         <t>The examples use the Enterprise Number 32473 defined for
