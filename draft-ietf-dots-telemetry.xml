@@ -173,7 +173,7 @@
           However, all applications with their port numbers open at network
           edges can be attractive attack targets. <vspace
           blankLines="1" />Application layer attacks are considered more
-          complex and hard to categorize, and therefore harder to detect and
+          complex and harder to categorize, and therefore harder to detect and
           mitigate efficiently.</t>
         </list></t>
 
@@ -187,14 +187,14 @@
       attack vectors right after a successful mitigation, burdening their
       opponents with changing their defense methods.</t>
 
-      <t>The conclusion derived from these real scenarios is that modern
-      attacks detection and mitigation are most certainly complicated and
-      highly convoluted tasks. They demand a comprehensive knowledge of the
-      attack attributes, the normal behavior of the targeted systems
-      (including normal traffic patterns), as well as the attacker's ongoing
-      and past actions. Even more challenging, retrieving all the analytics
-      needed for detecting these attacks is not simple with the industry's
-      current reporting capabilities.</t>
+      <t>The conclusion derived from the aforementioned attack scenarios is
+      that modern attacks detection and mitigation are most certainly
+      complicated and highly convoluted tasks. They demand a comprehensive
+      knowledge of the attack attributes, the normal behavior of the targeted
+      systems (including normal traffic patterns), as well as the attacker's
+      ongoing and past actions. Even more challenging, retrieving all the
+      analytics needed for detecting these attacks is not simple with the
+      industry's current reporting capabilities.</t>
 
       <t>The DOTS signal channel protocol <xref target="RFC9132"></xref> is
       used to carry information about a network resource or a network (or a
@@ -276,7 +276,7 @@
       client domain can receive. Whether a "pipe" is mapped to one or a group
       of network interfaces is deployment-specific. For example, each
       interconnection link may be considered as a specific pipe if the DOTS
-      server is hosted by each upstream provider, whike the aggregate of all
+      server is hosted by each upstream provider, while the aggregate of all
       links to connect to upstream network providers can be considered by a
       DOTS client domain as a single pipe when communicating with a DOTS
       server not hosted by these upstream providers.</t>
@@ -294,9 +294,9 @@
       "/restconf" as the discovered RESTCONF API root path. Within these
       examples, some protocol header lines are split into multiple lines for
       display purposes only. When a line ends with backslash ('\') as the last
-      character, the line is wrapped for display purposes. It is to be
-      considered to be joined to the next line by deleting the backslash, the
-      following line break, and the leading whitespace of the next line.</t>
+      character, the line is wrapped for display purposes. It is considered to
+      be joined to the next line by deleting the backslash, the following line
+      break, and the leading whitespace of the next line.</t>
     </section>
 
     <section anchor="overview" title="DOTS Telemetry: Overview and Purpose">
@@ -374,9 +374,10 @@
         an "anomaly detection" approach. For the latter, it is required to
         maintain rigorous learning of "normal" behavior, and an "anomaly" (or
         an attack) is identified and categorized based on the knowledge about
-        the normal behavior and a deviation from this normal behavior. Machine
-        learning approaches are used such that the actual traffic thresholds
-        are automatically calculated by learning the protected entity's normal
+        the normal behavior and a deviation from this normal behavior.
+        Statistical and artificial intelligence algorithms (e.g., machine
+        learning) are used such that the actual traffic thresholds are
+        automatically calculated by learning the protected entity's normal
         traffic behavior during 'idle' time (i.e., no mitigation is active).
         The normal traffic characterization learned is referred to as the
         "normal traffic baseline". An attack is detected when the victim's
@@ -494,10 +495,10 @@
         a need to convey updated information about ongoing attack traffic and
         targets during an attack, so as to convey detailed information about
         mitigation status and inform updates to mitigation strategy in the
-        face of adaptive attacks, but it is also useful to provide mitigation
-        services with a picture of normal or "baseline" traffic towards
-        potential targets, to aid in detecting when incoming traffic deviates
-        from normal into being an attack. Also, one might populate a
+        face of adaptive attacks. However, it is also useful to provide
+        mitigation services with a picture of normal or "baseline" traffic
+        towards potential targets to aid in detecting when incoming traffic
+        deviates from normal into being an attack. Also, one might populate a
         "database" of classifications of known types of attack so that a short
         attack identifier can be used during attack time to describe an
         observed attack. This specification does make provision for use of the
@@ -597,10 +598,11 @@
         <t>The DOTS telemetry module (<xref target="module"></xref>) is not
         intended to be used via NETCONF/RESTCONF for DOTS server management
         purposes. It serves only to provide a data model and encoding
-        following <xref target="RFC8791"></xref>. Server deviations are
-        strongly discouraged, as the peer DOTS agent does not have means to
-        retrieve the list of deviations and thus interoperability issues are
-        likely to be encountered.</t>
+        following <xref target="RFC8791"></xref>. Server deviations (Section
+        5.6.3 of <xref target="RFC7950"></xref>) are strongly discouraged, as
+        the peer DOTS agent does not have means to retrieve the list of
+        deviations and thus interoperability issues are likely to be
+        encountered.</t>
 
         <t>The DOTS telemetry module (<xref target="module"></xref>) uses
         "enumerations" rather than "identities" to define units, samples, and
@@ -2123,7 +2125,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           the 'total-attack-connection-protocol' attribute is used to convey
           the percentile values (including peak and current observed values)
           of various attributes related to the total attack connections. The
-          following optional subattributes for the target per transport
+          following optional sub-attributes for the target per transport
           protocol are included to represent the attack characteristics:<?rfc subcompact="yes" ?><list
               style="symbols">
               <t>The number of simultaneous attack connections to the
@@ -2234,7 +2236,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         <section anchor="attackdetails" title="Attack Details">
           <t>This attribute (depicted in <xref target="adt"></xref>) is used
           to signal a set of details characterizing an attack. The following
-          subattributes describing the ongoing attack can be signalled as
+          sub-attributes describing the ongoing attack can be signalled as
           attack details:</t>
 
           <t><list style="hanging">
@@ -2420,7 +2422,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
           target="data"></xref> augments the "ietf-dots-data-channel" <xref
           target="RFC8783"></xref> module. The tree structure of the
           "ietf-dots-mapping" module is shown in <xref
-          target="abstract-data"></xref>.</t>
+          target="abstract-data"></xref>. Future versions of the
+          "ietf-dots-mapping" module may be considered to indicate a language
+          tag <xref target="RFC5646"></xref>.</t>
 
           <t><figure anchor="abstract-data"
               title="Vendor Attack Mapping Tree Structure">
@@ -3389,7 +3393,7 @@ module ietf-dots-telemetry {
       enum high {
         value 4;
         description
-          "The DOTS client domain is under extremly severe
+          "The DOTS client domain is under extremely severe
            conditions.";
       }
       enum unknown {
@@ -5308,9 +5312,11 @@ module ietf-dots-mapping {
       <t>Many thanks to Jan Lindblad for the yangdoctors review, Nagendra
       Nainar for the opsdir review, James Gruessing for the artart review,
       Michael Scharf for the tsv-art review, Ted Lemon for the int-dir review,
-      and Robert Sparks for the gen-art review.</t>
+      and Robert Sparks for the gen-art review. </t>
 
       <t>Thanks to Benjamin Kaduk for the detailed AD review.</t>
+
+      <t>Thanks to Roman Danyliw for the IESG review. </t>
     </section>
   </middle>
 
@@ -5392,6 +5398,8 @@ module ietf-dots-mapping {
       <?rfc include='reference.I-D.ietf-dots-robust-blocks'?>
 
       <?rfc include='reference.RFC.5612'?>
+
+      <?rfc include='reference.RFC.5646'?>
 
       <reference anchor="Key-Map"
                  target="https://www.iana.org/assignments/dots/dots.xhtml#dots-signal-channel-cbor-key-values">
