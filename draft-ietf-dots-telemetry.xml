@@ -1003,7 +1003,8 @@ Content-Format: "application/dots+cbor"
               procedure specified in Section 4.4.1 of <xref
               target="RFC9132"></xref> for 'mid' rollover MUST also be
               followed for 'tsid' rollover.<vspace blankLines="1" />This is a
-              mandatory attribute. 'tsid' MUST appear after 'cuid'.</t>
+              mandatory attribute. 'tsid' MUST appear after 'cuid' in the
+              Uri-Path options.</t>
             </list></t>
 
           <t>'cuid' and 'tsid' MUST NOT appear in the PUT request message
@@ -2653,7 +2654,8 @@ Content-Format: "application/dots+cbor"
             blankLines="1" />The procedure specified in Section 4.4.1 of <xref
             target="RFC9132"></xref> for 'mid' rollover MUST be followed for
             'tmid' rollover.<vspace blankLines="1" />This is a mandatory
-            attribute. 'tmid' MUST appear in the message after 'cuid'.</t>
+            attribute. 'tmid' MUST appear after 'cuid' in the Uri-Path
+            options.</t>
           </list></t>
 
         <t>'cuid' and 'tmid' MUST NOT appear in the PUT request message

@@ -1122,7 +1122,8 @@ Boucadair, et al.         Expires 5 August 2022                [Page 20]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-        This is a mandatory attribute. 'tsid' MUST appear after 'cuid'.
+        This is a mandatory attribute. 'tsid' MUST appear after 'cuid'
+        in the Uri-Path options.
 
    'cuid' and 'tsid' MUST NOT appear in the PUT request message body.
 
@@ -1169,7 +1170,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    indicates that the DOTS client is not interested in receiving low-
    percentiles.  Likewise, setting 'mid-percentile' (or 'high-
    percentile') to the same value as 'low-percentile' (or 'mid-
-   percentile') indicates that the DOTS client is not interested in
 
 
 
@@ -1178,6 +1178,7 @@ Boucadair, et al.         Expires 5 August 2022                [Page 21]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
+   percentile') indicates that the DOTS client is not interested in
    receiving mid-percentiles (or high-percentiles).  For example, a DOTS
    client can send the request depicted in Figure 5 to inform the server
    that it is interested in receiving only high-percentiles.  This
@@ -1223,7 +1224,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    is equivalent to receiving a request with 'server-originated-
    telemetry' set to 'false'.  An example of a request to enable pre-or-
    ongoing-mitigation telemetry from DOTS servers is shown in Figure 6.
-
 
 
 
@@ -3197,8 +3197,8 @@ Internet-Draft               DOTS Telemetry                February 2022
         The procedure specified in Section 4.4.1 of [RFC9132] for 'mid'
         rollover MUST be followed for 'tmid' rollover.
 
-        This is a mandatory attribute. 'tmid' MUST appear in the message
-        after 'cuid'.
+        This is a mandatory attribute. 'tmid' MUST appear after 'cuid'
+        in the Uri-Path options.
 
    'cuid' and 'tmid' MUST NOT appear in the PUT request message body.
 
