@@ -4184,15 +4184,24 @@ module ietf-dots-telemetry {
       type string {
         pattern '^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3}){,2})?|'
               + '[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
-              + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|'
-              + '([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
-              + '(-([A-Za-z0-9]{2,8}))+)*(-x(-([A-Za-z0-9]{1,8}))+)?|'
-              + 'x(-([A-Za-z0-9]{1,8}))+|'
-              + '((en-gb-oed|i-ami|i-bnn|i-default|i-enochian|'
-              + 'i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|'
-              + 'i-tay|i-tsu|sgn-be-fr|sgn-be-nl|sgn-ch-de)|'
-              + '(art-lojban|cel-gaulish|no-bok|no-nyn|'
-              + 'zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang)))$';
+              + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}'
+              + '|([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
+              + '(-([A-Za-z0-9]{2,8}))+)*(-[Xx](-([A-Za-z0-9]{1,8}))+)?|'
+              + '[Xx](-([A-Za-z0-9]{1,8}))+|'
+              + '(([Ee][Nn]-[Gg][Bb]-[Oo][Ee][Dd]|[Ii]-[Aa][Mm][Ii]|[Ii]-'
+              + '[Bb][Nn][Nn]|[Ii]-[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-'
+              + '[Ee][Nn][Oo][Cc][Hh][Ii][Aa][Nn]|[Ii]-[Hh][Aa][Kk]|[Ii]-'
+              + '[Kk][Ll][Ii][Nn][Gg][Oo][Nn]|[Ii]-[Ll][Uu][Xx]|[Ii]-'
+              + '[Mm][Ii][Nn][Gg][Oo]|[Ii]-[Nn][Aa][Vv][Aa][Jj][Oo]|[Ii]-'
+              + '[Pp][Ww][Nn]|[Ii]-[Tt][Aa][Oo]|[Ii]-[Tt][Aa][Yy]|[Ii]-'
+              + '[Tt][Ss][Uu]|[Ss][Gg][Nn]-[Bb][Ee]-[Ff][Rr]|[Ss][Gg][Nn]-'
+              + '[Bb][Ee]-[Nn][Ll]|[Ss][Gg][Nn]-[Cc][Hh]-[Dd][Ee])|'
+              + '([Aa][Rr][Tt]-[Ll][Oo][Jj][Bb][Aa][Nn]|[Cc][Ee][Ll]-'
+              + '[Gg][Aa][Uu][Ll][Ii][Ss][Hh]|'
+              + '[Nn][Oo]-[Bb][Oo][Kk]|[Nn][Oo]-'
+              + '[Nn][Yy][Nn]|[Zz][Hh]-[Gg][Uu][Oo][Yy][Uu]|[Zz][Hh]-'
+              + '[Hh][Aa][Kk][Kk][Aa]|[Zz][Hh]-[Mm][Ii][Nn]|[Zz][Hh]-'
+              + '[Mm][Ii][Nn]-[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
       }
       default "en-US";
       description
@@ -4830,15 +4839,24 @@ module ietf-dots-mapping {
         type string {
           pattern '^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3}){,2})?|'
                 + '[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
-                + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|'
-                + '([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
-                + '(-([A-Za-z0-9]{2,8}))+)*(-x(-([A-Za-z0-9]{1,8}))+)?|'
-                + 'x(-([A-Za-z0-9]{1,8}))+|'
-                + '((en-gb-oed|i-ami|i-bnn|i-default|i-enochian|'
-                + 'i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|'
-                + 'i-tay|i-tsu|sgn-be-fr|sgn-be-nl|sgn-ch-de)|'
-                + '(art-lojban|cel-gaulish|no-bok|no-nyn|'
-                + 'zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang)))$';
+                + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}'
+                + '|([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
+                + '(-([A-Za-z0-9]{2,8}))+)*(-[Xx](-([A-Za-z0-9]{1,8}))+)?|'
+                + '[Xx](-([A-Za-z0-9]{1,8}))+|'
+                + '(([Ee][Nn]-[Gg][Bb]-[Oo][Ee][Dd]|[Ii]-[Aa][Mm][Ii]|[Ii]-'
+                + '[Bb][Nn][Nn]|[Ii]-[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-'
+                + '[Ee][Nn][Oo][Cc][Hh][Ii][Aa][Nn]|[Ii]-[Hh][Aa][Kk]|[Ii]-'
+                + '[Kk][Ll][Ii][Nn][Gg][Oo][Nn]|[Ii]-[Ll][Uu][Xx]|[Ii]-'
+                + '[Mm][Ii][Nn][Gg][Oo]|[Ii]-[Nn][Aa][Vv][Aa][Jj][Oo]|[Ii]-'
+                + '[Pp][Ww][Nn]|[Ii]-[Tt][Aa][Oo]|[Ii]-[Tt][Aa][Yy]|[Ii]-'
+                + '[Tt][Ss][Uu]|[Ss][Gg][Nn]-[Bb][Ee]-[Ff][Rr]|[Ss][Gg][Nn]-'
+                + '[Bb][Ee]-[Nn][Ll]|[Ss][Gg][Nn]-[Cc][Hh]-[Dd][Ee])|'
+                + '([Aa][Rr][Tt]-[Ll][Oo][Jj][Bb][Aa][Nn]|[Cc][Ee][Ll]-'
+                + '[Gg][Aa][Uu][Ll][Ii][Ss][Hh]|'
+                + '[Nn][Oo]-[Bb][Oo][Kk]|[Nn][Oo]-'
+                + '[Nn][Yy][Nn]|[Zz][Hh]-[Gg][Uu][Oo][Yy][Uu]|[Zz][Hh]-'
+                + '[Hh][Aa][Kk][Kk][Aa]|[Zz][Hh]-[Mm][Ii][Nn]|[Zz][Hh]-'
+                + '[Mm][Ii][Nn]-[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
         }
         default "en-US";
         description
