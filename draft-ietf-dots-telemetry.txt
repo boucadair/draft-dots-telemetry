@@ -806,8 +806,10 @@ Internet-Draft               DOTS Telemetry                February 2022
    not aim to provide a comprehensive list of message examples.
 
    JSON encoding of YANG-modeled data is used to illustrate the various
-   telemetry operations.  Parameter names are, thus, used rather than
-   their CBOR key values.
+   telemetry operations.  To ease readability, parameter names and their
+   JSON types are, thus, used in the examples rather than their CBOR key
+   values and CBOR types following the mappings in Section 12).  These
+   conventions are inherited from [RFC9132].
 
    The examples use the Enterprise Number 32473 defined for
    documentation use [RFC5612].
@@ -829,11 +831,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
                      Table 2: DOTS Telemetry Operations
 
-
-
-
-
-
+   Consequently, the "ietf-dots-telemetry" YANG module defined in
+   Section 11.1 defines data structure to represent new DOTS message
+   types called 'telemetry-setup' and 'telemetry'.  The tree structure
 
 
 
@@ -842,9 +842,6 @@ Boucadair, et al.         Expires 6 August 2022                [Page 15]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-   Consequently, the "ietf-dots-telemetry" YANG module defined in
-   Section 11.1 defines data structure to represent new DOTS message
-   types called 'telemetry-setup' and 'telemetry'.  The tree structure
    is shown in Figure 1.  More details are provided in Sections 7 and 8
    about the exact structure of 'telemetry-setup' and 'telemetry'
    message types.
@@ -888,8 +885,11 @@ Internet-Draft               DOTS Telemetry                February 2022
    with requests from other DOTS clients of the same DOTS client domain.
    More details are included in Section 7.5.
 
-
-
+   Telemetry setup configuration is bound to a DOTS client domain.  DOTS
+   servers MUST NOT expect DOTS clients to send regular requests to
+   refresh the telemetry setup configuration.  Any available telemetry
+   setup configuration is valid till the DOTS server ceases to service a
+   DOTS client domain.  DOTS servers MUST NOT reset 'tsid' because a
 
 
 
@@ -898,11 +898,6 @@ Boucadair, et al.         Expires 6 August 2022                [Page 16]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-   Telemetry setup configuration is bound to a DOTS client domain.  DOTS
-   servers MUST NOT expect DOTS clients to send regular requests to
-   refresh the telemetry setup configuration.  Any available telemetry
-   setup configuration is valid till the DOTS server ceases to service a
-   DOTS client domain.  DOTS servers MUST NOT reset 'tsid' because a
    session failed with a DOTS client.  DOTS clients update their
    telemetry setup configuration upon change of a parameter that may
    impact attack mitigation.
@@ -946,17 +941,17 @@ Internet-Draft               DOTS Telemetry                February 2022
 
    *  Acceptable percentile values
 
+   *  Telemetry notification interval
+
+   *  Acceptable Server-originated telemetry
+
+
 
 
 
 Boucadair, et al.         Expires 6 August 2022                [Page 17]
 
 Internet-Draft               DOTS Telemetry                February 2022
-
-
-   *  Telemetry notification interval
-
-   *  Acceptable Server-originated telemetry
 
 
 7.1.1.  Retrieve Current DOTS Telemetry Configuration
@@ -1002,6 +997,11 @@ Internet-Draft               DOTS Telemetry                February 2022
           |  |     |  +-- measurement-sample?            sample
           |  |     |  +-- low-percentile?                percentile
           |  |     |  +-- mid-percentile?                percentile
+          |  |     |  +-- high-percentile?               percentile
+          |  |     |  +-- server-originated-telemetry?   boolean
+          |  |     |  +-- telemetry-notify-interval?     uint16
+          |  |     +-- min-config-values
+          |  |     |  +-- measurement-interval?        interval
 
 
 
@@ -1010,11 +1010,6 @@ Boucadair, et al.         Expires 6 August 2022                [Page 18]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-          |  |     |  +-- high-percentile?               percentile
-          |  |     |  +-- server-originated-telemetry?   boolean
-          |  |     |  +-- telemetry-notify-interval?     uint16
-          |  |     +-- min-config-values
-          |  |     |  +-- measurement-interval?        interval
           |  |     |  +-- measurement-sample?          sample
           |  |     |  +-- low-percentile?              percentile
           |  |     |  +-- mid-percentile?              percentile
@@ -1055,6 +1050,11 @@ Internet-Draft               DOTS Telemetry                February 2022
    present, the values carried in 'max-config-values' attributes MUST be
    greater or equal to their counterpart in 'min-config-values'
    attributes.
+
+
+
+
+
 
 
 

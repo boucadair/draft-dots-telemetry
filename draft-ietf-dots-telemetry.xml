@@ -733,8 +733,11 @@
         not aim to provide a comprehensive list of message examples.</t>
 
         <t>JSON encoding of YANG-modeled data is used to illustrate the
-        various telemetry operations. Parameter names are, thus, used rather
-        than their CBOR key values.</t>
+        various telemetry operations. To ease readability, parameter names and
+        their JSON types are, thus, used in the examples rather than their
+        CBOR key values and CBOR types following the mappings in <xref
+        target="map1"></xref>). These conventions are inherited from <xref
+        target="RFC9132"></xref>.</t>
 
         <t>The examples use the Enterprise Number 32473 defined for
         documentation use <xref target="RFC5612"></xref>.</t>
