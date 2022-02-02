@@ -137,20 +137,20 @@ Internet-Draft               DOTS Telemetry                February 2022
    11. YANG Modules  . . . . . . . . . . . . . . . . . . . . . . . .  71
      11.1.  DOTS Signal Channel Telemetry YANG Module  . . . . . . .  71
      11.2.  Vendor Attack Mapping Details YANG Module  . . . . . . . 101
-   12. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . . 104
-   13. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 107
-     13.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 107
+   12. YANG/JSON Mapping Parameters to CBOR  . . . . . . . . . . . . 105
+   13. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 108
+     13.1.  DOTS Signal Channel CBOR Key Values  . . . . . . . . . . 108
      13.2.  DOTS Signal Channel Conflict Cause Codes . . . . . . . . 110
-     13.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 110
+     13.3.  DOTS Signal Telemetry YANG Module  . . . . . . . . . . . 111
    14. Security Considerations . . . . . . . . . . . . . . . . . . . 111
-     14.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 111
-     14.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 112
-   15. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 113
-   16. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 113
-   17. References  . . . . . . . . . . . . . . . . . . . . . . . . . 113
-     17.1.  Normative References . . . . . . . . . . . . . . . . . . 113
-     17.2.  Informative References . . . . . . . . . . . . . . . . . 115
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 117
+     14.1.  DOTS Signal Channel Telemetry  . . . . . . . . . . . . . 112
+     14.2.  Vendor Attack Mapping  . . . . . . . . . . . . . . . . . 113
+   15. Contributors  . . . . . . . . . . . . . . . . . . . . . . . . 114
+   16. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . 114
+   17. References  . . . . . . . . . . . . . . . . . . . . . . . . . 114
+     17.1.  Normative References . . . . . . . . . . . . . . . . . . 114
+     17.2.  Informative References . . . . . . . . . . . . . . . . . 116
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 118
 
 1.  Introduction
 
@@ -4955,15 +4955,37 @@ Internet-Draft               DOTS Telemetry                February 2022
                  + '|([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
                  + '(-([A-Za-z0-9]{2,8}))+)*(-[Xx](-([A-Za-z0-9]'
                  + '{1,8}))+)?|[Xx](-([A-Za-z0-9]{1,8}))+|'
-                 + '((en-GB-oed|i-ami|i-bnn|i-default|'
-                 + 'i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|'
-                 + 'i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|'
-                 + '(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|'
-                 + 'zh-min|zh-min-nan|zh-xiang)))$';
+                 + '(([Ee][Nn]-[Gg][Bb]-[Oo][Ee][Dd]|[Ii]-'
+                 + '[Aa][Mm][Ii]|[Ii]-[Bb][Nn][Nn]|[Ii]-'
+                 + '[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-'
+                 + '[Ee][Nn][Oo][Cc][Hh][Ii][Aa][Nn]'
+                 + '|[Ii]-[Hh][Aa][Kk]|'
+                 + '[Ii]-[Kk][Ll][Ii][Nn][Gg][Oo][Nn]|'
+                 + '[Ii]-[Ll][Uu][Xx]|[Ii]-[Mm][Ii][Nn][Gg][Oo]|'
+                 + '[Ii]-[Nn][Aa][Vv][Aa][Jj][Oo]|[Ii]-[Pp][Ww][Nn]|'
+                 + '[Ii]-[Tt][Aa][Oo]|[Ii]-[Tt][Aa][Yy]|'
+                 + '[Ii]-[Tt][Ss][Uu]|[Ss][Gg][Nn]-[Bb][Ee]-[Ff][Rr]|'
+                 + '[Ss][Gg][Nn]-[Bb][Ee]-[Nn][Ll]|[Ss][Gg][Nn]-'
+                 + '[Cc][Hh]-[Dd][Ee])|([Aa][Rr][Tt]-'
+                 + '[Ll][Oo][Jj][Bb][Aa][Nn]|[Cc][Ee][Ll]-'
+                 + '[Gg][Aa][Uu][Ll][Ii][Ss][Hh]|'
+                 + '[Nn][Oo]-[Bb][Oo][Kk]|[Nn][Oo]-'
+                 + '[Nn][Yy][Nn]|[Zz][Hh]-[Gg][Uu][Oo][Yy][Uu]|'
+                 + '[Zz][Hh]-[Hh][Aa][Kk][Kk][Aa]|[Zz][Hh]-'
+                 + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
+                 + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
          }
          default "en-US";
          description
            "Indicates the language tag that is used for
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 89]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
             'attack-description'.";
          reference
            "RFC 5646: Tags for Identifying Languages, Section 2.1";
@@ -4978,14 +5000,6 @@ Internet-Draft               DOTS Telemetry                February 2022
        }
        leaf attack-severity {
          type attack-severity;
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 89]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
          description
            "Severity level of an attack. How this level is determined
             is implementation-specific.";
@@ -5020,6 +5034,14 @@ Internet-Draft               DOTS Telemetry                February 2022
          "Defines generic data related to top-talkers.";
        leaf spoofed-status {
          type boolean;
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 90]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
          description
            "When set to 'true', it indicates whether this address
             is spoofed.";
@@ -5034,14 +5056,6 @@ Internet-Draft               DOTS Telemetry                February 2022
          description
            "Port range. When only lower-port is
             present, it represents a single port number.";
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 90]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
          leaf lower-port {
            type inet:port-number;
            description
@@ -5076,6 +5090,14 @@ Internet-Draft               DOTS Telemetry                February 2022
                 or equal to lower ICMP type.";
            }
            description
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 91]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
              "Upper type of the ICMP type range.";
          }
        }
@@ -5090,14 +5112,6 @@ Internet-Draft               DOTS Telemetry                February 2022
      grouping top-talker-aggregate {
        description
          "An aggregate of top attack sources. This aggregate is
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 91]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
           typically used when included in a mitigation request.";
        list talker {
          key "source-prefix";
@@ -5132,6 +5146,14 @@ Internet-Draft               DOTS Telemetry                February 2022
        }
      }
 
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 92]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
      grouping baseline {
        description
          "Grouping for the telemetry baseline.";
@@ -5146,14 +5168,6 @@ Internet-Draft               DOTS Telemetry                February 2022
        list total-traffic-normal {
          key "unit";
          description
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 92]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
            "Total traffic normal baselines.";
          uses traffic-unit;
        }
@@ -5188,6 +5202,14 @@ Internet-Draft               DOTS Telemetry                February 2022
        }
      }
 
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 93]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
      grouping pre-or-ongoing-mitigation {
        description
          "Grouping for the telemetry data.";
@@ -5202,14 +5224,6 @@ Internet-Draft               DOTS Telemetry                February 2022
          description
            "Total traffic per protocol.";
          uses traffic-unit-protocol-all;
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 93]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
        }
        list total-traffic-port {
          key "unit port";
@@ -5244,6 +5258,14 @@ Internet-Draft               DOTS Telemetry                February 2022
        list total-attack-connection-port {
          key "protocol port";
          description
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 94]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
            "Total attack connections per target port number.";
          uses connection-protocol-port-all;
        }
@@ -5258,14 +5280,6 @@ Internet-Draft               DOTS Telemetry                February 2022
            uses top-talker;
          }
        }
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 94]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
      }
 
      sx:augment-structure "/dots-signal:dots-signal"
@@ -5300,6 +5314,14 @@ Internet-Draft               DOTS Telemetry                February 2022
          description
            "Total attack traffic.";
          uses traffic-unit-all;
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 95]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
        }
        list attack-detail {
          key "vendor-id attack-id";
@@ -5314,14 +5336,6 @@ Internet-Draft               DOTS Telemetry                February 2022
        }
      }
      sx:structure dots-telemetry {
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 95]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
        description
          "Main structure for DOTS telemetry messages.";
        choice telemetry-message-type {
@@ -5356,6 +5370,14 @@ Internet-Draft               DOTS Telemetry                February 2022
                    type uint16 {
                      range "1 .. 3600";
                    }
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 96]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
                    units "seconds";
                    must '. >= ../../min-config-values'
                       + '/telemetry-notify-interval' {
@@ -5370,14 +5392,6 @@ Internet-Draft               DOTS Telemetry                February 2022
                  }
                }
                container min-config-values {
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 96]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
                  description
                    "Minimum acceptable configuration values.";
                  uses telemetry-parameters;
@@ -5412,6 +5426,14 @@ Internet-Draft               DOTS Telemetry                February 2022
            list telemetry {
              description
                "The telemetry data per DOTS client.  The keys
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 97]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
                 of the list are 'cuid' and 'tsid', but these keys are
                 not represented here because these keys are conveyed
                 as mandatory Uri-Paths in requests.  Omitting keys
@@ -5426,14 +5448,6 @@ Internet-Draft               DOTS Telemetry                February 2022
                     sent from the server to the client.";
                  leaf tsid {
                    type uint32;
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 97]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
                    description
                      "A client-assigned identifier for the DOTS
                       telemetry setup data.";
@@ -5468,6 +5482,14 @@ Internet-Draft               DOTS Telemetry                February 2022
                      description
                        "Minimum number of seconds between successive
                         telemetry notifications.";
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 98]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
                    }
                  }
                }
@@ -5482,14 +5504,6 @@ Internet-Draft               DOTS Telemetry                February 2022
                      type nt:link-id;
                      description
                        "Identifier of an interconnection link of
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 98]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
                         the DOTS client domain.";
                    }
                    leaf capacity {
@@ -5524,6 +5538,14 @@ Internet-Draft               DOTS Telemetry                February 2022
                    leaf id {
                      type uint32;
                      must '. >= 1';
+
+
+
+Boucadair, et al.         Expires 6 August 2022                [Page 99]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
                      description
                        "An identifier that uniquely identifies a
                         baseline entry communicated by a DOTS client.";
@@ -5538,14 +5560,6 @@ Internet-Draft               DOTS Telemetry                February 2022
            description
              "Telemetry information.";
            list pre-or-ongoing-mitigation {
-
-
-
-Boucadair, et al.         Expires 6 August 2022                [Page 99]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
              description
                "Pre-or-ongoing-mitigation telemetry per DOTS client.
                 The keys of the list are 'cuid' and 'tmid', but these
@@ -5580,6 +5594,14 @@ Internet-Draft               DOTS Telemetry                February 2022
                  description
                    "An alias name that points to a resource.";
                }
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 100]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
                leaf-list mid-list {
                  type uint32;
                  description
@@ -5594,14 +5616,6 @@ Internet-Draft               DOTS Telemetry                February 2022
              uses pre-or-ongoing-mitigation;
            }
          }
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 100]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
        }
      }
    }
@@ -5636,6 +5650,14 @@ Internet-Draft               DOTS Telemetry                February 2022
      description
        "This module contains YANG definitions for the sharing
         DDoS attack mapping details between a DOTS client and
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 101]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
         a DOTS server, by means of the DOTS data channel.
 
         Copyright (c) 2022 IETF Trust and the persons identified as
@@ -5650,13 +5672,6 @@ Internet-Draft               DOTS Telemetry                February 2022
 
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 101]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
 
      revision 2020-06-26 {
        description
@@ -5691,21 +5706,6 @@ Internet-Draft               DOTS Telemetry                February 2022
          leaf vendor-name {
            type string;
            description
-             "The name of the vendor (e.g., company A).";
-         }
-         leaf description-lang {
-           type string {
-           pattern '^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3})'
-                 + '{,2})?|[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
-                 + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}'
-                 + '|([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
-                 + '(-([A-Za-z0-9]{2,8}))+)*(-[Xx](-([A-Za-z0-9]'
-                 + '{1,8}))+)?|[Xx](-([A-Za-z0-9]{1,8}))+|'
-                 + '((en-GB-oed|i-ami|i-bnn|i-default|'
-                 + 'i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|'
-                 + 'i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|'
-                 + '(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|'
-                 + 'zh-min|zh-min-nan|zh-xiang)))$';
 
 
 
@@ -5714,6 +5714,35 @@ Boucadair, et al.         Expires 6 August 2022               [Page 102]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
+             "The name of the vendor (e.g., company A).";
+         }
+         leaf description-lang {
+           type string {
+             pattern '^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3})'
+                   + '{,2})?|[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
+                   + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}'
+                   + '|([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
+                   + '(-([A-Za-z0-9]{2,8}))+)*(-[Xx](-([A-Za-z0-9]'
+                   + '{1,8}))+)?|[Xx](-([A-Za-z0-9]{1,8}))+|'
+                   + '(([Ee][Nn]-[Gg][Bb]-[Oo][Ee][Dd]|[Ii]-'
+                   + '[Aa][Mm][Ii]|[Ii]-[Bb][Nn][Nn]|[Ii]-'
+                   + '[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-'
+                   + '[Ee][Nn][Oo][Cc][Hh][Ii][Aa][Nn]'
+                   + '|[Ii]-[Hh][Aa][Kk]|'
+                   + '[Ii]-[Kk][Ll][Ii][Nn][Gg][Oo][Nn]|'
+                   + '[Ii]-[Ll][Uu][Xx]|[Ii]-[Mm][Ii][Nn][Gg][Oo]|'
+                   + '[Ii]-[Nn][Aa][Vv][Aa][Jj][Oo]|[Ii]-[Pp][Ww][Nn]|'
+                   + '[Ii]-[Tt][Aa][Oo]|[Ii]-[Tt][Aa][Yy]|'
+                   + '[Ii]-[Tt][Ss][Uu]|[Ss][Gg][Nn]-[Bb][Ee]-[Ff][Rr]|'
+                   + '[Ss][Gg][Nn]-[Bb][Ee]-[Nn][Ll]|[Ss][Gg][Nn]-'
+                   + '[Cc][Hh]-[Dd][Ee])|([Aa][Rr][Tt]-'
+                   + '[Ll][Oo][Jj][Bb][Aa][Nn]|[Cc][Ee][Ll]-'
+                   + '[Gg][Aa][Uu][Ll][Ii][Ss][Hh]|'
+                   + '[Nn][Oo]-[Bb][Oo][Kk]|[Nn][Oo]-'
+                   + '[Nn][Yy][Nn]|[Zz][Hh]-[Gg][Uu][Oo][Yy][Uu]|'
+                   + '[Zz][Hh]-[Hh][Aa][Kk][Kk][Aa]|[Zz][Hh]-'
+                   + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
+                   + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
              }
            default "en-US";
            description
@@ -5733,6 +5762,14 @@ Internet-Draft               DOTS Telemetry                February 2022
            key "attack-id";
            description
              "Attack mapping details.";
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 103]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
            leaf attack-id {
              type uint32;
              description
@@ -5762,14 +5799,6 @@ Internet-Draft               DOTS Telemetry                February 2022
            "Used by DOTS clients to share their vendor
             attack mapping information with DOTS servers.";
          uses attack-mapping;
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 103]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
        }
      }
 
@@ -5789,6 +5818,14 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
 
      augment "/data-channel:dots-data" {
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 104]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
        if-feature "dots-telemetry";
        description
          "Augments the data channel with a vendor attack
@@ -5812,19 +5849,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    *  Note: Implementers must check that the mapping output provided by
       their YANG-to-CBOR encoding schemes is aligned with the content of
       Table 2.
-
-
-
-
-
-
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 104]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
 
   +----------------------+-------------+------+---------------+--------+
   | Parameter Name       | YANG        | CBOR | CBOR Major    | JSON   |
@@ -5850,6 +5874,14 @@ Internet-Draft               DOTS Telemetry                February 2022
   | total-traffic-normal | list        |TBA12 | 4 array       | Array  |
   | low-percentile-g     | yang:gauge64|TBA13 | 0 unsigned    | String |
   | mid-percentile-g     | yang:gauge64|TBA14 | 0 unsigned    | String |
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 105]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
   | high-percentile-g    | yang:gauge64|TBA15 | 0 unsigned    | String |
   | peak-g               | yang:gauge64|TBA16 | 0 unsigned    | String |
   | total-attack-traffic | list        |TBA17 | 4 array       | Array  |
@@ -5874,14 +5906,6 @@ Internet-Draft               DOTS Telemetry                February 2022
   | connection-ps-c      | container   |TBA33 | 5 map         | Object |
   | request-ps-c         | container   |TBA34 | 5 map         | Object |
   | attack-detail        | list        |TBA35 | 4 array       | Array  |
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 105]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
   | id                   | uint32      |TBA36 | 0 unsigned    | Number |
   | attack-id            | uint32      |TBA37 | 0 unsigned    | Number |
   | attack-description   | string      |TBA38 | 3 text string | String |
@@ -5906,6 +5930,14 @@ Internet-Draft               DOTS Telemetry                February 2022
   |           interval   |             |      |               |        |
   | tmid                 | uint32      |TBA56 | 0 unsigned    | Number |
   | measurement-interval | enumeration |TBA57 | 0 unsigned    | String |
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 106]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
   | measurement-sample   | enumeration |TBA58 | 0 unsigned    | String |
   | talker               | list        |TBA59 | 4 array       | Array  |
   | source-prefix        | inet:       |TBA60 | 3 text string | String |
@@ -5930,14 +5962,6 @@ Internet-Draft               DOTS Telemetry                February 2022
   | total-attack-        |             |      |               |        |
   |  traffic-protocol    | list        |TBA72 | 4 array       | Array  |
   | total-attack-        |             |      |               |        |
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 106]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
   |  traffic-port        | list        |TBA73 | 4 array       | Array  |
   | total-attack-        |             |      |               |        |
   |  connection-port     | list        |TBA74 | 4 array       | Array  |
@@ -5962,6 +5986,14 @@ Internet-Draft               DOTS Telemetry                February 2022
   | current-g            | yang:gauge64|TBA84 | 0 unsigned    | String |
   | description-lang     | string      |TBA85 | 3 text string | String |
   | lower-type           | uint8       |32771 | 0 unsigned    | Number |
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 107]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
   | upper-type           | uint8       |32772 | 0 unsigned    | Number |
   +----------------------+-------------+------+---------------+--------+
 
@@ -5983,16 +6015,6 @@ Internet-Draft               DOTS Telemetry                February 2022
 
    *  Note to the RFC Editor: Please replace all occurrences of
       "TBA1-TBA84" with the assigned values.
-
-
-
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 107]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
 
    +----------------------+-------+-------+------------+---------------+
    | Parameter Name       | CBOR  | CBOR  | Change     | Specification |
@@ -6020,6 +6042,14 @@ Internet-Draft               DOTS Telemetry                February 2022
    | total-traffic        | TBA18 |   4   |    IESG    |   [RFCXXXX]   |
    | total-connection-    | TBA19 |   4   |    IESG    |   [RFCXXXX]   |
    |        capacity      |       |       |            |               |
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 108]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
    | connection           | TBA20 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-client    | TBA21 |   0   |    IESG    |   [RFCXXXX]   |
    | embryonic            | TBA22 |   0   |    IESG    |   [RFCXXXX]   |
@@ -6042,14 +6072,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    | attack-id            | TBA37 |   0   |    IESG    |   [RFCXXXX]   |
    | attack-description   | TBA38 |   3   |    IESG    |   [RFCXXXX]   |
    | attack-severity      | TBA39 |   0   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 108]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    | start-time           | TBA40 |   0   |    IESG    |   [RFCXXXX]   |
    | end-time             | TBA41 |   0   |    IESG    |   [RFCXXXX]   |
    | source-count         | TBA42 |   5   |    IESG    |   [RFCXXXX]   |
@@ -6076,6 +6098,14 @@ Internet-Draft               DOTS Telemetry                February 2022
    | source-port-range    | TBA62 |   4   |    IESG    |   [RFCXXXX]   |
    | source-icmp-type-    | TBA63 |   4   |    IESG    |   [RFCXXXX]   |
    |           range      |       |       |            |               |
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 109]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
+
    | target               | TBA64 |   5   |    IESG    |   [RFCXXXX]   |
    | capacity             | TBA65 |   0   |    IESG    |   [RFCXXXX]   |
    | protocol             | TBA66 |   0   |    IESG    |   [RFCXXXX]   |
@@ -6098,14 +6128,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    | supported-query-type | TBA76 |   4   |    IESG    |   [RFCXXXX]   |
    | vendor-id            | TBA77 |   0   |    IESG    |   [RFCXXXX]   |
    | ietf-dots-telemetry: | TBA78 |   5   |    IESG    |   [RFCXXXX]   |
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 109]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    |   telemetry-setup    |       |       |            |               |
    | ietf-dots-telemetry: | TBA79 |   4   |    IESG    |   [RFCXXXX]   |
    |   total-traffic      |       |       |            |               |
@@ -6128,6 +6150,17 @@ Internet-Draft               DOTS Telemetry                February 2022
 
    This specification requests IANA to assign a new code from the "DOTS
    Signal Channel Conflict Cause Codes" registry [Cause].
+
+
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 110]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
 
     +------+-------------------+------------------------+-------------+
     | Code | Label             |   Description          |  Reference  |
@@ -6153,15 +6186,6 @@ Internet-Draft               DOTS Telemetry                February 2022
             Registrant Contact: The IESG.
             XML: N/A; the requested URI is an XML namespace.
 
-
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 110]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    This document requests IANA to register the following YANG modules in
    the "YANG Module Names" subregistry [RFC6020] within the "YANG
    Parameters" registry.
@@ -6179,6 +6203,19 @@ Internet-Draft               DOTS Telemetry                February 2022
             reference: RFC XXXX
 
 14.  Security Considerations
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 111]
+
+Internet-Draft               DOTS Telemetry                February 2022
 
 
 14.1.  DOTS Signal Channel Telemetry
@@ -6210,14 +6247,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    attack can be prevented by monitoring and auditing DOTS clients to
    detect misbehavior and to deter misuse, and by only authorizing the
    DOTS client to convey DOTS telemetry information for specific target
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 111]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    resources (e.g., an application server is authorized to exchange DOTS
    telemetry for its IP addresses but a DDoS mitigator can exchange DOTS
    telemetry for any target resource in the network).  As a reminder,
@@ -6231,6 +6260,19 @@ Internet-Draft               DOTS Telemetry                February 2022
 
    *  The probing rate (defined in Section 4.5 of [RFC9132]) can be used
       to limit the average data rate to the DOTS server.
+
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 112]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
 
    *  Rate-limiting DOTS telemetry, including those with new 'tmid'
       values, from the same DOTS client defends against DoS attacks that
@@ -6265,15 +6307,6 @@ Internet-Draft               DOTS Telemetry                February 2022
       telemetry:vendor-mapping'), which will mislead the server when
       correlating attack details.
 
-
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 112]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    Some of the readable data nodes in the YANG module specified in
    Section 11.2 may be considered sensitive.  It is thus important to
    control read access to these data nodes.  These are the data nodes
@@ -6287,6 +6320,14 @@ Internet-Draft               DOTS Telemetry                February 2022
       used by a compromised DOTS client to leak the attack detection
       capabilities of the DOTS server.  This is a variation of the
       compromised DOTS client attacks discussed in Section 14.1.
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 113]
+
+Internet-Draft               DOTS Telemetry                February 2022
 
 
 15.  Contributors
@@ -6323,13 +6364,6 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 17.1.  Normative References
 
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 113]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    [Private-Enterprise-Numbers]
               "Private Enterprise Numbers", 4 May 2020,
               <https://www.iana.org/assignments/enterprise-numbers>.
@@ -6342,6 +6376,15 @@ Internet-Draft               DOTS Telemetry                February 2022
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
               <https://www.rfc-editor.org/info/rfc3688>.
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 114]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
 
    [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
@@ -6379,13 +6422,6 @@ Internet-Draft               DOTS Telemetry                February 2022
               Format Version 2", RFC 7970, DOI 10.17487/RFC7970,
               November 2016, <https://www.rfc-editor.org/info/rfc7970>.
 
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 114]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
@@ -6398,6 +6434,13 @@ Internet-Draft               DOTS Telemetry                February 2022
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
               Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
               2018, <https://www.rfc-editor.org/info/rfc8345>.
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 115]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
 
    [RFC8783]  Boucadair, M., Ed. and T. Reddy.K, Ed., "Distributed
               Denial-of-Service Open Threat Signaling (DOTS) Data
@@ -6433,15 +6476,6 @@ Internet-Draft               DOTS Telemetry                February 2022
               30 October 2016, <https://www.ietf.org/archive/id/draft-
               doron-dots-telemetry-00.txt>.
 
-
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 115]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    [I-D.ietf-core-new-block]
               Boucadair, M. and J. Shallow, "Constrained Application
               Protocol (CoAP) Block-Wise Transfer Options Supporting
@@ -6449,6 +6483,20 @@ Internet-Draft               DOTS Telemetry                February 2022
               draft-ietf-core-new-block-14, 26 May 2021,
               <https://www.ietf.org/archive/id/draft-ietf-core-new-
               block-14.txt>.
+
+
+
+
+
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 116]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
 
    [I-D.ietf-dots-multihoming]
               Boucadair, M., Reddy, T., and W. Pan, "Multi-homing
@@ -6488,16 +6536,6 @@ Internet-Draft               DOTS Telemetry                February 2022
               RFC 4960, DOI 10.17487/RFC4960, September 2007,
               <https://www.rfc-editor.org/info/rfc4960>.
 
-
-
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 116]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    [RFC5612]  Eronen, P. and D. Harrington, "Enterprise Number for
               Documentation Use", RFC 5612, DOI 10.17487/RFC5612, August
               2009, <https://www.rfc-editor.org/info/rfc5612>.
@@ -6505,6 +6543,16 @@ Internet-Draft               DOTS Telemetry                February 2022
    [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
               BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
               <https://www.rfc-editor.org/info/rfc8340>.
+
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 117]
+
+Internet-Draft               DOTS Telemetry                February 2022
+
 
    [RFC8525]  Bierman, A., Bjorklund, M., Schoenwaelder, J., Watsen, K.,
               and R. Wilton, "YANG Library", RFC 8525,
@@ -6546,18 +6594,20 @@ Authors' Addresses
    Akamai
    Embassy Golf Link Business Park
    Bangalore 560071
-
-
-
-Boucadair, et al.         Expires 6 August 2022               [Page 117]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
-
    Karnataka
    India
 
    Email: kondtir@gmail.com
+
+
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 118]
+
+Internet-Draft               DOTS Telemetry                February 2022
 
 
    Ehud Doron
@@ -6605,4 +6655,10 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.         Expires 6 August 2022               [Page 118]
+
+
+
+
+
+
+Boucadair, et al.         Expires 6 August 2022               [Page 119]
