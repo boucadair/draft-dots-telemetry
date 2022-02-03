@@ -246,6 +246,12 @@
       agreed during a service subscription (that is out of scope) to identify
       a subset of DOTS clients among those deployed in a DOTS client domain
       that are allowed to send or receive telemetry data.</t>
+
+      <t>Also, the document specifies a YANG module (<xref
+      target="data"></xref>) that augments the DOTS data channel <xref
+      target="RFC8783"></xref> with attack details information. Sharing such
+      details during 'idle' time is meant to optimize the data exchanged over
+      the DOTS signal channel.</t>
     </section>
 
     <section anchor="notation" title="Terminology">
@@ -307,7 +313,7 @@
     <section anchor="overview" title="DOTS Telemetry: Overview and Purpose">
       <t>Timely and effective signaling of up-to-date DDoS telemetry to all
       elements involved in the mitigation process is essential and improves
-      the overall DDoS mitigation service effectiveness. Bi-directional
+      the overall DDoS mitigation service effectiveness. Bidirectional
       feedback between DOTS agents is required for increased awareness by each
       party of the attack and mitigation efforts, supporting a superior and
       highly efficient attack mitigation service.</t>
@@ -357,7 +363,7 @@
         DOTS telemetry attributes.</t>
 
         <t>In addition, management and orchestration systems, at both DOTS
-        client and server sides, can use DOTS telemetry as a feedback to
+        client and server sides, can use DOTS telemetry as feedback to
         automate various control and management activities derived from
         signaled telemetry information.</t>
 
@@ -390,7 +396,7 @@
 
         <t>In addition, subsequent activities toward mitigating an attack are
         much more challenging. The ability to distinguish legitimate traffic
-        from attacker traffic on a per packet basis is complex. For example, a
+        from attacker traffic on a per-packet basis is complex. For example, a
         packet may look "legitimate" and no attack signature can be
         identified. The anomaly can be identified only after detailed
         statistical analysis. DDoS attack mitigators use the normal baseline
@@ -455,7 +461,8 @@
 
         <t>In this case, it can be valuable to DOTS clients to signal to DOTS
         servers the total pipe capacity, which is the level of traffic the
-        DOTS client domain can absorb from its upstream network. Dynamic
+        DOTS client domain can absorb from its upstream network. This usually
+        is the circuit size which includes all the packet overheads. Dynamic
         updates of the condition of pipes between DOTS agents while they are
         under a DDoS attack is essential (e.g., where multiple DOTS clients
         share the same physical connectivity pipes). The DOTS server should
@@ -977,7 +984,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
               better readability, the example (and other similar figures
               depicting a DOTS telemetry message body) follows the conventions
               set in <xref target="note-examples"></xref>: use the JSON names
-              and types defined in <xref target="map1"></xref>. </t>
+              and types defined in <xref target="map1"></xref>.</t>
             </list></t>
 
           <t><figure anchor="tput"
@@ -2272,7 +2279,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               is used for the text that is included in the
               'attack-description' attribute. The attribute is encoded
               following the rules in Section 2.1 of <xref
-              target="RFC5646"></xref>. </t>
+              target="RFC5646"></xref>.</t>
 
               <t hangText="attack-description:">Textual representation of the
               attack description. Natural Language Processing techniques
@@ -4171,7 +4178,7 @@ module ietf-dots-telemetry {
 
   grouping attack-detail {
     description
-      "Various details that describe the on-going
+      "Various details that describe the ongoing
        attacks that need to be mitigated by the DOTS server.
        The attack details need to cover well-known and common attacks
        (such as a SYN Flood) along with new emerging or 
@@ -4371,7 +4378,7 @@ module ietf-dots-telemetry {
       type string;
       description
         "An alias name that points to an IP resource.
-         An IP resource can be be a router, a host,
+         An IP resource can be a router, a host,
          an IoT object, a server, etc.";
     }
     list total-traffic-normal {
@@ -5295,7 +5302,7 @@ module ietf-dots-mapping {
 
         <t>The DOTS telemetry information includes DOTS client network
         topology, DOTS client domain pipe capacity, normal traffic baseline
-        and connections capacity, and threat and mitigation information. Such
+        and connections' capacity, and threat and mitigation information. Such
         information is sensitive; it MUST be protected at rest by the DOTS
         server domain to prevent data leakage. Note that sharing this
         sensitive data with a trusted DOTS server does not introduce any new
@@ -5414,7 +5421,8 @@ module ietf-dots-mapping {
       <t>Thanks to Benjamin Kaduk for the detailed AD review.</t>
 
       <t>Thanks to Roman Danyliw, &Eacute;ric Vyncke, Francesca Palombini,
-      Warren Kumari, and Erik Kline for the IESG review.</t>
+      Warren Kumari, Erik Kline, Lars Eggert, and Robert Wilton for the IESG
+      review.</t>
     </section>
   </middle>
 
