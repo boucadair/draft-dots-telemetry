@@ -1080,8 +1080,9 @@ Internet-Draft               DOTS Telemetry                February 2022
       encoded as indicated by the Content-Format set to "application/
       dots+cbor" (Section 10.3 of [RFC9132]).  However, and for the sake
       of better readability, the example (and other similar figures
-      depicting a DOTS message body) follows the conventions set in
-      Section 5.6: use the JSON names and types defined in Section 12.
+      depicting a DOTS telemetry message body) follows the conventions
+      set in Section 5.6: use the JSON names and types defined in
+      Section 12.
 
    Header: PUT (Code=0.03)
    Uri-Path: ".well-known"
@@ -1112,7 +1113,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    The following additional Uri-Path parameter is defined:
 
    tsid:  Telemetry Setup Identifier is an identifier for the DOTS
-
 
 
 
@@ -2718,7 +2718,7 @@ Internet-Draft               DOTS Telemetry                February 2022
    description-lang:  Indicates the language tag that is used for the
       text that is included in the 'attack-description' attribute.  The
       attribute is encoded following the rules in Section 2.1 of
-      [RFC5646].  The default value is "en-US".
+      [RFC5646].
 
    attack-description:  Textual representation of the attack
       description.  Natural Language Processing techniques (e.g., word
@@ -4975,9 +4975,9 @@ Internet-Draft               DOTS Telemetry                February 2022
                  + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
                  + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
          }
-         default "en-US";
          description
            "Indicates the language tag that is used for
+            'attack-description'.";
 
 
 
@@ -4986,7 +4986,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 89]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-            'attack-description'.";
          reference
            "RFC 5646: Tags for Identifying Languages, Section 2.1";
        }
@@ -5034,6 +5033,7 @@ Internet-Draft               DOTS Telemetry                February 2022
          "Defines generic data related to top-talkers.";
        leaf spoofed-status {
          type boolean;
+         description
 
 
 
@@ -5042,7 +5042,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 90]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-         description
            "When set to 'true', it indicates whether this address
             is spoofed.";
        }
@@ -5090,6 +5089,7 @@ Internet-Draft               DOTS Telemetry                February 2022
                 or equal to lower ICMP type.";
            }
            description
+             "Upper type of the ICMP type range.";
 
 
 
@@ -5098,7 +5098,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 91]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-             "Upper type of the ICMP type range.";
          }
        }
        list total-attack-traffic {
@@ -5146,6 +5145,7 @@ Internet-Draft               DOTS Telemetry                February 2022
        }
      }
 
+     grouping baseline {
 
 
 
@@ -5154,7 +5154,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 92]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-     grouping baseline {
        description
          "Grouping for the telemetry baseline.";
        uses data-channel:target;
@@ -5202,6 +5201,7 @@ Internet-Draft               DOTS Telemetry                February 2022
        }
      }
 
+     grouping pre-or-ongoing-mitigation {
 
 
 
@@ -5210,7 +5210,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 93]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-     grouping pre-or-ongoing-mitigation {
        description
          "Grouping for the telemetry data.";
        list total-traffic {
@@ -5258,6 +5257,7 @@ Internet-Draft               DOTS Telemetry                February 2022
        list total-attack-connection-port {
          key "protocol port";
          description
+           "Total attack connections per target port number.";
 
 
 
@@ -5266,7 +5266,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 94]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-           "Total attack connections per target port number.";
          uses connection-protocol-port-all;
        }
        list attack-detail {
@@ -5314,6 +5313,7 @@ Internet-Draft               DOTS Telemetry                February 2022
          description
            "Total attack traffic.";
          uses traffic-unit-all;
+       }
 
 
 
@@ -5322,7 +5322,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 95]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-       }
        list attack-detail {
          key "vendor-id attack-id";
          description
@@ -5370,6 +5369,7 @@ Internet-Draft               DOTS Telemetry                February 2022
                    type uint16 {
                      range "1 .. 3600";
                    }
+                   units "seconds";
 
 
 
@@ -5378,7 +5378,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 96]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-                   units "seconds";
                    must '. >= ../../min-config-values'
                       + '/telemetry-notify-interval' {
                      error-message
@@ -5426,6 +5425,7 @@ Internet-Draft               DOTS Telemetry                February 2022
            list telemetry {
              description
                "The telemetry data per DOTS client.  The keys
+                of the list are 'cuid' and 'tsid', but these keys are
 
 
 
@@ -5434,7 +5434,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 97]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-                of the list are 'cuid' and 'tsid', but these keys are
                 not represented here because these keys are conveyed
                 as mandatory Uri-Paths in requests.  Omitting keys
                 is compliant with RFC8791.";
@@ -5482,6 +5481,7 @@ Internet-Draft               DOTS Telemetry                February 2022
                      description
                        "Minimum number of seconds between successive
                         telemetry notifications.";
+                   }
 
 
 
@@ -5490,7 +5490,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 98]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-                   }
                  }
                }
                case pipe {
@@ -5538,6 +5537,7 @@ Internet-Draft               DOTS Telemetry                February 2022
                    leaf id {
                      type uint32;
                      must '. >= 1';
+                     description
 
 
 
@@ -5546,7 +5546,6 @@ Boucadair, et al.         Expires 7 August 2022                [Page 99]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-                     description
                        "An identifier that uniquely identifies a
                         baseline entry communicated by a DOTS client.";
                    }
@@ -5594,6 +5593,7 @@ Internet-Draft               DOTS Telemetry                February 2022
                  description
                    "An alias name that points to a resource.";
                }
+               leaf-list mid-list {
 
 
 
@@ -5602,7 +5602,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 100]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-               leaf-list mid-list {
                  type uint32;
                  description
                    "Reference a list of associated mitigation
@@ -5650,6 +5649,7 @@ Internet-Draft               DOTS Telemetry                February 2022
      description
        "This module contains YANG definitions for the sharing
         DDoS attack mapping details between a DOTS client and
+        a DOTS server, by means of the DOTS data channel.
 
 
 
@@ -5657,8 +5657,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 101]
 
 Internet-Draft               DOTS Telemetry                February 2022
 
-
-        a DOTS server, by means of the DOTS data channel.
 
         Copyright (c) 2022 IETF Trust and the persons identified as
         authors of the code.  All rights reserved.
@@ -5706,6 +5704,8 @@ Internet-Draft               DOTS Telemetry                February 2022
          leaf vendor-name {
            type string;
            description
+             "The name of the vendor (e.g., company A).";
+         }
 
 
 
@@ -5714,8 +5714,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 102]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-             "The name of the vendor (e.g., company A).";
-         }
          leaf description-lang {
            type string {
              pattern '^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3})'
@@ -5744,7 +5742,6 @@ Internet-Draft               DOTS Telemetry                February 2022
                    + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
                    + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
              }
-           default "en-US";
            description
              "Indicates the language tag that is used for
               'attack-description'.";
@@ -5762,6 +5759,9 @@ Internet-Draft               DOTS Telemetry                February 2022
            key "attack-id";
            description
              "Attack mapping details.";
+           leaf attack-id {
+             type uint32;
+             description
 
 
 
@@ -5770,9 +5770,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 103]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-           leaf attack-id {
-             type uint32;
-             description
                "Unique identifier assigned by the vendor for the
                 attack.";
            }
@@ -5818,6 +5815,9 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
 
      augment "/data-channel:dots-data" {
+       if-feature "dots-telemetry";
+       description
+         "Augments the data channel with a vendor attack
 
 
 
@@ -5826,9 +5826,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 104]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-       if-feature "dots-telemetry";
-       description
-         "Augments the data channel with a vendor attack
           mapping table of the DOTS server.";
        container vendor-mapping {
          config false;
@@ -5874,6 +5871,9 @@ Internet-Draft               DOTS Telemetry                February 2022
   | total-traffic-normal | list        |TBA12 | 4 array       | Array  |
   | low-percentile-g     | yang:gauge64|TBA13 | 0 unsigned    | String |
   | mid-percentile-g     | yang:gauge64|TBA14 | 0 unsigned    | String |
+  | high-percentile-g    | yang:gauge64|TBA15 | 0 unsigned    | String |
+  | peak-g               | yang:gauge64|TBA16 | 0 unsigned    | String |
+  | total-attack-traffic | list        |TBA17 | 4 array       | Array  |
 
 
 
@@ -5882,9 +5882,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 105]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-  | high-percentile-g    | yang:gauge64|TBA15 | 0 unsigned    | String |
-  | peak-g               | yang:gauge64|TBA16 | 0 unsigned    | String |
-  | total-attack-traffic | list        |TBA17 | 4 array       | Array  |
   | total-traffic        | list        |TBA18 | 4 array       | Array  |
   | total-connection-    |             |      |               |        |
   |        capacity      | list        |TBA19 | 4 array       | Array  |
@@ -5930,6 +5927,9 @@ Internet-Draft               DOTS Telemetry                February 2022
   |           interval   |             |      |               |        |
   | tmid                 | uint32      |TBA56 | 0 unsigned    | Number |
   | measurement-interval | enumeration |TBA57 | 0 unsigned    | String |
+  | measurement-sample   | enumeration |TBA58 | 0 unsigned    | String |
+  | talker               | list        |TBA59 | 4 array       | Array  |
+  | source-prefix        | inet:       |TBA60 | 3 text string | String |
 
 
 
@@ -5938,9 +5938,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 106]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-  | measurement-sample   | enumeration |TBA58 | 0 unsigned    | String |
-  | talker               | list        |TBA59 | 4 array       | Array  |
-  | source-prefix        | inet:       |TBA60 | 3 text string | String |
   |                      |   ip-prefix |      |               |        |
   | mid-list             | leaf-list   |TBA61 | 4 array       | Array  |
   |                      | uint32      |      | 0 unsigned    | Number |
@@ -5986,6 +5983,9 @@ Internet-Draft               DOTS Telemetry                February 2022
   | current-g            | yang:gauge64|TBA84 | 0 unsigned    | String |
   | description-lang     | string      |TBA85 | 3 text string | String |
   | lower-type           | uint8       |32771 | 0 unsigned    | Number |
+  | upper-type           | uint8       |32772 | 0 unsigned    | Number |
+  +----------------------+-------------+------+---------------+--------+
+
 
 
 
@@ -5993,9 +5993,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 107]
 
 Internet-Draft               DOTS Telemetry                February 2022
 
-
-  | upper-type           | uint8       |32772 | 0 unsigned    | Number |
-  +----------------------+-------------+------+---------------+--------+
 
                  Table 3: YANG/JSON Mapping Parameters to CBOR
 
@@ -6042,6 +6039,9 @@ Internet-Draft               DOTS Telemetry                February 2022
    | total-traffic        | TBA18 |   4   |    IESG    |   [RFCXXXX]   |
    | total-connection-    | TBA19 |   4   |    IESG    |   [RFCXXXX]   |
    |        capacity      |       |       |            |               |
+   | connection           | TBA20 |   0   |    IESG    |   [RFCXXXX]   |
+   | connection-client    | TBA21 |   0   |    IESG    |   [RFCXXXX]   |
+   | embryonic            | TBA22 |   0   |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -6050,9 +6050,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 108]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-   | connection           | TBA20 |   0   |    IESG    |   [RFCXXXX]   |
-   | connection-client    | TBA21 |   0   |    IESG    |   [RFCXXXX]   |
-   | embryonic            | TBA22 |   0   |    IESG    |   [RFCXXXX]   |
    | embryonic-client     | TBA23 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-ps        | TBA24 |   0   |    IESG    |   [RFCXXXX]   |
    | connection-client-ps | TBA25 |   0   |    IESG    |   [RFCXXXX]   |
@@ -6098,6 +6095,9 @@ Internet-Draft               DOTS Telemetry                February 2022
    | source-port-range    | TBA62 |   4   |    IESG    |   [RFCXXXX]   |
    | source-icmp-type-    | TBA63 |   4   |    IESG    |   [RFCXXXX]   |
    |           range      |       |       |            |               |
+   | target               | TBA64 |   5   |    IESG    |   [RFCXXXX]   |
+   | capacity             | TBA65 |   0   |    IESG    |   [RFCXXXX]   |
+   | protocol             | TBA66 |   0   |    IESG    |   [RFCXXXX]   |
 
 
 
@@ -6106,9 +6106,6 @@ Boucadair, et al.         Expires 7 August 2022               [Page 109]
 Internet-Draft               DOTS Telemetry                February 2022
 
 
-   | target               | TBA64 |   5   |    IESG    |   [RFCXXXX]   |
-   | capacity             | TBA65 |   0   |    IESG    |   [RFCXXXX]   |
-   | protocol             | TBA66 |   0   |    IESG    |   [RFCXXXX]   |
    | total-traffic-       | TBA67 |   4   |    IESG    |   [RFCXXXX]   |
    |  normal-per-protocol |       |       |            |               |
    | total-traffic-       | TBA68 |   4   |    IESG    |   [RFCXXXX]   |
@@ -6150,6 +6147,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
    This specification requests IANA to assign a new code from the "DOTS
    Signal Channel Conflict Cause Codes" registry [Cause].
+
+
+
 
 
 

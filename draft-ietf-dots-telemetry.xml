@@ -975,9 +975,9 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
               Content-Format set to "application/dots+cbor" (Section 10.3 of
               <xref target="RFC9132"></xref>). However, and for the sake of
               better readability, the example (and other similar figures
-              depicting a DOTS message body) follows the conventions set in
-              <xref target="note-examples"></xref>: use the JSON names and
-              types defined in <xref target="map1"></xref>. </t>
+              depicting a DOTS telemetry message body) follows the conventions
+              set in <xref target="note-examples"></xref>: use the JSON names
+              and types defined in <xref target="map1"></xref>. </t>
             </list></t>
 
           <t><figure anchor="tput"
@@ -2272,7 +2272,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               is used for the text that is included in the
               'attack-description' attribute. The attribute is encoded
               following the rules in Section 2.1 of <xref
-              target="RFC5646"></xref>. The default value is "en-US".</t>
+              target="RFC5646"></xref>. </t>
 
               <t hangText="attack-description:">Textual representation of the
               attack description. Natural Language Processing techniques
@@ -4217,7 +4217,6 @@ module ietf-dots-telemetry {
               + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
               + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
       }
-      default "en-US";
       description
         "Indicates the language tag that is used for
          'attack-description'.";
@@ -4877,7 +4876,6 @@ module ietf-dots-mapping {
                 + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
                 + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
           }
-        default "en-US";
         description
           "Indicates the language tag that is used for
            'attack-description'.";
