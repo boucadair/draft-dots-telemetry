@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-dots-telemetry-21" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dots-telemetry-23" ipr="trust200902">
   <front>
     <title abbrev="DOTS Telemetry">Distributed Denial-of-Service Open Threat
     Signaling (DOTS) Telemetry</title>
@@ -2279,7 +2279,8 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               is used for the text that is included in the
               'attack-description' attribute. The attribute is encoded
               following the rules in Section 2.1 of <xref
-              target="RFC5646"></xref>.</t>
+              target="RFC5646"></xref>. The default language tag is
+              "en-US".</t>
 
               <t hangText="attack-description:">Textual representation of the
               attack description. Natural Language Processing techniques
@@ -3329,7 +3330,7 @@ Observe: 0]]></artwork>
         and <xref target="RFC8345"></xref>.</t>
 
         <t><figure>
-            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2021-11-29.yang"
+            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-telemetry@2022-02-04.yang"
 module ietf-dots-telemetry {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-telemetry";
@@ -3398,7 +3399,7 @@ module ietf-dots-telemetry {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2021-11-29 {
+  revision 2022-02-04 {
     description
       "Initial revision.";
     reference
@@ -4198,8 +4199,8 @@ module ietf-dots-telemetry {
     }
     leaf description-lang {
       type string {
-        pattern '^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3})'
-              + '{,2})?|[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
+        pattern '(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3})'
+              + '{0,2})?|[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
               + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}'
               + '|([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
               + '(-([A-Za-z0-9]{2,8}))+)*(-[Xx](-([A-Za-z0-9]'
@@ -4222,8 +4223,9 @@ module ietf-dots-telemetry {
               + '[Nn][Yy][Nn]|[Zz][Hh]-[Gg][Uu][Oo][Yy][Uu]|'
               + '[Zz][Hh]-[Hh][Aa][Kk][Kk][Aa]|[Zz][Hh]-'
               + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
-              + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
+              + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))';
       }
+      default "en-US";
       description
         "Indicates the language tag that is used for
          'attack-description'.";
@@ -4778,7 +4780,7 @@ module ietf-dots-telemetry {
 
       <section anchor="data" title="Vendor Attack Mapping Details YANG Module">
         <t><figure>
-            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-mapping@2020-06-26.yang"
+            <artwork><![CDATA[<CODE BEGINS> file "ietf-dots-mapping@2022-02-04.yang"
 module ietf-dots-mapping {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-dots-mapping";
@@ -4820,7 +4822,7 @@ module ietf-dots-mapping {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2020-06-26 {
+  revision 2022-02-04 {
     description
       "Initial revision.";
     reference
@@ -4857,8 +4859,8 @@ module ietf-dots-mapping {
       }
       leaf description-lang {
         type string {
-          pattern '^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3})'
-                + '{,2})?|[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
+          pattern '(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3})'
+                + '{0,2})?|[A-Za-z]{4}|[A-Za-z]{5,8})(-[A-Za-z]{4})?'
                 + '(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}'
                 + '|([0-9][A-Za-z0-9]{3})))*(-[0-9A-WY-Za-wy-z]'
                 + '(-([A-Za-z0-9]{2,8}))+)*(-[Xx](-([A-Za-z0-9]'
@@ -4881,8 +4883,9 @@ module ietf-dots-mapping {
                 + '[Nn][Yy][Nn]|[Zz][Hh]-[Gg][Uu][Oo][Yy][Uu]|'
                 + '[Zz][Hh]-[Hh][Aa][Kk][Kk][Aa]|[Zz][Hh]-'
                 + '[Mm][Ii][Nn]|[Zz][Hh]-[Mm][Ii][Nn]-'
-                + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))$';
+                + '[Nn][Aa][Nn]|[Zz][Hh]-[Xx][Ii][Aa][Nn][Gg])))';
           }
+        default "en-US";
         description
           "Indicates the language tag that is used for
            'attack-description'.";
