@@ -2777,12 +2777,13 @@ Internet-Draft               DOTS Telemetry                   March 2022
       [RFC5646].  The default language tag is "en-US".
 
    attack-description:  Textual representation of the attack
-      description.  Natural Language Processing techniques (e.g., word
-      embedding) might provide some utility in mapping the attack
-      description to an attack type.  Textual representation of attack
-      solves two problems: (a) avoids the need to create mapping tables
-      manually between vendors and (b) avoids the need to standardize
-      attack types which keep evolving.
+      description.  This description is related to the class of attack
+      rather than a specific instance of it.  Natural Language
+      Processing techniques (e.g., word embedding) might provide some
+      utility in mapping the attack description to an attack type.
+      Textual representation of attack solves two problems: (a) avoids
+      the need to create mapping tables manually between vendors and (b)
+      avoids the need to standardize attack types which keep evolving.
 
    attack-severity:  Attack severity level.  This attribute takes one of
       the values defined in Section 3.12.2 of [RFC7970].
@@ -2793,7 +2794,6 @@ Internet-Draft               DOTS Telemetry                   March 2022
       tag 1 (epoch-based date/time) MUST be omitted.
 
    end-time:  The time the attack ended.  The attack end time is
-
 
 
 

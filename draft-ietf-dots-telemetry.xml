@@ -2283,12 +2283,14 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
               "en-US".</t>
 
               <t hangText="attack-description:">Textual representation of the
-              attack description. Natural Language Processing techniques
-              (e.g., word embedding) might provide some utility in mapping the
-              attack description to an attack type. Textual representation of
-              attack solves two problems: (a) avoids the need to create
-              mapping tables manually between vendors and (b) avoids the need
-              to standardize attack types which keep evolving.</t>
+              attack description. This description is related to the class of
+              attack rather than a specific instance of it. Natural Language
+              Processing techniques (e.g., word embedding) might provide some
+              utility in mapping the attack description to an attack type.
+              Textual representation of attack solves two problems: (a) avoids
+              the need to create mapping tables manually between vendors and
+              (b) avoids the need to standardize attack types which keep
+              evolving.</t>
 
               <t hangText="attack-severity:">Attack severity level. This
               attribute takes one of the values defined in Section 3.12.2 of
