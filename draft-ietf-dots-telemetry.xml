@@ -988,7 +988,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"]]></artwork>
             </list></t>
 
           <t><figure anchor="tput"
-              title="PUT to Convey the DOTS Telemetry Configuration">
+              title="PUT to Convey the DOTS Telemetry Configuration, depicted as per Section 5.6">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1086,7 +1086,7 @@ Content-Format: "application/dots+cbor"
           server.</t>
 
           <t><figure anchor="tput1"
-              title="PUT to Disable Low- and Mid-Percentiles ">
+              title="PUT to Disable Low- and Mid-Percentiles, depicted as per Section 5.6 ">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1130,7 +1130,7 @@ Content-Format: "application/dots+cbor"
           servers is shown in <xref target="tput2"></xref>.</t>
 
           <t><figure anchor="tput2"
-              title="PUT to Enable Pre-or-ongoing-mitigation Telemetry from the DOTS server">
+              title="PUT to Enable Pre-or-ongoing-mitigation Telemetry from the DOTS server, depicted as per Section 5.6">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1291,7 +1291,7 @@ Uri-Path: "tsid=123"
             </figure></t>
 
           <t><figure anchor="putp1"
-              title="Example of a PUT Request to Convey Pipe Information (Single Homed) ">
+              title="Example of a PUT Request to Convey Pipe Information (Single Homed), depicted as per Section 5.6 ">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1336,7 +1336,7 @@ Content-Format: "application/dots+cbor"
             </figure></t>
 
           <t><figure anchor="putp1a"
-              title="Example of a PUT Request to Convey Pipe Information (Aggregated Link) ">
+              title="Example of a PUT Request to Convey Pipe Information (Aggregated Link), depicted as per Section 5.6 ">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1390,7 +1390,7 @@ Content-Format: "application/dots+cbor"
             </figure></t>
 
           <t><figure anchor="putp2"
-              title="Example of a PUT Request to Convey Pipe Information (Multi-Homed)">
+              title="Example of a PUT Request to Convey Pipe Information (Multi-Homed), depicted as per Section 5.6">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1453,7 +1453,7 @@ Content-Format: "application/dots+cbor"
                    `-.  Domain  ,-' 
                       `--'--'--'    ]]></artwork>
             </figure><figure anchor="putp3"
-              title="Example of a PUT Request to Convey Pipe Information (Multi-Homed)">
+              title="Example of a PUT Request to Convey Pipe Information (Multi-Homed), depicted as per Section 5.6">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1703,7 +1703,7 @@ Content-Format: "application/dots+cbor"
           shown in <xref target="tputs"></xref>.</t>
 
           <t><figure anchor="tputs"
-              title="PUT to Conveying the DOTS Traffic Baseline">
+              title="PUT to Conveying the DOTS Traffic Baseline, depicted as per Section 5.6">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -1741,7 +1741,7 @@ Content-Format: "application/dots+cbor"
           <t>The DOTS client may share protocol specific baseline information
           (e.g., TCP and UDP) as shown in <xref
           target="tputs2"></xref>.<figure anchor="tputs2"
-              title="PUT to Convey the DOTS Traffic Baseline (2)">
+              title="PUT to Convey the DOTS Traffic Baseline (2), depicted as per Section 5.6">
               <artwork align="left"><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -2634,7 +2634,7 @@ Accept: application/yang-data+json]]></artwork>
         <xref target="put-tmid-c"></xref>.</t>
 
         <t><figure anchor="put-tmid-c"
-            title="PUT to Send Pre-or-Ongoing-Mitigation Telemetry">
+            title="PUT to Send Pre-or-Ongoing-Mitigation Telemetry, depicted as per Section 5.6">
             <artwork><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -2786,7 +2786,7 @@ Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
         longer be available.</t>
 
         <t><figure anchor="put-tmid"
-            title="PUT to Request Pre-or-Ongoing-Mitigation Telemetry">
+            title="PUT to Request Pre-or-Ongoing-Mitigation Telemetry, depicted as per Section 5.6">
             <artwork><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -2915,7 +2915,7 @@ Observe: 0]]></artwork>
         telemetry notification is shown in <xref target="noti"></xref>.</t>
 
         <t><figure anchor="noti"
-            title="Message Body of a Pre-or-Ongoing-Mitigation Telemetry Notification from the DOTS Server">
+            title="Message Body of a Pre-or-Ongoing-Mitigation Telemetry Notification from the DOTS Server, depicted as per Section 5.6">
             <artwork><![CDATA[{
   "ietf-dots-telemetry:telemetry": {
     "pre-or-ongoing-mitigation": [
@@ -3068,7 +3068,7 @@ Observe: 0]]></artwork>
         depicted in <xref target="effu"></xref>.</t>
 
         <t><figure anchor="effu"
-            title="An Example of Mitigation Efficacy Update with Telemetry Attributes">
+            title="An Example of Mitigation Efficacy Update with Telemetry Attributes, depicted as per Section 5.6">
             <artwork><![CDATA[Header: PUT (Code=0.03)
 Uri-Path: ".well-known"
 Uri-Path: "dots"
@@ -3220,7 +3220,7 @@ Content-Format: "application/dots+cbor"
         attack.</t>
 
         <t><figure anchor="upex"
-            title="Response Body of a Mitigation Status With Telemetry Attributes">
+            title="Response Body of a Mitigation Status With Telemetry Attributes, depicted as per Section 5.6">
             <artwork><![CDATA[{
   "ietf-dots-signal-channel:mitigation-scope": {
     "scope": [

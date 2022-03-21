@@ -5,13 +5,13 @@
 DOTS                                                   M. Boucadair, Ed.
 Internet-Draft                                                    Orange
 Intended status: Standards Track                         T. Reddy.K, Ed.
-Expires: 27 August 2022                                           Akamai
+Expires: 22 September 2022                                        Akamai
                                                                 E. Doron
                                                             Radware Ltd.
                                                                  M. Chen
                                                                     CMCC
                                                               J. Shallow
-                                                        23 February 2022
+                                                           21 March 2022
 
 
   Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 August 2022.
+   This Internet-Draft will expire on 22 September 2022.
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 1]
+Boucadair, et al.       Expires 22 September 2022               [Page 1]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 2]
+Boucadair, et al.       Expires 22 September 2022               [Page 2]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        7.3.2.  Retrieve Installed Normal Traffic Baseline  . . . . .  39
@@ -165,9 +165,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 3]
+Boucadair, et al.       Expires 22 September 2022               [Page 3]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        The main method of such attacks is to send a large volume or high
@@ -221,9 +221,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 4]
+Boucadair, et al.       Expires 22 September 2022               [Page 4]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    DOTS clients can be integrated within a DDoS attack detector, or
@@ -277,9 +277,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 5]
+Boucadair, et al.       Expires 22 September 2022               [Page 5]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 2.  Terminology
@@ -333,9 +333,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 6]
+Boucadair, et al.       Expires 22 September 2022               [Page 6]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Consistent with the convention set in Section 2 of [RFC8783], the
@@ -389,9 +389,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 7]
+Boucadair, et al.       Expires 22 September 2022               [Page 7]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    In addition to the DOTS server directly using telemetry data as
@@ -445,9 +445,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 8]
+Boucadair, et al.       Expires 22 September 2022               [Page 8]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    an attack) is identified and categorized based on the knowledge about
@@ -501,9 +501,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                 [Page 9]
+Boucadair, et al.       Expires 22 September 2022               [Page 9]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    behavior.  Without facilitating normal baseline signaling, it may be
@@ -557,9 +557,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 10]
+Boucadair, et al.       Expires 22 September 2022              [Page 10]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 4.1.  Overview of Telemetry Operations
@@ -613,9 +613,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 11]
+Boucadair, et al.       Expires 22 September 2022              [Page 11]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    This document specifies an extension to the DOTS signal channel
@@ -669,9 +669,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 12]
+Boucadair, et al.       Expires 22 September 2022              [Page 12]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 4.3.  DOTS Multi-homing Considerations
@@ -725,9 +725,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 13]
+Boucadair, et al.       Expires 22 September 2022              [Page 13]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    The DOTS telemetry module (Section 11.1) includes some lists for
@@ -781,9 +781,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 14]
+Boucadair, et al.       Expires 22 September 2022              [Page 14]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    As a reminder, [RFC9132] forbids 'cuid' to be returned in a response
@@ -837,9 +837,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 15]
+Boucadair, et al.       Expires 22 September 2022              [Page 15]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    JSON encoding of YANG-modeled data is used to illustrate the various
@@ -893,9 +893,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 16]
+Boucadair, et al.       Expires 22 September 2022              [Page 16]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            Figure 1: New DOTS Message Types (YANG Tree Structure)
@@ -949,9 +949,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 17]
+Boucadair, et al.       Expires 22 September 2022              [Page 17]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    the value of the distribution at various percentile levels of the
@@ -1005,9 +1005,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 18]
+Boucadair, et al.       Expires 22 September 2022              [Page 18]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    acceptable by the DOTS server, any pipe information (Section 7.2),
@@ -1061,9 +1061,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 19]
+Boucadair, et al.       Expires 22 September 2022              [Page 19]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
           |        |     +-- mid-percentile?                percentile
@@ -1117,9 +1117,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 20]
+Boucadair, et al.       Expires 22 September 2022              [Page 20]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Header: PUT (Code=0.03)
@@ -1144,7 +1144,8 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
    }
 
-          Figure 4: PUT to Convey the DOTS Telemetry Configuration
+         Figure 4: PUT to Convey the DOTS Telemetry Configuration,
+                        depicted as per Section 5.6
 
    'cuid' is a mandatory Uri-Path parameter for PUT requests.
 
@@ -1172,10 +1173,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-
-Boucadair, et al.        Expires 27 August 2022                [Page 21]
+Boucadair, et al.       Expires 22 September 2022              [Page 21]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    A PUT request with a higher numeric 'tsid' value overrides the DOTS
@@ -1229,9 +1229,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 22]
+Boucadair, et al.       Expires 22 September 2022              [Page 22]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Header: PUT (Code=0.03)
@@ -1256,7 +1256,8 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
    }
 
-             Figure 5: PUT to Disable Low- and Mid-Percentiles
+       Figure 5: PUT to Disable Low- and Mid-Percentiles, depicted as
+                              per Section 5.6
 
    DOTS clients can also configure the unit class(es) to be used for
    traffic-related telemetry data among the following supported unit
@@ -1284,10 +1285,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-
-Boucadair, et al.        Expires 27 August 2022                [Page 23]
+Boucadair, et al.       Expires 22 September 2022              [Page 23]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Header: PUT (Code=0.03)
@@ -1311,7 +1311,7 @@ Internet-Draft               DOTS Telemetry                February 2022
    }
 
       Figure 6: PUT to Enable Pre-or-ongoing-mitigation Telemetry from
-                              the DOTS server
+                the DOTS server, depicted as per Section 5.6
 
 
 
@@ -1341,9 +1341,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 24]
+Boucadair, et al.       Expires 22 September 2022              [Page 24]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 7.1.4.  Delete DOTS Telemetry Configuration
@@ -1397,9 +1397,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 25]
+Boucadair, et al.       Expires 22 September 2022              [Page 25]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
      structure dots-telemetry:
@@ -1453,9 +1453,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 26]
+Boucadair, et al.       Expires 22 September 2022              [Page 26]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    DOTS clients SHOULD minimize the number of active 'tsid's used for
@@ -1509,13 +1509,13 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 27]
+Boucadair, et al.       Expires 22 September 2022              [Page 27]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        Figure 11: Example of a PUT Request to Convey Pipe Information
-                               (Single Homed)
+                (Single Homed), depicted as per Section 5.6
 
    DOTS clients may be instructed to signal a link aggregate instead of
    individual links.  For example, a DOTS client that manages a DOTS
@@ -1557,7 +1557,7 @@ Internet-Draft               DOTS Telemetry                February 2022
    }
 
        Figure 13: Example of a PUT Request to Convey Pipe Information
-                             (Aggregated Link)
+               (Aggregated Link), depicted as per Section 5.6
 
    Now consider that the DOTS client domain was upgraded to connect to
    an additional ISP (e.g., ISP#B of Figure 14); the DOTS client can
@@ -1565,9 +1565,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 28]
+Boucadair, et al.       Expires 22 September 2022              [Page 28]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    about this update by sending the PUT request depicted in Figure 15.
@@ -1621,9 +1621,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 29]
+Boucadair, et al.       Expires 22 September 2022              [Page 29]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Header: PUT (Code=0.03)
@@ -1656,7 +1656,7 @@ Internet-Draft               DOTS Telemetry                February 2022
    }
 
        Figure 15: Example of a PUT Request to Convey Pipe Information
-                               (Multi-Homed)
+                 (Multi-Homed), depicted as per Section 5.6
 
    A DOTS client can delete a link by sending a PUT request with the
    'capacity' attribute set to "0" if other links are still active for
@@ -1677,9 +1677,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 30]
+Boucadair, et al.       Expires 22 September 2022              [Page 30]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                         ,--,--,--.
@@ -1727,15 +1727,15 @@ Internet-Draft               DOTS Telemetry                February 2022
    }
 
        Figure 17: Example of a PUT Request to Convey Pipe Information
-                               (Multi-Homed)
+                 (Multi-Homed), depicted as per Section 5.6
 
 
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 31]
+Boucadair, et al.       Expires 22 September 2022              [Page 31]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 7.2.2.  Retrieve Installed DOTS Client Domain Pipe Capacity
@@ -1789,9 +1789,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 32]
+Boucadair, et al.       Expires 22 September 2022              [Page 32]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
       *  The maximum number of simultaneous embryonic connections that
@@ -1845,9 +1845,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 33]
+Boucadair, et al.       Expires 22 September 2022              [Page 33]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
           |     |  +--:(server-to-client-only)
@@ -1901,9 +1901,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 34]
+Boucadair, et al.       Expires 22 September 2022              [Page 34]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
           |              |  +-- embryonic?                   uint64
@@ -1957,9 +1957,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 35]
+Boucadair, et al.       Expires 22 September 2022              [Page 35]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Two PUT requests from a DOTS client have overlapping targets if there
@@ -2013,9 +2013,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 36]
+Boucadair, et al.       Expires 22 September 2022              [Page 36]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Header: PUT (Code=0.03)
@@ -2050,7 +2050,8 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
    }
 
-           Figure 19: PUT to Conveying the DOTS Traffic Baseline
+      Figure 19: PUT to Conveying the DOTS Traffic Baseline, depicted
+                             as per Section 5.6
 
    The DOTS client may share protocol specific baseline information
    (e.g., TCP and UDP) as shown in Figure 20.
@@ -2068,10 +2069,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-
-Boucadair, et al.        Expires 27 August 2022                [Page 37]
+Boucadair, et al.       Expires 22 September 2022              [Page 37]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Header: PUT (Code=0.03)
@@ -2112,7 +2112,8 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
    }
 
-           Figure 20: PUT to Convey the DOTS Traffic Baseline (2)
+      Figure 20: PUT to Convey the DOTS Traffic Baseline (2), depicted
+                             as per Section 5.6
 
    The normal traffic baseline information should be updated to reflect
    legitimate overloads (e.g., flash crowds) to prevent unnecessary
@@ -2124,10 +2125,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-
-Boucadair, et al.        Expires 27 August 2022                [Page 38]
+Boucadair, et al.       Expires 22 September 2022              [Page 38]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 7.3.2.  Retrieve Installed Normal Traffic Baseline
@@ -2181,9 +2181,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 39]
+Boucadair, et al.       Expires 22 September 2022              [Page 39]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 8.  DOTS Pre-or-Ongoing Mitigation Telemetry
@@ -2237,9 +2237,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 40]
+Boucadair, et al.       Expires 22 September 2022              [Page 40]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    +-----------+                                           +-----------+
@@ -2293,9 +2293,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 41]
+Boucadair, et al.       Expires 22 September 2022              [Page 41]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
      structure dots-telemetry:
@@ -2349,9 +2349,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 42]
+Boucadair, et al.       Expires 22 September 2022              [Page 42]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 8.1.1.  Target
@@ -2405,9 +2405,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 43]
+Boucadair, et al.       Expires 22 September 2022              [Page 43]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    If the target is susceptible to bandwidth-consuming attacks, the
@@ -2461,9 +2461,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 44]
+Boucadair, et al.       Expires 22 September 2022              [Page 44]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
           +--:(telemetry)
@@ -2517,9 +2517,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 45]
+Boucadair, et al.       Expires 22 September 2022              [Page 45]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 8.1.3.  Total Attack Traffic
@@ -2573,9 +2573,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 46]
+Boucadair, et al.       Expires 22 September 2022              [Page 46]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
           +--:(telemetry)
@@ -2629,9 +2629,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 47]
+Boucadair, et al.       Expires 22 September 2022              [Page 47]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 8.1.4.  Total Attack Connections
@@ -2685,9 +2685,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 48]
+Boucadair, et al.       Expires 22 September 2022              [Page 48]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                 |  |  +-- high-percentile-g?   yang:gauge64
@@ -2741,9 +2741,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 49]
+Boucadair, et al.       Expires 22 September 2022              [Page 49]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                 |  +-- partial-request-c
@@ -2797,9 +2797,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 50]
+Boucadair, et al.       Expires 22 September 2022              [Page 50]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
       expressed in seconds relative to 1970-01-01T00:00Z (Section 3.4.2
@@ -2853,9 +2853,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 51]
+Boucadair, et al.       Expires 22 September 2022              [Page 51]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                    +-- vendor-id             uint32
@@ -2909,9 +2909,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 52]
+Boucadair, et al.       Expires 22 September 2022              [Page 52]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                             |  +-- high-percentile-g?   yang:gauge64
@@ -2965,9 +2965,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 53]
+Boucadair, et al.       Expires 22 September 2022              [Page 53]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    The "ietf-dots-mapping" YANG module defined in Section 11.2 augments
@@ -3021,9 +3021,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 54]
+Boucadair, et al.       Expires 22 September 2022              [Page 54]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    A DOTS client can retrieve only the list of vendors supported by the
@@ -3077,9 +3077,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 55]
+Boucadair, et al.       Expires 22 September 2022              [Page 55]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    POST /restconf/data/ietf-dots-data-channel:dots-data\
@@ -3133,9 +3133,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 56]
+Boucadair, et al.       Expires 22 September 2022              [Page 56]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    The DOTS client uses the PUT request to modify its vendor attack
@@ -3189,9 +3189,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 57]
+Boucadair, et al.       Expires 22 September 2022              [Page 57]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Header: PUT (Code=0.03)
@@ -3231,24 +3231,29 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
    }
 
-         Figure 36: PUT to Send Pre-or-Ongoing-Mitigation Telemetry
+        Figure 36: PUT to Send Pre-or-Ongoing-Mitigation Telemetry,
+                        depicted as per Section 5.6
 
    'cuid' is a mandatory Uri-Path parameter for DOTS PUT requests.
 
    The following additional Uri-Path parameter is defined:
 
    tmid:  Telemetry Identifier is an identifier for the DOTS pre-or-
+
+
+
+
+
+
+Boucadair, et al.       Expires 22 September 2022              [Page 58]
+
+Internet-Draft               DOTS Telemetry                   March 2022
+
+
         ongoing-mitigation telemetry data represented as an integer.
         This identifier MUST be generated by DOTS clients. 'tmid' values
         MUST increase monotonically whenever a DOTS client needs to
         convey new set of pre-or-ongoing-mitigation telemetry.
-
-
-
-Boucadair, et al.        Expires 27 August 2022                [Page 58]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
 
         The procedure specified in Section 4.4.1 of [RFC9132] for 'mid'
         rollover MUST be followed for 'tmid' rollover.
@@ -3292,19 +3297,21 @@ Internet-Draft               DOTS Telemetry                February 2022
    (Figure 37).  Sending a DELETE with no 'tmid' indicates that all
    'tmid's must be deactivated (Figure 38).
 
+
+
+
+
+Boucadair, et al.       Expires 22 September 2022              [Page 59]
+
+Internet-Draft               DOTS Telemetry                   March 2022
+
+
    Header: DELETE (Code=0.04)
    Uri-Path: ".well-known"
    Uri-Path: "dots"
    Uri-Path: "tm"
    Uri-Path: "cuid=dz6pHjaADkaFTbjr0JGBpw"
    Uri-Path: "tmid=123"
-
-
-
-Boucadair, et al.        Expires 27 August 2022                [Page 59]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
 
           Figure 37: Delete a Pre-or-Ongoing-Mitigation Telemetry
 
@@ -3347,20 +3354,18 @@ Internet-Draft               DOTS Telemetry                February 2022
    The relative order of two PUT requests carrying DOTS pre-or-ongoing-
    mitigation telemetry from a DOTS client is determined by comparing
    their respective 'tmid' values.  If such two requests have
+
+
+
+Boucadair, et al.       Expires 22 September 2022              [Page 60]
+
+Internet-Draft               DOTS Telemetry                   March 2022
+
+
    overlapping 'target', the PUT request with higher numeric 'tmid'
    value will override the request with a lower numeric 'tmid' value.
    The overlapped lower numeric 'tmid' MUST be automatically deleted and
    no longer be available.
-
-
-
-
-
-
-Boucadair, et al.        Expires 27 August 2022                [Page 60]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
 
    Header: PUT (Code=0.03)
    Uri-Path: ".well-known"
@@ -3384,7 +3389,8 @@ Internet-Draft               DOTS Telemetry                February 2022
      }
    }
 
-       Figure 39: PUT to Request Pre-or-Ongoing-Mitigation Telemetry
+       Figure 39: PUT to Request Pre-or-Ongoing-Mitigation Telemetry,
+                        depicted as per Section 5.6
 
    DOTS clients of the same domain can request to receive pre-or-
    ongoing-mitigation telemetry bound to the same target without being
@@ -3399,6 +3405,19 @@ Internet-Draft               DOTS Telemetry                February 2022
    omit the 'tmid' (Figure 41) to receive updates on all active requests
    from that client.
 
+
+
+
+
+
+
+
+
+Boucadair, et al.       Expires 22 September 2022              [Page 61]
+
+Internet-Draft               DOTS Telemetry                   March 2022
+
+
    Header: GET (Code=0.01)
    Uri-Path: ".well-known"
    Uri-Path: "dots"
@@ -3409,13 +3428,6 @@ Internet-Draft               DOTS Telemetry                February 2022
 
            Figure 40: GET to Subscribe to Telemetry Asynchronous
                     Notifications for a Specific 'tmid'
-
-
-
-
-Boucadair, et al.        Expires 27 August 2022                [Page 61]
-
-Internet-Draft               DOTS Telemetry                February 2022
 
 
    Header: GET (Code=0.01)
@@ -3449,6 +3461,19 @@ Internet-Draft               DOTS Telemetry                February 2022
       for the 'target-port', 'target-protocol', and 'mid' parameters by
       indicating the two boundary values separated by a "-" character.
 
+
+
+
+
+
+
+
+
+Boucadair, et al.       Expires 22 September 2022              [Page 62]
+
+Internet-Draft               DOTS Telemetry                   March 2022
+
+
       Wildcard names (i.e., a name with the leftmost label is the "*"
       character) can be included in 'target-fqdn' or 'target-uri'
       parameters.  DOTS clients MUST NOT include a name in which the "*"
@@ -3466,13 +3491,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    when using these filters as their use may cause some attacks may be
    hidden to the requesting DOTS client (e.g., if the attack changes its
    source information).
-
-
-
-Boucadair, et al.        Expires 27 August 2022                [Page 62]
-
-Internet-Draft               DOTS Telemetry                February 2022
-
 
    Requests with invalid query types (e.g., not supported, malformed)
    received by the DOTS server MUST be rejected with a 4.00 (Bad
@@ -3507,27 +3525,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Boucadair, et al.        Expires 27 August 2022                [Page 63]
+Boucadair, et al.       Expires 22 September 2022              [Page 63]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    {
@@ -3563,7 +3563,7 @@ Internet-Draft               DOTS Telemetry                February 2022
    }
 
       Figure 43: Message Body of a Pre-or-Ongoing-Mitigation Telemetry
-                     Notification from the DOTS Server
+       Notification from the DOTS Server, depicted as per Section 5.6
 
    A DOTS server sends the aggregate data for a target using 'total-
    attack-traffic' attribute.  The aggregate assumes that Uri-Query
@@ -3581,9 +3581,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 64]
+Boucadair, et al.       Expires 22 September 2022              [Page 64]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    The DOTS client may log pre-or-ongoing-mitigation telemetry data with
@@ -3637,9 +3637,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 65]
+Boucadair, et al.       Expires 22 September 2022              [Page 65]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
           +-- source-count
@@ -3693,9 +3693,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 66]
+Boucadair, et al.       Expires 22 September 2022              [Page 66]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    An example of an efficacy update with telemetry attributes is
@@ -3731,7 +3731,7 @@ Internet-Draft               DOTS Telemetry                February 2022
    }
 
           Figure 45: An Example of Mitigation Efficacy Update with
-                            Telemetry Attributes
+             Telemetry Attributes, depicted as per Section 5.6
 
 9.2.  DOTS Servers to Clients Mitigation Status DOTS Telemetry
       Attributes
@@ -3749,9 +3749,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 67]
+Boucadair, et al.       Expires 22 September 2022              [Page 67]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    DOTS servers MUST NOT include telemetry attributes in mitigation
@@ -3805,9 +3805,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 68]
+Boucadair, et al.       Expires 22 September 2022              [Page 68]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        |  +-- current-g?           yang:gauge64
@@ -3861,9 +3861,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 69]
+Boucadair, et al.       Expires 22 September 2022              [Page 69]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        Figure 46: DOTS Servers to Clients Mitigation Status Telemetry
@@ -3911,15 +3911,15 @@ Internet-Draft               DOTS Telemetry                February 2022
    }
 
        Figure 47: Response Body of a Mitigation Status With Telemetry
-                                 Attributes
+                  Attributes, depicted as per Section 5.6
 
 
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 70]
+Boucadair, et al.       Expires 22 September 2022              [Page 70]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    DOTS clients can filter out the asynchronous notifications from the
@@ -3973,9 +3973,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 71]
+Boucadair, et al.       Expires 22 September 2022              [Page 71]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    *  4.04 (Not Found) is returned by the DOTS server when the DOTS
@@ -4029,9 +4029,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 72]
+Boucadair, et al.       Expires 22 September 2022              [Page 72]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
      }
@@ -4085,9 +4085,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 73]
+Boucadair, et al.       Expires 22 September 2022              [Page 73]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            description
@@ -4141,9 +4141,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 74]
+Boucadair, et al.       Expires 22 September 2022              [Page 74]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
              "Bytes per second (Byte/s).";
@@ -4197,9 +4197,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 75]
+Boucadair, et al.       Expires 22 September 2022              [Page 75]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
              "Megabits per second (Mbps).";
@@ -4253,9 +4253,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 76]
+Boucadair, et al.       Expires 22 September 2022              [Page 76]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            value 18;
@@ -4309,9 +4309,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 77]
+Boucadair, et al.       Expires 22 September 2022              [Page 77]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
          enum 10-minutes {
@@ -4365,9 +4365,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 78]
+Boucadair, et al.       Expires 22 September 2022              [Page 78]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            value 3;
@@ -4421,9 +4421,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 79]
+Boucadair, et al.       Expires 22 September 2022              [Page 79]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
              "Query based on target prefix.";
@@ -4477,9 +4477,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 80]
+Boucadair, et al.       Expires 22 September 2022              [Page 80]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            value 11;
@@ -4533,9 +4533,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 81]
+Boucadair, et al.       Expires 22 September 2022              [Page 81]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
          must '. >= ../low-percentile' {
@@ -4589,9 +4589,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 82]
+Boucadair, et al.       Expires 22 September 2022              [Page 82]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
      grouping percentile-peak-and-current {
@@ -4645,9 +4645,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 83]
+Boucadair, et al.       Expires 22 September 2022              [Page 83]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
          "Grouping of traffic as a function of the measurement unit,
@@ -4701,9 +4701,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 84]
+Boucadair, et al.       Expires 22 September 2022              [Page 84]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        }
@@ -4757,9 +4757,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 85]
+Boucadair, et al.       Expires 22 September 2022              [Page 85]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
             that are allowed to the target server per client.";
@@ -4813,9 +4813,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 86]
+Boucadair, et al.       Expires 22 September 2022              [Page 86]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
             Values are taken from the IANA Protocol Numbers registry:
@@ -4869,9 +4869,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 87]
+Boucadair, et al.       Expires 22 September 2022              [Page 87]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            "The number of simultaneous attack connections to
@@ -4925,9 +4925,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 88]
+Boucadair, et al.       Expires 22 September 2022              [Page 88]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            "The transport protocol.
@@ -4981,9 +4981,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 89]
+Boucadair, et al.       Expires 22 September 2022              [Page 89]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
           attacks that need to be mitigated by the DOTS server.
@@ -5037,9 +5037,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 90]
+Boucadair, et al.       Expires 22 September 2022              [Page 90]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
             'attack-description'.";
@@ -5093,9 +5093,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 91]
+Boucadair, et al.       Expires 22 September 2022              [Page 91]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
          description
@@ -5149,9 +5149,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 92]
+Boucadair, et al.       Expires 22 September 2022              [Page 92]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
              "Upper type of the ICMP type range.";
@@ -5205,9 +5205,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 93]
+Boucadair, et al.       Expires 22 September 2022              [Page 93]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
      grouping baseline {
@@ -5261,9 +5261,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 94]
+Boucadair, et al.       Expires 22 September 2022              [Page 94]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
      grouping pre-or-ongoing-mitigation {
@@ -5317,9 +5317,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 95]
+Boucadair, et al.       Expires 22 September 2022              [Page 95]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            "Total attack connections per target port number.";
@@ -5373,9 +5373,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 96]
+Boucadair, et al.       Expires 22 September 2022              [Page 96]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        }
@@ -5429,9 +5429,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 97]
+Boucadair, et al.       Expires 22 September 2022              [Page 97]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                    units "seconds";
@@ -5485,9 +5485,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 98]
+Boucadair, et al.       Expires 22 September 2022              [Page 98]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                 of the list are 'cuid' and 'tsid', but these keys are
@@ -5541,9 +5541,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022                [Page 99]
+Boucadair, et al.       Expires 22 September 2022              [Page 99]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                    }
@@ -5597,9 +5597,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 100]
+Boucadair, et al.       Expires 22 September 2022             [Page 100]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                      description
@@ -5653,9 +5653,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 101]
+Boucadair, et al.       Expires 22 September 2022             [Page 101]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
                leaf-list mid-list {
@@ -5709,9 +5709,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 102]
+Boucadair, et al.       Expires 22 September 2022             [Page 102]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
         a DOTS server, by means of the DOTS data channel.
@@ -5765,9 +5765,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 103]
+Boucadair, et al.       Expires 22 September 2022             [Page 103]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
              "The name of the vendor (e.g., company A).";
@@ -5821,9 +5821,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 104]
+Boucadair, et al.       Expires 22 September 2022             [Page 104]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
            leaf attack-id {
@@ -5877,9 +5877,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 105]
+Boucadair, et al.       Expires 22 September 2022             [Page 105]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
        if-feature "dots-telemetry";
@@ -5933,9 +5933,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 106]
+Boucadair, et al.       Expires 22 September 2022             [Page 106]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
   | high-percentile-g    | yang:gauge64|TBA15 | 0 unsigned    | String |
@@ -5989,9 +5989,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 107]
+Boucadair, et al.       Expires 22 September 2022             [Page 107]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
   | measurement-sample   | enumeration |TBA58 | 0 unsigned    | String |
@@ -6045,9 +6045,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 108]
+Boucadair, et al.       Expires 22 September 2022             [Page 108]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
   | upper-type           | uint8       |32772 | 0 unsigned    | Number |
@@ -6101,9 +6101,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 109]
+Boucadair, et al.       Expires 22 September 2022             [Page 109]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    | connection           | TBA20 |   0   |    IESG    |   [RFCXXXX]   |
@@ -6157,9 +6157,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 110]
+Boucadair, et al.       Expires 22 September 2022             [Page 110]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    | target               | TBA64 |   5   |    IESG    |   [RFCXXXX]   |
@@ -6213,9 +6213,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 111]
+Boucadair, et al.       Expires 22 September 2022             [Page 111]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
     +------+-------------------+------------------------+-------------+
@@ -6269,9 +6269,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 112]
+Boucadair, et al.       Expires 22 September 2022             [Page 112]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 14.1.  DOTS Signal Channel Telemetry
@@ -6325,9 +6325,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 113]
+Boucadair, et al.       Expires 22 September 2022             [Page 113]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    *  Rate-limiting DOTS telemetry, including those with new 'tmid'
@@ -6381,9 +6381,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 114]
+Boucadair, et al.       Expires 22 September 2022             [Page 114]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
 15.  Contributors
@@ -6437,9 +6437,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 115]
+Boucadair, et al.       Expires 22 September 2022             [Page 115]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
@@ -6493,9 +6493,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 116]
+Boucadair, et al.       Expires 22 September 2022             [Page 116]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    [RFC8783]  Boucadair, M., Ed. and T. Reddy.K, Ed., "Distributed
@@ -6549,9 +6549,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 117]
+Boucadair, et al.       Expires 22 September 2022             [Page 117]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    [I-D.ietf-dots-multihoming]
@@ -6605,9 +6605,9 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 118]
+Boucadair, et al.       Expires 22 September 2022             [Page 118]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    [RFC8525]  Bierman, A., Bjorklund, M., Schoenwaelder, J., Watsen, K.,
@@ -6642,7 +6642,6 @@ Authors' Addresses
    Orange
    35000 Rennes
    France
-
    Email: mohamed.boucadair@orange.com
 
 
@@ -6652,7 +6651,6 @@ Authors' Addresses
    Bangalore 560071
    Karnataka
    India
-
    Email: kondtir@gmail.com
 
 
@@ -6661,9 +6659,11 @@ Authors' Addresses
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 119]
+
+
+Boucadair, et al.       Expires 22 September 2022             [Page 119]
 
-Internet-Draft               DOTS Telemetry                February 2022
+Internet-Draft               DOTS Telemetry                   March 2022
 
 
    Ehud Doron
@@ -6671,7 +6671,6 @@ Internet-Draft               DOTS Telemetry                February 2022
    Raoul Wallenberg Street
    Tel-Aviv 69710
    Israel
-
    Email: ehudd@radware.com
 
 
@@ -6681,13 +6680,11 @@ Internet-Draft               DOTS Telemetry                February 2022
    BeiJing
    BeiJing, 100053
    China
-
    Email: chenmeiling@chinamobile.com
 
 
    Jon Shallow
    United Kingdom
-
    Email: supjps-ietf@jpshallow.com
 
 
@@ -6717,4 +6714,7 @@ Internet-Draft               DOTS Telemetry                February 2022
 
 
 
-Boucadair, et al.        Expires 27 August 2022               [Page 120]
+
+
+
+Boucadair, et al.       Expires 22 September 2022             [Page 120]
